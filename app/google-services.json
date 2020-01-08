@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "131745253370",
+    "firebase_url": "https://paycal-resist.firebaseio.com",
+    "project_id": "paycal-resist",
+    "storage_bucket": "paycal-resist.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131745253370:android:9f097dd73b77ef632b4643",
+        "android_client_info": {
+          "package_name": "com.grapesoftware.paycal_resist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131745253370-s8f4pqhm48tppohavfortgga5bfgj96i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.grapesoftware.paycal_resist",
+            "certificate_hash": "e9858724ba9ae2f5b3cd58d087380ec6a358fbd3"
+          }
+        },
+        {
+          "client_id": "131745253370-sulond9lo9h5sq7cl1aeig45lliig9om.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6RoHja2-Qgi3A15A9CgpFIt0xANLXyLA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131745253370-sulond9lo9h5sq7cl1aeig45lliig9om.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

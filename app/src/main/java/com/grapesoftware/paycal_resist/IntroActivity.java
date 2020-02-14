@@ -123,7 +123,6 @@ public class IntroActivity extends AppCompatActivity {
 
                 }
 
-
             }
 
             @Override
@@ -138,17 +137,15 @@ public class IntroActivity extends AppCompatActivity {
         });
 
 
-
         // Get Started button click listener
 
         btnGetStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
                 //open main activity
 
-                Intent mainActivity = new Intent(getApplicationContext(),MainActivity.class);
+                Intent mainActivity = new Intent(getApplicationContext(),WelcomeActivity.class);
                 startActivity(mainActivity);
                 // also we need to save a boolean value to storage so next time when the user run the app
                 // we could know that he is already checked the intro screen activity
@@ -189,7 +186,7 @@ public class IntroActivity extends AppCompatActivity {
 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
-        editor.putBoolean("isIntroOpnend",true);
+        editor.putBoolean("isIntroOpened",true);
         editor.commit();
 
 

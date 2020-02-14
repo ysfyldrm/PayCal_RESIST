@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "131745253370-17krfp2cl0a9404c52nu1780m092e4u1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.grapesoftware.paycal_resist",
+            "certificate_hash": "5be843b3ceb2a229cdca3242cbbcb945353dd8e3"
+          }
+        },
+        {
           "client_id": "131745253370-s8f4pqhm48tppohavfortgga5bfgj96i.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

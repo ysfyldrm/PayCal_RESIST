@@ -20,10 +20,12 @@ public class RegisterActivity extends AppCompatActivity {
     ImageView backButton;
     private EditText registerUserName;
     private EditText registerPassword;
+    private EditText editTextMobile;
     private Button buttonRegister;
     private FirebaseAuth mAuth;
     private String userName;
     private String userPassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
         registerUserName = (EditText)findViewById(R.id.registerUserName);
         registerPassword = (EditText)findViewById(R.id.registerPassword);
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
+        editTextMobile = findViewById(R.id.editTextMobile);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -57,23 +60,36 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Lütfen gerekli alanları doldurunuz!",Toast.LENGTH_SHORT).show();
 
                 }else{
-
                     registerFunc();
                 }
+
+
+                String mobile = editTextMobile.getText().toString().trim();
+
+                if(mobile.isEmpty() || mobile.length() < 10){
+                    editTextMobile.setError("Doğru telefon numarası giriniz");
+                    editTextMobile.requestFocus();
+                    return;
+                }
+
+                Intent intent = new Intent(RegisterActivity.this, VerifyPhoneActivity.class);
+                intent.putExtra("mobile", mobile);
+                intent.putExtra("userName", userName);
+                intent.putExtra("userPassword", userPassword);
+                startActivity(intent);
 
             }
         });
     }
 
-
-    private void registerFunc() {
+    private void registerFunc(){
 
         mAuth.createUserWithEmailAndPassword(userName,userPassword)
                 .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Intent i = new Intent(RegisterActivity.this,MainActivity.class);
+                            Intent i = new Intent(RegisterActivity.this,VerifyPhoneActivity.class);
                             startActivity(i);
                             finish();
                         }
@@ -85,4 +101,5 @@ public class RegisterActivity extends AppCompatActivity {
                 });
 
     }
+
 }

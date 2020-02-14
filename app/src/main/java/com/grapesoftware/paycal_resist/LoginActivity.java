@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
+
     private ImageView backButton;
     private Button loginButton;
     private FirebaseAuth mAuth;
@@ -124,4 +125,5 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this,"Giriş Yapmanız Gerekmekte.", Toast.LENGTH_LONG).show();
         }
     }
+
 }

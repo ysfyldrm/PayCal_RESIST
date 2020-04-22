@@ -30,6 +30,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:alpha="0.5"
+        android:textColor="@color/colorPrimary"
         android:text="PayCal' a üye olmak artık çok basit."
         android:textSize="16dp"
         android:typeface="normal"
@@ -47,6 +48,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="220dp"
         android:layout_marginEnd="8dp"
+        android:textColor="@color/colorPrimary"
         android:text="Üye Ol!"
         android:textSize="50dp"
         app:layout_constraintBottom_toTopOf="@+id/registerUserName"
@@ -122,6 +124,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:textColor="@color/colorPrimary"
         android:text="Kayıt Ol"
         android:textAllCaps="false"
         android:textSize="16dp"
@@ -129,7 +132,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.153"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMobile"
         app:layout_constraintVertical_bias="0.346" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

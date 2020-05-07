@@ -9,13 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".VerifyPhoneActivity"></activity>
-        <activity android:name=".IntroActivity">
+        <activity android:name=".SliderActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".VerifyPhoneActivity" />
+        <activity android:name=".IntroActivity">
+
         </activity>
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".RegisterActivity" />

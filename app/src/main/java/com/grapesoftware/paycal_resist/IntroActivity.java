@@ -94,7 +94,6 @@ public class IntroActivity extends AppCompatActivity {
                     position++;
                     screenPager.setCurrentItem(position);
 
-
                 }
 
                 if (position == mList.size()-1) { // when we rech to the last screen
@@ -103,16 +102,13 @@ public class IntroActivity extends AppCompatActivity {
 
                     loaddLastScreen();
 
-
                 }
-
 
 
             }
         });
 
         // tablayout add change listener
-
 
         tabIndicator.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
             @Override

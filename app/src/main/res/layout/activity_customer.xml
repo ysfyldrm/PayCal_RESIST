@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CustomerActivity">
+
+    <Button
+        android:id="@+id/button_consumer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONSUMER"
+        tools:layout_editor_absoluteX="152dp"
+        tools:layout_editor_absoluteY="308dp" />
+
+    <Button
+        android:id="@+id/button_prosumer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PROSUMER"
+        tools:layout_editor_absoluteX="154dp"
+        tools:layout_editor_absoluteY="413dp" />
+
+    <Button
+        android:id="@+id/button_supplier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SUPPLIER"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="523dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

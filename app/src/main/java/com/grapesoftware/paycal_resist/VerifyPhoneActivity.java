@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,6 +35,9 @@ public class VerifyPhoneActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    private TextView mobileText;
+
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +45,15 @@ public class VerifyPhoneActivity extends AppCompatActivity {
         setContentView(R.layout.activity_verify_phone);
 
         mAuth = FirebaseAuth.getInstance();
+
+        progressBar = findViewById(R.id.progressbar);
         editTextCode = findViewById(R.id.editTextCode);
-
-
+        mobileText = findViewById(R.id.mobileTextViev);
 
         //Diger activity sayfasından aldıgımız mobile numarası
         Intent intent = getIntent();
         String mobile = intent.getStringExtra("mobile");
+        mobileText.setText(mobile);
         sendVerificationCode(mobile);
 
 
@@ -54,6 +61,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
         findViewById(R.id.buttonSignIn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String code = editTextCode.getText().toString().trim();
                 if (code.isEmpty() || code.length() < 6) {
                     editTextCode.setError("Enter valid code");
@@ -70,6 +78,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
 
     //Ülke kodu +90 olarak girili, aktivasyon kodunu bu metod gönderiyor
     private void sendVerificationCode(String mobile) {
+        progressBar.setVisibility(View.VISIBLE);
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 "+90" + mobile,
                 60,
@@ -90,6 +99,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
             if (code != null) {
                 editTextCode.setText(code);
                 verifyVerificationCode(code);
+
             }
         }
 
@@ -101,7 +111,6 @@ public class VerifyPhoneActivity extends AppCompatActivity {
         @Override
         public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
-
             //Kullanıcıya gönderdigimiz kodu s olarak tutuyoruz
             mVerificationId = s;
         }
@@ -122,6 +131,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+
                             //Onaylandı ve giris sayfasına gidiyoruz
                             Intent intent = new Intent(VerifyPhoneActivity.this, LoginActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -131,20 +141,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
 
                             //Onaylanmadı ve hata mesajı gösteriliyor
 
-                            String message = "Birşeyler ters gitti, yakında düzelticez...";
-
-                            if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                                message = "Yanlış kod girildi...";
-                            }
-
-                            Snackbar snackbar = Snackbar.make(findViewById(R.id.parent), message, Snackbar.LENGTH_LONG);
-                            snackbar.setAction("Dismiss", new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-
-                                }
-                            });
-                            snackbar.show();
+                            Toast.makeText(VerifyPhoneActivity.this, task.getException().getMessage(),Toast.LENGTH_LONG).show();
                         }
                     }
                 });

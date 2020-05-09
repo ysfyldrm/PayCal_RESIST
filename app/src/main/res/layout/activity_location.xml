@@ -8,6 +8,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:layout_gravity="center_horizontal"
+    android:background="@drawable/bg1"
     >
 
     <Button
@@ -32,12 +33,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/colorTransparentWhite"
             android:id="@+id/text_view1"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/colorTransparentWhite"
             android:id="@+id/text_view2"/>
 
         </LinearLayout>
@@ -54,12 +57,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/colorTransparentWhite"
             android:id="@+id/text_view3"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/colorTransparentWhite"
             android:id="@+id/text_view4"/>
 
     </LinearLayout>
@@ -68,6 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_below="@id/linearTwo"
+        android:textColor="@color/colorTransparentWhite"
         android:id="@+id/text_view5"/>
 
 
@@ -77,8 +83,9 @@
         android:layout_below="@id/text_view5"
         android:layout_marginTop="60dp"
         android:text="Mcp selection $/mwh?"
+        android:textColor="@color/colorTransparentWhite"
         android:fontFamily="@font/bold"
-
+        android:textSize="30dp"
         />
 
 

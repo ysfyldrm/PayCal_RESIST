@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private Button startButton;
 
 
     @Override
@@ -25,6 +26,16 @@ public class MainActivity extends AppCompatActivity {
             startActivity(loginIntent);
             Toast.makeText(getApplicationContext(), "Giriş Yapınız.", Toast.LENGTH_SHORT).show();
         }
+
+        findViewById(R.id.btn_basla).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
+
 
         findViewById(R.id.btn_logout).setOnClickListener(new View.OnClickListener() {
             @Override

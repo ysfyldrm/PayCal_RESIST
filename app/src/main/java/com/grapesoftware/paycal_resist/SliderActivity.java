@@ -44,7 +44,7 @@ public class SliderActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(mNextButton.getText()=="Finish"){
-                    Intent i=new Intent(SliderActivity.this,WelcomeActivity.class);
+                    Intent i=new Intent(SliderActivity.this,LoginActivity.class);
                     startActivity(i);
 
                 }

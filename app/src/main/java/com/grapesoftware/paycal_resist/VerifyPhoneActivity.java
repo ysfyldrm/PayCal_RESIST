@@ -53,7 +53,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
         //Diger activity sayfasından aldıgımız mobile numarası
         Intent intent = getIntent();
         String mobile = intent.getStringExtra("mobile");
-        mobileText.setText(mobile);
+        mobileText.setText("+90" + mobile);
         sendVerificationCode(mobile);
 
 

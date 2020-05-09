@@ -36,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
+            android:fontFamily="@font/bold"
             android:text="Wait for the activation code"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
             android:textColor="@color/colorTransparentWhite" />
@@ -48,6 +49,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="25dp"
+            android:fontFamily="@font/bold"
             android:text="phone_number"
             android:textColor="@color/colorTransparentWhite" />
 
@@ -70,7 +72,7 @@
             android:digits="0123456789"
             android:drawablePadding="10dp"
             android:fontFamily="@font/medium"
-            android:hint="Aktivasyon kodunuz"
+            android:hint="Activation code..."
             android:inputType="phone"
             android:maxLength="10"
             android:scrollbarThumbHorizontal="@color/colorTransparentWhite"
@@ -84,9 +86,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/editTextCode"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/button"
+            android:fontFamily="@font/bold"
             android:layout_centerHorizontal="true"
+            android:textSize="18dp"
             android:text="Sign In"
             android:textAllCaps="false"
             android:textColor="#cdd8f1" />

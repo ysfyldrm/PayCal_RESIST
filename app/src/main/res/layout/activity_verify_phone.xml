@@ -51,7 +51,8 @@
             android:layout_marginBottom="25dp"
             android:fontFamily="@font/bold"
             android:text="phone_number"
-            android:textColor="@color/colorTransparentWhite" />
+            android:textColor="@color/colorTransparentWhite"
+            android:textSize="24sp" />
 
         <ProgressBar
             android:id="@+id/progressbar"
@@ -64,11 +65,12 @@
 
         <EditText
             android:id="@+id/editTextCode"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_width="320dp"
+            android:layout_height="43dp"
             android:layout_below="@id/progressbar"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
+            android:background="@drawable/textboxlr"
             android:digits="0123456789"
             android:drawablePadding="10dp"
             android:fontFamily="@font/medium"
@@ -83,17 +85,17 @@
 
         <Button
             android:id="@+id/buttonSignIn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="320dp"
+            android:layout_height="43dp"
             android:layout_below="@id/editTextCode"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="40dp"
             android:background="@drawable/button"
             android:fontFamily="@font/bold"
-            android:layout_centerHorizontal="true"
-            android:textSize="18dp"
             android:text="Sign In"
             android:textAllCaps="false"
-            android:textColor="#cdd8f1" />
+            android:textColor="#cdd8f1"
+            android:textSize="18dp" />
 
     </RelativeLayout>
 

@@ -79,8 +79,8 @@
 
     <EditText
         android:id="@+id/edtLogin"
-        android:layout_width="275dp"
-        android:layout_height="50dp"
+        android:layout_width="320dp"
+        android:layout_height="43dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="8dp"
@@ -96,8 +96,8 @@
 
     <EditText
         android:id="@+id/edtPass"
-        android:layout_width="275dp"
-        android:layout_height="50dp"
+        android:layout_width="320dp"
+        android:layout_height="43dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -117,8 +117,8 @@
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="275dp"
-        android:layout_height="50dp"
+        android:layout_width="320dp"
+        android:layout_height="43dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"

@@ -15,19 +15,19 @@
       },
       "oauth_client": [
         {
+          "client_id": "131745253370-6mn0upitghdjhip712i19lkgen4j2n97.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.grapesoftware.paycal_resist",
+            "certificate_hash": "326974be7e78b860da3c292c7a5e448a22443467"
+          }
+        },
+        {
           "client_id": "131745253370-17krfp2cl0a9404c52nu1780m092e4u1.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.grapesoftware.paycal_resist",
             "certificate_hash": "5be843b3ceb2a229cdca3242cbbcb945353dd8e3"
-          }
-        },
-        {
-          "client_id": "131745253370-s8f4pqhm48tppohavfortgga5bfgj96i.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.grapesoftware.paycal_resist",
-            "certificate_hash": "e9858724ba9ae2f5b3cd58d087380ec6a358fbd3"
           }
         },
         {

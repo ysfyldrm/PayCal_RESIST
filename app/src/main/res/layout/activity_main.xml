@@ -19,6 +19,15 @@
         android:textSize="45dp"
          />
 
+    <TextView
+        android:id="@+id/text_view_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/medium"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="24sp" />
+
     <Button
         android:id="@+id/btn_basla"
         android:layout_width="150dp"

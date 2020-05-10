@@ -8,72 +8,51 @@
     android:background="@drawable/bg">
 
     <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:orientation="horizontal">
-
-    </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_below="@id/relativeLayout"
-        android:layout_marginTop="-50dp" />
-
-    <RelativeLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/imageView"
         android:orientation="vertical"
         android:padding="20dp">
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
+            android:layout_width="379dp"
+            android:layout_height="61dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginEnd="32dp"
             android:fontFamily="@font/bold"
             android:text="Wait for the activation code"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
             android:textColor="@color/colorTransparentWhite" />
 
-        <TextView
-            android:id="@+id/mobileTextViev"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="25dp"
-            android:fontFamily="@font/bold"
-            android:text="phone_number"
-            android:textColor="@color/colorTransparentWhite"
-            android:textSize="24sp" />
-
         <ProgressBar
             android:id="@+id/progressbar"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_below="@id/mobileTextViev"
-            android:layout_marginTop="20dp" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:visibility="gone" />
 
         <EditText
             android:id="@+id/editTextCode"
             android:layout_width="320dp"
             android:layout_height="43dp"
-            android:layout_below="@id/progressbar"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="360dp"
+            android:layout_marginEnd="35dp"
             android:background="@drawable/textboxlr"
             android:digits="0123456789"
             android:drawablePadding="10dp"
             android:fontFamily="@font/medium"
+            android:gravity="center_vertical"
             android:hint="Activation code..."
             android:inputType="phone"
             android:maxLength="10"
@@ -87,15 +66,35 @@
             android:id="@+id/buttonSignIn"
             android:layout_width="320dp"
             android:layout_height="43dp"
-            android:layout_below="@id/editTextCode"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
+            android:layout_below="@+id/editTextCode"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="31dp"
+            android:layout_marginEnd="36dp"
             android:background="@drawable/button"
             android:fontFamily="@font/bold"
             android:text="Sign In"
             android:textAllCaps="false"
             android:textColor="#cdd8f1"
             android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/mobileTextViev"
+            android:layout_width="320dp"
+            android:layout_height="43dp"
+            android:layout_below="@+id/textView"
+            android:layout_alignStart="@+id/textView"
+            android:layout_alignEnd="@+id/textView"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="25dp"
+            android:fontFamily="@font/bold"
+            android:gravity="center|center_horizontal"
+            android:text="phone_number"
+            android:textColor="@color/colorTransparentWhite"
+            android:textSize="24sp" />
 
     </RelativeLayout>
 

@@ -45,6 +45,7 @@
         android:layout_marginBottom="15dp"
         android:layout_toEndOf="@+id/dotsLayout"
         android:background="@android:color/transparent"
+        android:fontFamily="@font/bold"
         android:text="next"
         android:textColor="@color/colorTransparentWhite" />
 

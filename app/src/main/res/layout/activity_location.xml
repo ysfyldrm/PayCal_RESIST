@@ -12,9 +12,19 @@
     >
 
     <Button
+        android:id="@+id/backLocationBtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_backbutton"
+        />
+
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/bt_location"
+        android:layout_toRightOf="@+id/backLocationBtn"
+        android:layout_marginLeft="15dp"
         android:text="Get Locatıon"
         android:background="@drawable/button"
         android:fontFamily="@font/bold"
@@ -177,6 +187,16 @@
         android:layout_height="match_parent"
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
+        />
+
+    <ProgressBar
+        android:id="@+id/dataProgress_Bar"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:layout_below="@+id/linearThree"
+        android:layout_toRightOf="@+id/months_txt"
+        android:visibility="invisible"
+
         />
 
 

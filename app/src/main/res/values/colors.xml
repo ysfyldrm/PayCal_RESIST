@@ -14,7 +14,7 @@
     <color name="intro_description_color">#656565</color>
     <color name="colorPrimary">#262938</color>
     <color name="colorPrimaryDark">#181a24</color>
-    <color name="colorAccent">#ff4081</color>
+    <color name="colorAccent">#CCCCCC</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorTransparentWhite">#CCCCCC</color>
     <color name="colorButton">#157DE6</color>

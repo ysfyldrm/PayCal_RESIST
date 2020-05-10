@@ -19,7 +19,7 @@ import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private ImageView backButton;
+
     private Button loginButton;
     private FirebaseAuth mAuth;
     private FirebaseUser firebaseUser;
@@ -89,14 +89,6 @@ public class LoginActivity extends AppCompatActivity {
                             }
 
                         });
-            }
-        });
-        backButton=findViewById(R.id.imageView);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-//                finish();
             }
         });
 

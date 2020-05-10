@@ -24,7 +24,7 @@
         android:layout_marginBottom="16dp"
         android:background="@android:color/transparent"
         android:drawableTint="@color/colorTransparentWhite"
-        android:fontFamily="@font/medium"
+        android:fontFamily="@font/bold"
         android:text="Next"
         android:textColor="@color/colorTransparentWhite"
         app:layout_constraintBottom_toBottomOf="parent"

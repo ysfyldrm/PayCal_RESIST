@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,9 +40,10 @@ import java.util.Locale;
 
 public class LocationActivity extends AppCompatActivity {
 //Initialize variable
-    Button btLocation;
+    Button btLocation, backButton;
     TextView textView1, textView2, textView3, textView4, textView5, showResult1, showResult2, showResult3;
     FusedLocationProviderClient fusedLocationProviderClient;
+    ProgressBar dataProgressBar;
     private RequestQueue mQueue;
 
     @Override
@@ -61,7 +64,16 @@ public class LocationActivity extends AppCompatActivity {
         showResult2=findViewById(R.id.windSp50Val);
         showResult3=findViewById(R.id.windSp10Val);
         mQueue= Volley.newRequestQueue(this);
+        dataProgressBar = findViewById(R.id.dataProgress_Bar);
 
+        backButton=findViewById(R.id.backLocationBtn);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+
+            }
+        });
 
 
 //Initialize fusedLocationProviderClient
@@ -71,6 +83,7 @@ public class LocationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //Check permission
                 if (LocationCompleted == true){
+                    dataProgressBar.setVisibility(View.VISIBLE);
                     jsonParse();
                 }
 
@@ -192,7 +205,9 @@ fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnComple
                         Double wwa8=wind50.getDouble("8");
                         Double wwa9=wind50.getDouble("9");
 
-                        showResult1.append(
+                        dataProgressBar.setVisibility(View.GONE);
+                        btLocation.setEnabled(false);
+                        showResult1.setText(
                                         String.valueOf(a1)+"\n"+
                                         String.valueOf(a2)+"\n"+
                                         String.valueOf(a3)+"\n"+
@@ -206,7 +221,7 @@ fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnComple
                                                 String.valueOf(a11)+"\n"+
                                                 String.valueOf(a12)+"\n");
 
-                        showResult2.append(
+                        showResult2.setText(
                                 String.valueOf(wwa1)+"\n"+
                                         String.valueOf(wwa2)+"\n"+
                                         String.valueOf(wwa3)+"\n"+
@@ -220,7 +235,7 @@ fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnComple
                                         String.valueOf(wwa11)+"\n"+
                                         String.valueOf(wwa12)+"\n");
 
-                        showResult3.append(
+                        showResult3.setText(
                                 String.valueOf(wa1)+"\n"+
                                         String.valueOf(wa2)+"\n"+
                                         String.valueOf(wa3)+"\n"+

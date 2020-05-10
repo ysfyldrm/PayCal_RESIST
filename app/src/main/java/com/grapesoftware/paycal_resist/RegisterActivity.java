@@ -57,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
                 userPassword = registerPassword.getText().toString();
                 if(userName.isEmpty() || userPassword.isEmpty()){
 
-                    Toast.makeText(getApplicationContext(),"Lütfen gerekli alanları doldurunuz!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Please fill in the required fields. ",Toast.LENGTH_SHORT).show();
 
                 }else{
                     registerFunc();
@@ -67,7 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String mobile = editTextMobile.getText().toString().trim();
 
                 if(mobile.isEmpty() || mobile.length() < 10){
-                    editTextMobile.setError("Doğru telefon numarası giriniz");
+                    editTextMobile.setError("Please enter a valid number");
                     editTextMobile.requestFocus();
                     return;
                 }

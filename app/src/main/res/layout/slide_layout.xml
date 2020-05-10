@@ -42,7 +42,8 @@
         android:layout_marginTop="17dp"
         android:layout_marginEnd="18dp"
         android:lineSpacingExtra="8sp"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis ullamcorper tristique. Maecenas eget hendrerit augue, sit amet congue sapien."
         android:textAlignment="center"
+
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis ullamcorper tristique. Maecenas eget hendrerit augue, sit amet congue sapien."
         android:textColor="@color/colorTransparentWhite" />
 </RelativeLayout>

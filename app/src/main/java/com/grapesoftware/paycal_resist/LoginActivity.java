@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                 userName=edtuserName.getText().toString();
                 userPassword=edtuserPassword.getText().toString();
                 if(userName.isEmpty() || userPassword.isEmpty()){
-                    Toast.makeText(getApplicationContext(),"Lütfen gerekli alanları doldurunuz!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Please fill in the required fields. ", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     loginFunc();
@@ -119,10 +119,10 @@ public class LoginActivity extends AppCompatActivity {
     //Change UI according to user data.
     private void  updateUI(FirebaseUser account){
         if(account != null){
-            Toast.makeText(this,"Başarıyla Giriş Yaptınız!",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Successfully signed in.",Toast.LENGTH_LONG).show();
             startActivity(new Intent(this,MainActivity.class));
         }else {
-            Toast.makeText(this,"Giriş Yapmanız Gerekmekte.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"You have to sign in.", Toast.LENGTH_LONG).show();
         }
     }
 

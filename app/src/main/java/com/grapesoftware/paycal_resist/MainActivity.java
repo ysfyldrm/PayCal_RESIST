@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
@@ -84,33 +85,16 @@ public class MainActivity extends AppCompatActivity {
         JsonObjectRequest request=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                String deneme;
+
                 try {
-
-
-                    JSONArray jsonArraydeneme=response.getJSONArray("features");
-
-                    for (int i=0;i<jsonArraydeneme.length();i++){
-                        JSONArray jsonArraydeneme2=response.getJSONArray("properties");
-                        for (int j=0;j<jsonArraydeneme2.length();j++){
-                            JSONObject parameter =jsonArraydeneme.getJSONObject(j);
-                            deneme=parameter.getString("parameter");
-                            mTextViewResult.append(deneme);
-                            Toast.makeText(MainActivity.this,deneme,Toast.LENGTH_LONG).show();
-Log.e("HT",deneme);
-Log.e("JS",parameter.toString());
-                        }
-;
-
-
-//                    for (int i=0;i<jsonArraydeneme.length();i++){
-//                        JSONObject features =jsonArraydeneme.getJSONObject(i);
-//                        String deneme=features.getString("properties");
-//                        mTextViewResult.append(deneme);
-                        Toast.makeText(MainActivity.this,mTextViewResult.getText(), Toast.LENGTH_LONG).show();
-//                    JSONArray jsonArray1=response.getJSONArray("ALLSKY_SFC_LW_DWN");
-//
-//                    for (int i=0; i<jsonArray1.length();i++){
+                    JSONArray jsonArray1=response.getJSONArray("features");
+                    for (int i=0; i<jsonArray1.length();i++){
+                        JSONObject props=jsonArray1.getJSONObject(0);
+                        JSONObject feats=props.getJSONObject("properties");
+                        JSONObject params=feats.getJSONObject("parameter");
+                        JSONObject allsky=params.getJSONObject("ALLSKY_SFC_LW_DWN");
+                        mTextViewResult.append(allsky.toString());
+                        Toast.makeText(MainActivity.this,allsky.toString(), Toast.LENGTH_SHORT).show();
 //                        JSONObject ALLSKY_SFC_LW_DWN =jsonArray1.getJSONObject(i);
 //                        int a1=ALLSKY_SFC_LW_DWN.getInt("1");
 //                        int a10=ALLSKY_SFC_LW_DWN.getInt("10");
@@ -127,22 +111,21 @@ Log.e("JS",parameter.toString());
 //                        int a9=ALLSKY_SFC_LW_DWN.getInt("9");
 //
 //mTextViewResult.append(String.valueOf(a1)+","+String.valueOf(a2)+","+String.valueOf(a3)+","+String.valueOf(a4)+","+String.valueOf(a5)+","+String.valueOf(a6)+","+String.valueOf(a7)+","+String.valueOf(a8)+","+String.valueOf(a9)+","+String.valueOf(a10)+","+String.valueOf(a11)+","+String.valueOf(a12)+","+String.valueOf(a13));
-//                        Log.w("deneme",mTextViewResult.getText());
 
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                try {
-                    JSONArray jsonArray2=response.getJSONArray("WS10M");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    JSONArray jsonArray3=response.getJSONArray("WS50M");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+//                try {
+//                    JSONArray jsonArray2=response.getJSONArray("WS10M");
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//                try {
+//                    JSONArray jsonArray3=response.getJSONArray("WS50M");
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
 
 
             }
@@ -150,6 +133,22 @@ Log.e("JS",parameter.toString());
             @Override
             public void onErrorResponse(VolleyError error) {
              error.printStackTrace();
+            }
+        });
+        request.setRetryPolicy(new RetryPolicy() {
+            @Override
+            public int getCurrentTimeout() {
+                return 10000;
+            }
+
+            @Override
+            public int getCurrentRetryCount() {
+                return 10000;
+            }
+
+            @Override
+            public void retry(VolleyError error) throws VolleyError {
+
             }
         });
 mQueue.add(request);

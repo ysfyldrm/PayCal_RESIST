@@ -39,7 +39,7 @@ import java.util.Locale;
 public class LocationActivity extends AppCompatActivity {
 //Initialize variable
     Button btLocation;
-    TextView textView1, textView2, textView3, textView4, textView5, showResult;
+    TextView textView1, textView2, textView3, textView4, textView5, showResult1, showResult2, showResult3;
     FusedLocationProviderClient fusedLocationProviderClient;
     private RequestQueue mQueue;
 
@@ -48,6 +48,8 @@ public class LocationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
 
+
+
         //Assign Variable
         btLocation=findViewById(R.id.bt_location);
         textView1=findViewById(R.id.text_view1);
@@ -55,7 +57,9 @@ public class LocationActivity extends AppCompatActivity {
         textView3=findViewById(R.id.text_view3);
         textView4=findViewById(R.id.text_view4);
         textView5=findViewById(R.id.text_view5);
-        showResult=findViewById(R.id.showresult);
+        showResult1=findViewById(R.id.solarIrValue_txt);
+        showResult2=findViewById(R.id.windSp50Val);
+        showResult3=findViewById(R.id.windSp10Val);
         mQueue= Volley.newRequestQueue(this);
 
 
@@ -66,9 +70,14 @@ public class LocationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Check permission
+                if (LocationCompleted == true){
+                    jsonParse();
+                }
+
                 if(ActivityCompat.checkSelfPermission(LocationActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED){
                     getLocation();
-                    jsonParse();
+                    LocationCompleted = true;
+                    btLocation.setText("GET DATAS");
                 }
                 else{
                     ActivityCompat.requestPermissions(LocationActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},44);
@@ -76,7 +85,7 @@ public class LocationActivity extends AppCompatActivity {
             }
         });
     }
-
+    private boolean LocationCompleted = false;
     private String Latitude;
     private String Longitude;
 
@@ -87,6 +96,7 @@ fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnComple
         //Initialize location
         Location location=task.getResult();
         if (location !=null){
+
             try {
                 //initialize geoCoder
                 Geocoder geocoder=new Geocoder(LocationActivity.this, Locale.getDefault());
@@ -96,21 +106,21 @@ fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnComple
                 );
 
                 //set Latitude on TextView
-                textView1.setText(Html.fromHtml("<font color='#6200EE'><b>Latitude :</b><br></font>"+addresses.get(0).getLatitude()));
+                textView1.setText(Html.fromHtml("<font color='#181a24'><b>Latitude :</b><br></font>"+addresses.get(0).getLatitude()));
                 Latitude= String.valueOf(addresses.get(0).getLatitude());
 
                 //set Longitude on TextView
-                textView2.setText(Html.fromHtml("<font color='#6200EE'><b>Longitude :</b><br></font>"+addresses.get(0).getLongitude()));
+                textView2.setText(Html.fromHtml("<font color='#181a24'><b>Longitude :</b><br></font>"+addresses.get(0).getLongitude()));
                 Longitude=String.valueOf(addresses.get(0).getLongitude());
 
                 //set Country Name
-                textView3.setText(Html.fromHtml("<font color='#6200EE'><b>Country :</b><br></font>"+addresses.get(0).getCountryName()));
+                textView3.setText(Html.fromHtml("<font color='#181a24'><b>Country :</b><br></font>"+addresses.get(0).getCountryName()));
 
                 //set Locality
-                textView4.setText(Html.fromHtml("<font color='#6200EE'><b>Locality :</b><br></font>"+addresses.get(0).getLocality()));
+                textView4.setText(Html.fromHtml("<font color='#181a24'><b>Locality :</b><br></font>"+addresses.get(0).getLocality()));
 
                 //set address
-                textView5.setText(Html.fromHtml("<font color='#6200EE'><b>Address :</b><br></font>"+addresses.get(0).getAddressLine(0)));
+                textView5.setText(Html.fromHtml("<font color='#181a24'><b>Address :</b><br></font>"+addresses.get(0).getAddressLine(0)));
 
 
             }
@@ -182,7 +192,47 @@ fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnComple
                         Double wwa8=wind50.getDouble("8");
                         Double wwa9=wind50.getDouble("9");
 
-                        showResult.append("Solar Irradience\n"+"Jan "+String.valueOf(a1)+"\n"+"Feb "+String.valueOf(a2)+"\n"+"Mar "+String.valueOf(a3)+"\n"+"Apr "+String.valueOf(a4)+"\n"+"May "+String.valueOf(a5)+"\n"+"Jun "+String.valueOf(a6)+"\n"+"Jul "+String.valueOf(a7)+"\n"+"Aug "+String.valueOf(a8)+"\n"+"Sep "+String.valueOf(a9)+"\n"+"Oct "+String.valueOf(a10)+"\n"+"Nov "+String.valueOf(a11)+"\n"+"Dec "+String.valueOf(a12)+"\n"+"Ann "+String.valueOf(a13));
+                        showResult1.append(
+                                        String.valueOf(a1)+"\n"+
+                                        String.valueOf(a2)+"\n"+
+                                        String.valueOf(a3)+"\n"+
+                                                String.valueOf(a4)+"\n"+
+                                                String.valueOf(a5)+"\n"+
+                                                String.valueOf(a6)+"\n"+
+                                                String.valueOf(a7)+"\n"+
+                                                String.valueOf(a8)+"\n"+
+                                                String.valueOf(a9)+"\n"+
+                                                String.valueOf(a10)+"\n"+
+                                                String.valueOf(a11)+"\n"+
+                                                String.valueOf(a12)+"\n");
+
+                        showResult2.append(
+                                String.valueOf(wwa1)+"\n"+
+                                        String.valueOf(wwa2)+"\n"+
+                                        String.valueOf(wwa3)+"\n"+
+                                        String.valueOf(wwa4)+"\n"+
+                                        String.valueOf(wwa5)+"\n"+
+                                        String.valueOf(wwa6)+"\n"+
+                                        String.valueOf(wwa7)+"\n"+
+                                        String.valueOf(wwa8)+"\n"+
+                                        String.valueOf(wwa9)+"\n"+
+                                        String.valueOf(wwa10)+"\n"+
+                                        String.valueOf(wwa11)+"\n"+
+                                        String.valueOf(wwa12)+"\n");
+
+                        showResult3.append(
+                                String.valueOf(wa1)+"\n"+
+                                        String.valueOf(wa2)+"\n"+
+                                        String.valueOf(wa3)+"\n"+
+                                        String.valueOf(wa4)+"\n"+
+                                        String.valueOf(wa5)+"\n"+
+                                        String.valueOf(wa6)+"\n"+
+                                        String.valueOf(wa7)+"\n"+
+                                        String.valueOf(wa8)+"\n"+
+                                        String.valueOf(wa9)+"\n"+
+                                        String.valueOf(wa10)+"\n"+
+                                        String.valueOf(wa11)+"\n"+
+                                        String.valueOf(wa12)+"\n");
 
                     }
                 } catch (JSONException e) {

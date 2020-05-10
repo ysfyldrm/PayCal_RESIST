@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private Button startButton;
     private TextView mTextViewResult;
-    private RequestQueue mQueue;
+
 
 
     @Override
@@ -45,114 +45,37 @@ public class MainActivity extends AppCompatActivity {
         mTextViewResult =findViewById(R.id.text_view_result);
         Button startButton=findViewById(R.id.btn_basla);
 
-        mQueue= Volley.newRequestQueue(this);
+
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jsonParse();
+
             }
         });
 
-//        findViewById(R.id.btn_basla).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                startActivity(intent);
-//            }
-//        });
+        findViewById(R.id.btn_basla).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LocationActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
 
 
         findViewById(R.id.btn_logout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                jsonParse();
-//                FirebaseAuth.getInstance().signOut();
-//
-//                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                startActivity(intent);
+
+                FirebaseAuth.getInstance().signOut();
+
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
         });
 
     }
-
-    private void jsonParse() {
-
-        String url="https://power.larc.nasa.gov/cgi-bin/v1/DataAccess.py?&request=execute&tempAverage=CLIMATOLOGY&identifier=SinglePoint&parameters=ALLSKY_SFC_LW_DWN,WS50M,WS10M&userCommunity=AG&lon=38.500&lat=27.065&outputList=JSON&siteElev=50&user=DOCUMENTATION";
-        JsonObjectRequest request=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-
-                try {
-                    JSONArray jsonArray1=response.getJSONArray("features");
-                    for (int i=0; i<jsonArray1.length();i++){
-                        JSONObject props=jsonArray1.getJSONObject(0);
-                        JSONObject feats=props.getJSONObject("properties");
-                        JSONObject params=feats.getJSONObject("parameter");
-                        JSONObject allsky=params.getJSONObject("ALLSKY_SFC_LW_DWN");
-                        mTextViewResult.append(allsky.toString());
-                        Toast.makeText(MainActivity.this,allsky.toString(), Toast.LENGTH_SHORT).show();
-//                        JSONObject ALLSKY_SFC_LW_DWN =jsonArray1.getJSONObject(i);
-//                        int a1=ALLSKY_SFC_LW_DWN.getInt("1");
-//                        int a10=ALLSKY_SFC_LW_DWN.getInt("10");
-//                        int a11=ALLSKY_SFC_LW_DWN.getInt("11");
-//                        int a12=ALLSKY_SFC_LW_DWN.getInt("12");
-//                        int a13=ALLSKY_SFC_LW_DWN.getInt("13");
-//                        int a2=ALLSKY_SFC_LW_DWN.getInt("2");
-//                        int a3=ALLSKY_SFC_LW_DWN.getInt("3");
-//                        int a4=ALLSKY_SFC_LW_DWN.getInt("4");
-//                        int a5=ALLSKY_SFC_LW_DWN.getInt("5");
-//                        int a6=ALLSKY_SFC_LW_DWN.getInt("6");
-//                        int a7=ALLSKY_SFC_LW_DWN.getInt("7");
-//                        int a8=ALLSKY_SFC_LW_DWN.getInt("8");
-//                        int a9=ALLSKY_SFC_LW_DWN.getInt("9");
-//
-//mTextViewResult.append(String.valueOf(a1)+","+String.valueOf(a2)+","+String.valueOf(a3)+","+String.valueOf(a4)+","+String.valueOf(a5)+","+String.valueOf(a6)+","+String.valueOf(a7)+","+String.valueOf(a8)+","+String.valueOf(a9)+","+String.valueOf(a10)+","+String.valueOf(a11)+","+String.valueOf(a12)+","+String.valueOf(a13));
-
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-//                try {
-//                    JSONArray jsonArray2=response.getJSONArray("WS10M");
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//                try {
-//                    JSONArray jsonArray3=response.getJSONArray("WS50M");
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-             error.printStackTrace();
-            }
-        });
-        request.setRetryPolicy(new RetryPolicy() {
-            @Override
-            public int getCurrentTimeout() {
-                return 10000;
-            }
-
-            @Override
-            public int getCurrentRetryCount() {
-                return 10000;
-            }
-
-            @Override
-            public void retry(VolleyError error) throws VolleyError {
-
-            }
-        });
-mQueue.add(request);
-    }
-
-
 }

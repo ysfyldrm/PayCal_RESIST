@@ -12,6 +12,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -154,6 +155,8 @@ fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnComple
     private void jsonParse() {
 
         String url="https://power.larc.nasa.gov/cgi-bin/v1/DataAccess.py?&request=execute&tempAverage=CLIMATOLOGY&identifier=SinglePoint&parameters=ALLSKY_SFC_LW_DWN,WS50M,WS10M&userCommunity=AG&lon="+Longitude+"&lat="+Latitude+"&outputList=JSON&siteElev=50&user=DOCUMENTATION";
+        Log.e("LINK",url);
+
         JsonObjectRequest request=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -164,8 +167,8 @@ fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnComple
                         JSONObject props=jsonArray1.getJSONObject(0);
                         JSONObject feats=props.getJSONObject("properties");
                         JSONObject params=feats.getJSONObject("parameter");
-                        JSONObject allsky=params.getJSONObject("ALLSKY_SFC_LW_DWN");
 
+                        JSONObject allsky=params.getJSONObject("ALLSKY_SFC_LW_DWN");
                         Double a1=allsky.getDouble("1");
                         Double a10=allsky.getDouble("10");
                         Double a11=allsky.getDouble("11");
@@ -212,7 +215,7 @@ fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnComple
 
                         dataProgressBar.setVisibility(View.GONE);
                         btLocation.setText("CONTINUE");
-                        btLocation.setEnabled(false);
+
                         showResult1.setText(
                                         String.valueOf(a1)+"\n"+
                                         String.valueOf(a2)+"\n"+

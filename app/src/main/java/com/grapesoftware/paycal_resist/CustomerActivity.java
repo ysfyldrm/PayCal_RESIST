@@ -2,13 +2,68 @@ package com.grapesoftware.paycal_resist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class CustomerActivity extends AppCompatActivity {
+
+    private Button btnConsumer, btnProsumer, btnSupplier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer);
+
+        btnConsumer= findViewById(R.id.button_consumer);
+        btnProsumer=findViewById(R.id.button_prosumer);
+        btnSupplier=findViewById(R.id.button_supplier);
+
+
+
+        btnConsumer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(CustomerActivity.this,TariffSelectionActivity.class);
+                String type="Consumer";
+                Bundle bundle=new Bundle();
+                bundle.putString("Type",type);
+                intent1.putExtras(bundle);
+                startActivity(intent1);
+            }
+        });
+
+        btnProsumer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(CustomerActivity.this,TariffSelectionActivity.class);
+
+                Bundle bundle=new Bundle();
+                String type="Prosumer";
+                bundle.putString("Type",type);
+                intent2.putExtras(bundle);
+                startActivity(intent2);
+
+            }
+        });
+
+        btnSupplier.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent3 = new Intent(CustomerActivity.this,SupplierMcpSelectionActivity.class);
+
+                Bundle bundle=new Bundle();
+                String type="Supplier";
+                bundle.putString("Type",type);
+                intent3.putExtras(bundle);
+                startActivity(intent3);
+
+            }
+        });
+
+
+
+
     }
 }

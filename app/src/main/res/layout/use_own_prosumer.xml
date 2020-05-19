@@ -9,7 +9,7 @@
         android:id="@+id/enteryour_own"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter your own tariff"
+        android:text="Enter your own tariff PROSUMER"
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
         android:layout_centerHorizontal="true"

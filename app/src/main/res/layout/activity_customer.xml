@@ -37,15 +37,15 @@
         android:id="@+id/button_consumer"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:text="CONSUMER"
-        android:textSize="20dp"
-        android:background="@drawable/button"
-        android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
         android:layout_below="@id/customTypeExp_txt"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-        />
+        android:background="@drawable/button"
+        android:elevation="10dp"
+        android:fontFamily="@font/bold"
+        android:text="CONSUMER"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/button_prosumer"

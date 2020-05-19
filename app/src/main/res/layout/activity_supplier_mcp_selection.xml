@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg1"
-    tools:context=".TariffSelectionActivity">
+    tools:context=".SupplierMcpSelectionActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tariffSelection_txt"
-        android:text="Tariff Selection"
+        android:text="MCP Selection"
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
         android:textSize="45dp"
@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tariffSelExp_txt"
-        android:text="Please select your tariff entry"
+        android:text="Please select your MCP entry"
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
         android:textSize="17dp"
@@ -46,7 +46,7 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button"
-            android:text="epdk's tarıffs"
+            android:text="Turkey's 2019\nMCP"
             />
 
         <Button
@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button"
             android:layout_marginLeft="50dp"
-            android:text="use own"
+            android:text="use own\nMCP"
             />
 
     </LinearLayout>

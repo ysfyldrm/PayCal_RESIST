@@ -14,7 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".TariffSelectionActivity"></activity>
+        <activity android:name=".SupplierMcpSelectionActivity"></activity>
+        <activity android:name=".StorageTypeActivity" />
+        <activity android:name=".ResTypeActivity" />
+        <activity android:name=".TariffSelectionActivity" />
         <activity android:name=".LocationActivity" />
         <activity android:name=".SliderActivity" />
         <activity android:name=".VerifyPhoneActivity" />

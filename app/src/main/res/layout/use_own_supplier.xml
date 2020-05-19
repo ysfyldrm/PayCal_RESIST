@@ -9,7 +9,7 @@
         android:id="@+id/enteryour_own"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter your own tariff"
+        android:text="Enter your own MCP"
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
         android:layout_centerHorizontal="true"
@@ -18,89 +18,89 @@
         />
 
     <TextView
-        android:id="@+id/morning_txt"
+        android:id="@+id/peakMCP_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/enteryour_own"
         android:textSize="15sp"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
-        android:text="Morning tariff = "
+        android:text="Peak MCP = "
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
         />
 
     <TextView
-        android:id="@+id/peak_txt"
+        android:id="@+id/offPeak_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/morning_txt"
+        android:layout_below="@id/peakMCP_txt"
         android:textSize="15sp"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
-        android:text="Peak tariff = "
+        android:text="OffPeak MCP = "
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
         />
 
     <TextView
-        android:id="@+id/tax_txt"
+        android:id="@+id/morningMCP_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/peak_txt"
+        android:layout_below="@id/offPeak_txt"
         android:textSize="15sp"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
-        android:text="Tax = "
+        android:text="Morning MCP = "
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
         />
 
     <TextView
-        android:id="@+id/cons_avgmonth_txt"
+        android:id="@+id/avg_peakMCP_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:layout_below="@id/tax_txt"
+        android:layout_below="@id/morningMCP_txt"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
-        android:text="Average Consumption Month = "
+        android:text="Average Peak MCP = "
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
         />
     <TextView
-        android:id="@+id/cons_year_txt"
+        android:id="@+id/avg_offPeakMCP_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:layout_below="@id/cons_avgmonth_txt"
+        android:layout_below="@id/avg_peakMCP_txt"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
-        android:text="Consumption Year = "
+        android:text="Average OffPeak MCP = "
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
         />
     <TextView
-        android:id="@+id/morning_cons_month_txt"
+        android:id="@+id/avg_morningMCP_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:layout_below="@id/cons_year_txt"
+        android:layout_below="@id/avg_offPeakMCP_txt"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
-        android:text="Morning Consumption Month = "
+        android:text="Average Morning MCP = "
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
         />
     <TextView
-        android:id="@+id/avg_month_bill_txt"
+        android:id="@+id/avg_yearMCP_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/morning_cons_month_txt"
+        android:layout_below="@id/avg_morningMCP_txt"
         android:layout_marginTop="20dp"
         android:textSize="15sp"
         android:layout_marginLeft="30dp"
-        android:text="Average Month Bill = "
+        android:text="Average Year MCP = "
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
         />
@@ -110,7 +110,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
-        android:layout_below="@id/avg_month_bill_txt"
+        android:layout_below="@id/avg_yearMCP_txt"
         android:layout_centerHorizontal="true"
         android:textSize="15sp"
         android:text="CONFIRM"
@@ -121,10 +121,10 @@
         />
 
     <EditText
-        android:id="@+id/morningTariff_edt"
+        android:id="@+id/peakMCP_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/morning_txt"
+        android:layout_toRightOf="@id/peakMCP_txt"
         android:layout_below="@id/enteryour_own"
         android:layout_marginRight="30dp"
         android:textColor="@color/colorTransparentWhite"
@@ -133,11 +133,11 @@
         />
 
     <EditText
-        android:id="@+id/peakTariff_edt"
+        android:id="@+id/offPeak_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/peak_txt"
-        android:layout_below="@id/morningTariff_edt"
+        android:layout_toRightOf="@id/offPeak_txt"
+        android:layout_below="@id/peakMCP_edt"
         android:layout_marginRight="30dp"
         android:textColor="@color/colorTransparentWhite"
         android:layout_marginTop="5dp"
@@ -145,58 +145,59 @@
         />
 
     <EditText
-        android:id="@+id/tax_edt"
+        android:id="@+id/morningMCP_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/tax_txt"
-        android:layout_below="@id/peakTariff_edt"
+        android:layout_toRightOf="@id/morningMCP_txt"
+        android:layout_below="@id/offPeak_edt"
         android:layout_marginRight="30dp"
         android:textColor="@color/colorTransparentWhite"
         android:textSize="15sp"
         />
 
     <EditText
-        android:id="@+id/cons_avgmonth_edt"
+        android:id="@+id/avg_peakMCP_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/cons_avgmonth_txt"
-        android:layout_below="@id/tax_edt"
+        android:layout_toRightOf="@id/avg_peakMCP_txt"
+        android:layout_below="@id/morningMCP_edt"
         android:layout_marginRight="30dp"
         android:textColor="@color/colorTransparentWhite"
         android:textSize="15sp"
         />
 
     <EditText
-        android:id="@+id/cons_year_edt"
+        android:id="@+id/avg_offPeakMCP_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/cons_year_txt"
-        android:layout_below="@id/cons_avgmonth_edt"
+        android:layout_toRightOf="@id/avg_offPeakMCP_txt"
+        android:layout_below="@id/avg_peakMCP_edt"
         android:layout_marginRight="30dp"
         android:textColor="@color/colorTransparentWhite"
         android:textSize="15sp"
         />
 
     <EditText
-        android:id="@+id/morning_cons_month_edt"
+        android:id="@+id/avg_morningMCP_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/morning_cons_month_txt"
-        android:layout_below="@id/cons_year_edt"
+        android:layout_toRightOf="@id/avg_morningMCP_txt"
+        android:layout_below="@id/avg_offPeakMCP_edt"
         android:layout_marginRight="30dp"
         android:textColor="@color/colorTransparentWhite"
         android:textSize="15sp"
         />
 
     <EditText
-        android:id="@+id/avg_month_bill_edt"
+        android:id="@+id/avg_yearMCP_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/avg_month_bill_txt"
-        android:layout_below="@id/morning_cons_month_edt"
+        android:layout_toRightOf="@id/avg_yearMCP_txt"
+        android:layout_below="@id/avg_morningMCP_edt"
         android:layout_marginRight="30dp"
         android:textColor="@color/colorTransparentWhite"
         android:textSize="15sp"
         />
+
 
 </RelativeLayout>

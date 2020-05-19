@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg1"
+    tools:context=".ResTypeActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/resType_txt"
+        android:text="RES Type"
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="45dp"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/resTypeExp_txt"
+        android:text="Please select your RES type"
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="17dp"
+        android:layout_below="@+id/resType_txt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        />
+
+    <Button
+        android:id="@+id/button_PV"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="PV SOLAR"
+        android:textSize="20dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        android:layout_below="@id/resTypeExp_txt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        />
+
+    <Button
+        android:id="@+id/button_wind"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="WIND"
+        android:textSize="20dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        android:layout_below="@id/button_PV"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
+
+    <Button
+        android:id="@+id/button_biomass"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="BIOMASS"
+        android:textSize="20dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        android:layout_below="@id/button_wind"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        />
+
+
+</RelativeLayout>

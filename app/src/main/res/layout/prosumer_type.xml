@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/dialog_shape"
     >
 
     <TextView
-        android:id="@+id/choose_your_consumer_type"
+        android:id="@+id/choose_your_prosumer_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose your Consumer Type"
+        android:text="Choose your Prosumer Type"
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
         android:layout_centerHorizontal="true"
@@ -20,7 +19,7 @@
 
     <LinearLayout
         android:id="@+id/residential_linear"
-        android:layout_below="@+id/choose_your_consumer_type"
+        android:layout_below="@+id/choose_your_prosumer_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
@@ -140,8 +139,6 @@
             />
 
     </LinearLayout>
-
-
 
 
 

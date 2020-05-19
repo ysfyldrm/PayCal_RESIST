@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg1"
+    tools:context=".StorageTypeActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/storageType_txt"
+        android:text="Storage Type"
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="45dp"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/storageTypeExp_txt"
+        android:text="Please select your Storage type"
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="17dp"
+        android:layout_below="@+id/storageType_txt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        />
+
+    <Button
+        android:id="@+id/button_Li_ion"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:text="LI-ION"
+        android:textSize="20dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        android:layout_below="@id/storageTypeExp_txt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        />
+
+    <Button
+        android:id="@+id/button_leadAcid"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:text="LEAD ACID"
+        android:textSize="20dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        android:layout_below="@id/button_Li_ion"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
+
+    <Button
+        android:id="@+id/button_thermal"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:text="THERMAL"
+        android:textSize="20dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        android:layout_below="@id/button_leadAcid"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        />
+
+    <Button
+        android:id="@+id/button_no_storage"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:text="NO STORAGE"
+        android:textSize="20dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        android:layout_below="@id/button_thermal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        />
+
+
+</RelativeLayout>

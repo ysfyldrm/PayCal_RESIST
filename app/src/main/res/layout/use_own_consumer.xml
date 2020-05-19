@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_shape"
+    >
+
+    <TextView
+        android:id="@+id/enteryour_own"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter your own tariff"
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        android:layout_centerHorizontal="true"
+        android:textSize="15sp"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:id="@+id/morning_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/enteryour_own"
+        android:textSize="15sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:text="Morning tariff = "
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        />
+    <TextView
+        android:id="@+id/peak_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/morning_txt"
+        android:textSize="15sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:text="Peak tariff = "
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        />
+    <TextView
+        android:id="@+id/tax_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/peak_txt"
+        android:textSize="15sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:text="Tax = "
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        />
+    <TextView
+        android:id="@+id/cons_avgmonth_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_below="@id/tax_txt"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:text="Average Consumption Month = "
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        />
+    <TextView
+        android:id="@+id/cons_year_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_below="@id/cons_avgmonth_txt"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:text="Consumption Year = "
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        />
+    <TextView
+        android:id="@+id/morning_cons_month_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_below="@id/cons_year_txt"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:text="Morning Consumption Month = "
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        />
+    <TextView
+        android:id="@+id/avg_month_bill_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/morning_cons_month_txt"
+        android:layout_marginTop="20dp"
+        android:textSize="15sp"
+        android:layout_marginLeft="30dp"
+        android:text="Average Month Bill = "
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        />
+
+    <Button
+        android:id="@+id/own_confirm_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:layout_below="@id/avg_month_bill_txt"
+        android:layout_centerHorizontal="true"
+        android:textSize="15sp"
+        android:text="CONFIRM"
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        />
+
+    <EditText
+        android:id="@+id/morningTariff_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/morning_txt"
+        android:layout_below="@id/enteryour_own"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/colorTransparentWhite"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        />
+
+    <EditText
+        android:id="@+id/peakTariff_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/peak_txt"
+        android:layout_below="@id/morningTariff_edt"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/colorTransparentWhite"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        />
+
+    <EditText
+        android:id="@+id/tax_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tax_txt"
+        android:layout_below="@id/peakTariff_edt"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp"
+        />
+
+    <EditText
+        android:id="@+id/cons_avgmonth_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/cons_avgmonth_txt"
+        android:layout_below="@id/tax_edt"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp"
+        />
+
+    <EditText
+        android:id="@+id/cons_year_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/cons_year_txt"
+        android:layout_below="@id/cons_avgmonth_edt"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp"
+        />
+
+    <EditText
+        android:id="@+id/morning_cons_month_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/morning_cons_month_txt"
+        android:layout_below="@id/cons_year_edt"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp"
+        />
+
+    <EditText
+        android:id="@+id/avg_month_bill_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/avg_month_bill_txt"
+        android:layout_below="@id/morning_cons_month_edt"
+        android:layout_marginRight="30dp"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp"
+        />
+
+</RelativeLayout>

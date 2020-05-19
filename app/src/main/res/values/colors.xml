@@ -18,5 +18,5 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorTransparentWhite">#CCCCCC</color>
     <color name="colorButton">#157DE6</color>
-
+    <color name="backgroundBlue">#255ED6</color>
 </resources>

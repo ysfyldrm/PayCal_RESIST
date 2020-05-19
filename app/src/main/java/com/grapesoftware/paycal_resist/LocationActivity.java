@@ -82,6 +82,11 @@ public class LocationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Check permission
+                if (btLocation.getText().equals("CONTINUE")){
+                    Intent intent = new Intent(LocationActivity.this, CustomerActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                }
                 if (LocationCompleted == true){
                     dataProgressBar.setVisibility(View.VISIBLE);
                     jsonParse();
@@ -206,6 +211,7 @@ fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnComple
                         Double wwa9=wind50.getDouble("9");
 
                         dataProgressBar.setVisibility(View.GONE);
+                        btLocation.setText("CONTINUE");
                         btLocation.setEnabled(false);
                         showResult1.setText(
                                         String.valueOf(a1)+"\n"+

@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                userName=edtuserName.getText().toString();
+                userName=edtuserName.getText().toString().toLowerCase();
                 userPassword=edtuserPassword.getText().toString();
                 if(userName.isEmpty() || userPassword.isEmpty()){
                     Toast.makeText(getApplicationContext(),"Please fill in the required fields. ", Toast.LENGTH_SHORT).show();

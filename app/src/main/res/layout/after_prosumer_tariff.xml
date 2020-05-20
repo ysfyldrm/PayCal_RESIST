@@ -34,13 +34,15 @@
         android:id="@+id/cons_avgmonth_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/cons_avgmonth_txt"
         android:layout_below="@id/enter_your_own_data"
-        android:layout_marginRight="30dp"
-        android:textColor="@color/colorTransparentWhite"
-        android:textSize="15sp"
         android:layout_marginTop="5dp"
-        />
+        android:layout_marginRight="30dp"
+        android:layout_toRightOf="@id/cons_avgmonth_txt"
+        android:digits="0123456789"
+        android:singleLine="true"
+        android:textColor="@color/colorTransparentWhite"
+        android:inputType="numberPassword"
+        android:textSize="15sp" />
 
 
     <TextView
@@ -61,13 +63,15 @@
         android:id="@+id/morning_cons_month_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/morning_cons_month_txt"
         android:layout_below="@id/cons_avgmonth_edt"
-        android:layout_marginRight="30dp"
-        android:textColor="@color/colorTransparentWhite"
-        android:textSize="15sp"
         android:layout_marginTop="5dp"
-        />
+        android:layout_marginRight="30dp"
+        android:layout_toRightOf="@id/morning_cons_month_txt"
+        android:digits="0123456789"
+        android:singleLine="true"
+        android:inputType="numberPassword"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/avg_month_bill_txt"
@@ -86,12 +90,14 @@
         android:id="@+id/avg_month_bill_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/avg_month_bill_txt"
         android:layout_below="@id/morning_cons_month_edt"
         android:layout_marginRight="30dp"
+        android:layout_toRightOf="@id/avg_month_bill_txt"
+        android:digits="0123456789"
+        android:singleLine="true"
+        android:inputType="numberPassword"
         android:textColor="@color/colorTransparentWhite"
-        android:textSize="15sp"
-        />
+        android:textSize="15sp" />
 
 
     <TextView
@@ -111,12 +117,14 @@
         android:id="@+id/res_gen_daily_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/res_gen_daily_txt"
         android:layout_below="@id/avg_month_bill_edt"
         android:layout_marginRight="30dp"
+        android:layout_toRightOf="@id/res_gen_daily_txt"
+        android:digits="0123456789"
+        android:inputType="numberPassword"
+        android:singleLine="true"
         android:textColor="@color/colorTransparentWhite"
-        android:textSize="15sp"
-        />
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/res_gen_monthly_txt"
@@ -135,12 +143,14 @@
         android:id="@+id/res_gen_mothly_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/res_gen_monthly_txt"
         android:layout_below="@id/res_gen_daily_edt"
         android:layout_marginRight="30dp"
+        android:layout_toRightOf="@id/res_gen_monthly_txt"
+        android:digits="0123456789"
+        android:singleLine="true"
+        android:inputType="numberPassword"
         android:textColor="@color/colorTransparentWhite"
-        android:textSize="15sp"
-        />
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/storage_percent_txt"
@@ -159,14 +169,16 @@
         android:id="@+id/storage_percent_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/storage_percent_txt"
         android:layout_below="@id/res_gen_mothly_edt"
         android:layout_marginRight="30dp"
-        android:textColor="@color/colorTransparentWhite"
-        android:textSize="15sp"
-        android:textColorHint="@color/colorTransparentWhite"
+        android:layout_toRightOf="@id/storage_percent_txt"
+        android:digits="0123456789"
+        android:inputType="numberPassword"
         android:hint="Use 0-100 "
-        />
+        android:singleLine="true"
+        android:textColor="@color/colorTransparentWhite"
+        android:textColorHint="@color/colorTransparentWhite"
+        android:textSize="15sp" />
 
     <Button
         android:id="@+id/wanted_data_confirm_button"

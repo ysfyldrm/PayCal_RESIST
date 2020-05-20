@@ -34,13 +34,14 @@
         android:id="@+id/cons_avgmonth_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/cons_avgmonth_txt"
         android:layout_below="@id/enter_your_own_data"
-        android:layout_marginRight="30dp"
-        android:textColor="@color/colorTransparentWhite"
-        android:textSize="15sp"
         android:layout_marginTop="5dp"
-        />
+        android:layout_marginRight="30dp"
+        android:layout_toRightOf="@id/cons_avgmonth_txt"
+        android:digits="0123456789"
+        android:inputType="numberPassword"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/cons_year_txt"
@@ -51,6 +52,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
         android:text="Consumption Year = "
+
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
         />
@@ -59,12 +61,13 @@
         android:id="@+id/cons_year_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/cons_year_txt"
         android:layout_below="@id/cons_avgmonth_edt"
         android:layout_marginRight="30dp"
+        android:layout_toRightOf="@id/cons_year_txt"
+        android:digits="0123456789"
+        android:inputType="numberPassword"
         android:textColor="@color/colorTransparentWhite"
-        android:textSize="15sp"
-        />
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/morning_cons_month_txt"
@@ -84,13 +87,14 @@
         android:id="@+id/morning_cons_month_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/morning_cons_month_txt"
         android:layout_below="@id/cons_year_edt"
-        android:layout_marginRight="30dp"
-        android:textColor="@color/colorTransparentWhite"
-        android:textSize="15sp"
         android:layout_marginTop="5dp"
-        />
+        android:layout_marginRight="30dp"
+        android:layout_toRightOf="@id/morning_cons_month_txt"
+        android:digits="0123456789"
+        android:inputType="numberPassword"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/avg_month_bill_txt"
@@ -109,12 +113,13 @@
         android:id="@+id/avg_month_bill_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/avg_month_bill_txt"
         android:layout_below="@id/morning_cons_month_edt"
         android:layout_marginRight="30dp"
+        android:inputType="numberPassword"
+        android:layout_toRightOf="@id/avg_month_bill_txt"
+        android:digits="0123456789"
         android:textColor="@color/colorTransparentWhite"
-        android:textSize="15sp"
-        />
+        android:textSize="15sp" />
 
     <Button
         android:id="@+id/wanted_data_confirm_button"

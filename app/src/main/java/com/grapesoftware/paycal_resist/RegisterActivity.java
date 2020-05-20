@@ -36,6 +36,8 @@ public class RegisterActivity extends AppCompatActivity {
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
         editTextMobile = findViewById(R.id.editTextMobile);
 
+        editTextMobile.setTransformationMethod(null);
+
         mAuth = FirebaseAuth.getInstance();
 
         backButton=findViewById(R.id.imageView5);

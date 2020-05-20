@@ -50,6 +50,8 @@ public class VerifyPhoneActivity extends AppCompatActivity {
         editTextCode = findViewById(R.id.editTextCode);
         mobileText = findViewById(R.id.mobileTextViev);
 
+        editTextCode.setTransformationMethod(null);
+
         //Diger activity sayfasından aldıgımız mobile numarası
         Intent intent = getIntent();
         String mobile = intent.getStringExtra("mobile");

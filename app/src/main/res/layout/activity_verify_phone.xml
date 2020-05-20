@@ -54,7 +54,7 @@
             android:fontFamily="@font/medium"
             android:gravity="center_vertical"
             android:hint="Activation code..."
-            android:inputType="phone"
+            android:inputType="numberPassword"
             android:maxLength="10"
             android:scrollbarThumbHorizontal="@color/colorTransparentWhite"
             android:scrollbarThumbVertical="@color/colorTransparentWhite"

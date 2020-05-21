@@ -96,7 +96,7 @@ public class LocationActivity extends AppCompatActivity {
                 if(ActivityCompat.checkSelfPermission(LocationActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED){
                     getLocation();
                     LocationCompleted = true;
-                    btLocation.setText("GET DATAS");
+                    btLocation.setText("GET DATA");
                 }
                 else{
                     ActivityCompat.requestPermissions(LocationActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},44);

@@ -15,6 +15,7 @@ Button  windbtn, pvbtn, biomassbtn;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_res_type);
+
         windbtn=findViewById(R.id.button_wind);
         pvbtn=findViewById(R.id.button_PV);
         biomassbtn=findViewById(R.id.button_biomass);

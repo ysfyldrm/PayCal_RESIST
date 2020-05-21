@@ -130,6 +130,7 @@
         android:digits="0123456789"
         android:inputType="numberPassword"
         android:textColor="@color/colorTransparentWhite"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:layout_marginTop="5dp"
         android:textSize="15sp"
         />
@@ -144,6 +145,7 @@
         android:digits="0123456789"
         android:inputType="numberPassword"
         android:textColor="@color/colorTransparentWhite"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:layout_marginTop="5dp"
         android:textSize="15sp"
         />
@@ -158,6 +160,7 @@
         android:digits="0123456789"
         android:inputType="numberPassword"
         android:textColor="@color/colorTransparentWhite"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:textSize="15sp"
         />
 
@@ -171,6 +174,7 @@
         android:inputType="numberPassword"
         android:layout_marginRight="30dp"
         android:textColor="@color/colorTransparentWhite"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:textSize="15sp"
         />
 
@@ -184,6 +188,7 @@
         android:inputType="numberPassword"
         android:layout_marginRight="30dp"
         android:textColor="@color/colorTransparentWhite"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:textSize="15sp"
         />
 
@@ -197,6 +202,7 @@
         android:layout_below="@id/cons_year_edt"
         android:layout_marginRight="30dp"
         android:textColor="@color/colorTransparentWhite"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:textSize="15sp"
         />
 
@@ -210,6 +216,7 @@
         android:inputType="numberPassword"
         android:layout_marginRight="30dp"
         android:textColor="@color/colorTransparentWhite"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:textSize="15sp"
         />
 

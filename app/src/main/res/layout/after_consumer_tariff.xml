@@ -41,6 +41,7 @@
         android:digits="0123456789"
         android:inputType="numberPassword"
         android:textColor="@color/colorTransparentWhite"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:textSize="15sp" />
 
     <TextView
@@ -67,6 +68,7 @@
         android:digits="0123456789"
         android:inputType="numberPassword"
         android:textColor="@color/colorTransparentWhite"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:textSize="15sp" />
 
     <TextView
@@ -94,6 +96,7 @@
         android:digits="0123456789"
         android:inputType="numberPassword"
         android:textColor="@color/colorTransparentWhite"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:textSize="15sp" />
 
     <TextView
@@ -119,6 +122,7 @@
         android:layout_toRightOf="@id/avg_month_bill_txt"
         android:digits="0123456789"
         android:textColor="@color/colorTransparentWhite"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:textSize="15sp" />
 
     <Button

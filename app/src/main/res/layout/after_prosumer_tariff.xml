@@ -41,6 +41,7 @@
         android:digits="0123456789"
         android:singleLine="true"
         android:textColor="@color/colorTransparentWhite"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:inputType="numberPassword"
         android:textSize="15sp" />
 
@@ -71,6 +72,7 @@
         android:singleLine="true"
         android:inputType="numberPassword"
         android:textColor="@color/colorTransparentWhite"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:textSize="15sp" />
 
     <TextView
@@ -97,6 +99,7 @@
         android:singleLine="true"
         android:inputType="numberPassword"
         android:textColor="@color/colorTransparentWhite"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:textSize="15sp" />
 
 
@@ -124,6 +127,7 @@
         android:inputType="numberPassword"
         android:singleLine="true"
         android:textColor="@color/colorTransparentWhite"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:textSize="15sp" />
 
     <TextView
@@ -150,6 +154,7 @@
         android:singleLine="true"
         android:inputType="numberPassword"
         android:textColor="@color/colorTransparentWhite"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:textSize="15sp" />
 
     <TextView
@@ -174,10 +179,9 @@
         android:layout_toRightOf="@id/storage_percent_txt"
         android:digits="0123456789"
         android:inputType="numberPassword"
-        android:hint="Use 0-100 "
         android:singleLine="true"
         android:textColor="@color/colorTransparentWhite"
-        android:textColorHint="@color/colorTransparentWhite"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:textSize="15sp" />
 
     <Button

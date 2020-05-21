@@ -46,6 +46,8 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button"
+            android:fontFamily="@font/bold"
+            android:textColor="@color/colorTransparentWhite"
             android:text="Turkey's 2019\nMCP"
             />
 
@@ -54,6 +56,8 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button"
+            android:fontFamily="@font/bold"
+            android:textColor="@color/colorTransparentWhite"
             android:layout_marginLeft="50dp"
             android:text="use own\nMCP"
             />

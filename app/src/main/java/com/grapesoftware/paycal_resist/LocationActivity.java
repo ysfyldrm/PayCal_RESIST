@@ -30,22 +30,34 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
-public class LocationActivity extends AppCompatActivity {
+public class LocationActivity extends AppCompatActivity  {
 //Initialize variable
     Button btLocation, backButton;
     TextView textView1, textView2, textView3, textView4, textView5, showResult1, showResult2, showResult3;
     FusedLocationProviderClient fusedLocationProviderClient;
     ProgressBar dataProgressBar;
     private RequestQueue mQueue;
+    private FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference mGetReference = mDatabase.getReference();
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +65,21 @@ public class LocationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_location);
 
 
+
+        mGetReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //Map<String,String> data =(Map<String, String>) dataSnapshot.getValue();
+                //Sehirler sehirler=new Sehirler();
+
+                //Toast.makeText(getApplicationContext(),dataSnapshot.getRef("name"),Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         //Assign Variable
         btLocation=findViewById(R.id.bt_location);
@@ -288,6 +315,8 @@ fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnComple
         });
         mQueue.add(request);
     }
+
+
 
 
 }

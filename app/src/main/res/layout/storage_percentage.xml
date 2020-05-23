@@ -53,10 +53,12 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorTransparentWhite"
             android:max="100"
-            android:progressBackgroundTint=""
             android:progress="50"
             android:min="0"
             />
+<!--            android:progressBackgroundTint=""-->
+
+
 
     </LinearLayout>
 

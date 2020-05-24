@@ -90,27 +90,6 @@ public class LocationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                ValueEventListener postListener = new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        // Get Post object and use the values to update the UI
-                        City city = dataSnapshot.getValue(City.class);
-
-
-
-                   }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        // Getting Post failed, log a message
-
-                        // ...
-                    }
-                };
-
-
-
-
 
                 //Check permission
                 if (btLocation.getText().equals("CONTINUE")) {

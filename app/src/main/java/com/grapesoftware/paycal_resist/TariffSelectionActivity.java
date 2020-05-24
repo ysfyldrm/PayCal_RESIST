@@ -4,14 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import java.nio.BufferUnderflowException;
 
 public class TariffSelectionActivity extends AppCompatActivity {
 
@@ -82,18 +86,102 @@ public class TariffSelectionActivity extends AppCompatActivity {
         Button indmedvolt=dialog.findViewById(R.id.button_ind_med_voltage);
 
 
-        // custom dialog elemanlarına değer ataması yap - text, image
         reslowvolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "reslowvolt basıldı", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Morning: 0,57 \nPeak: 0,85 \nOffPeak: 0,37 \nTax: 0,24", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+
+                {
+
+                    final Dialog dialog1=new Dialog(context);
+                    dialog1.setContentView(R.layout.after_consumer_tariff);
+                    dialog1.show();
+
+                    Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
+                    final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
+                    final EditText ConsYear=dialog1.findViewById(R.id.cons_year_edt);
+                    final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
+                    final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
+
+
+                    confirm.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast.makeText(getApplicationContext(),AvgConsMonth.getText()+"\n"+ConsYear.getText()+"\n"+MorConsMonth.getText()+"\n"+AvgMonthBill.getText(),Toast.LENGTH_LONG).show();
+                            dialog1.dismiss();
+                            Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                            startActivity(intent);
+                            String morning="0,57";
+                            String peak="0,85";
+                            String offpeak="0,37";
+                            String tax="0,24";
+                            String avgconsmonth=AvgConsMonth.getText().toString();
+                            String consyear=ConsYear.getText().toString();
+                            String morconsmonth=MorConsMonth.getText().toString();
+                            String avgmonthbill=AvgMonthBill.getText().toString();
+                            Bundle bundle=new Bundle();
+                            bundle.putString("1",morning);
+                            bundle.putString("2",peak);
+                            bundle.putString("3",offpeak);
+                            bundle.putString("4",tax);
+                            bundle.putString("5",avgconsmonth);
+                            bundle.putString("6",consyear);
+                            bundle.putString("7",morconsmonth);
+                            bundle.putString("8",avgmonthbill);
+                            intent.putExtras(bundle);
+
+
+                        }
+                    });
+
+
+
+
+
+                    Window window = dialog1.getWindow();
+                    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                }
+
             }
         });
 
         resmedvolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog.dismiss();
+                Toast.makeText(context, "Morning: 0,54 \nPeak: 0,82 \nOffPeak: 0,34 \nTax: 0,24", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        comlowvolt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Morning: 0,76 \nPeak: 1,11 \nOffPeak: 0,49 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        commedvolt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Morning: 0,72 \nPeak: 1,07 \nOffPeak: 0,45 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        indlowvolt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Morning: 0,66 \nPeak: 0,99 \nOffPeak: 0,40 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        indmedvolt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Morning: 0,60 \nPeak: 0,92 \nOffPeak: 0,34 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -146,18 +234,49 @@ public class TariffSelectionActivity extends AppCompatActivity {
         // custom dialog elemanlarına değer ataması yap - text, image
 
 
-        // tamam butonunun tıklanma olayları
+
+
         reslowvolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "reslowvolt basıldı", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Morning: 0,57 \nPeak: 0,85 \nOffPeak: 0,37 \nTax: 0,24", Toast.LENGTH_SHORT).show();
             }
         });
-        // iptal butonunun tıklanma olayları
+
         resmedvolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog.dismiss();
+                Toast.makeText(context, "Morning: 0,54 \nPeak: 0,82 \nOffPeak: 0,34 \nTax: 0,24", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        comlowvolt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Morning: 0,76 \nPeak: 1,11 \nOffPeak: 0,49 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        commedvolt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Morning: 0,72 \nPeak: 1,07 \nOffPeak: 0,45 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        indlowvolt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Morning: 0,66 \nPeak: 0,99 \nOffPeak: 0,40 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        indmedvolt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "Morning: 0,60 \nPeak: 0,92 \nOffPeak: 0,34 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
+
             }
         });
         dialog.show();

@@ -38,10 +38,10 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="30dp"
         android:layout_toRightOf="@id/cons_avgmonth_txt"
-        android:digits="0123456789"
-        android:inputType="numberPassword"
-        android:textColor="@color/colorTransparentWhite"
         android:backgroundTint="@color/colorTransparentWhite"
+        android:digits="0123456789.,"
+        android:inputType="number"
+        android:textColor="@color/colorTransparentWhite"
         android:textSize="15sp" />
 
     <TextView
@@ -65,8 +65,8 @@
         android:layout_below="@id/cons_avgmonth_edt"
         android:layout_marginRight="30dp"
         android:layout_toRightOf="@id/cons_year_txt"
-        android:digits="0123456789"
-        android:inputType="numberPassword"
+        android:digits="0123456789.,"
+        android:inputType="number"
         android:textColor="@color/colorTransparentWhite"
         android:backgroundTint="@color/colorTransparentWhite"
         android:textSize="15sp" />
@@ -93,8 +93,8 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="30dp"
         android:layout_toRightOf="@id/morning_cons_month_txt"
-        android:digits="0123456789"
-        android:inputType="numberPassword"
+        android:digits="0123456789.,"
+        android:inputType="number"
         android:textColor="@color/colorTransparentWhite"
         android:backgroundTint="@color/colorTransparentWhite"
         android:textSize="15sp" />
@@ -118,9 +118,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/morning_cons_month_edt"
         android:layout_marginRight="30dp"
-        android:inputType="numberPassword"
+        android:inputType="number"
         android:layout_toRightOf="@id/avg_month_bill_txt"
-        android:digits="0123456789"
+        android:digits="0123456789.,"
+        android:imeOptions="actionDone"
         android:textColor="@color/colorTransparentWhite"
         android:backgroundTint="@color/colorTransparentWhite"
         android:textSize="15sp" />

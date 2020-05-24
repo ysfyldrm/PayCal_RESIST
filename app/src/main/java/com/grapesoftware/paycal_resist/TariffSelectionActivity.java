@@ -111,7 +111,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),AvgConsMonth.getText()+"\n"+ConsYear.getText()+"\n"+MorConsMonth.getText()+"\n"+AvgMonthBill.getText(),Toast.LENGTH_LONG).show();
                             dialog1.dismiss();
                             Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
-                            startActivity(intent);
+
                             String morning="0,57";
                             String peak="0,85";
                             String offpeak="0,37";
@@ -121,17 +121,17 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             String morconsmonth=MorConsMonth.getText().toString();
                             String avgmonthbill=AvgMonthBill.getText().toString();
                             Bundle bundle=new Bundle();
-                            bundle.putString("1",morning);
-                            bundle.putString("2",peak);
-                            bundle.putString("3",offpeak);
-                            bundle.putString("4",tax);
-                            bundle.putString("5",avgconsmonth);
-                            bundle.putString("6",consyear);
-                            bundle.putString("7",morconsmonth);
-                            bundle.putString("8",avgmonthbill);
+                            bundle.putString("i",morning);
+                            bundle.putString("ii",peak);
+                            bundle.putString("iii",offpeak);
+                            bundle.putString("iv",tax);
+                            bundle.putString("v",avgconsmonth);
+                            bundle.putString("vi",consyear);
+                            bundle.putString("vii",morconsmonth);
+                            bundle.putString("viii",avgmonthbill);
                             intent.putExtras(bundle);
 
-
+                            startActivity(intent);
                         }
                     });
 

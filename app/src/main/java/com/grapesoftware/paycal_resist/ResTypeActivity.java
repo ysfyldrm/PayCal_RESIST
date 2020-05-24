@@ -22,14 +22,15 @@ String morning,peak,offpeak,tax,avgconsmonth,consyear,morconsmonth,avgmonthbill;
         pvbtn=findViewById(R.id.button_PV);
         biomassbtn=findViewById(R.id.button_biomass);
 
-        morning=bundle1.getString("1");
-        peak=bundle1.getString("2");
-        offpeak=bundle1.getString("3");
-        tax=bundle1.getString("4");
-        avgconsmonth=bundle1.getString("5");
-        consyear=bundle1.getString("6");
-        morconsmonth=bundle1.getString("7");
-        avgmonthbill=bundle1.getString("8");
+        bundle1 = getIntent().getExtras();
+        morning=bundle1.getString("i");
+        peak=bundle1.getString("ii");
+        offpeak=bundle1.getString("iii");
+        tax=bundle1.getString("iv");
+        avgconsmonth=bundle1.getString("v");
+        consyear=bundle1.getString("vi");
+        morconsmonth=bundle1.getString("vii");
+        avgmonthbill=bundle1.getString("viii");
 
         Toast.makeText(getApplicationContext(),morning+"\n"+peak+"\n"+offpeak+"\n"+tax+"\n"+avgconsmonth+"\n"+consyear+"\n"+morconsmonth+"\n"+avgmonthbill,Toast.LENGTH_LONG).show();
 

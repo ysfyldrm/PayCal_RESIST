@@ -33,6 +33,10 @@
             android:fontFamily="@font/bold"
             android:textSize="15sp"
             />
+<RadioGroup
+    android:id="@+id/turbine_group"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
 
         <RadioButton
             android:id="@+id/turbine_1kw"
@@ -64,7 +68,7 @@
             android:layout_marginLeft="15dp"
             android:checked="false"
             />
-
+        </RadioGroup>
     </LinearLayout>
 
     <LinearLayout

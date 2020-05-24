@@ -2,16 +2,27 @@ package com.grapesoftware.paycal_resist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 public class ResTypeActivity extends AppCompatActivity {
 Button  windbtn, pvbtn, biomassbtn;
+RadioButton pickedTurbine;
 Bundle bundle1;
 String morning,peak,offpeak,tax,avgconsmonth,consyear,morconsmonth,avgmonthbill;
+    final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +52,10 @@ String morning,peak,offpeak,tax,avgconsmonth,consyear,morconsmonth,avgmonthbill;
         windbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(ResTypeActivity.this,StorageTypeActivity.class);
-                startActivity(intent);
+//                Intent intent=new Intent(ResTypeActivity.this,StorageTypeActivity.class);
+//                startActivity(intent);
+                showMyCustomWindTurbinDialog();
+
             }
         });
         pvbtn.setOnClickListener(new View.OnClickListener() {
@@ -59,5 +72,41 @@ String morning,peak,offpeak,tax,avgconsmonth,consyear,morconsmonth,avgmonthbill;
                 startActivity(intent);
             }
         });
+    }
+
+    public void showMyCustomWindTurbinDialog() {
+
+        // dialog nesnesi oluştur ve layout dosyasına bağlan
+        final Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.wind_turbine_options);
+
+        // custom dialog elemanlarını tanımla - text, image ve button
+        Button ownconfirmbtn=dialog.findViewById(R.id.own_confirm_button);
+        final RadioGroup turbineGroup = dialog.findViewById(R.id.turbine_group);
+        final EditText turbineCount = dialog.findViewById(R.id.turbine_count_edt);
+        turbineCount.setTransformationMethod(null);
+
+        // custom dialog elemanlarına değer ataması yap - text, image
+
+
+
+        // tamam butonunun tıklanma olayları
+        ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int selectedId = turbineGroup.getCheckedRadioButtonId();
+                Toast.makeText(context, selectedId + "" , Toast.LENGTH_SHORT).show();
+                pickedTurbine = findViewById(selectedId);
+                String turbinAdi = pickedTurbine.getText().toString();
+                Toast.makeText(context,  turbinAdi+ "\n"+ turbineCount.getText() , Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+
+
+        dialog.show();
+        Window window = dialog.getWindow();
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
     }
 }

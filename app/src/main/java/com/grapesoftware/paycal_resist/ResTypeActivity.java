@@ -22,6 +22,7 @@ Button  windbtn, pvbtn, biomassbtn;
 RadioButton pickedTurbine;
 Bundle bundle1;
 String morning,peak,offpeak,tax,avgconsmonth,consyear,morconsmonth,avgmonthbill;
+String rdbtext;
     final Context context = this;
 
     @Override
@@ -86,7 +87,13 @@ String morning,peak,offpeak,tax,avgconsmonth,consyear,morconsmonth,avgmonthbill;
         final EditText turbineCount = dialog.findViewById(R.id.turbine_count_edt);
         turbineCount.setTransformationMethod(null);
 
-        // custom dialog elemanlarına değer ataması yap - text, image
+        turbineGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                pickedTurbine=radioGroup.findViewById(i);
+                rdbtext=pickedTurbine.getText().toString();
+            }
+        });
 
 
 
@@ -94,11 +101,13 @@ String morning,peak,offpeak,tax,avgconsmonth,consyear,morconsmonth,avgmonthbill;
         ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 int selectedId = turbineGroup.getCheckedRadioButtonId();
-                Toast.makeText(context, selectedId + "" , Toast.LENGTH_SHORT).show();
-                pickedTurbine = findViewById(selectedId);
-                String turbinAdi = pickedTurbine.getText().toString();
-                Toast.makeText(context,  turbinAdi+ "\n"+ turbineCount.getText() , Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, rdbtext + "" , Toast.LENGTH_SHORT).show();
+                //pickedTurbine = findViewById(selectedId);
+                //String turbinAdi = pickedTurbine.getText().toString();
+                Toast.makeText(context,  rdbtext+ "\n"+ turbineCount.getText() , Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             }
         });

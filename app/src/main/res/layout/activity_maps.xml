@@ -12,24 +12,37 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/backgroundBlue"
+        android:gravity="center"
+        >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/bold"
+            android:textColor="@color/colorTransparentWhite"
             android:id="@+id/textView"
             android:text="Location:"
             android:textSize="20sp" />
 
         <EditText
-            android:layout_width="183dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:id="@+id/editTextLocate"
+            android:textColor="@color/colorTransparentWhite"
+            android:backgroundTint="@color/colorTransparentWhite"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/medium"
             android:layout_gravity="center_horizontal" />
 
         <Button
-            android:layout_width="71dp"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button"
+            android:fontFamily="@font/bold"
+            android:textColor="@color/colorTransparentWhite"
+            android:layout_marginLeft="20dp"
             android:text="Go"
             android:id="@+id/button"
             android:onClick="findLocation" />

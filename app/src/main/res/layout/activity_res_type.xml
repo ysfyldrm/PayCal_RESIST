@@ -65,6 +65,8 @@
         android:layout_height="wrap_content"
         android:text="BIOMASS"
         android:textSize="20dp"
+        android:visibility="gone"
+        android:enabled="false"
         android:background="@drawable/button"
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"

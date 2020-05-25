@@ -111,6 +111,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),AvgConsMonth.getText()+"\n"+ConsYear.getText()+"\n"+MorConsMonth.getText()+"\n"+AvgMonthBill.getText(),Toast.LENGTH_LONG).show();
                             dialog1.dismiss();
                             Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                            Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
 
                             String morning="0,57";
                             String peak="0,85";
@@ -129,7 +130,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             bundle.putString("vi",consyear);
                             bundle.putString("vii",morconsmonth);
                             bundle.putString("viii",avgmonthbill);
-                            intent.putExtras(bundle);
+                            calculationIntent.putExtras(bundle);
 
                             startActivity(intent);
                         }
@@ -152,6 +153,63 @@ public class TariffSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "Morning: 0,54 \nPeak: 0,82 \nOffPeak: 0,34 \nTax: 0,24", Toast.LENGTH_SHORT).show();
+
+                {
+
+                    final Dialog dialog1=new Dialog(context);
+                    dialog1.setContentView(R.layout.after_consumer_tariff);
+                    dialog1.show();
+
+                    Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
+                    final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
+                    final EditText ConsYear=dialog1.findViewById(R.id.cons_year_edt);
+                    final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
+                    final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
+
+
+                    confirm.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast.makeText(getApplicationContext(),AvgConsMonth.getText()+"\n"+ConsYear.getText()+"\n"+MorConsMonth.getText()+"\n"+AvgMonthBill.getText(),Toast.LENGTH_LONG).show();
+                            dialog1.dismiss();
+                            Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                            Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
+
+                            String morning="0,54";
+                            String peak="0,82";
+                            String offpeak="0,34";
+                            String tax="0,24";
+                            String avgconsmonth=AvgConsMonth.getText().toString();
+                            String consyear=ConsYear.getText().toString();
+                            String morconsmonth=MorConsMonth.getText().toString();
+                            String avgmonthbill=AvgMonthBill.getText().toString();
+                            Bundle bundle=new Bundle();
+                            bundle.putString("i",morning);
+                            bundle.putString("ii",peak);
+                            bundle.putString("iii",offpeak);
+                            bundle.putString("iv",tax);
+                            bundle.putString("v",avgconsmonth);
+                            bundle.putString("vi",consyear);
+                            bundle.putString("vii",morconsmonth);
+                            bundle.putString("viii",avgmonthbill);
+                            calculationIntent.putExtras(bundle);
+
+                            startActivity(intent);
+                        }
+                    });
+
+
+
+
+
+                    Window window = dialog1.getWindow();
+                    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                }
+
+
+
             }
         });
 
@@ -159,6 +217,60 @@ public class TariffSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "Morning: 0,76 \nPeak: 1,11 \nOffPeak: 0,49 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
+
+                {
+
+                    final Dialog dialog1=new Dialog(context);
+                    dialog1.setContentView(R.layout.after_consumer_tariff);
+                    dialog1.show();
+
+                    Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
+                    final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
+                    final EditText ConsYear=dialog1.findViewById(R.id.cons_year_edt);
+                    final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
+                    final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
+
+
+                    confirm.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast.makeText(getApplicationContext(),AvgConsMonth.getText()+"\n"+ConsYear.getText()+"\n"+MorConsMonth.getText()+"\n"+AvgMonthBill.getText(),Toast.LENGTH_LONG).show();
+                            dialog1.dismiss();
+                            Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                            Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
+
+                            String morning="0,76";
+                            String peak="1,11";
+                            String offpeak="0,49";
+                            String tax="0,2366";
+                            String avgconsmonth=AvgConsMonth.getText().toString();
+                            String consyear=ConsYear.getText().toString();
+                            String morconsmonth=MorConsMonth.getText().toString();
+                            String avgmonthbill=AvgMonthBill.getText().toString();
+                            Bundle bundle=new Bundle();
+                            bundle.putString("i",morning);
+                            bundle.putString("ii",peak);
+                            bundle.putString("iii",offpeak);
+                            bundle.putString("iv",tax);
+                            bundle.putString("v",avgconsmonth);
+                            bundle.putString("vi",consyear);
+                            bundle.putString("vii",morconsmonth);
+                            bundle.putString("viii",avgmonthbill);
+                            calculationIntent.putExtras(bundle);
+
+                            startActivity(intent);
+                        }
+                    });
+
+
+
+
+
+                    Window window = dialog1.getWindow();
+                    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                }
             }
         });
 
@@ -166,6 +278,60 @@ public class TariffSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "Morning: 0,72 \nPeak: 1,07 \nOffPeak: 0,45 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
+
+                {
+
+                    final Dialog dialog1=new Dialog(context);
+                    dialog1.setContentView(R.layout.after_consumer_tariff);
+                    dialog1.show();
+
+                    Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
+                    final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
+                    final EditText ConsYear=dialog1.findViewById(R.id.cons_year_edt);
+                    final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
+                    final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
+
+
+                    confirm.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast.makeText(getApplicationContext(),AvgConsMonth.getText()+"\n"+ConsYear.getText()+"\n"+MorConsMonth.getText()+"\n"+AvgMonthBill.getText(),Toast.LENGTH_LONG).show();
+                            dialog1.dismiss();
+                            Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                            Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
+
+                            String morning="0,72";
+                            String peak="1,07";
+                            String offpeak="0,45";
+                            String tax="0,2366";
+                            String avgconsmonth=AvgConsMonth.getText().toString();
+                            String consyear=ConsYear.getText().toString();
+                            String morconsmonth=MorConsMonth.getText().toString();
+                            String avgmonthbill=AvgMonthBill.getText().toString();
+                            Bundle bundle=new Bundle();
+                            bundle.putString("i",morning);
+                            bundle.putString("ii",peak);
+                            bundle.putString("iii",offpeak);
+                            bundle.putString("iv",tax);
+                            bundle.putString("v",avgconsmonth);
+                            bundle.putString("vi",consyear);
+                            bundle.putString("vii",morconsmonth);
+                            bundle.putString("viii",avgmonthbill);
+                            calculationIntent.putExtras(bundle);
+
+                            startActivity(intent);
+                        }
+                    });
+
+
+
+
+
+                    Window window = dialog1.getWindow();
+                    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                }
             }
         });
 
@@ -174,6 +340,60 @@ public class TariffSelectionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(context, "Morning: 0,66 \nPeak: 0,99 \nOffPeak: 0,40 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
 
+                {
+
+                    final Dialog dialog1=new Dialog(context);
+                    dialog1.setContentView(R.layout.after_consumer_tariff);
+                    dialog1.show();
+
+                    Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
+                    final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
+                    final EditText ConsYear=dialog1.findViewById(R.id.cons_year_edt);
+                    final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
+                    final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
+
+
+                    confirm.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast.makeText(getApplicationContext(),AvgConsMonth.getText()+"\n"+ConsYear.getText()+"\n"+MorConsMonth.getText()+"\n"+AvgMonthBill.getText(),Toast.LENGTH_LONG).show();
+                            dialog1.dismiss();
+                            Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                            Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
+
+                            String morning="0,66";
+                            String peak="0,99";
+                            String offpeak="0,40";
+                            String tax="0,2366";
+                            String avgconsmonth=AvgConsMonth.getText().toString();
+                            String consyear=ConsYear.getText().toString();
+                            String morconsmonth=MorConsMonth.getText().toString();
+                            String avgmonthbill=AvgMonthBill.getText().toString();
+                            Bundle bundle=new Bundle();
+                            bundle.putString("i",morning);
+                            bundle.putString("ii",peak);
+                            bundle.putString("iii",offpeak);
+                            bundle.putString("iv",tax);
+                            bundle.putString("v",avgconsmonth);
+                            bundle.putString("vi",consyear);
+                            bundle.putString("vii",morconsmonth);
+                            bundle.putString("viii",avgmonthbill);
+                            calculationIntent.putExtras(bundle);
+
+                            startActivity(intent);
+                        }
+                    });
+
+
+
+
+
+                    Window window = dialog1.getWindow();
+                    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                }
+
             }
         });
 
@@ -181,6 +401,60 @@ public class TariffSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "Morning: 0,60 \nPeak: 0,92 \nOffPeak: 0,34 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
+
+                {
+
+                    final Dialog dialog1=new Dialog(context);
+                    dialog1.setContentView(R.layout.after_consumer_tariff);
+                    dialog1.show();
+
+                    Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
+                    final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
+                    final EditText ConsYear=dialog1.findViewById(R.id.cons_year_edt);
+                    final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
+                    final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
+
+
+                    confirm.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast.makeText(getApplicationContext(),AvgConsMonth.getText()+"\n"+ConsYear.getText()+"\n"+MorConsMonth.getText()+"\n"+AvgMonthBill.getText(),Toast.LENGTH_LONG).show();
+                            dialog1.dismiss();
+                            Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                            Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
+
+                            String morning="0,60";
+                            String peak="0,92";
+                            String offpeak="0,34";
+                            String tax="0,2366";
+                            String avgconsmonth=AvgConsMonth.getText().toString();
+                            String consyear=ConsYear.getText().toString();
+                            String morconsmonth=MorConsMonth.getText().toString();
+                            String avgmonthbill=AvgMonthBill.getText().toString();
+                            Bundle bundle=new Bundle();
+                            bundle.putString("i",morning);
+                            bundle.putString("ii",peak);
+                            bundle.putString("iii",offpeak);
+                            bundle.putString("iv",tax);
+                            bundle.putString("v",avgconsmonth);
+                            bundle.putString("vi",consyear);
+                            bundle.putString("vii",morconsmonth);
+                            bundle.putString("viii",avgmonthbill);
+                            calculationIntent.putExtras(bundle);
+
+                            startActivity(intent);
+                        }
+                    });
+
+
+
+
+
+                    Window window = dialog1.getWindow();
+                    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                }
 
             }
         });
@@ -222,6 +496,8 @@ public class TariffSelectionActivity extends AppCompatActivity {
         // dialog nesnesi oluştur ve layout dosyasına bağlan
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.prosumer_type);
+        final Bundle bundletype=new Bundle();
+        bundletype.putString("TypeUser",typeforuser);
 
         // custom dialog elemanlarını tanımla - text, image ve button
         Button reslowvolt=dialog.findViewById(R.id.button_res_low_voltage);
@@ -240,6 +516,71 @@ public class TariffSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "Morning: 0,57 \nPeak: 0,85 \nOffPeak: 0,37 \nTax: 0,24", Toast.LENGTH_SHORT).show();
+
+                {
+
+                    final Dialog dialog1=new Dialog(context);
+                    dialog1.setContentView(R.layout.after_prosumer_tariff);
+                    dialog1.show();
+
+                    Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
+                    final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
+                    final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
+                    final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
+                    final EditText ResGenDaily=dialog1.findViewById(R.id.res_gen_daily_edt);
+                    final EditText ResGenMonthly=dialog1.findViewById(R.id.res_gen_mothly_edt);
+                    final EditText StoragePerc=dialog1.findViewById(R.id.storage_percent_edt);
+
+
+
+
+
+                    confirm.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast.makeText(getApplicationContext(),AvgConsMonth.getText()+"\n"+ResGenMonthly.getText()+"\n"+MorConsMonth.getText()+"\n"+StoragePerc.getText()+"\n"+AvgMonthBill.getText()+"\n"+ResGenDaily.getText(),Toast.LENGTH_LONG).show();
+                            dialog1.dismiss();
+                            Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                            Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
+
+                            String morning="0,57";
+                            String peak="0,85";
+                            String offpeak="0,37";
+                            String tax="0,24";
+                            String avgconsmonth=AvgConsMonth.getText().toString();
+                            String morconsmonth=MorConsMonth.getText().toString();
+                            String avgmonthbill=AvgMonthBill.getText().toString();
+                            String resgendaily= ResGenDaily.getText().toString();
+                            String resgenmonthly=ResGenMonthly.getText().toString();
+                            String storageperc=StoragePerc.getText().toString();
+
+                            Bundle bundle=new Bundle();
+                            bundle.putString("i",morning);
+                            bundle.putString("ii",peak);
+                            bundle.putString("iii",offpeak);
+                            bundle.putString("iv",tax);
+                            bundle.putString("v",avgconsmonth);
+                            bundle.putString("vi",morconsmonth);
+                            bundle.putString("vii",avgmonthbill);
+                            bundle.putString("viii",resgendaily);
+                            bundle.putString("ix",resgenmonthly);
+                            bundle.putString("x",storageperc);
+
+                            calculationIntent.putExtras(bundle);
+                            intent.putExtras(bundletype);
+                            startActivity(intent);
+                        }
+                    });
+
+
+
+
+
+                    Window window = dialog1.getWindow();
+                    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                }
             }
         });
 
@@ -247,6 +588,65 @@ public class TariffSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "Morning: 0,54 \nPeak: 0,82 \nOffPeak: 0,34 \nTax: 0,24", Toast.LENGTH_SHORT).show();
+                {
+
+                    final Dialog dialog1=new Dialog(context);
+                    dialog1.setContentView(R.layout.after_prosumer_tariff);
+                    dialog1.show();
+
+                    Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
+                    final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
+                    final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
+                    final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
+                    final EditText ResGenDaily=dialog1.findViewById(R.id.res_gen_daily_edt);
+                    final EditText ResGenMonthly=dialog1.findViewById(R.id.res_gen_mothly_edt);
+                    final EditText StoragePerc=dialog1.findViewById(R.id.storage_percent_edt);
+
+
+                    confirm.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog1.dismiss();
+                            Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                            Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
+
+                            String morning="0,54";
+                            String peak="0,82";
+                            String offpeak="0,34";
+                            String tax="0,24";
+                            String avgconsmonth=AvgConsMonth.getText().toString();
+                            String morconsmonth=MorConsMonth.getText().toString();
+                            String avgmonthbill=AvgMonthBill.getText().toString();
+                            String resgendaily= ResGenDaily.getText().toString();
+                            String resgenmonthly=ResGenMonthly.getText().toString();
+                            String storageperc=StoragePerc.getText().toString();
+
+                            Bundle bundle=new Bundle();
+                            bundle.putString("i",morning);
+                            bundle.putString("ii",peak);
+                            bundle.putString("iii",offpeak);
+                            bundle.putString("iv",tax);
+                            bundle.putString("v",avgconsmonth);
+                            bundle.putString("vi",morconsmonth);
+                            bundle.putString("vii",avgmonthbill);
+                            bundle.putString("viii",resgendaily);
+                            bundle.putString("ix",resgenmonthly);
+                            bundle.putString("x",storageperc);
+                            calculationIntent.putExtras(bundle);
+                            intent.putExtras(bundletype);
+                            startActivity(intent);
+                        }
+                    });
+
+
+
+
+
+                    Window window = dialog1.getWindow();
+                    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                }
             }
         });
 
@@ -254,6 +654,65 @@ public class TariffSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "Morning: 0,76 \nPeak: 1,11 \nOffPeak: 0,49 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
+                {
+
+                    final Dialog dialog1=new Dialog(context);
+                    dialog1.setContentView(R.layout.after_prosumer_tariff);
+                    dialog1.show();
+
+                    Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
+                    final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
+                    final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
+                    final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
+                    final EditText ResGenDaily=dialog1.findViewById(R.id.res_gen_daily_edt);
+                    final EditText ResGenMonthly=dialog1.findViewById(R.id.res_gen_mothly_edt);
+                    final EditText StoragePerc=dialog1.findViewById(R.id.storage_percent_edt);
+
+
+                    confirm.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog1.dismiss();
+                            Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                            Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
+
+                            String morning="0,76";
+                            String peak="1,11";
+                            String offpeak="0,49";
+                            String tax="0,2366";
+                            String avgconsmonth=AvgConsMonth.getText().toString();
+                            String morconsmonth=MorConsMonth.getText().toString();
+                            String avgmonthbill=AvgMonthBill.getText().toString();
+                            String resgendaily= ResGenDaily.getText().toString();
+                            String resgenmonthly=ResGenMonthly.getText().toString();
+                            String storageperc=StoragePerc.getText().toString();
+
+                            Bundle bundle=new Bundle();
+                            bundle.putString("i",morning);
+                            bundle.putString("ii",peak);
+                            bundle.putString("iii",offpeak);
+                            bundle.putString("iv",tax);
+                            bundle.putString("v",avgconsmonth);
+                            bundle.putString("vi",morconsmonth);
+                            bundle.putString("vii",avgmonthbill);
+                            bundle.putString("viii",resgendaily);
+                            bundle.putString("ix",resgenmonthly);
+                            bundle.putString("x",storageperc);
+                            calculationIntent.putExtras(bundle);
+                            intent.putExtras(bundletype);
+                            startActivity(intent);
+                        }
+                    });
+
+
+
+
+
+                    Window window = dialog1.getWindow();
+                    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                }
             }
         });
 
@@ -261,6 +720,65 @@ public class TariffSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "Morning: 0,72 \nPeak: 1,07 \nOffPeak: 0,45 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
+                {
+
+                    final Dialog dialog1=new Dialog(context);
+                    dialog1.setContentView(R.layout.after_prosumer_tariff);
+                    dialog1.show();
+
+                    Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
+                    final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
+                    final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
+                    final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
+                    final EditText ResGenDaily=dialog1.findViewById(R.id.res_gen_daily_edt);
+                    final EditText ResGenMonthly=dialog1.findViewById(R.id.res_gen_mothly_edt);
+                    final EditText StoragePerc=dialog1.findViewById(R.id.storage_percent_edt);
+
+
+                    confirm.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog1.dismiss();
+                            Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                            Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
+
+                            String morning="0,72";
+                            String peak="1,07";
+                            String offpeak="0,45";
+                            String tax="0,2366";
+                            String avgconsmonth=AvgConsMonth.getText().toString();
+                            String morconsmonth=MorConsMonth.getText().toString();
+                            String avgmonthbill=AvgMonthBill.getText().toString();
+                            String resgendaily= ResGenDaily.getText().toString();
+                            String resgenmonthly=ResGenMonthly.getText().toString();
+                            String storageperc=StoragePerc.getText().toString();
+
+                            Bundle bundle=new Bundle();
+                            bundle.putString("i",morning);
+                            bundle.putString("ii",peak);
+                            bundle.putString("iii",offpeak);
+                            bundle.putString("iv",tax);
+                            bundle.putString("v",avgconsmonth);
+                            bundle.putString("vi",morconsmonth);
+                            bundle.putString("vii",avgmonthbill);
+                            bundle.putString("viii",resgendaily);
+                            bundle.putString("ix",resgenmonthly);
+                            bundle.putString("x",storageperc);
+                            calculationIntent.putExtras(bundle);
+                            intent.putExtras(bundletype);
+                            startActivity(intent);
+                        }
+                    });
+
+
+
+
+
+                    Window window = dialog1.getWindow();
+                    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                }
             }
         });
 
@@ -268,6 +786,65 @@ public class TariffSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "Morning: 0,66 \nPeak: 0,99 \nOffPeak: 0,40 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
+                {
+
+                    final Dialog dialog1=new Dialog(context);
+                    dialog1.setContentView(R.layout.after_prosumer_tariff);
+                    dialog1.show();
+
+                    Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
+                    final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
+                    final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
+                    final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
+                    final EditText ResGenDaily=dialog1.findViewById(R.id.res_gen_daily_edt);
+                    final EditText ResGenMonthly=dialog1.findViewById(R.id.res_gen_mothly_edt);
+                    final EditText StoragePerc=dialog1.findViewById(R.id.storage_percent_edt);
+
+
+                    confirm.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog1.dismiss();
+                            Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                            Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
+
+                            String morning="0,66";
+                            String peak="0,99";
+                            String offpeak="0,40";
+                            String tax="0,2366";
+                            String avgconsmonth=AvgConsMonth.getText().toString();
+                            String morconsmonth=MorConsMonth.getText().toString();
+                            String avgmonthbill=AvgMonthBill.getText().toString();
+                            String resgendaily= ResGenDaily.getText().toString();
+                            String resgenmonthly=ResGenMonthly.getText().toString();
+                            String storageperc=StoragePerc.getText().toString();
+
+                            Bundle bundle=new Bundle();
+                            bundle.putString("i",morning);
+                            bundle.putString("ii",peak);
+                            bundle.putString("iii",offpeak);
+                            bundle.putString("iv",tax);
+                            bundle.putString("v",avgconsmonth);
+                            bundle.putString("vi",morconsmonth);
+                            bundle.putString("vii",avgmonthbill);
+                            bundle.putString("viii",resgendaily);
+                            bundle.putString("ix",resgenmonthly);
+                            bundle.putString("x",storageperc);
+                            calculationIntent.putExtras(bundle);
+                            intent.putExtras(bundletype);
+                            startActivity(intent);
+                        }
+                    });
+
+
+
+
+
+                    Window window = dialog1.getWindow();
+                    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                }
 
             }
         });
@@ -276,6 +853,64 @@ public class TariffSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "Morning: 0,60 \nPeak: 0,92 \nOffPeak: 0,34 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
+                {
+
+                    final Dialog dialog1=new Dialog(context);
+                    dialog1.setContentView(R.layout.after_prosumer_tariff);
+                    dialog1.show();
+
+                    Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
+                    final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
+                    final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
+                    final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
+                    final EditText ResGenDaily=dialog1.findViewById(R.id.res_gen_daily_edt);
+                    final EditText ResGenMonthly=dialog1.findViewById(R.id.res_gen_mothly_edt);
+                    final EditText StoragePerc=dialog1.findViewById(R.id.storage_percent_edt);
+
+                    confirm.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog1.dismiss();
+                            Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                            Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
+
+                            String morning="0,60";
+                            String peak="0,92";
+                            String offpeak="0,34";
+                            String tax="0,2366";
+                            String avgconsmonth=AvgConsMonth.getText().toString();
+                            String morconsmonth=MorConsMonth.getText().toString();
+                            String avgmonthbill=AvgMonthBill.getText().toString();
+                            String resgendaily= ResGenDaily.getText().toString();
+                            String resgenmonthly=ResGenMonthly.getText().toString();
+                            String storageperc=StoragePerc.getText().toString();
+
+                            Bundle bundle=new Bundle();
+                            bundle.putString("i",morning);
+                            bundle.putString("ii",peak);
+                            bundle.putString("iii",offpeak);
+                            bundle.putString("iv",tax);
+                            bundle.putString("v",avgconsmonth);
+                            bundle.putString("vi",morconsmonth);
+                            bundle.putString("vii",avgmonthbill);
+                            bundle.putString("viii",resgendaily);
+                            bundle.putString("ix",resgenmonthly);
+                            bundle.putString("x",storageperc);
+                            calculationIntent.putExtras(bundle);
+                            intent.putExtras(bundletype);
+                            startActivity(intent);
+                        }
+                    });
+
+
+
+
+
+                    Window window = dialog1.getWindow();
+                    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                }
 
             }
         });

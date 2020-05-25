@@ -21,7 +21,7 @@ public class ResTypeActivity extends AppCompatActivity {
 Button  windbtn, pvbtn, biomassbtn;
 RadioButton pickedTurbine;
 Bundle bundle1;
-String morning,peak,offpeak,tax,avgconsmonth,consyear,morconsmonth,avgmonthbill;
+String morning,peak,offpeak,tax,avgconsmonth,consyear,morconsmonth,avgmonthbill,typeuser;
 String rdbtext;
     final Context context = this;
 
@@ -34,17 +34,22 @@ String rdbtext;
         pvbtn=findViewById(R.id.button_PV);
         biomassbtn=findViewById(R.id.button_biomass);
 
-        bundle1 = getIntent().getExtras();
-        morning=bundle1.getString("i");
-        peak=bundle1.getString("ii");
-        offpeak=bundle1.getString("iii");
-        tax=bundle1.getString("iv");
-        avgconsmonth=bundle1.getString("v");
-        consyear=bundle1.getString("vi");
-        morconsmonth=bundle1.getString("vii");
-        avgmonthbill=bundle1.getString("viii");
+        //SONUC EKRANINA GÖNDERILECEK DIREK BURDA ISI YOK....
 
-        Toast.makeText(getApplicationContext(),morning+"\n"+peak+"\n"+offpeak+"\n"+tax+"\n"+avgconsmonth+"\n"+consyear+"\n"+morconsmonth+"\n"+avgmonthbill,Toast.LENGTH_LONG).show();
+        bundle1 = getIntent().getExtras();
+        typeuser=bundle1.getString("TypeUser");
+
+        Toast.makeText(getApplicationContext(), typeuser, Toast.LENGTH_SHORT).show();
+//        morning=bundle1.getString("i");
+//        peak=bundle1.getString("ii");
+//        offpeak=bundle1.getString("iii");
+//        tax=bundle1.getString("iv");
+//        avgconsmonth=bundle1.getString("v");
+//        consyear=bundle1.getString("vi");
+//        morconsmonth=bundle1.getString("vii");
+//        avgmonthbill=bundle1.getString("viii");
+//
+//        Toast.makeText(getApplicationContext(),morning+"\n"+peak+"\n"+offpeak+"\n"+tax+"\n"+avgconsmonth+"\n"+consyear+"\n"+morconsmonth+"\n"+avgmonthbill,Toast.LENGTH_LONG).show();
 
 
 
@@ -101,14 +106,22 @@ String rdbtext;
         ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 int selectedId = turbineGroup.getCheckedRadioButtonId();
                 Toast.makeText(context, rdbtext + "" , Toast.LENGTH_SHORT).show();
-                //pickedTurbine = findViewById(selectedId);
-                //String turbinAdi = pickedTurbine.getText().toString();
                 Toast.makeText(context,  rdbtext+ "\n"+ turbineCount.getText() , Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
+
+                Intent intentwind =new Intent(ResTypeActivity.this, StorageTypeActivity.class);
+                Intent intentcaluclation=new Intent(ResTypeActivity.this,CalculationActivity.class);
+                Bundle bundlewind= new Bundle();
+                String turtype=rdbtext;
+                String turcount=turbineCount.getText().toString();
+                bundlewind.putString("TurbıneType",turtype);
+                bundlewind.putString("TurbıneCount",turcount);
+                intentcaluclation.putExtras(bundlewind);
+                startActivity(intentwind);
+
+
+
             }
         });
 

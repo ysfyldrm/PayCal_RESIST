@@ -492,6 +492,14 @@ public class TariffSelectionActivity extends AppCompatActivity {
 
         // custom dialog elemanlarını tanımla - text, image ve button
         Button ownconfirmbtn=dialog.findViewById(R.id.own_confirm_button);
+        final EditText morningTariff=dialog.findViewById(R.id.morningTariff_edt);
+        final EditText peakTariff=dialog.findViewById(R.id.peakTariff_edt);
+        final EditText taxx=dialog.findViewById(R.id.tax_edt);
+        final EditText consavgMonth=dialog.findViewById(R.id.cons_avgmonth_edt);
+        final EditText consyear=dialog.findViewById(R.id.cons_year_edt);
+        final EditText morningconsmonth=dialog.findViewById(R.id.morning_cons_month_edt);
+        final EditText avgmonthbill=dialog.findViewById(R.id.avg_month_bill_edt);
+
 
         // custom dialog elemanlarına değer ataması yap - text, image
 
@@ -501,6 +509,21 @@ public class TariffSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "Ownconfirme basıldı", Toast.LENGTH_SHORT).show();
+                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("Morning Tariff",morningTariff.getText().toString());
+                editor.putString("Peak Tariff",peakTariff.getText().toString());
+                editor.putString("Tax",taxx.getText().toString());
+                editor.putString("Cons Avg Month",consavgMonth.getText().toString());
+                editor.putString("Cons Year",consyear.getText().toString());
+                editor.putString("Morning Cons Month",morningconsmonth.getText().toString());
+                editor.putString("Avg Month Bill",avgmonthbill.getText().toString());
+                editor.commit();
+
+                Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                startActivity(intent);
+
             }
         });
 

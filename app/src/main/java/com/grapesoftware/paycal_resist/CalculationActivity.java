@@ -9,17 +9,8 @@ import android.widget.Toast;
 
 
 public class CalculationActivity extends AppCompatActivity {
-    String typeforuser;
-    String morning;
-    String peak;
-    String offpeak;
-    String tax;
-    String avgconsmonth;
-    String morconsmonth;
-    String avgmonthbill;
-    String resgendaily;
-    String resgenmonthly;
-    String storageperc;
+    String typeforuser,morning,peak,offpeak,tax,avgconsmonth,morconsmonth,avgmonthbill,resgendaily,resgenmonthly,storageperc,restype,turbinetype,turbinecount,consyear,solararea;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,19 +19,40 @@ public class CalculationActivity extends AppCompatActivity {
 
         SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
         typeforuser = preferences.getString("Type", "Consumer");
-        morning=preferences.getString("i",null);
-        peak=preferences.getString("ii",null);
-        offpeak=preferences.getString("iii",null);
-        tax=preferences.getString("iv",null);
-        avgconsmonth=preferences.getString("v",null);
-        morconsmonth=preferences.getString("vi",null);
-        avgmonthbill=preferences.getString("vii",null);
-        resgendaily=preferences.getString("viii",null);
-        resgenmonthly=preferences.getString("ix",null);
-        storageperc=preferences.getString("x",null);
+        morning=preferences.getString("Morning Tariff",null);
+        peak=preferences.getString("Peak Tariff",null);
+        offpeak=preferences.getString("Off Peak Tariff",null);
+        tax=preferences.getString("Tax",null);
+        avgconsmonth=preferences.getString("Cons Avg Month",null);
+        morconsmonth=preferences.getString("Morning Cons Month",null);
+        avgmonthbill=preferences.getString("Avg Month Bill",null);
+        resgendaily=preferences.getString("RES Gen Daily",null);
+        resgenmonthly=preferences.getString("RES Gen Monthly",null);
+        storageperc=preferences.getString("Storage Percentage",null);
+        restype=preferences.getString("RES Type",null);
+        turbinecount=preferences.getString("Turbine Count",null);
+        turbinetype=preferences.getString("Turbine Type",null);
+        consyear=preferences.getString("Cons Year",null);
+        solararea=preferences.getString("Solar Area",null);
 
 
-        Toast.makeText(getApplicationContext(),typeforuser+"\n"+morning+"\n"+peak+"\n"+offpeak+"\n"+tax+"\n"+avgconsmonth+"\n"+morconsmonth+"\n"+avgmonthbill+"\n"+resgendaily+"\n"+resgenmonthly+"\n"+storageperc,Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),
+                "Type: "+typeforuser+"\n"+
+                "Morning Tariff: "+morning+"\n"+
+                "Peak Tariff: "+peak+"\n"+
+                "Off Peak Tariff: "+offpeak+"\n"+
+                "Tax: "+tax+"\n"+
+                "Cons Month Avg: "+avgconsmonth+"\n"+
+                "Morning Cons Month: "+morconsmonth+"\n"+
+                "Avg Month Bill: "+avgmonthbill+"\n"+
+                "RES Gen Daily: "+resgendaily+"\n"+
+                "RES Gen Monthly: "+resgenmonthly+"\n"+
+                "Storage Percentage: "+storageperc+"\n"+
+                "RES Type: "+restype+"\n"+
+                "Turbine Count: "+turbinecount+"\n"+
+                "Turbine Type: "+turbinetype+"\n"+
+                "Cons Year: "+consyear+"\n"+
+                "Solar Area: "+solararea,Toast.LENGTH_LONG).show();
 
 
 //        SharedPreferences settings = context.getSharedPreferences("session", Context.MODE_PRIVATE);

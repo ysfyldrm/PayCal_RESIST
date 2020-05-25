@@ -61,7 +61,7 @@ String rdbtext;
                 SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("restype",windbtn.getText().toString());
+                editor.putString("RES Type",windbtn.getText().toString());
                 editor.commit();
 
                 showMyCustomWindTurbinDialog();
@@ -77,7 +77,7 @@ String rdbtext;
                 SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("restype",pvbtn.getText().toString());
+                editor.putString("RES Type",pvbtn.getText().toString());
                 editor.commit();
 
                 startActivity(intent);
@@ -123,13 +123,14 @@ String rdbtext;
                 Toast.makeText(context,  rdbtext+ "\n"+ turbineCount.getText() , Toast.LENGTH_SHORT).show();
 
                 Intent intentwind =new Intent(ResTypeActivity.this, StorageTypeActivity.class);
-                Intent intentcaluclation=new Intent(ResTypeActivity.this,CalculationActivity.class);
-                Bundle bundlewind= new Bundle();
                 String turtype=rdbtext;
                 String turcount=turbineCount.getText().toString();
-                bundlewind.putString("TurbıneType",turtype);
-                bundlewind.putString("TurbıneCount",turcount);
-                intentcaluclation.putExtras(bundlewind);
+
+                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("Turbine Type",turtype);
+                editor.putString("Turbine Count",turcount);
+                editor.commit();
                 startActivity(intentwind);
 
 

@@ -41,7 +41,7 @@ public class StorageTypeActivity extends AppCompatActivity {
 
         SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
         typeforuser = preferences.getString("Type", "Consumer");
-        restype=preferences.getString("restype",null);
+        restype=preferences.getString("RES Type",null);
 
         Toast.makeText(context, restype, Toast.LENGTH_SHORT).show();
 
@@ -127,7 +127,7 @@ public class StorageTypeActivity extends AppCompatActivity {
 
                 SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("Area", areaCount.getText().toString());
+                editor.putString("Solar Area", areaCount.getText().toString());
                 editor.commit();
 
                 Toast.makeText(context, areaCount.getText(), Toast.LENGTH_SHORT).show();
@@ -181,7 +181,7 @@ public class StorageTypeActivity extends AppCompatActivity {
 
                 SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("percentage", percentageView.getText().toString());
+                editor.putString("Storage Percentage", percentageView.getText().toString());
                 editor.commit();
 
                 Intent calculate=new Intent(StorageTypeActivity.this,CalculationActivity.class);

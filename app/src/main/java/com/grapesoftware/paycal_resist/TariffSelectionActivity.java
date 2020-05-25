@@ -125,14 +125,14 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("i",morning);
-                            editor.putString("ii",peak);
-                            editor.putString("iii",offpeak);
-                            editor.putString("iv",tax);
-                            editor.putString("v",avgconsmonth);
-                            editor.putString("vi",consyear);
-                            editor.putString("vii",morconsmonth);
-                            editor.putString("viii",avgmonthbill);
+                            editor.putString("Morning Tariff",morning);
+                            editor.putString("Peak Tariff",peak);
+                            editor.putString("Off Peak Tariff",offpeak);
+                            editor.putString("Tax",tax);
+                            editor.putString("Cons Avg Month",avgconsmonth);
+                            editor.putString("Cons Year",consyear);
+                            editor.putString("Morning Cons Month",morconsmonth);
+                            editor.putString("Avg Month Bill",avgmonthbill);
 
                             editor.commit();
 
@@ -190,14 +190,14 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("i",morning);
-                            editor.putString("ii",peak);
-                            editor.putString("iii",offpeak);
-                            editor.putString("iv",tax);
-                            editor.putString("v",avgconsmonth);
-                            editor.putString("vi",consyear);
-                            editor.putString("vii",morconsmonth);
-                            editor.putString("viii",avgmonthbill);
+                            editor.putString("Morning Tariff",morning);
+                            editor.putString("Peak Tariff",peak);
+                            editor.putString("Off Peak Tariff",offpeak);
+                            editor.putString("Tax",tax);
+                            editor.putString("Cons Avg Month",avgconsmonth);
+                            editor.putString("Cons Year",consyear);
+                            editor.putString("Morning Cons Month",morconsmonth);
+                            editor.putString("Avg Month Bill",avgmonthbill);
 
                             editor.commit();
 
@@ -257,14 +257,14 @@ public class TariffSelectionActivity extends AppCompatActivity {
 
                             SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("i",morning);
-                            editor.putString("ii",peak);
-                            editor.putString("iii",offpeak);
-                            editor.putString("iv",tax);
-                            editor.putString("v",avgconsmonth);
-                            editor.putString("vi",consyear);
-                            editor.putString("vii",morconsmonth);
-                            editor.putString("viii",avgmonthbill);
+                            editor.putString("Morning Tariff",morning);
+                            editor.putString("Peak Tariff",peak);
+                            editor.putString("Off Peak Tariff",offpeak);
+                            editor.putString("Tax",tax);
+                            editor.putString("Cons Avg Month",avgconsmonth);
+                            editor.putString("Cons Year",consyear);
+                            editor.putString("Morning Cons Month",morconsmonth);
+                            editor.putString("Avg Month Bill",avgmonthbill);
 
                             editor.commit();
 
@@ -308,7 +308,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),AvgConsMonth.getText()+"\n"+ConsYear.getText()+"\n"+MorConsMonth.getText()+"\n"+AvgMonthBill.getText(),Toast.LENGTH_LONG).show();
                             dialog1.dismiss();
                             Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
-                            Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
 
                             String morning="0,72";
                             String peak="1,07";
@@ -321,14 +320,14 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("i",morning);
-                            editor.putString("ii",peak);
-                            editor.putString("iii",offpeak);
-                            editor.putString("iv",tax);
-                            editor.putString("v",avgconsmonth);
-                            editor.putString("vi",consyear);
-                            editor.putString("vii",morconsmonth);
-                            editor.putString("viii",avgmonthbill);
+                            editor.putString("Morning Tariff",morning);
+                            editor.putString("Peak Tariff",peak);
+                            editor.putString("Off Peak Tariff",offpeak);
+                            editor.putString("Tax",tax);
+                            editor.putString("Cons Avg Month",avgconsmonth);
+                            editor.putString("Cons Year",consyear);
+                            editor.putString("Morning Cons Month",morconsmonth);
+                            editor.putString("Avg Month Bill",avgmonthbill);
 
                             editor.commit();
 
@@ -372,7 +371,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),AvgConsMonth.getText()+"\n"+ConsYear.getText()+"\n"+MorConsMonth.getText()+"\n"+AvgMonthBill.getText(),Toast.LENGTH_LONG).show();
                             dialog1.dismiss();
                             Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
-                            Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
 
                             String morning="0,66";
                             String peak="0,99";
@@ -385,14 +383,14 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("i",morning);
-                            editor.putString("ii",peak);
-                            editor.putString("iii",offpeak);
-                            editor.putString("iv",tax);
-                            editor.putString("v",avgconsmonth);
-                            editor.putString("vi",consyear);
-                            editor.putString("vii",morconsmonth);
-                            editor.putString("viii",avgmonthbill);
+                            editor.putString("Morning Tariff",morning);
+                            editor.putString("Peak Tariff",peak);
+                            editor.putString("Off Peak Tariff",offpeak);
+                            editor.putString("Tax",tax);
+                            editor.putString("Cons Avg Month",avgconsmonth);
+                            editor.putString("Cons Year",consyear);
+                            editor.putString("Morning Cons Month",morconsmonth);
+                            editor.putString("Avg Month Bill",avgmonthbill);
 
                             editor.commit();
 
@@ -437,7 +435,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),AvgConsMonth.getText()+"\n"+ConsYear.getText()+"\n"+MorConsMonth.getText()+"\n"+AvgMonthBill.getText(),Toast.LENGTH_LONG).show();
                             dialog1.dismiss();
                             Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
-                            Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
 
                             String morning="0,60";
                             String peak="0,92";
@@ -450,14 +447,14 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("i",morning);
-                            editor.putString("ii",peak);
-                            editor.putString("iii",offpeak);
-                            editor.putString("iv",tax);
-                            editor.putString("v",avgconsmonth);
-                            editor.putString("vi",consyear);
-                            editor.putString("vii",morconsmonth);
-                            editor.putString("viii",avgmonthbill);
+                            editor.putString("Morning Tariff",morning);
+                            editor.putString("Peak Tariff",peak);
+                            editor.putString("Off Peak Tariff",offpeak);
+                            editor.putString("Tax",tax);
+                            editor.putString("Cons Avg Month",avgconsmonth);
+                            editor.putString("Cons Year",consyear);
+                            editor.putString("Morning Cons Month",morconsmonth);
+                            editor.putString("Avg Month Bill",avgmonthbill);
 
                             editor.commit();
 
@@ -598,16 +595,16 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("i",morning);
-                            editor.putString("ii",peak);
-                            editor.putString("iii",offpeak);
-                            editor.putString("iv",tax);
-                            editor.putString("v",avgconsmonth);
-                            editor.putString("vi",morconsmonth);
-                            editor.putString("vii",avgmonthbill);
-                            editor.putString("viii",resgendaily);
-                            editor.putString("ix",resgenmonthly);
-                            editor.putString("x",storageperc);
+                            editor.putString("Morning Tariff",morning);
+                            editor.putString("Peak Tariff",peak);
+                            editor.putString("Off Peak Tariff",offpeak);
+                            editor.putString("Tax",tax);
+                            editor.putString("Cons Avg Month",avgconsmonth);
+                            editor.putString("Morning Cons Month",morconsmonth);
+                            editor.putString("Avg Month Bill",avgmonthbill);
+                            editor.putString("RES Gen Daily",resgendaily);
+                            editor.putString("RES Gen Monthly",resgenmonthly);
+                            editor.putString("Storage Percentage",storageperc);
 
                             editor.commit();
 
@@ -667,16 +664,17 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("i",morning);
-                            editor.putString("ii",peak);
-                            editor.putString("iii",offpeak);
-                            editor.putString("iv",tax);
-                            editor.putString("v",avgconsmonth);
-                            editor.putString("vi",morconsmonth);
-                            editor.putString("vii",avgmonthbill);
-                            editor.putString("viii",resgendaily);
-                            editor.putString("ix",resgenmonthly);
-                            editor.putString("x",storageperc);
+
+                            editor.putString("Morning Tariff",morning);
+                            editor.putString("Peak Tariff",peak);
+                            editor.putString("Off Peak Tariff",offpeak);
+                            editor.putString("Tax",tax);
+                            editor.putString("Cons Avg Month",avgconsmonth);
+                            editor.putString("Morning Cons Month",morconsmonth);
+                            editor.putString("Avg Month Bill",avgmonthbill);
+                            editor.putString("RES Gen Daily",resgendaily);
+                            editor.putString("RES Gen Monthly",resgenmonthly);
+                            editor.putString("Storage Percentage",storageperc);
 
                             editor.commit();
                             startActivity(intent);
@@ -735,16 +733,16 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("i",morning);
-                            editor.putString("ii",peak);
-                            editor.putString("iii",offpeak);
-                            editor.putString("iv",tax);
-                            editor.putString("v",avgconsmonth);
-                            editor.putString("vi",morconsmonth);
-                            editor.putString("vii",avgmonthbill);
-                            editor.putString("viii",resgendaily);
-                            editor.putString("ix",resgenmonthly);
-                            editor.putString("x",storageperc);
+                            editor.putString("Morning Tariff",morning);
+                            editor.putString("Peak Tariff",peak);
+                            editor.putString("Off Peak Tariff",offpeak);
+                            editor.putString("Tax",tax);
+                            editor.putString("Cons Avg Month",avgconsmonth);
+                            editor.putString("Morning Cons Month",morconsmonth);
+                            editor.putString("Avg Month Bill",avgmonthbill);
+                            editor.putString("RES Gen Daily",resgendaily);
+                            editor.putString("RES Gen Monthly",resgenmonthly);
+                            editor.putString("Storage Percentage",storageperc);
 
                             editor.commit();
 
@@ -804,16 +802,16 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("i",morning);
-                            editor.putString("ii",peak);
-                            editor.putString("iii",offpeak);
-                            editor.putString("iv",tax);
-                            editor.putString("v",avgconsmonth);
-                            editor.putString("vi",morconsmonth);
-                            editor.putString("vii",avgmonthbill);
-                            editor.putString("viii",resgendaily);
-                            editor.putString("ix",resgenmonthly);
-                            editor.putString("x",storageperc);
+                            editor.putString("Morning Tariff",morning);
+                            editor.putString("Peak Tariff",peak);
+                            editor.putString("Off Peak Tariff",offpeak);
+                            editor.putString("Tax",tax);
+                            editor.putString("Cons Avg Month",avgconsmonth);
+                            editor.putString("Morning Cons Month",morconsmonth);
+                            editor.putString("Avg Month Bill",avgmonthbill);
+                            editor.putString("RES Gen Daily",resgendaily);
+                            editor.putString("RES Gen Monthly",resgenmonthly);
+                            editor.putString("Storage Percentage",storageperc);
 
                             editor.commit();
 
@@ -873,16 +871,16 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("i",morning);
-                            editor.putString("ii",peak);
-                            editor.putString("iii",offpeak);
-                            editor.putString("iv",tax);
-                            editor.putString("v",avgconsmonth);
-                            editor.putString("vi",morconsmonth);
-                            editor.putString("vii",avgmonthbill);
-                            editor.putString("viii",resgendaily);
-                            editor.putString("ix",resgenmonthly);
-                            editor.putString("x",storageperc);
+                            editor.putString("Morning Tariff",morning);
+                            editor.putString("Peak Tariff",peak);
+                            editor.putString("Off Peak Tariff",offpeak);
+                            editor.putString("Tax",tax);
+                            editor.putString("Cons Avg Month",avgconsmonth);
+                            editor.putString("Morning Cons Month",morconsmonth);
+                            editor.putString("Avg Month Bill",avgmonthbill);
+                            editor.putString("RES Gen Daily",resgendaily);
+                            editor.putString("RES Gen Monthly",resgenmonthly);
+                            editor.putString("Storage Percentage",storageperc);
 
                             editor.commit();
 
@@ -942,16 +940,16 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("i",morning);
-                            editor.putString("ii",peak);
-                            editor.putString("iii",offpeak);
-                            editor.putString("iv",tax);
-                            editor.putString("v",avgconsmonth);
-                            editor.putString("vi",morconsmonth);
-                            editor.putString("vii",avgmonthbill);
-                            editor.putString("viii",resgendaily);
-                            editor.putString("ix",resgenmonthly);
-                            editor.putString("x",storageperc);
+                            editor.putString("Morning Tariff",morning);
+                            editor.putString("Peak Tariff",peak);
+                            editor.putString("Off Peak Tariff",offpeak);
+                            editor.putString("Tax",tax);
+                            editor.putString("Cons Avg Month",avgconsmonth);
+                            editor.putString("Morning Cons Month",morconsmonth);
+                            editor.putString("Avg Month Bill",avgmonthbill);
+                            editor.putString("RES Gen Daily",resgendaily);
+                            editor.putString("RES Gen Monthly",resgenmonthly);
+                            editor.putString("Storage Percentage",storageperc);
 
                             editor.commit();
 

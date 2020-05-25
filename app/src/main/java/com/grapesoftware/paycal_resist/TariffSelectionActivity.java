@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -121,16 +122,19 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             String consyear=ConsYear.getText().toString();
                             String morconsmonth=MorConsMonth.getText().toString();
                             String avgmonthbill=AvgMonthBill.getText().toString();
-                            Bundle bundle=new Bundle();
-                            bundle.putString("i",morning);
-                            bundle.putString("ii",peak);
-                            bundle.putString("iii",offpeak);
-                            bundle.putString("iv",tax);
-                            bundle.putString("v",avgconsmonth);
-                            bundle.putString("vi",consyear);
-                            bundle.putString("vii",morconsmonth);
-                            bundle.putString("viii",avgmonthbill);
-                            calculationIntent.putExtras(bundle);
+                            SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putString("i",morning);
+                            editor.putString("ii",peak);
+                            editor.putString("iii",offpeak);
+                            editor.putString("iv",tax);
+                            editor.putString("v",avgconsmonth);
+                            editor.putString("vi",consyear);
+                            editor.putString("vii",morconsmonth);
+                            editor.putString("viii",avgmonthbill);
+
+                            editor.commit();
 
                             startActivity(intent);
                         }
@@ -173,7 +177,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),AvgConsMonth.getText()+"\n"+ConsYear.getText()+"\n"+MorConsMonth.getText()+"\n"+AvgMonthBill.getText(),Toast.LENGTH_LONG).show();
                             dialog1.dismiss();
                             Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
-                            Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
 
                             String morning="0,54";
                             String peak="0,82";
@@ -183,16 +186,20 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             String consyear=ConsYear.getText().toString();
                             String morconsmonth=MorConsMonth.getText().toString();
                             String avgmonthbill=AvgMonthBill.getText().toString();
-                            Bundle bundle=new Bundle();
-                            bundle.putString("i",morning);
-                            bundle.putString("ii",peak);
-                            bundle.putString("iii",offpeak);
-                            bundle.putString("iv",tax);
-                            bundle.putString("v",avgconsmonth);
-                            bundle.putString("vi",consyear);
-                            bundle.putString("vii",morconsmonth);
-                            bundle.putString("viii",avgmonthbill);
-                            calculationIntent.putExtras(bundle);
+
+                            SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putString("i",morning);
+                            editor.putString("ii",peak);
+                            editor.putString("iii",offpeak);
+                            editor.putString("iv",tax);
+                            editor.putString("v",avgconsmonth);
+                            editor.putString("vi",consyear);
+                            editor.putString("vii",morconsmonth);
+                            editor.putString("viii",avgmonthbill);
+
+                            editor.commit();
 
                             startActivity(intent);
                         }
@@ -247,16 +254,19 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             String consyear=ConsYear.getText().toString();
                             String morconsmonth=MorConsMonth.getText().toString();
                             String avgmonthbill=AvgMonthBill.getText().toString();
-                            Bundle bundle=new Bundle();
-                            bundle.putString("i",morning);
-                            bundle.putString("ii",peak);
-                            bundle.putString("iii",offpeak);
-                            bundle.putString("iv",tax);
-                            bundle.putString("v",avgconsmonth);
-                            bundle.putString("vi",consyear);
-                            bundle.putString("vii",morconsmonth);
-                            bundle.putString("viii",avgmonthbill);
-                            calculationIntent.putExtras(bundle);
+
+                            SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putString("i",morning);
+                            editor.putString("ii",peak);
+                            editor.putString("iii",offpeak);
+                            editor.putString("iv",tax);
+                            editor.putString("v",avgconsmonth);
+                            editor.putString("vi",consyear);
+                            editor.putString("vii",morconsmonth);
+                            editor.putString("viii",avgmonthbill);
+
+                            editor.commit();
 
                             startActivity(intent);
                         }
@@ -308,16 +318,19 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             String consyear=ConsYear.getText().toString();
                             String morconsmonth=MorConsMonth.getText().toString();
                             String avgmonthbill=AvgMonthBill.getText().toString();
-                            Bundle bundle=new Bundle();
-                            bundle.putString("i",morning);
-                            bundle.putString("ii",peak);
-                            bundle.putString("iii",offpeak);
-                            bundle.putString("iv",tax);
-                            bundle.putString("v",avgconsmonth);
-                            bundle.putString("vi",consyear);
-                            bundle.putString("vii",morconsmonth);
-                            bundle.putString("viii",avgmonthbill);
-                            calculationIntent.putExtras(bundle);
+                            SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putString("i",morning);
+                            editor.putString("ii",peak);
+                            editor.putString("iii",offpeak);
+                            editor.putString("iv",tax);
+                            editor.putString("v",avgconsmonth);
+                            editor.putString("vi",consyear);
+                            editor.putString("vii",morconsmonth);
+                            editor.putString("viii",avgmonthbill);
+
+                            editor.commit();
 
                             startActivity(intent);
                         }
@@ -369,16 +382,19 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             String consyear=ConsYear.getText().toString();
                             String morconsmonth=MorConsMonth.getText().toString();
                             String avgmonthbill=AvgMonthBill.getText().toString();
-                            Bundle bundle=new Bundle();
-                            bundle.putString("i",morning);
-                            bundle.putString("ii",peak);
-                            bundle.putString("iii",offpeak);
-                            bundle.putString("iv",tax);
-                            bundle.putString("v",avgconsmonth);
-                            bundle.putString("vi",consyear);
-                            bundle.putString("vii",morconsmonth);
-                            bundle.putString("viii",avgmonthbill);
-                            calculationIntent.putExtras(bundle);
+                            SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putString("i",morning);
+                            editor.putString("ii",peak);
+                            editor.putString("iii",offpeak);
+                            editor.putString("iv",tax);
+                            editor.putString("v",avgconsmonth);
+                            editor.putString("vi",consyear);
+                            editor.putString("vii",morconsmonth);
+                            editor.putString("viii",avgmonthbill);
+
+                            editor.commit();
 
                             startActivity(intent);
                         }
@@ -431,16 +447,19 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             String consyear=ConsYear.getText().toString();
                             String morconsmonth=MorConsMonth.getText().toString();
                             String avgmonthbill=AvgMonthBill.getText().toString();
-                            Bundle bundle=new Bundle();
-                            bundle.putString("i",morning);
-                            bundle.putString("ii",peak);
-                            bundle.putString("iii",offpeak);
-                            bundle.putString("iv",tax);
-                            bundle.putString("v",avgconsmonth);
-                            bundle.putString("vi",consyear);
-                            bundle.putString("vii",morconsmonth);
-                            bundle.putString("viii",avgmonthbill);
-                            calculationIntent.putExtras(bundle);
+                            SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putString("i",morning);
+                            editor.putString("ii",peak);
+                            editor.putString("iii",offpeak);
+                            editor.putString("iv",tax);
+                            editor.putString("v",avgconsmonth);
+                            editor.putString("vi",consyear);
+                            editor.putString("vii",morconsmonth);
+                            editor.putString("viii",avgmonthbill);
+
+                            editor.commit();
 
                             startActivity(intent);
                         }
@@ -496,8 +515,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
         // dialog nesnesi oluştur ve layout dosyasına bağlan
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.prosumer_type);
-        final Bundle bundletype=new Bundle();
-        bundletype.putString("TypeUser",typeforuser);
+
 
         // custom dialog elemanlarını tanımla - text, image ve button
         Button reslowvolt=dialog.findViewById(R.id.button_res_low_voltage);
@@ -554,20 +572,22 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             String resgenmonthly=ResGenMonthly.getText().toString();
                             String storageperc=StoragePerc.getText().toString();
 
-                            Bundle bundle=new Bundle();
-                            bundle.putString("i",morning);
-                            bundle.putString("ii",peak);
-                            bundle.putString("iii",offpeak);
-                            bundle.putString("iv",tax);
-                            bundle.putString("v",avgconsmonth);
-                            bundle.putString("vi",morconsmonth);
-                            bundle.putString("vii",avgmonthbill);
-                            bundle.putString("viii",resgendaily);
-                            bundle.putString("ix",resgenmonthly);
-                            bundle.putString("x",storageperc);
+                            SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
-                            calculationIntent.putExtras(bundle);
-                            intent.putExtras(bundletype);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putString("i",morning);
+                            editor.putString("ii",peak);
+                            editor.putString("iii",offpeak);
+                            editor.putString("iv",tax);
+                            editor.putString("v",avgconsmonth);
+                            editor.putString("vi",morconsmonth);
+                            editor.putString("vii",avgmonthbill);
+                            editor.putString("viii",resgendaily);
+                            editor.putString("ix",resgenmonthly);
+                            editor.putString("x",storageperc);
+
+                            editor.commit();
+
                             startActivity(intent);
                         }
                     });
@@ -621,19 +641,21 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             String resgenmonthly=ResGenMonthly.getText().toString();
                             String storageperc=StoragePerc.getText().toString();
 
-                            Bundle bundle=new Bundle();
-                            bundle.putString("i",morning);
-                            bundle.putString("ii",peak);
-                            bundle.putString("iii",offpeak);
-                            bundle.putString("iv",tax);
-                            bundle.putString("v",avgconsmonth);
-                            bundle.putString("vi",morconsmonth);
-                            bundle.putString("vii",avgmonthbill);
-                            bundle.putString("viii",resgendaily);
-                            bundle.putString("ix",resgenmonthly);
-                            bundle.putString("x",storageperc);
-                            calculationIntent.putExtras(bundle);
-                            intent.putExtras(bundletype);
+                            SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putString("i",morning);
+                            editor.putString("ii",peak);
+                            editor.putString("iii",offpeak);
+                            editor.putString("iv",tax);
+                            editor.putString("v",avgconsmonth);
+                            editor.putString("vi",morconsmonth);
+                            editor.putString("vii",avgmonthbill);
+                            editor.putString("viii",resgendaily);
+                            editor.putString("ix",resgenmonthly);
+                            editor.putString("x",storageperc);
+
+                            editor.commit();
                             startActivity(intent);
                         }
                     });
@@ -687,19 +709,22 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             String resgenmonthly=ResGenMonthly.getText().toString();
                             String storageperc=StoragePerc.getText().toString();
 
-                            Bundle bundle=new Bundle();
-                            bundle.putString("i",morning);
-                            bundle.putString("ii",peak);
-                            bundle.putString("iii",offpeak);
-                            bundle.putString("iv",tax);
-                            bundle.putString("v",avgconsmonth);
-                            bundle.putString("vi",morconsmonth);
-                            bundle.putString("vii",avgmonthbill);
-                            bundle.putString("viii",resgendaily);
-                            bundle.putString("ix",resgenmonthly);
-                            bundle.putString("x",storageperc);
-                            calculationIntent.putExtras(bundle);
-                            intent.putExtras(bundletype);
+                            SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putString("i",morning);
+                            editor.putString("ii",peak);
+                            editor.putString("iii",offpeak);
+                            editor.putString("iv",tax);
+                            editor.putString("v",avgconsmonth);
+                            editor.putString("vi",morconsmonth);
+                            editor.putString("vii",avgmonthbill);
+                            editor.putString("viii",resgendaily);
+                            editor.putString("ix",resgenmonthly);
+                            editor.putString("x",storageperc);
+
+                            editor.commit();
+
                             startActivity(intent);
                         }
                     });
@@ -753,19 +778,22 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             String resgenmonthly=ResGenMonthly.getText().toString();
                             String storageperc=StoragePerc.getText().toString();
 
-                            Bundle bundle=new Bundle();
-                            bundle.putString("i",morning);
-                            bundle.putString("ii",peak);
-                            bundle.putString("iii",offpeak);
-                            bundle.putString("iv",tax);
-                            bundle.putString("v",avgconsmonth);
-                            bundle.putString("vi",morconsmonth);
-                            bundle.putString("vii",avgmonthbill);
-                            bundle.putString("viii",resgendaily);
-                            bundle.putString("ix",resgenmonthly);
-                            bundle.putString("x",storageperc);
-                            calculationIntent.putExtras(bundle);
-                            intent.putExtras(bundletype);
+                            SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putString("i",morning);
+                            editor.putString("ii",peak);
+                            editor.putString("iii",offpeak);
+                            editor.putString("iv",tax);
+                            editor.putString("v",avgconsmonth);
+                            editor.putString("vi",morconsmonth);
+                            editor.putString("vii",avgmonthbill);
+                            editor.putString("viii",resgendaily);
+                            editor.putString("ix",resgenmonthly);
+                            editor.putString("x",storageperc);
+
+                            editor.commit();
+
                             startActivity(intent);
                         }
                     });
@@ -819,19 +847,22 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             String resgenmonthly=ResGenMonthly.getText().toString();
                             String storageperc=StoragePerc.getText().toString();
 
-                            Bundle bundle=new Bundle();
-                            bundle.putString("i",morning);
-                            bundle.putString("ii",peak);
-                            bundle.putString("iii",offpeak);
-                            bundle.putString("iv",tax);
-                            bundle.putString("v",avgconsmonth);
-                            bundle.putString("vi",morconsmonth);
-                            bundle.putString("vii",avgmonthbill);
-                            bundle.putString("viii",resgendaily);
-                            bundle.putString("ix",resgenmonthly);
-                            bundle.putString("x",storageperc);
-                            calculationIntent.putExtras(bundle);
-                            intent.putExtras(bundletype);
+                            SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putString("i",morning);
+                            editor.putString("ii",peak);
+                            editor.putString("iii",offpeak);
+                            editor.putString("iv",tax);
+                            editor.putString("v",avgconsmonth);
+                            editor.putString("vi",morconsmonth);
+                            editor.putString("vii",avgmonthbill);
+                            editor.putString("viii",resgendaily);
+                            editor.putString("ix",resgenmonthly);
+                            editor.putString("x",storageperc);
+
+                            editor.commit();
+
                             startActivity(intent);
                         }
                     });
@@ -885,19 +916,22 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             String resgenmonthly=ResGenMonthly.getText().toString();
                             String storageperc=StoragePerc.getText().toString();
 
-                            Bundle bundle=new Bundle();
-                            bundle.putString("i",morning);
-                            bundle.putString("ii",peak);
-                            bundle.putString("iii",offpeak);
-                            bundle.putString("iv",tax);
-                            bundle.putString("v",avgconsmonth);
-                            bundle.putString("vi",morconsmonth);
-                            bundle.putString("vii",avgmonthbill);
-                            bundle.putString("viii",resgendaily);
-                            bundle.putString("ix",resgenmonthly);
-                            bundle.putString("x",storageperc);
-                            calculationIntent.putExtras(bundle);
-                            intent.putExtras(bundletype);
+                            SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putString("i",morning);
+                            editor.putString("ii",peak);
+                            editor.putString("iii",offpeak);
+                            editor.putString("iv",tax);
+                            editor.putString("v",avgconsmonth);
+                            editor.putString("vi",morconsmonth);
+                            editor.putString("vii",avgmonthbill);
+                            editor.putString("viii",resgendaily);
+                            editor.putString("ix",resgenmonthly);
+                            editor.putString("x",storageperc);
+
+                            editor.commit();
+
                             startActivity(intent);
                         }
                     });

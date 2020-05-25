@@ -38,13 +38,13 @@
             android:text="Storage %"
             />
 
-        <EditText
+        <TextView
+            android:id="@+id/storage_percent_tview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15sp"
             android:textColor="@color/colorTransparentWhite"
             android:backgroundTint="@color/colorTransparentWhite"
-            android:text="50"
             />
 
         <SeekBar
@@ -53,7 +53,6 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorTransparentWhite"
             android:max="100"
-            android:progress="50"
             android:min="0"
             />
 <!--            android:progressBackgroundTint=""-->

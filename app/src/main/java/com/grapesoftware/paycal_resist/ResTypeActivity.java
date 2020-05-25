@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -21,7 +22,7 @@ public class ResTypeActivity extends AppCompatActivity {
 Button  windbtn, pvbtn, biomassbtn;
 RadioButton pickedTurbine;
 Bundle bundle1;
-String morning,peak,offpeak,tax,avgconsmonth,consyear,morconsmonth,avgmonthbill,typeuser;
+String morning,peak,offpeak,tax,avgconsmonth,consyear,morconsmonth,avgmonthbill;
 String rdbtext;
     final Context context = this;
 
@@ -35,11 +36,8 @@ String rdbtext;
         biomassbtn=findViewById(R.id.button_biomass);
 
         //SONUC EKRANINA GÖNDERILECEK DIREK BURDA ISI YOK....
-
-        bundle1 = getIntent().getExtras();
-        typeuser=bundle1.getString("TypeUser");
-
-        Toast.makeText(getApplicationContext(), typeuser, Toast.LENGTH_SHORT).show();
+//
+//        bundle1 = getIntent().getExtras();
 //        morning=bundle1.getString("i");
 //        peak=bundle1.getString("ii");
 //        offpeak=bundle1.getString("iii");
@@ -50,9 +48,9 @@ String rdbtext;
 //        avgmonthbill=bundle1.getString("viii");
 //
 //        Toast.makeText(getApplicationContext(),morning+"\n"+peak+"\n"+offpeak+"\n"+tax+"\n"+avgconsmonth+"\n"+consyear+"\n"+morconsmonth+"\n"+avgmonthbill,Toast.LENGTH_LONG).show();
-
-
-
+//
+//
+//
 
 
         windbtn.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +58,12 @@ String rdbtext;
             public void onClick(View view) {
 //                Intent intent=new Intent(ResTypeActivity.this,StorageTypeActivity.class);
 //                startActivity(intent);
+                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("restype",windbtn.getText().toString());
+                editor.commit();
+
                 showMyCustomWindTurbinDialog();
 
             }
@@ -68,6 +72,14 @@ String rdbtext;
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(ResTypeActivity.this,StorageTypeActivity.class);
+
+
+                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("restype",pvbtn.getText().toString());
+                editor.commit();
+
                 startActivity(intent);
             }
         });
@@ -106,7 +118,7 @@ String rdbtext;
         ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int selectedId = turbineGroup.getCheckedRadioButtonId();
+
                 Toast.makeText(context, rdbtext + "" , Toast.LENGTH_SHORT).show();
                 Toast.makeText(context,  rdbtext+ "\n"+ turbineCount.getText() , Toast.LENGTH_SHORT).show();
 
@@ -119,7 +131,6 @@ String rdbtext;
                 bundlewind.putString("TurbıneCount",turcount);
                 intentcaluclation.putExtras(bundlewind);
                 startActivity(intentwind);
-
 
 
             }

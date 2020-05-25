@@ -3,6 +3,7 @@ package com.grapesoftware.paycal_resist;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,11 +27,17 @@ public class CustomerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent1 = new Intent(CustomerActivity.this,TariffSelectionActivity.class);
+
                 String type="Consumer";
                 Bundle bundle=new Bundle();
                 bundle.putString("Type",type);
                 intent1.putExtras(bundle);
                 startActivity(intent1);
+
+                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("Type", type);
+                editor.commit();
             }
         });
 
@@ -38,12 +45,16 @@ public class CustomerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent2 = new Intent(CustomerActivity.this,TariffSelectionActivity.class);
-
                 Bundle bundle=new Bundle();
                 String type="Prosumer";
                 bundle.putString("Type",type);
                 intent2.putExtras(bundle);
                 startActivity(intent2);
+
+                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("Type", type);
+                editor.commit();
 
             }
         });
@@ -57,6 +68,11 @@ public class CustomerActivity extends AppCompatActivity {
                 String type="Supplier";
                 bundle.putString("Type",type);
                 intent3.putExtras(bundle);
+
+                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("Type", type);
+                editor.commit();
                 startActivity(intent3);
 
             }

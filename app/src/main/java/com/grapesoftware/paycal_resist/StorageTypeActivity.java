@@ -55,6 +55,11 @@ public class StorageTypeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent finalize=new Intent(StorageTypeActivity.this, CalculationActivity.class);
+                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("Storage Type","NoStorage");
+                editor.commit();
+
                 startActivity(finalize);
 
 
@@ -70,6 +75,10 @@ public class StorageTypeActivity extends AppCompatActivity {
                 }
                 else if(restype.equals("WIND")){
                     Intent intent=new Intent(StorageTypeActivity.this,CalculationActivity.class);
+                    SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("Storage Type","Lion");
+                    editor.commit();
                     startActivity(intent);
                 }
 
@@ -85,6 +94,14 @@ public class StorageTypeActivity extends AppCompatActivity {
                 }
                 else if(restype.equals("WIND")){
                     Intent intent=new Intent(StorageTypeActivity.this,CalculationActivity.class);
+                    SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("Storage Type","Thermal");
+                    editor.putString("Thermal Eff","0.9");
+                    editor.putString("Thermal Dod","1");
+                    editor.putString("Thermal Price","0.32");
+                    editor.putString("Thermal Om Price","0.1");
+                    editor.commit();
                     startActivity(intent);
                 }
 
@@ -100,6 +117,10 @@ public class StorageTypeActivity extends AppCompatActivity {
                 }
                 else if(restype.equals("WIND")){
                     Intent intent=new Intent(StorageTypeActivity.this,CalculationActivity.class);
+                    SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("Storage Type","LeadAcid");
+                    editor.commit();
                     startActivity(intent);
                 }
 

@@ -48,11 +48,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".IntroActivity"></activity>
+        <activity android:name=".IntroActivity">
+
+        </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ForgetPassActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" >
+
+        </activity>
     </application>
 
 </manifest>

@@ -3,12 +3,15 @@ package com.grapesoftware.paycal_resist;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -28,6 +31,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     Marker marker;
+    String latitude,longitude;
 
 
     @Override
@@ -38,6 +42,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
+        latitude = preferences.getString("Latitude", null);
+        longitude=preferences.getString("Longitude",null);
+
+
+        Button button=findViewById(R.id.btnnextactivity);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(MapsActivity.this,CustomerActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -73,6 +92,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         .title(address.getLocality())
                         .position(new LatLng(latLng.latitude,latLng.longitude));
 
+                latitude=String.valueOf(latLng.latitude);
+                longitude=String.valueOf(latLng.longitude);
+
+                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("Latitude",latitude);
+                editor.putString("Longitude",longitude);
+                editor.commit();
+
                 Toast.makeText(getApplicationContext(),"Latitude="+latLng.latitude+"Longitude"+latLng.longitude,Toast.LENGTH_SHORT).show();
 
 
@@ -80,9 +109,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng sydney = new LatLng(Double.valueOf(latitude), Double.valueOf(longitude));
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Your Location"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,15));
 
     }
     public void findLocation(View v) throws IOException {
@@ -94,6 +123,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Address add = list.get(0);
         String locality = add.getLocality();
         LatLng ll = new LatLng(add.getLatitude(), add.getLongitude());
+
+        latitude=String.valueOf(add.getLatitude());
+        longitude=String.valueOf(add.getLongitude());
+
+        SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("Latitude",latitude);
+        editor.putString("Longitude",longitude);
+        editor.commit();
+
         CameraUpdate update = CameraUpdateFactory.newLatLngZoom(ll, 15);
         mMap.moveCamera(update);
         if(marker != null)

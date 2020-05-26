@@ -27,13 +27,14 @@
             android:textSize="20sp" />
 
         <EditText
-            android:layout_width="200dp"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:id="@+id/editTextLocate"
             android:textColor="@color/colorTransparentWhite"
             android:backgroundTint="@color/colorTransparentWhite"
             android:layout_marginLeft="10dp"
             android:fontFamily="@font/medium"
+            android:singleLine="true"
             android:layout_gravity="center_horizontal" />
 
         <Button
@@ -44,8 +45,20 @@
             android:textColor="@color/colorTransparentWhite"
             android:layout_marginLeft="20dp"
             android:text="Go"
-            android:id="@+id/button"
+            android:id="@+id/buttonmaps"
             android:onClick="findLocation" />
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button"
+            android:fontFamily="@font/bold"
+            android:textColor="@color/colorTransparentWhite"
+            android:layout_marginLeft="10dp"
+            android:text=">"
+            android:id="@+id/btnnextactivity"
+            />
+
+
 
     </LinearLayout>
 

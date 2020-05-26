@@ -45,9 +45,9 @@ public class StorageTypeActivity extends AppCompatActivity {
 
         Toast.makeText(context, restype, Toast.LENGTH_SHORT).show();
 
-//        if (typeforuser.equals("Prosumer")){
-//            noStorageBtn.setVisibility(View.GONE);
-//        }
+        if (typeforuser.equals("Prosumer")){
+            noStorageBtn.setVisibility(View.GONE);
+        }
 
 
 

@@ -157,39 +157,15 @@
         android:backgroundTint="@color/colorTransparentWhite"
         android:textSize="15sp" />
 
-    <TextView
-        android:id="@+id/storage_percent_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:layout_below="@id/res_gen_monthly_txt"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="30dp"
-        android:text="Storage Percentage = "
-        android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
-        />
 
-    <EditText
-        android:id="@+id/storage_percent_edt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/res_gen_mothly_edt"
-        android:layout_marginRight="30dp"
-        android:layout_toRightOf="@id/storage_percent_txt"
-        android:digits="0123456789.,"
-        android:inputType="number"
-        android:singleLine="true"
-        android:textColor="@color/colorTransparentWhite"
-        android:backgroundTint="@color/colorTransparentWhite"
-        android:textSize="15sp" />
+
 
     <Button
         android:id="@+id/wanted_data_confirm_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
-        android:layout_below="@id/storage_percent_txt"
+        android:layout_below="@id/res_gen_monthly_txt"
         android:layout_centerHorizontal="true"
         android:textSize="15sp"
         android:text="CONFIRM"

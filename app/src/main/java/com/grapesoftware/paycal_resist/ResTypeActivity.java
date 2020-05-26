@@ -22,7 +22,7 @@ public class ResTypeActivity extends AppCompatActivity {
 Button  windbtn, pvbtn, biomassbtn;
 RadioButton pickedTurbine;
 Bundle bundle1;
-String morning,peak,offpeak,tax,avgconsmonth,consyear,morconsmonth,avgmonthbill;
+String morning,peak,offpeak,tax,avgconsmonth,consyear,morconsmonth,avgmonthbill,typeforuser;
 String rdbtext;
     final Context context = this;
 
@@ -35,22 +35,13 @@ String rdbtext;
         pvbtn=findViewById(R.id.button_PV);
         biomassbtn=findViewById(R.id.button_biomass);
 
-        //SONUC EKRANINA GÖNDERILECEK DIREK BURDA ISI YOK....
-//
-//        bundle1 = getIntent().getExtras();
-//        morning=bundle1.getString("i");
-//        peak=bundle1.getString("ii");
-//        offpeak=bundle1.getString("iii");
-//        tax=bundle1.getString("iv");
-//        avgconsmonth=bundle1.getString("v");
-//        consyear=bundle1.getString("vi");
-//        morconsmonth=bundle1.getString("vii");
-//        avgmonthbill=bundle1.getString("viii");
-//
-//        Toast.makeText(getApplicationContext(),morning+"\n"+peak+"\n"+offpeak+"\n"+tax+"\n"+avgconsmonth+"\n"+consyear+"\n"+morconsmonth+"\n"+avgmonthbill,Toast.LENGTH_LONG).show();
-//
-//
-//
+
+        SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
+        typeforuser = preferences.getString("Type", "Consumer");
+
+        if(typeforuser.equals("Prosumer")){
+            windbtn.setVisibility(View.GONE);
+        }
 
 
         windbtn.setOnClickListener(new View.OnClickListener() {
@@ -71,16 +62,79 @@ String rdbtext;
         pvbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(ResTypeActivity.this,StorageTypeActivity.class);
+
+                {
+
+                    final Dialog dialog1=new Dialog(context);
+                    dialog1.setContentView(R.layout.after_prosumer_tariff);
+                    dialog1.show();
+
+                    Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
+                    final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
+                    final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
+                    final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
+                    final EditText ResGenDaily=dialog1.findViewById(R.id.res_gen_daily_edt);
+                    final EditText ResGenMonthly=dialog1.findViewById(R.id.res_gen_mothly_edt);
 
 
-                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("RES Type",pvbtn.getText().toString());
-                editor.commit();
 
-                startActivity(intent);
+
+                    confirm.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast.makeText(getApplicationContext(),AvgConsMonth.getText()+"\n"+ResGenMonthly.getText()+"\n"+MorConsMonth.getText()+"\n"+AvgMonthBill.getText()+"\n"+ResGenDaily.getText(),Toast.LENGTH_LONG).show();
+                            dialog1.dismiss();
+                            Intent intent=new Intent(ResTypeActivity.this,StorageTypeActivity.class);
+
+
+                            String avgconsmonth=AvgConsMonth.getText().toString();
+                            String morconsmonth=MorConsMonth.getText().toString();
+                            String avgmonthbill=AvgMonthBill.getText().toString();
+                            String resgendaily= ResGenDaily.getText().toString();
+                            String resgenmonthly=ResGenMonthly.getText().toString();
+                            SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putString("RES Type",pvbtn.getText().toString());
+                            editor.putString("Cons Avg Month",avgconsmonth);
+                            editor.putString("Morning Cons Month",morconsmonth);
+                            editor.putString("Avg Month Bill",avgmonthbill);
+                            editor.putString("RES Gen Daily",resgendaily);
+                            editor.putString("RES Gen Monthly",resgenmonthly);
+
+                            editor.commit();
+
+                            startActivity(intent);
+                        }
+                    });
+
+
+
+
+
+                    Window window = dialog1.getWindow();
+                    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+                }
+
+
+
+
+
+
+
+
+
+
+//                Intent intent=new Intent(ResTypeActivity.this,StorageTypeActivity.class);
+//                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+//
+//                SharedPreferences.Editor editor = preferences.edit();
+//                editor.putString("RES Type",pvbtn.getText().toString());
+//                editor.commit();
+//
+//                startActivity(intent);
             }
         });
         biomassbtn.setOnClickListener(new View.OnClickListener() {

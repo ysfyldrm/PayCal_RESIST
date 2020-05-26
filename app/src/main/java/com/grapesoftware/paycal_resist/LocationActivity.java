@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -52,14 +53,15 @@ public class LocationActivity extends AppCompatActivity {
     FusedLocationProviderClient fusedLocationProviderClient;
     ProgressBar dataProgressBar;
     private RequestQueue mQueue;
-    private DatabaseReference mDatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+
 
         //Assign Variable
         btLocation = findViewById(R.id.bt_location);
@@ -99,7 +101,9 @@ public class LocationActivity extends AppCompatActivity {
                 }
                 if (LocationCompleted == true) {
                     dataProgressBar.setVisibility(View.VISIBLE);
-                    jsonParse();
+                    Intent intent=new Intent(LocationActivity.this,MapsActivity.class);
+                    startActivity(intent);
+                    //jsonParse();
                 }
 
                 if (ActivityCompat.checkSelfPermission(LocationActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -149,6 +153,14 @@ public class LocationActivity extends AppCompatActivity {
 
                         //set address
                         textView5.setText(Html.fromHtml("<font color='#181a24'><b>Address :</b><br></font>" + addresses.get(0).getAddressLine(0)));
+
+
+                        SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putString("Latitude",Latitude);
+                        editor.putString("Longitude",Longitude);
+                        editor.commit();
 
 
                     } catch (IOException e) {

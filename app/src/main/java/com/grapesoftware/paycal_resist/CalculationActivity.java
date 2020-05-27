@@ -2,13 +2,20 @@ package com.grapesoftware.paycal_resist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.renderscript.Sampler;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +46,7 @@ public class CalculationActivity extends AppCompatActivity {
     Double eff,dod,storage_price,omprice;
     Double a13,storagepercentagee,avgwind;
     Double windkwarray;
+    final Context context = this;
 
 
     @Override
@@ -46,12 +54,14 @@ public class CalculationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculation);
 
+
         btLocation = findViewById(R.id.bt_location);
         showResult1 = findViewById(R.id.solarIrValue_txt);
         showResult2 = findViewById(R.id.windSp50Val);
         showResult3 = findViewById(R.id.windSp10Val);
         mQueue = Volley.newRequestQueue(this);
         dataProgressBar = findViewById(R.id.dataProgress_Bar);
+
 
 
 
@@ -170,6 +180,7 @@ public class CalculationActivity extends AppCompatActivity {
 
 
     }
+
 
     double ParseDouble(String strNumber) {
         if (strNumber != null && strNumber.length() > 0) {
@@ -333,28 +344,29 @@ public class CalculationActivity extends AppCompatActivity {
         Double windyearkwh,winddaykwh,windanualprofit,windcapitalcost,payback;
         Double windyearcost=0.00;
         Double [] cashflow = new Double[24];
-        avgwind=wwa13;
+
         windkwarraycalculate();
+
         if (turbinetype.equals("1 Kw")) {
-            price=3511.57;
+            price=3466.45;
             turbinetypevalue=1.0;
         }
         else if (turbinetype.equals("3 Kw")){
-            price=3108.84;
+            price=3068.89;
             turbinetypevalue=3.0;
 
         }
         else{
-            price=2579.95;
+            price=2545.67;
             turbinetypevalue=10.0;
         }
 
         ratedcapacity=dturbinecount*turbinetypevalue;
-        windyearkwh=windkwarray*8760;
+        windyearkwh=windkwarray*12*dturbinecount;
         winddaykwh=windyearkwh/365;
 
         if (dconsyear>=windyearkwh){
-            windanualprofit=(windyearkwh*dmorning*dtax)+(windyearkwh*dmorning);
+            windanualprofit=(windyearkwh*dmorning*dtax)+windyearkwh*dmorning;
         }
         else {
             windanualprofit=(dconsyear*dmorning+dconsyear*dmorning*dtax)+(windyearkwh-dconsyear)*dmorning;
@@ -370,30 +382,84 @@ public class CalculationActivity extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(),"WindAnualProfit: "+windanualprofit+"\nWind Year Cost: "+ windyearcost+"Payback: "+String.valueOf(payback)+"\n"+"Wind Year Kwh: "+String.valueOf(windyearkwh),Toast.LENGTH_LONG).show();
 
-Log.e("WindHesap",+windkwarray+"\n"+price+"\n"+turbinetypevalue+"\n"+ratedcapacity+"\n"+avgwind+"\n"+windyearkwh+"\n"+winddaykwh+"\n"+windanualprofit+"\n"+windcapitalcost+"\n"+payback+"\n"+windyearcost+"\n");
+        //Log.e("WindHesap",+dturbinecount+"\n"+ratedcapacity+"\n"+windyearkwh+"\n"+winddaykwh+"\n"+windcapitalcost+"\n"+windyearcost+"\n"+windanualprofit+"\n"+payback+"\n");
+
+        // dialog nesnesi oluştur ve layout dosyasına bağlan
+        final Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.result_viewer);
+
+        // custom dialog elemanlarını tanımla - text, image ve button
+        Button ownconfirmbtn=dialog.findViewById(R.id.own_confirm_button);
+        final TextView resultPage = dialog.findViewById(R.id.results_txt);
+
+        resultPage.setText("Type: "+typeforuser+"\n"+
+                "Latitude: "+latitude+"\n"+
+                "Longitude: "+longitude+"\n"+
+                "Morning Tariff: "+morning+"\n"+
+                "Peak Tariff: "+peak+"\n"+
+                "Off Peak Tariff: "+offpeak+"\n"+
+                "Tax: "+tax+"\n"+
+                "Cons Month Avg: "+avgconsmonth+"\n"+
+                "Morning Cons Month: "+morconsmonth+"\n"+
+                "Avg Month Bill: "+avgmonthbill+"\n"+
+                "RES Gen Daily: "+resgendaily+"\n"+
+                "RES Gen Monthly: "+resgenmonthly+"\n"+
+                "Storage Percentage: "+storageperc+"\n"+
+                "RES Type: "+restype+"\n"+
+                "Turbine Count: "+turbinecount+"\n"+
+                "Turbine Type: "+turbinetype+"\n"+
+                "Cons Year: "+consyear+"\n"+
+                "Solar Area: "+solararea+"\n"+
+                "Rated Capacity: "+ratedcapacity+"\n"+
+                "Wind Day Kwh: "+winddaykwh+"\n"+
+                "Wind Year Kwh: "+windyearkwh+"\n"+
+                "Wind Array Kwh: "+windkwarray+"\n"+
+                "Price: "+price+"\n"+
+                "Wind Annual Profit: "+windanualprofit+"\n"+
+                "Wind Year Cost: "+windyearcost+"\n"+
+                "Wind Capital Cost: "+windcapitalcost+"\n"+
+                "Payback: "+payback+"\n"+
+                "Average Wind 50M: "+wwa13
+        );
+
+        // tamam butonunun tıklanma olayları
+        ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.dismiss();
+
+            }
+        });
+
+
+        dialog.show();
+        Window window = dialog.getWindow();
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
     }
     private void windkwarraycalculate(){
         if  (turbinetype.equals("1 Kw")){
-            if (avgwind<=1.8){
+            if (wwa13<=1.8){
                 windkwarray=0.0;
             }
-            else if(avgwind>1.8 &&avgwind<=2.7){
+            else if(wwa13>1.8 &&wwa13<=2.7){
                 windkwarray=25.0;
             }
-            else if (avgwind>2.7 && avgwind<=3.6){
+            else if (wwa13>2.7 && wwa13<=3.6){
                 windkwarray=75.0;
             }
-            else if (avgwind>3.6 && avgwind<=4.5){
+            else if (wwa13>3.6 && wwa13<=4.5){
                 windkwarray=125.0;
             }
-            else if (avgwind>4.5 && avgwind<=5.4){
+            else if (wwa13>4.5 && wwa13<=5.4){
                 windkwarray=200.0;
             }
-            else if (avgwind>5.4 && avgwind<=6.3){
+            else if (wwa13>5.4 && wwa13<=6.3){
                 windkwarray=275.0;
             }
-            else if (avgwind>6.3 && avgwind<=7.2){
+            else if (wwa13>6.3 && wwa13<=7.2){
                 windkwarray=325.0;
             }
             else  {
@@ -401,25 +467,25 @@ Log.e("WindHesap",+windkwarray+"\n"+price+"\n"+turbinetypevalue+"\n"+ratedcapaci
             }
         }
         else if(turbinetype.equals("3 Kw")){
-            if (avgwind<=1.8){
+            if (wwa13<=1.8){
                 windkwarray=0.0;
             }
-            else if(avgwind>1.8 &&avgwind<=2.7){
+            else if(wwa13>1.8 && wwa13<=2.7){
                 windkwarray=75.0;
             }
-            else if (avgwind>2.7 && avgwind<=3.6){
+            else if (wwa13>2.7 && wwa13<=3.6){
                 windkwarray=160.0;
             }
-            else if (avgwind>3.6 && avgwind<=4.5){
+            else if (wwa13>3.6 && wwa13<=4.5){
                 windkwarray=325.0;
             }
-            else if (avgwind>4.5 && avgwind<=5.4){
+            else if (wwa13>4.5 && wwa13<=5.4){
                 windkwarray=525.0;
             }
-            else if (avgwind>5.4 && avgwind<=6.3){
+            else if (wwa13>5.4 && wwa13<=6.3){
                 windkwarray=675.0;
             }
-            else if (avgwind>6.3 && avgwind<=7.2){
+            else if (wwa13>6.3 && wwa13<=7.2){
                 windkwarray=825.0;
             }
             else  {
@@ -427,16 +493,16 @@ Log.e("WindHesap",+windkwarray+"\n"+price+"\n"+turbinetypevalue+"\n"+ratedcapaci
             }
         }
         else if(turbinetype.equals("10 Kw")){
-            if (avgwind<=3.6){
+            if (wwa13<=3.6){
                 windkwarray=410.0;
             }
-            else if(avgwind>3.6 &&avgwind<=4.5){
+            else if(wwa13>3.6 &&wwa13<=4.5){
                 windkwarray=820.0;
             }
-            else if (avgwind>4.5 && avgwind<=5.4){
+            else if (wwa13>4.5 && wwa13<=5.4){
                 windkwarray=1377.0;
             }
-            else if (avgwind>5.4 && avgwind<=6.3){
+            else if (wwa13>5.4 && wwa13<=6.3){
                 windkwarray=2027.0;
             }
             else  {
@@ -444,25 +510,25 @@ Log.e("WindHesap",+windkwarray+"\n"+price+"\n"+turbinetypevalue+"\n"+ratedcapaci
             }
         }
         else if(turbinetype.equals("1500 Kw")){
-            if (avgwind<=3.0){
+            if (wwa13<=3.0){
                 windkwarray=0.0;
             }
-            else if(avgwind>3.0 &&avgwind<=4.5){
+            else if(wwa13>3.0 &&wwa13<=4.5){
                 windkwarray=1800.0;
             }
-            else if (avgwind>4.5 && avgwind<=6.0){
+            else if (wwa13>4.5 && wwa13<=6.0){
                 windkwarray=6600.0;
             }
-            else if (avgwind>6.0 && avgwind<=7.5){
+            else if (wwa13>6.0 && wwa13<=7.5){
                 windkwarray=12000.0;
             }
-            else if (avgwind>7.5 && avgwind<=9.0){
+            else if (wwa13>7.5 && wwa13<=9.0){
                 windkwarray=21600.0;
             }
-            else if (avgwind>9.0 && avgwind<=10.5){
+            else if (wwa13>9.0 && wwa13<=10.5){
                 windkwarray=31200.0;
             }
-            else if (avgwind>10.5 && avgwind<=12.0){
+            else if (wwa13>10.5 && wwa13<=12.0){
                 windkwarray=34200.0;
             }
             else  {
@@ -482,7 +548,6 @@ Log.e("WindHesap",+windkwarray+"\n"+price+"\n"+turbinetypevalue+"\n"+ratedcapaci
             Double windyearkwh,winddaykwh,windanualprofit,systemprofit,systemyearlycost,windcapitalcost,payback,storageusedcapacity,storagecapacity,storagecapitalcost,storageyearlycost,systemcost;
             Double windyearcost=0.00;
             Double [] cashflow = new Double[24];
-            avgwind=(wwa13+wa13)/2;
 
             windkwarraycalculate();
             if (turbinetype.equals("1 Kw")) {
@@ -500,7 +565,7 @@ Log.e("WindHesap",+windkwarray+"\n"+price+"\n"+turbinetypevalue+"\n"+ratedcapaci
 
 
             ratedcapacity=dturbinecount*turbinetypevalue;
-            windyearkwh=windkwarray*8760;
+            windyearkwh=windkwarray*12*dturbinecount;
             winddaykwh=windyearkwh/365;
             storageusedcapacity=winddaykwh*storagepercentage;
             storagecapacity=(storageusedcapacity+(storageusedcapacity*(1-eff*dod)));

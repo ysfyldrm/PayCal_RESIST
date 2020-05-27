@@ -57,7 +57,7 @@
         android:id="@+id/months_txt"
         android:layout_below="@+id/linearThree"
         android:layout_width="50dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/bold"
         android:text=" JAN\n FEN\n MAR\n APR\n MAY\n JUN\n JUL\n AUG\n SEP\n OCT\n NOV\n DEC"
         android:textColor="@color/colorPrimaryDark"
@@ -72,7 +72,7 @@
         android:lineSpacingExtra="10sp"
         android:textAlignment="center"
         android:layout_width="100dp"
-        android:layout_height="match_parent"
+        android:layout_height="400dp"
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
         />
@@ -84,7 +84,7 @@
         android:lineSpacingExtra="10sp"
         android:textAlignment="center"
         android:layout_width="100dp"
-        android:layout_height="match_parent"
+        android:layout_height="400dp"
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
         />
@@ -97,7 +97,7 @@
         android:lineSpacingExtra="10sp"
         android:textAlignment="center"
         android:layout_width="100dp"
-        android:layout_height="match_parent"
+        android:layout_height="400dp"
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
         />
@@ -109,6 +109,22 @@
         android:layout_below="@+id/linearThree"
         android:layout_toRightOf="@+id/months_txt"
         android:visibility="invisible"
-
         />
+
+    <Button
+        android:id="@+id/show_results_button"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:layout_below="@id/windSp50Val"
+        android:layout_centerHorizontal="true"
+        android:textSize="15sp"
+        android:text="SHOw RESULTS"
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone"
+        />
+
 </RelativeLayout>

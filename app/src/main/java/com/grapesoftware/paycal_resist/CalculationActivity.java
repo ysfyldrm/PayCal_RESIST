@@ -37,7 +37,8 @@ public class CalculationActivity extends AppCompatActivity {
     TextView showResult1, showResult2, showResult3;
     Double wwa13=0.00,wa13=0.00;
     Double eff,dod,storage_price,omprice;
-    Double a13,storagepercentagee;
+    Double a13,storagepercentagee,avgwind;
+    Double windkwarray;
 
 
     @Override
@@ -329,12 +330,11 @@ public class CalculationActivity extends AppCompatActivity {
         Double price;
         Double turbinetypevalue;
         Double ratedcapacity;
-        Double avgwind;
         Double windyearkwh,winddaykwh,windanualprofit,windcapitalcost,payback;
         Double windyearcost=0.00;
         Double [] cashflow = new Double[24];
-        avgwind=(wwa13+wa13)/2;
-
+        avgwind=wwa13;
+        windkwarraycalculate();
         if (turbinetype.equals("1 Kw")) {
             price=3511.57;
             turbinetypevalue=1.0;
@@ -350,7 +350,7 @@ public class CalculationActivity extends AppCompatActivity {
         }
 
         ratedcapacity=dturbinecount*turbinetypevalue;
-        windyearkwh=avgwind*8760;
+        windyearkwh=windkwarray*8760;
         winddaykwh=windyearkwh/365;
 
         if (dconsyear>=windyearkwh){
@@ -370,8 +370,105 @@ public class CalculationActivity extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(),"WindAnualProfit: "+windanualprofit+"\nWind Year Cost: "+ windyearcost+"Payback: "+String.valueOf(payback)+"\n"+"Wind Year Kwh: "+String.valueOf(windyearkwh),Toast.LENGTH_LONG).show();
 
-Log.e("WindHesap",price+"\n"+turbinetypevalue+"\n"+ratedcapacity+"\n"+avgwind+"\n"+windyearkwh+"\n"+winddaykwh+"\n"+windanualprofit+"\n"+windcapitalcost+"\n"+payback+"\n"+windyearcost+"\n");
+Log.e("WindHesap",+windkwarray+"\n"+price+"\n"+turbinetypevalue+"\n"+ratedcapacity+"\n"+avgwind+"\n"+windyearkwh+"\n"+winddaykwh+"\n"+windanualprofit+"\n"+windcapitalcost+"\n"+payback+"\n"+windyearcost+"\n");
 
+    }
+    private void windkwarraycalculate(){
+        if  (turbinetype.equals("1 Kw")){
+            if (avgwind<=1.8){
+                windkwarray=0.0;
+            }
+            else if(avgwind>1.8 &&avgwind<=2.7){
+                windkwarray=25.0;
+            }
+            else if (avgwind>2.7 && avgwind<=3.6){
+                windkwarray=75.0;
+            }
+            else if (avgwind>3.6 && avgwind<=4.5){
+                windkwarray=125.0;
+            }
+            else if (avgwind>4.5 && avgwind<=5.4){
+                windkwarray=200.0;
+            }
+            else if (avgwind>5.4 && avgwind<=6.3){
+                windkwarray=275.0;
+            }
+            else if (avgwind>6.3 && avgwind<=7.2){
+                windkwarray=325.0;
+            }
+            else  {
+                windkwarray=375.0;
+            }
+        }
+        else if(turbinetype.equals("3 Kw")){
+            if (avgwind<=1.8){
+                windkwarray=0.0;
+            }
+            else if(avgwind>1.8 &&avgwind<=2.7){
+                windkwarray=75.0;
+            }
+            else if (avgwind>2.7 && avgwind<=3.6){
+                windkwarray=160.0;
+            }
+            else if (avgwind>3.6 && avgwind<=4.5){
+                windkwarray=325.0;
+            }
+            else if (avgwind>4.5 && avgwind<=5.4){
+                windkwarray=525.0;
+            }
+            else if (avgwind>5.4 && avgwind<=6.3){
+                windkwarray=675.0;
+            }
+            else if (avgwind>6.3 && avgwind<=7.2){
+                windkwarray=825.0;
+            }
+            else  {
+                windkwarray=1000.0;
+            }
+        }
+        else if(turbinetype.equals("10 Kw")){
+            if (avgwind<=3.6){
+                windkwarray=410.0;
+            }
+            else if(avgwind>3.6 &&avgwind<=4.5){
+                windkwarray=820.0;
+            }
+            else if (avgwind>4.5 && avgwind<=5.4){
+                windkwarray=1377.0;
+            }
+            else if (avgwind>5.4 && avgwind<=6.3){
+                windkwarray=2027.0;
+            }
+            else  {
+                windkwarray=2700.0;
+            }
+        }
+        else if(turbinetype.equals("1500 Kw")){
+            if (avgwind<=3.0){
+                windkwarray=0.0;
+            }
+            else if(avgwind>3.0 &&avgwind<=4.5){
+                windkwarray=1800.0;
+            }
+            else if (avgwind>4.5 && avgwind<=6.0){
+                windkwarray=6600.0;
+            }
+            else if (avgwind>6.0 && avgwind<=7.5){
+                windkwarray=12000.0;
+            }
+            else if (avgwind>7.5 && avgwind<=9.0){
+                windkwarray=21600.0;
+            }
+            else if (avgwind>9.0 && avgwind<=10.5){
+                windkwarray=31200.0;
+            }
+            else if (avgwind>10.5 && avgwind<=12.0){
+                windkwarray=34200.0;
+            }
+            else  {
+                windkwarray=36000.0;
+            }
+        }
     }
 
     private void hesaplawindwithstorage(){
@@ -382,11 +479,12 @@ Log.e("WindHesap",price+"\n"+turbinetypevalue+"\n"+ratedcapacity+"\n"+avgwind+"\
             Double storagepercentage=dstorageperc/100;
             Double turbinetypevalue;
             Double ratedcapacity;
-            Double avgwind,windyearkwh,winddaykwh,windanualprofit,systemprofit,systemyearlycost,windcapitalcost,payback,storageusedcapacity,storagecapacity,storagecapitalcost,storageyearlycost,systemcost;
+            Double windyearkwh,winddaykwh,windanualprofit,systemprofit,systemyearlycost,windcapitalcost,payback,storageusedcapacity,storagecapacity,storagecapitalcost,storageyearlycost,systemcost;
             Double windyearcost=0.00;
             Double [] cashflow = new Double[24];
             avgwind=(wwa13+wa13)/2;
 
+            windkwarraycalculate();
             if (turbinetype.equals("1 Kw")) {
                 price=3511.57;
                 turbinetypevalue=1.0;
@@ -402,7 +500,7 @@ Log.e("WindHesap",price+"\n"+turbinetypevalue+"\n"+ratedcapacity+"\n"+avgwind+"\
 
 
             ratedcapacity=dturbinecount*turbinetypevalue;
-            windyearkwh=avgwind*8760;
+            windyearkwh=windkwarray*8760;
             winddaykwh=windyearkwh/365;
             storageusedcapacity=winddaykwh*storagepercentage;
             storagecapacity=(storageusedcapacity+(storageusedcapacity*(1-eff*dod)));

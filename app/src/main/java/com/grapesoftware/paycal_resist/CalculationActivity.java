@@ -27,12 +27,14 @@ import org.json.JSONObject;
 
 public class CalculationActivity extends AppCompatActivity {
     String typeforuser,morning,peak,offpeak,tax,avgconsmonth,morconsmonth,avgmonthbill,resgendaily,resgenmonthly,storageperc,restype,turbinetype,turbinecount,consyear,solararea,latitude,longitude,storagetype;
+    Double dlatitude,dlongitude,dmorning,dpeak,doffpeak,dtax,davgconsmonth,dmorconsmonth,davgmonthbill,dresgendaily,dresgenmonthly,dstorageperc,drestype,dturbinecount,dconsyear,dsolararea;
     ProgressBar dataProgressBar;
     private RequestQueue mQueue;
     Button btLocation, backButton;
     TextView showResult1, showResult2, showResult3;
     Double wwa13=0.00,wa13=0.00;
     Double eff,dod,storage_price,omprice;
+    Double a13,storagepercentagee;
 
 
     @Override
@@ -84,11 +86,30 @@ public class CalculationActivity extends AppCompatActivity {
         resgendaily = resgendaily.replace(",", ".");
         resgenmonthly = resgenmonthly.replace(",", ".");
         storageperc = storageperc.replace(",", ".");
+        storagepercentagee=Double.valueOf(storageperc)/100;
         restype = restype.replace(",", ".");
         turbinecount = turbinecount.replace(",", ".");
         turbinetype = turbinetype.replace(",", ".");
         consyear = consyear.replace(",", ".");
         solararea = solararea.replace(",", ".");
+
+        dlatitude=ParseDouble(latitude);
+        dlongitude=ParseDouble(longitude);
+        dmorning=ParseDouble(morning);
+        dpeak=ParseDouble(peak);
+        doffpeak=ParseDouble(offpeak);
+        dtax=ParseDouble(tax);
+        davgconsmonth=ParseDouble(avgconsmonth);
+        dmorconsmonth=ParseDouble(morconsmonth);
+        davgmonthbill=ParseDouble(avgmonthbill);
+        dresgendaily=ParseDouble(resgendaily);
+        dresgenmonthly=ParseDouble(resgenmonthly);
+        dstorageperc=ParseDouble(storageperc);
+        drestype=ParseDouble(restype);
+        dturbinecount=ParseDouble(turbinecount);
+        dconsyear=ParseDouble(consyear);
+        dsolararea=ParseDouble(solararea);
+
 
 
         Toast.makeText(getApplicationContext(),
@@ -121,18 +142,22 @@ public class CalculationActivity extends AppCompatActivity {
             dod=1.0;
             storage_price=0.32;
             omprice=0.1;
+
+
         }
         else if (storagetype.equals("Lion")){
             eff=0.96;
             dod=90.0;
             storage_price=1260.0;
             omprice=10.0;
+
         }
         if (storagetype.equals("LeadAcid")){
             eff=0.8;
             dod=60.0;
             storage_price=550.0;
             omprice=10.0;
+
         }
 
 
@@ -140,6 +165,17 @@ public class CalculationActivity extends AppCompatActivity {
 
 
 
+    }
+
+    double ParseDouble(String strNumber) {
+        if (strNumber != null && strNumber.length() > 0) {
+            try {
+                return Double.parseDouble(strNumber);
+            } catch(Exception e) {
+                return -1;   // or some value to mark this field is wrong. or make a function validates field first ...
+            }
+        }
+        else return 0;
     }
 
     private void jsonParse() {
@@ -163,7 +199,7 @@ public class CalculationActivity extends AppCompatActivity {
                         Double a10 = allsky.getDouble("10");
                         Double a11 = allsky.getDouble("11");
                         Double a12 = allsky.getDouble("12");
-                        Double a13 = allsky.getDouble("13");
+                        a13 = allsky.getDouble("13");
                         Double a2 = allsky.getDouble("2");
                         Double a3 = allsky.getDouble("3");
                         Double a4 = allsky.getDouble("4");
@@ -288,8 +324,8 @@ public class CalculationActivity extends AppCompatActivity {
     private void hesaplawindnostorage(){
 
         Double price;
-        int turbinetypevalue;
-        int ratedcapacity;
+        Double turbinetypevalue;
+        Double ratedcapacity;
         Double avgwind;
         Double windyearkwh,winddaykwh,windanualprofit,windcapitalcost,payback;
         Double windyearcost=0.00;
@@ -298,27 +334,27 @@ public class CalculationActivity extends AppCompatActivity {
 
         if (turbinetype.equals("1 Kw")) {
             price=3511.57;
-            turbinetypevalue=1;
+            turbinetypevalue=1.0;
         }
         else if (turbinetype.equals("3 Kw")){
             price=3108.84;
-            turbinetypevalue=3;
+            turbinetypevalue=3.0;
 
         }
         else{
             price=2579.95;
-            turbinetypevalue=10;
+            turbinetypevalue=10.0;
         }
 
-        ratedcapacity=Integer.valueOf(turbinecount)*turbinetypevalue;
+        ratedcapacity=dturbinecount*turbinetypevalue;
         windyearkwh=avgwind*8760;
         winddaykwh=windyearkwh/365;
 
         if (Double.valueOf(consyear)>=windyearkwh){
-            windanualprofit=(windyearkwh*Double.valueOf(morning)*Double.valueOf(tax))+windyearkwh*Double.valueOf(morning);
+            windanualprofit=(windyearkwh*dmorning*dtax)+windyearkwh*dmorning;
         }
         else {
-            windanualprofit=(Double.valueOf(consyear)*Double.valueOf(morning)+Double.valueOf(consyear)*Double.valueOf(morning)*Double.valueOf(tax))+(windyearkwh-Double.valueOf(consyear))*Double.valueOf(morning);
+            windanualprofit=(dconsyear*dmorning+dconsyear*dmorning*dtax)+(windyearkwh-dconsyear)*dmorning;
         }
 
         windcapitalcost=ratedcapacity*price;
@@ -340,8 +376,9 @@ Log.e("WindHesap",price+"\n"+turbinetypevalue+"\n"+ratedcapacity+"\n"+avgwind+"\
         if (!storagetype.equals("NoStorage")){
 
             Double price;
-            int turbinetypevalue;
-            int ratedcapacity;
+            Double storagepercentage=dstorageperc/100;
+            Double turbinetypevalue;
+            Double ratedcapacity;
             Double avgwind,windyearkwh,winddaykwh,windanualprofit,systemprofit,systemyearlycost,windcapitalcost,payback,storageusedcapacity,storagecapacity,storagecapitalcost,storageyearlycost,systemcost;
             Double windyearcost=0.00;
             Double [] cashflow = new Double[24];
@@ -349,44 +386,39 @@ Log.e("WindHesap",price+"\n"+turbinetypevalue+"\n"+ratedcapacity+"\n"+avgwind+"\
 
             if (turbinetype.equals("1 Kw")) {
                 price=3511.57;
-                turbinetypevalue=1;
+                turbinetypevalue=1.0;
             }
             else if (turbinetype.equals("3 Kw")){
                 price=3108.84;
-                turbinetypevalue=3;
-
+                turbinetypevalue=3.0;
             }
             else{
                 price=2579.95;
-                turbinetypevalue=10;
+                turbinetypevalue=10.0;
             }
 
 
-            ratedcapacity=Integer.valueOf(turbinecount)*turbinetypevalue;
+            ratedcapacity=dturbinecount*turbinetypevalue;
             windyearkwh=avgwind*8760;
             winddaykwh=windyearkwh/365;
-
-            storageusedcapacity=(winddaykwh*Double.valueOf(storageperc))/100;
+            storageusedcapacity=winddaykwh*storagepercentage;
             storagecapacity=(storageusedcapacity+(storageusedcapacity*(1-eff*dod)));
             storagecapitalcost=storagecapacity*storage_price;
             storageyearlycost=storagecapacity*omprice;
-
-
-            if (Double.valueOf(consyear)>=windyearkwh*(1-Double.valueOf(storageperc))){
-                windanualprofit=(windyearkwh*(1-Double.valueOf(storageperc))*Double.valueOf(morning)*Double.valueOf(tax))
-                        +windyearkwh*(1-Double.valueOf(storageperc))*Double.valueOf(morning)
-                        +(windyearkwh*Double.valueOf(storageperc)*Double.valueOf(peak)*Double.valueOf(tax))
-                        +(windyearkwh*Double.valueOf(storageperc)*Double.valueOf(peak));
+            if (Double.valueOf(consyear)>=windyearkwh*(1-storagepercentage)){
+                windanualprofit=(windyearkwh*(1-storagepercentage)*dmorning*dtax)
+                        +windyearkwh*(1-storagepercentage)*dmorning
+                        +(windyearkwh*storagepercentage*dpeak*dtax)
+                        +(windyearkwh*storagepercentage*dpeak);
             }
             else {
-                windanualprofit=(Double.valueOf(consyear)*Double.valueOf(morning)
-                        +Double.valueOf(consyear)*Double.valueOf(morning)*Double.valueOf(tax))
-                        +(windyearkwh*(1-Double.valueOf(storageperc))
-                        -Double.valueOf(consyear))*Double.valueOf(morning)
-                        +(windyearkwh*Double.valueOf(storageperc)*Double.valueOf(peak)*Double.valueOf(tax))
-                        +(windyearkwh*Double.valueOf(storageperc)*Double.valueOf(peak));
+                windanualprofit=(dconsyear*dmorning
+                        +dconsyear*dmorning*dtax)
+                        +(windyearkwh*(1-storagepercentage)
+                        -dconsyear)*dmorning
+                        +(windyearkwh*storagepercentage*dpeak*dtax)
+                        +(windyearkwh*storagepercentage*dpeak);
             }
-
             windcapitalcost=ratedcapacity*price;
             systemcost=storagecapitalcost+windcapitalcost;
             systemyearlycost=storageyearlycost+windyearcost;
@@ -394,14 +426,42 @@ Log.e("WindHesap",price+"\n"+turbinetypevalue+"\n"+ratedcapacity+"\n"+avgwind+"\
             payback=windcapitalcost/(systemprofit);
 
             for (int i=0; i<24 ;i++){
-                cashflow[i]=((systemprofit)*i)-systemcost;
-                //Toast.makeText(getApplicationContext(),String.valueOf(cashflow[i]),Toast.LENGTH_SHORT).show();
+                cashflow[i]=-systemcost+((systemprofit)*i);
             }
 
             Toast.makeText(getApplicationContext(),"Storage Used Capacity: "+storageusedcapacity+"\nStorage Capacity: "+ storagecapacity+"Payback: "+String.valueOf(payback)+"\n"+"Storage Yearly Cost: "+storageyearlycost,Toast.LENGTH_LONG).show();
 
-            Log.e("WindHesap",price+"\n"+windcapitalcost+"\n"+systemcost+"\n"+systemyearlycost+"\n"+systemprofit+"\n"+payback);
+            Log.e("WindHesap",price+"\n"+windcapitalcost+"\n"+systemcost+"\n"+systemyearlycost+"\n"+systemprofit+"\n"+payback+"\n"+cashflow[0]+"--"+cashflow[23]);
         }
+
+    }
+
+    private void hesaplasolar(){
+
+        Double panelarea=1.63;
+        Double panelpower=0.265;
+        Double pvcostconsumer=1300.0;
+        Double omcostconsumer=20.0;
+        Double pvcost=1100.0;
+        Double pvomcost=17.0;
+        Double pvgenaveragemonth=Double.valueOf(a13);
+        Double pvgenyear=pvgenaveragemonth*12;
+        Double pvgenaverageday=pvgenyear/365;
+        Double panelnum=Double.valueOf(solararea)/panelarea;
+        Double pvpower=panelnum*panelpower;
+        Double pvcapitalcost=pvpower*pvcostconsumer;
+        Double revenueyear;
+
+//        ((Double.valueOf(morconsmonth)*Double.valueOf(morning))*Double.valueOf(tax))
+//                +(Double.valueOf(morconsmonth)*Double.valueOf(morning))
+//                +(pvgenaveragemonth-Double.valueOf(morconsmonth))*Double.valueOf(morning);
+
+        //Double pvyearlycost=pvpower*pvomcost;
+        //Double pvprofityear=
+
+
+
+
 
     }
 

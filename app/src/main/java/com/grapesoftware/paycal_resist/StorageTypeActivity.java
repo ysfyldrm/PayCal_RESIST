@@ -46,7 +46,7 @@ public class StorageTypeActivity extends AppCompatActivity {
         Toast.makeText(context, restype, Toast.LENGTH_SHORT).show();
 
         if (typeforuser.equals("Prosumer")){
-            noStorageBtn.setVisibility(View.GONE);
+             noStorageBtn.setVisibility(View.GONE);
         }
 
 
@@ -74,12 +74,13 @@ public class StorageTypeActivity extends AppCompatActivity {
                     showMyCustomSolarArea();
                 }
                 else if(restype.equals("WIND")){
-                    Intent intent=new Intent(StorageTypeActivity.this,CalculationActivity.class);
+
+                    showMyPercentageStorage();
                     SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("Storage Type","Lion");
                     editor.commit();
-                    startActivity(intent);
+
                 }
 
             }
@@ -93,7 +94,7 @@ public class StorageTypeActivity extends AppCompatActivity {
                     showMyCustomSolarArea();
                 }
                 else if(restype.equals("WIND")){
-                    Intent intent=new Intent(StorageTypeActivity.this,CalculationActivity.class);
+                    showMyPercentageStorage();
                     SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("Storage Type","Thermal");
@@ -102,7 +103,7 @@ public class StorageTypeActivity extends AppCompatActivity {
                     editor.putString("Thermal Price","0.32");
                     editor.putString("Thermal Om Price","0.1");
                     editor.commit();
-                    startActivity(intent);
+
                 }
 
             }
@@ -121,7 +122,7 @@ public class StorageTypeActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("Storage Type","LeadAcid");
                     editor.commit();
-                    startActivity(intent);
+                    showMyPercentageStorage();
                 }
 
             }

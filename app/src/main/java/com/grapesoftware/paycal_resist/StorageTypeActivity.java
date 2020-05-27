@@ -69,7 +69,6 @@ public class StorageTypeActivity extends AppCompatActivity {
         lionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (restype.equals("PV SOLAR")) {
                     showMyCustomSolarArea();
                 }
@@ -117,7 +116,6 @@ public class StorageTypeActivity extends AppCompatActivity {
                     showMyCustomSolarArea();
                 }
                 else if(restype.equals("WIND")){
-                    Intent intent=new Intent(StorageTypeActivity.this,CalculationActivity.class);
                     SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("Storage Type","LeadAcid");

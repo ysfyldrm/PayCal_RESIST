@@ -108,12 +108,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 marker=mMap.addMarker(options);
             }
         });
+
+
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(Double.valueOf(latitude), Double.valueOf(longitude));
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Your Location"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,15));
 
     }
+
     public void findLocation(View v) throws IOException {
 
         EditText et = (EditText)findViewById(R.id.editTextLocate);

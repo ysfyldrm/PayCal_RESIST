@@ -24,6 +24,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 
 public class CalculationActivity extends AppCompatActivity {
     String typeforuser,morning,peak,offpeak,tax,avgconsmonth,morconsmonth,avgmonthbill,resgendaily,resgenmonthly,storageperc,restype,turbinetype,turbinecount,consyear,solararea,latitude,longitude,storagetype;
@@ -350,8 +353,8 @@ public class CalculationActivity extends AppCompatActivity {
         windyearkwh=avgwind*8760;
         winddaykwh=windyearkwh/365;
 
-        if (Double.valueOf(consyear)>=windyearkwh){
-            windanualprofit=(windyearkwh*dmorning*dtax)+windyearkwh*dmorning;
+        if (dconsyear>=windyearkwh){
+            windanualprofit=(windyearkwh*dmorning*dtax)+(windyearkwh*dmorning);
         }
         else {
             windanualprofit=(dconsyear*dmorning+dconsyear*dmorning*dtax)+(windyearkwh-dconsyear)*dmorning;
@@ -405,7 +408,7 @@ Log.e("WindHesap",price+"\n"+turbinetypevalue+"\n"+ratedcapacity+"\n"+avgwind+"\
             storagecapacity=(storageusedcapacity+(storageusedcapacity*(1-eff*dod)));
             storagecapitalcost=storagecapacity*storage_price;
             storageyearlycost=storagecapacity*omprice;
-            if (Double.valueOf(consyear)>=windyearkwh*(1-storagepercentage)){
+            if (dconsyear>=windyearkwh*(1-storagepercentage)){
                 windanualprofit=(windyearkwh*(1-storagepercentage)*dmorning*dtax)
                         +windyearkwh*(1-storagepercentage)*dmorning
                         +(windyearkwh*storagepercentage*dpeak*dtax)
@@ -431,6 +434,9 @@ Log.e("WindHesap",price+"\n"+turbinetypevalue+"\n"+ratedcapacity+"\n"+avgwind+"\
 
             Toast.makeText(getApplicationContext(),"Storage Used Capacity: "+storageusedcapacity+"\nStorage Capacity: "+ storagecapacity+"Payback: "+String.valueOf(payback)+"\n"+"Storage Yearly Cost: "+storageyearlycost,Toast.LENGTH_LONG).show();
 
+
+
+            Log.e("Degerler",turbinetypevalue+"\n"+dturbinecount+"\n"+ratedcapacity+"\n"+price+"\n"+windcapitalcost);
             Log.e("WindHesap",price+"\n"+windcapitalcost+"\n"+systemcost+"\n"+systemyearlycost+"\n"+systemprofit+"\n"+payback+"\n"+cashflow[0]+"--"+cashflow[23]);
         }
 

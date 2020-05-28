@@ -46,6 +46,7 @@ public class CalculationActivity extends AppCompatActivity {
     Double eff,dod,storage_price,omprice;
     Double a13,storagepercentagee,avgwind;
     Double windkwarray;
+    Double a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12;
     final Context context = this;
 
 
@@ -104,7 +105,7 @@ public class CalculationActivity extends AppCompatActivity {
         restype = restype.replace(",", ".");
         turbinecount = turbinecount.replace(",", ".");
         turbinetype = turbinetype.replace(",", ".");
-        consyear = consyear.replace(",", ".");
+        //consyear = consyear.replace(",", ".");
         solararea = solararea.replace(",", ".");
 
         dlatitude=ParseDouble(latitude);
@@ -121,30 +122,8 @@ public class CalculationActivity extends AppCompatActivity {
         dstorageperc=ParseDouble(storageperc);
         drestype=ParseDouble(restype);
         dturbinecount=ParseDouble(turbinecount);
-        dconsyear=ParseDouble(consyear);
+        dconsyear=dmorconsmonth*12;
         dsolararea=ParseDouble(solararea);
-
-
-
-        Toast.makeText(getApplicationContext(),
-                "Type: "+typeforuser+"\n"+
-                "Latitude: "+latitude+"\n"+
-                "Longitude: "+longitude+"\n"+
-                "Morning Tariff: "+morning+"\n"+
-                "Peak Tariff: "+peak+"\n"+
-                "Off Peak Tariff: "+offpeak+"\n"+
-                "Tax: "+tax+"\n"+
-                "Cons Month Avg: "+avgconsmonth+"\n"+
-                "Morning Cons Month: "+morconsmonth+"\n"+
-                "Avg Month Bill: "+avgmonthbill+"\n"+
-                "RES Gen Daily: "+resgendaily+"\n"+
-                "RES Gen Monthly: "+resgenmonthly+"\n"+
-                "Storage Percentage: "+storageperc+"\n"+
-                "RES Type: "+restype+"\n"+
-                "Turbine Count: "+turbinecount+"\n"+
-                "Turbine Type: "+turbinetype+"\n"+
-                "Cons Year: "+consyear+"\n"+
-                "Solar Area: "+solararea,Toast.LENGTH_LONG).show();
 
 
 //        SharedPreferences settings = context.getSharedPreferences("session", Context.MODE_PRIVATE);
@@ -210,19 +189,19 @@ public class CalculationActivity extends AppCompatActivity {
                         JSONObject params = feats.getJSONObject("parameter");
 
                         JSONObject allsky = params.getJSONObject("ALLSKY_SFC_LW_DWN");
-                        Double a1 = allsky.getDouble("1");
-                        Double a10 = allsky.getDouble("10");
-                        Double a11 = allsky.getDouble("11");
-                        Double a12 = allsky.getDouble("12");
+                        a1 = allsky.getDouble("1");
+                        a10 = allsky.getDouble("10");
+                        a11 = allsky.getDouble("11");
+                        a12 = allsky.getDouble("12");
                         a13 = allsky.getDouble("13");
-                        Double a2 = allsky.getDouble("2");
-                        Double a3 = allsky.getDouble("3");
-                        Double a4 = allsky.getDouble("4");
-                        Double a5 = allsky.getDouble("5");
-                        Double a6 = allsky.getDouble("6");
-                        Double a7 = allsky.getDouble("7");
-                        Double a8 = allsky.getDouble("8");
-                        Double a9 = allsky.getDouble("9");
+                        a2 = allsky.getDouble("2");
+                        a3 = allsky.getDouble("3");
+                        a4 = allsky.getDouble("4");
+                        a5 = allsky.getDouble("5");
+                        a6 = allsky.getDouble("6");
+                        a7 = allsky.getDouble("7");
+                        a8 = allsky.getDouble("8");
+                        a9 = allsky.getDouble("9");
 
 //                        JSONObject wind10 = params.getJSONObject("WS10M");
 //                        Double wa1 = wind10.getDouble("1");
@@ -261,6 +240,9 @@ public class CalculationActivity extends AppCompatActivity {
                         }
                         else if (!storagetype.equals("NoStorage") && restype.equals("WIND")){
                             hesaplawindwithstorage();
+                        }
+                        else if (storagetype.equals("NoStorage") && restype.equals("PV SOLAR")){
+                            hesaplasolarnostorage();
                         }
 
                         showResult1.setText(
@@ -365,7 +347,7 @@ public class CalculationActivity extends AppCompatActivity {
         windyearkwh=windkwarray*12*dturbinecount;
         winddaykwh=windyearkwh/365;
 
-        if (dmorconsmonth*12>=windyearkwh){
+        if (dconsyear>=windyearkwh){
             windanualprofit=(windyearkwh*dmorning*dtax)+windyearkwh*dmorning;
         }
         else {
@@ -600,7 +582,7 @@ public class CalculationActivity extends AppCompatActivity {
 
     }
 
-    private void hesaplasolar(){
+    private void hesaplasolarnostorage(){
 
         Double panelarea=1.63;
         Double panelpower=0.265;
@@ -608,23 +590,50 @@ public class CalculationActivity extends AppCompatActivity {
         Double omcostconsumer=20.0;
         Double pvcost=1100.0;
         Double pvomcost=17.0;
-        Double pvgenaveragemonth=Double.valueOf(a13);
-        Double pvgenyear=pvgenaveragemonth*12;
+        Double [] pvrad={a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12};
+        Double [] pvgenmonth=new Double[12];
+
+        Double pvgenyear=0.0;
+
+
+        int [] Monthday={31,28,31,30,31,30,31,31,30,31,30,31};
+
+        for (int i=0;i<12;i++){
+            pvgenmonth[i]=Monthday[i]*pvrad[i]*dsolararea*0.125;
+            pvgenyear=pvgenyear+pvgenmonth[i];
+
+            Log.e("PVGENMONTH","Month "+i+": "+pvgenmonth[i]);
+        }
+        Double pvgenaveragemonth=pvgenyear/12;
         Double pvgenaverageday=pvgenyear/365;
-        Double panelnum=Double.valueOf(solararea)/panelarea;
+        Double panelnum=dsolararea/panelarea;
         Double pvpower=panelnum*panelpower;
+        Double revenueyear=0.0;
+        Double [] revenuemonth=new Double[12];
+        for (int i=0;i<12;i++){
+            if (dmorconsmonth>=pvgenaveragemonth){
+                revenuemonth[i]=((pvgenmonth[i]*dmorning)*dtax+(pvgenmonth[i]*dmorning));
+                revenueyear=revenueyear+revenuemonth[i];
+            }
+            else{
+                revenuemonth[i]=((dmorconsmonth*dmorning)*dtax+(dmorconsmonth*dmorning))+(pvgenmonth[i]-dmorconsmonth)*dmorning;
+                revenueyear=revenueyear+revenuemonth[i];
+            }
+        }
         Double pvcapitalcost=pvpower*pvcostconsumer;
-        Double revenueyear;
+        Double pvyearlycost=pvpower*omcostconsumer;
+        Double pvprofityear=revenueyear-pvyearlycost;
+        Double pvprofitmonth=pvprofityear/12;
+        Double payback=pvcapitalcost/pvprofityear;
+        Double [] cashflow = new Double[20];
+        for (int i=0;i<20;i++){
+            cashflow[i]=-pvcapitalcost+(pvprofityear*i);
 
-//        ((Double.valueOf(morconsmonth)*Double.valueOf(morning))*Double.valueOf(tax))
-//                +(Double.valueOf(morconsmonth)*Double.valueOf(morning))
-//                +(pvgenaveragemonth-Double.valueOf(morconsmonth))*Double.valueOf(morning);
+            Log.e("PV NO STORAGE","Cashflow"+i+": "+cashflow[i]);
+        }
+        Toast.makeText(getApplicationContext(),"Payback: "+payback,Toast.LENGTH_SHORT).show();
 
-        //Double pvyearlycost=pvpower*pvomcost;
-        //Double pvprofityear=
-
-
-
+        Double newavgmonthbill=davgmonthbill-pvprofitmonth;
 
 
     }

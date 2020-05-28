@@ -39,9 +39,6 @@ String rdbtext;
         SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
         typeforuser = preferences.getString("Type", "Consumer");
 
-        if(typeforuser.equals("Prosumer")){
-            windbtn.setVisibility(View.GONE);
-        }
 
 
         windbtn.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +60,8 @@ String rdbtext;
             @Override
             public void onClick(View view) {
 
+
+                if(typeforuser.equals("Prosumer")){
                 {
 
                     final Dialog dialog1=new Dialog(context);
@@ -117,6 +116,10 @@ String rdbtext;
                     window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
                 }
+                }
+
+
+                showMyCustomSolarArea();
 
 
 
@@ -144,6 +147,42 @@ String rdbtext;
                 startActivity(intent);
             }
         });
+    }
+
+
+    public void showMyCustomSolarArea() {
+
+        // dialog nesnesi oluştur ve layout dosyasına bağlan
+        final Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.solar_area);
+
+        // custom dialog elemanlarını tanımla - text, image ve button
+        Button ownconfirmbtn=dialog.findViewById(R.id.own_confirm_button);
+        final EditText areaCount = dialog.findViewById(R.id.area_count_edt);
+        areaCount.setTransformationMethod(null);
+
+
+        // tamam butonunun tıklanma olayları
+        ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent =new Intent(ResTypeActivity.this,StorageTypeActivity.class);
+                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("Solar Area", areaCount.getText().toString());
+                editor.commit();
+                startActivity(intent);
+
+
+            }
+        });
+
+
+        dialog.show();
+        Window window = dialog.getWindow();
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
     }
 
     public void showMyCustomWindTurbinDialog() {

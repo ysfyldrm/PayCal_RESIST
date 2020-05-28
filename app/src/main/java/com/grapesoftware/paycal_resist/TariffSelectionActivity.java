@@ -100,7 +100,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
 
                     Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
                     final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
-                    final EditText ConsYear=dialog1.findViewById(R.id.cons_year_edt);
                     final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
                     final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
 
@@ -108,7 +107,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                     confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Toast.makeText(getApplicationContext(),AvgConsMonth.getText()+"\n"+ConsYear.getText()+"\n"+MorConsMonth.getText()+"\n"+AvgMonthBill.getText(),Toast.LENGTH_LONG).show();
                             dialog1.dismiss();
                             Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
                             Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
@@ -118,7 +116,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             //String offpeak="0,37";
                             String tax="0,24";
                             String avgconsmonth=AvgConsMonth.getText().toString();
-                            String consyear=ConsYear.getText().toString();
                             String morconsmonth=MorConsMonth.getText().toString();
                             String avgmonthbill=AvgMonthBill.getText().toString();
                             SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
@@ -129,7 +126,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             //editor.putString("Off Peak Tariff",offpeak);
                             editor.putString("Tax",tax);
                             editor.putString("Cons Avg Month",avgconsmonth);
-                            editor.putString("Cons Year",consyear);
                             editor.putString("Morning Cons Month",morconsmonth);
                             editor.putString("Avg Month Bill",avgmonthbill);
 
@@ -164,7 +160,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
 
                     Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
                     final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
-                    final EditText ConsYear=dialog1.findViewById(R.id.cons_year_edt);
                     final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
                     final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
 
@@ -172,7 +167,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                     confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Toast.makeText(getApplicationContext(),AvgConsMonth.getText()+"\n"+ConsYear.getText()+"\n"+MorConsMonth.getText()+"\n"+AvgMonthBill.getText(),Toast.LENGTH_LONG).show();
                             dialog1.dismiss();
                             Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
 
@@ -181,7 +175,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             //String offpeak="0,34";
                             String tax="0,24";
                             String avgconsmonth=AvgConsMonth.getText().toString();
-                            String consyear=ConsYear.getText().toString();
                             String morconsmonth=MorConsMonth.getText().toString();
                             String avgmonthbill=AvgMonthBill.getText().toString();
 
@@ -193,7 +186,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             //editor.putString("Off Peak Tariff",offpeak);
                             editor.putString("Tax",tax);
                             editor.putString("Cons Avg Month",avgconsmonth);
-                            editor.putString("Cons Year",consyear);
                             editor.putString("Morning Cons Month",morconsmonth);
                             editor.putString("Avg Month Bill",avgmonthbill);
 
@@ -230,7 +222,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
 
                     Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
                     final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
-                    final EditText ConsYear=dialog1.findViewById(R.id.cons_year_edt);
                     final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
                     final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
 
@@ -238,7 +229,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                     confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Toast.makeText(getApplicationContext(),AvgConsMonth.getText()+"\n"+ConsYear.getText()+"\n"+MorConsMonth.getText()+"\n"+AvgMonthBill.getText(),Toast.LENGTH_LONG).show();
                             dialog1.dismiss();
                             Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
                             Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
@@ -248,7 +238,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             //String offpeak="0,49";
                             String tax="0,24";
                             String avgconsmonth=AvgConsMonth.getText().toString();
-                            String consyear=ConsYear.getText().toString();
                             String morconsmonth=MorConsMonth.getText().toString();
                             String avgmonthbill=AvgMonthBill.getText().toString();
 
@@ -259,7 +248,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             //editor.putString("Off Peak Tariff",offpeak);
                             editor.putString("Tax",tax);
                             editor.putString("Cons Avg Month",avgconsmonth);
-                            editor.putString("Cons Year",consyear);
                             editor.putString("Morning Cons Month",morconsmonth);
                             editor.putString("Avg Month Bill",avgmonthbill);
 
@@ -293,7 +281,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
 
                     Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
                     final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
-                    final EditText ConsYear=dialog1.findViewById(R.id.cons_year_edt);
                     final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
                     final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
 
@@ -301,7 +288,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                     confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Toast.makeText(getApplicationContext(),AvgConsMonth.getText()+"\n"+ConsYear.getText()+"\n"+MorConsMonth.getText()+"\n"+AvgMonthBill.getText(),Toast.LENGTH_LONG).show();
                             dialog1.dismiss();
                             Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
 
@@ -310,7 +296,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             //String offpeak="0,45";
                             String tax="0,24";
                             String avgconsmonth=AvgConsMonth.getText().toString();
-                            String consyear=ConsYear.getText().toString();
                             String morconsmonth=MorConsMonth.getText().toString();
                             String avgmonthbill=AvgMonthBill.getText().toString();
                             SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
@@ -321,7 +306,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             //editor.putString("Off Peak Tariff",offpeak);
                             editor.putString("Tax",tax);
                             editor.putString("Cons Avg Month",avgconsmonth);
-                            editor.putString("Cons Year",consyear);
                             editor.putString("Morning Cons Month",morconsmonth);
                             editor.putString("Avg Month Bill",avgmonthbill);
 
@@ -355,7 +339,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
 
                     Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
                     final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
-                    final EditText ConsYear=dialog1.findViewById(R.id.cons_year_edt);
                     final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
                     final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
 
@@ -363,7 +346,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                     confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Toast.makeText(getApplicationContext(),AvgConsMonth.getText()+"\n"+ConsYear.getText()+"\n"+MorConsMonth.getText()+"\n"+AvgMonthBill.getText(),Toast.LENGTH_LONG).show();
                             dialog1.dismiss();
                             Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
 
@@ -372,7 +354,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             //String offpeak="0,40";
                             String tax="0,24";
                             String avgconsmonth=AvgConsMonth.getText().toString();
-                            String consyear=ConsYear.getText().toString();
                             String morconsmonth=MorConsMonth.getText().toString();
                             String avgmonthbill=AvgMonthBill.getText().toString();
                             SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
@@ -383,7 +364,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             //editor.putString("Off Peak Tariff",offpeak);
                             editor.putString("Tax",tax);
                             editor.putString("Cons Avg Month",avgconsmonth);
-                            editor.putString("Cons Year",consyear);
                             editor.putString("Morning Cons Month",morconsmonth);
                             editor.putString("Avg Month Bill",avgmonthbill);
 
@@ -418,7 +398,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
 
                     Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
                     final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
-                    final EditText ConsYear=dialog1.findViewById(R.id.cons_year_edt);
                     final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
                     final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
 
@@ -426,7 +405,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                     confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Toast.makeText(getApplicationContext(),AvgConsMonth.getText()+"\n"+ConsYear.getText()+"\n"+MorConsMonth.getText()+"\n"+AvgMonthBill.getText(),Toast.LENGTH_LONG).show();
                             dialog1.dismiss();
                             Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
 
@@ -435,7 +413,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             //String offpeak="0,34";
                             String tax="0,24";
                             String avgconsmonth=AvgConsMonth.getText().toString();
-                            String consyear=ConsYear.getText().toString();
                             String morconsmonth=MorConsMonth.getText().toString();
                             String avgmonthbill=AvgMonthBill.getText().toString();
                             SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
@@ -446,7 +423,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             //editor.putString("Off Peak Tariff",offpeak);
                             editor.putString("Tax",tax);
                             editor.putString("Cons Avg Month",avgconsmonth);
-                            editor.putString("Cons Year",consyear);
                             editor.putString("Morning Cons Month",morconsmonth);
                             editor.putString("Avg Month Bill",avgmonthbill);
 
@@ -499,7 +475,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
         ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Ownconfirme basıldı", Toast.LENGTH_SHORT).show();
                 SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
                 SharedPreferences.Editor editor = preferences.edit();

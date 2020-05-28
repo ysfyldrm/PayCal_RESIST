@@ -45,38 +45,11 @@
         android:textSize="15sp" />
 
     <TextView
-        android:id="@+id/cons_year_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:layout_below="@id/cons_avgmonth_txt"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="30dp"
-        android:text="Consumption Year = "
-
-        android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
-        />
-
-    <EditText
-        android:id="@+id/cons_year_edt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/cons_avgmonth_edt"
-        android:layout_marginRight="30dp"
-        android:layout_toRightOf="@id/cons_year_txt"
-        android:digits="0123456789.,"
-        android:inputType="number"
-        android:textColor="@color/colorTransparentWhite"
-        android:backgroundTint="@color/colorTransparentWhite"
-        android:textSize="15sp" />
-
-    <TextView
         android:id="@+id/morning_cons_month_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:layout_below="@id/cons_year_txt"
+        android:layout_below="@id/cons_avgmonth_txt"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
         android:text="Morning Consumption Month = "
@@ -89,7 +62,7 @@
         android:id="@+id/morning_cons_month_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cons_year_edt"
+        android:layout_below="@id/cons_avgmonth_edt"
         android:layout_marginTop="5dp"
         android:layout_marginRight="30dp"
         android:layout_toRightOf="@id/morning_cons_month_txt"

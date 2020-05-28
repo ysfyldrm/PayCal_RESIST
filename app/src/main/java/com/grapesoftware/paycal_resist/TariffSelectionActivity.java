@@ -90,7 +90,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
         reslowvolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Morning: 0,57 \nPeak: 0,85 \nOffPeak: 0,37 \nTax: 0,24", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
 
                 {
@@ -114,9 +113,9 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
                             Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
 
-                            String morning="0,57";
-                            String peak="0,85";
-                            String offpeak="0,37";
+                            String morning="0,08";
+                            String peak="0,12";
+                            //String offpeak="0,37";
                             String tax="0,24";
                             String avgconsmonth=AvgConsMonth.getText().toString();
                             String consyear=ConsYear.getText().toString();
@@ -127,7 +126,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.putString("Morning Tariff",morning);
                             editor.putString("Peak Tariff",peak);
-                            editor.putString("Off Peak Tariff",offpeak);
+                            //editor.putString("Off Peak Tariff",offpeak);
                             editor.putString("Tax",tax);
                             editor.putString("Cons Avg Month",avgconsmonth);
                             editor.putString("Cons Year",consyear);
@@ -156,7 +155,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
         resmedvolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Morning: 0,54 \nPeak: 0,82 \nOffPeak: 0,34 \nTax: 0,24", Toast.LENGTH_SHORT).show();
 
                 {
 
@@ -178,9 +176,9 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             dialog1.dismiss();
                             Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
 
-                            String morning="0,54";
-                            String peak="0,82";
-                            String offpeak="0,34";
+                            String morning="0,08";
+                            String peak="0,12";
+                            //String offpeak="0,34";
                             String tax="0,24";
                             String avgconsmonth=AvgConsMonth.getText().toString();
                             String consyear=ConsYear.getText().toString();
@@ -192,7 +190,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.putString("Morning Tariff",morning);
                             editor.putString("Peak Tariff",peak);
-                            editor.putString("Off Peak Tariff",offpeak);
+                            //editor.putString("Off Peak Tariff",offpeak);
                             editor.putString("Tax",tax);
                             editor.putString("Cons Avg Month",avgconsmonth);
                             editor.putString("Cons Year",consyear);
@@ -223,7 +221,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
         comlowvolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Morning: 0,76 \nPeak: 1,11 \nOffPeak: 0,49 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
 
                 {
 
@@ -246,10 +243,10 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
                             Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
 
-                            String morning="0,76";
-                            String peak="1,11";
-                            String offpeak="0,49";
-                            String tax="0,2366";
+                            String morning="0,11";
+                            String peak="0,16";
+                            //String offpeak="0,49";
+                            String tax="0,24";
                             String avgconsmonth=AvgConsMonth.getText().toString();
                             String consyear=ConsYear.getText().toString();
                             String morconsmonth=MorConsMonth.getText().toString();
@@ -259,7 +256,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.putString("Morning Tariff",morning);
                             editor.putString("Peak Tariff",peak);
-                            editor.putString("Off Peak Tariff",offpeak);
+                            //editor.putString("Off Peak Tariff",offpeak);
                             editor.putString("Tax",tax);
                             editor.putString("Cons Avg Month",avgconsmonth);
                             editor.putString("Cons Year",consyear);
@@ -287,7 +284,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
         commedvolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Morning: 0,72 \nPeak: 1,07 \nOffPeak: 0,45 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
 
                 {
 
@@ -309,10 +305,10 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             dialog1.dismiss();
                             Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
 
-                            String morning="0,72";
-                            String peak="1,07";
-                            String offpeak="0,45";
-                            String tax="0,2366";
+                            String morning="0,11";
+                            String peak="0,16";
+                            //String offpeak="0,45";
+                            String tax="0,24";
                             String avgconsmonth=AvgConsMonth.getText().toString();
                             String consyear=ConsYear.getText().toString();
                             String morconsmonth=MorConsMonth.getText().toString();
@@ -322,7 +318,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.putString("Morning Tariff",morning);
                             editor.putString("Peak Tariff",peak);
-                            editor.putString("Off Peak Tariff",offpeak);
+                            //editor.putString("Off Peak Tariff",offpeak);
                             editor.putString("Tax",tax);
                             editor.putString("Cons Avg Month",avgconsmonth);
                             editor.putString("Cons Year",consyear);
@@ -350,7 +346,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
         indlowvolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Morning: 0,66 \nPeak: 0,99 \nOffPeak: 0,40 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
 
                 {
 
@@ -372,10 +367,10 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             dialog1.dismiss();
                             Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
 
-                            String morning="0,66";
-                            String peak="0,99";
-                            String offpeak="0,40";
-                            String tax="0,2366";
+                            String morning="0,1";
+                            String peak="0,14";
+                            //String offpeak="0,40";
+                            String tax="0,24";
                             String avgconsmonth=AvgConsMonth.getText().toString();
                             String consyear=ConsYear.getText().toString();
                             String morconsmonth=MorConsMonth.getText().toString();
@@ -385,7 +380,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.putString("Morning Tariff",morning);
                             editor.putString("Peak Tariff",peak);
-                            editor.putString("Off Peak Tariff",offpeak);
+                            //editor.putString("Off Peak Tariff",offpeak);
                             editor.putString("Tax",tax);
                             editor.putString("Cons Avg Month",avgconsmonth);
                             editor.putString("Cons Year",consyear);
@@ -414,7 +409,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
         indmedvolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Morning: 0,60 \nPeak: 0,92 \nOffPeak: 0,34 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
 
                 {
 
@@ -436,10 +430,10 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             dialog1.dismiss();
                             Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
 
-                            String morning="0,60";
-                            String peak="0,92";
-                            String offpeak="0,34";
-                            String tax="0,2366";
+                            String morning="0,09";
+                            String peak="0,13";
+                            //String offpeak="0,34";
+                            String tax="0,24";
                             String avgconsmonth=AvgConsMonth.getText().toString();
                             String consyear=ConsYear.getText().toString();
                             String morconsmonth=MorConsMonth.getText().toString();
@@ -449,7 +443,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.putString("Morning Tariff",morning);
                             editor.putString("Peak Tariff",peak);
-                            editor.putString("Off Peak Tariff",offpeak);
+                            //editor.putString("Off Peak Tariff",offpeak);
                             editor.putString("Tax",tax);
                             editor.putString("Cons Avg Month",avgconsmonth);
                             editor.putString("Cons Year",consyear);
@@ -553,12 +547,11 @@ public class TariffSelectionActivity extends AppCompatActivity {
         reslowvolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Morning: 0,57 \nPeak: 0,85 \nOffPeak: 0,37 \nTax: 0,24", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
 
-                           String morning="0,57";
-                           String peak="0,85";
-                           String offpeak="0,37";
+                           String morning="0,08";
+                           String peak="0,12";
+                           //String offpeak="0,37";
                            String tax="0,24";
 
 
@@ -567,7 +560,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
                          SharedPreferences.Editor editor = preferences.edit();
                            editor.putString("Morning Tariff",morning);
                            editor.putString("Peak Tariff",peak);
-                           editor.putString("Off Peak Tariff",offpeak);
+                           //editor.putString("Off Peak Tariff",offpeak);
                            editor.putString("Tax",tax);
                            editor.commit();
                 startActivity(intent);
@@ -644,19 +637,18 @@ public class TariffSelectionActivity extends AppCompatActivity {
         resmedvolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Morning: 0,54 \nPeak: 0,82 \nOffPeak: 0,34 \nTax: 0,24", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
 
-                            String morning="0,54";
-                            String peak="0,82";
-                            String offpeak="0,34";
+                            String morning="0,08";
+                            String peak="0,12";
+                            //String offpeak="0,34";
                             String tax="0,24";
                 SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("Morning Tariff",morning);
                 editor.putString("Peak Tariff",peak);
-                editor.putString("Off Peak Tariff",offpeak);
+                //editor.putString("Off Peak Tariff",offpeak);
                 editor.putString("Tax",tax);
                 editor.commit();
                 startActivity(intent);
@@ -729,19 +721,18 @@ public class TariffSelectionActivity extends AppCompatActivity {
         comlowvolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Morning: 0,76 \nPeak: 1,11 \nOffPeak: 0,49 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
 
-                String morning="0,76";
-                String peak="1,11";
-                String offpeak="0,49";
-                String tax="0,2366";
+                String morning="0,11";
+                String peak="0,16";
+                //String offpeak="0,49";
+                String tax="0,24";
                 SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("Morning Tariff",morning);
                 editor.putString("Peak Tariff",peak);
-                editor.putString("Off Peak Tariff",offpeak);
+                //editor.putString("Off Peak Tariff",offpeak);
                 editor.putString("Tax",tax);
                 editor.commit();
                 startActivity(intent);
@@ -814,19 +805,18 @@ public class TariffSelectionActivity extends AppCompatActivity {
         commedvolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Morning: 0,72 \nPeak: 1,07 \nOffPeak: 0,45 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
 
-                String morning="0,72";
-                String peak="1,07";
-                String offpeak="0,45";
-                String tax="0,2366";
+                String morning="0,11";
+                String peak="0,16";
+                //String offpeak="0,45";
+                String tax="0,24";
                 SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("Morning Tariff",morning);
                 editor.putString("Peak Tariff",peak);
-                editor.putString("Off Peak Tariff",offpeak);
+                //editor.putString("Off Peak Tariff",offpeak);
                 editor.putString("Tax",tax);
                 editor.commit();
                 startActivity(intent);
@@ -903,16 +893,16 @@ public class TariffSelectionActivity extends AppCompatActivity {
                 Toast.makeText(context, "Morning: 0,66 \nPeak: 0,99 \nOffPeak: 0,40 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
 
-                String morning="0,66";
-                String peak="0,99";
-                String offpeak="0,40";
-                String tax="0,2366";
+                String morning="0,1";
+                String peak="0,14";
+                //String offpeak="0,40";
+                String tax="0,24";
                 SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("Morning Tariff",morning);
                 editor.putString("Peak Tariff",peak);
-                editor.putString("Off Peak Tariff",offpeak);
+                //editor.putString("Off Peak Tariff",offpeak);
                 editor.putString("Tax",tax);
                 editor.commit();
                 startActivity(intent);
@@ -986,20 +976,19 @@ public class TariffSelectionActivity extends AppCompatActivity {
         indmedvolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Morning: 0,60 \nPeak: 0,92 \nOffPeak: 0,34 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
 
                 Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
 
-                String morning="0,60";
-                String peak="0,92";
-                String offpeak="0,34";
-                String tax="0,2366";
+                String morning="0,09";
+                String peak="0,13";
+                //String offpeak="0,34";
+                String tax="0,24";
                 SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("Morning Tariff",morning);
                 editor.putString("Peak Tariff",peak);
-                editor.putString("Off Peak Tariff",offpeak);
+                //editor.putString("Off Peak Tariff",offpeak);
                 editor.putString("Tax",tax);
                 editor.commit();
                 startActivity(intent);

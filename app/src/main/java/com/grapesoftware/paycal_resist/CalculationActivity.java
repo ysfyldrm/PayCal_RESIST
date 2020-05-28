@@ -161,14 +161,14 @@ public class CalculationActivity extends AppCompatActivity {
         }
         else if (storagetype.equals("Lion")){
             eff=0.96;
-            dod=90.0;
+            dod=0.9;
             storage_price=1260.0;
             omprice=10.0;
 
         }
         if (storagetype.equals("LeadAcid")){
             eff=0.8;
-            dod=60.0;
+            dod=0.6;
             storage_price=550.0;
             omprice=10.0;
 
@@ -224,20 +224,20 @@ public class CalculationActivity extends AppCompatActivity {
                         Double a8 = allsky.getDouble("8");
                         Double a9 = allsky.getDouble("9");
 
-                        JSONObject wind10 = params.getJSONObject("WS10M");
-                        Double wa1 = wind10.getDouble("1");
-                        Double wa10 = wind10.getDouble("10");
-                        Double wa11 = wind10.getDouble("11");
-                        Double wa12 = wind10.getDouble("12");
-                        wa13 = wind10.getDouble("13");
-                        Double wa2 = wind10.getDouble("2");
-                        Double wa3 = wind10.getDouble("3");
-                        Double wa4 = wind10.getDouble("4");
-                        Double wa5 = wind10.getDouble("5");
-                        Double wa6 = wind10.getDouble("6");
-                        Double wa7 = wind10.getDouble("7");
-                        Double wa8 = wind10.getDouble("8");
-                        Double wa9 = wind10.getDouble("9");
+//                        JSONObject wind10 = params.getJSONObject("WS10M");
+//                        Double wa1 = wind10.getDouble("1");
+//                        Double wa10 = wind10.getDouble("10");
+//                        Double wa11 = wind10.getDouble("11");
+//                        Double wa12 = wind10.getDouble("12");
+//                        wa13 = wind10.getDouble("13");
+//                        Double wa2 = wind10.getDouble("2");
+//                        Double wa3 = wind10.getDouble("3");
+//                        Double wa4 = wind10.getDouble("4");
+//                        Double wa5 = wind10.getDouble("5");
+//                        Double wa6 = wind10.getDouble("6");
+//                        Double wa7 = wind10.getDouble("7");
+//                        Double wa8 = wind10.getDouble("8");
+//                        Double wa9 = wind10.getDouble("9");
 
                         JSONObject wind50 = params.getJSONObject("WS50M");
                         Double wwa1 = wind50.getDouble("1");
@@ -291,19 +291,19 @@ public class CalculationActivity extends AppCompatActivity {
                                         String.valueOf(wwa11) + "\n" +
                                         String.valueOf(wwa12) + "\n");
 
-                        showResult3.setText(
-                                String.valueOf(wa1) + "\n" +
-                                        String.valueOf(wa2) + "\n" +
-                                        String.valueOf(wa3) + "\n" +
-                                        String.valueOf(wa4) + "\n" +
-                                        String.valueOf(wa5) + "\n" +
-                                        String.valueOf(wa6) + "\n" +
-                                        String.valueOf(wa7) + "\n" +
-                                        String.valueOf(wa8) + "\n" +
-                                        String.valueOf(wa9) + "\n" +
-                                        String.valueOf(wa10) + "\n" +
-                                        String.valueOf(wa11) + "\n" +
-                                        String.valueOf(wa12) + "\n");
+//                        showResult3.setText(
+//                                String.valueOf(wa1) + "\n" +
+//                                        String.valueOf(wa2) + "\n" +
+//                                        String.valueOf(wa3) + "\n" +
+//                                        String.valueOf(wa4) + "\n" +
+//                                        String.valueOf(wa5) + "\n" +
+//                                        String.valueOf(wa6) + "\n" +
+//                                        String.valueOf(wa7) + "\n" +
+//                                        String.valueOf(wa8) + "\n" +
+//                                        String.valueOf(wa9) + "\n" +
+//                                        String.valueOf(wa10) + "\n" +
+//                                        String.valueOf(wa11) + "\n" +
+//                                        String.valueOf(wa12) + "\n");
 
                     }
                 } catch (JSONException e) {
@@ -365,7 +365,7 @@ public class CalculationActivity extends AppCompatActivity {
         windyearkwh=windkwarray*12*dturbinecount;
         winddaykwh=windyearkwh/365;
 
-        if (dconsyear>=windyearkwh){
+        if (dmorconsmonth*12>=windyearkwh){
             windanualprofit=(windyearkwh*dmorning*dtax)+windyearkwh*dmorning;
         }
         else {
@@ -377,12 +377,11 @@ public class CalculationActivity extends AppCompatActivity {
 
         for (int i=0; i<24 ;i++){
             cashflow[i]=-windcapitalcost+((windanualprofit)*i);
-            //Toast.makeText(getApplicationContext(),String.valueOf(cashflow[i]),Toast.LENGTH_SHORT).show();
+            Log.e("CASHFLOW","Cashflow"+i+": "+cashflow[i]);
+            Toast.makeText(getApplicationContext(),"Cashflow"+i+": "+cashflow[i],Toast.LENGTH_SHORT).show();
         }
 
-        Toast.makeText(getApplicationContext(),"WindAnualProfit: "+windanualprofit+"\nWind Year Cost: "+ windyearcost+"Payback: "+String.valueOf(payback)+"\n"+"Wind Year Kwh: "+String.valueOf(windyearkwh),Toast.LENGTH_LONG).show();
 
-        //Log.e("WindHesap",+dturbinecount+"\n"+ratedcapacity+"\n"+windyearkwh+"\n"+winddaykwh+"\n"+windcapitalcost+"\n"+windyearcost+"\n"+windanualprofit+"\n"+payback+"\n");
 
         // dialog nesnesi oluştur ve layout dosyasına bağlan
         final Dialog dialog = new Dialog(context);
@@ -551,15 +550,15 @@ public class CalculationActivity extends AppCompatActivity {
 
             windkwarraycalculate();
             if (turbinetype.equals("1 Kw")) {
-                price=3511.57;
+                price=3466.45;
                 turbinetypevalue=1.0;
             }
             else if (turbinetype.equals("3 Kw")){
-                price=3108.84;
+                price=3068.89;
                 turbinetypevalue=3.0;
             }
             else{
-                price=2579.95;
+                price=2545.67;
                 turbinetypevalue=10.0;
             }
 
@@ -593,14 +592,10 @@ public class CalculationActivity extends AppCompatActivity {
 
             for (int i=0; i<24 ;i++){
                 cashflow[i]=-systemcost+((systemprofit)*i);
+                Log.e("CASHFLOW WITH STORAGE","Cashflow"+i+": "+cashflow[i]);
+                Toast.makeText(getApplicationContext(), "Cashflow"+i+": "+cashflow[i], Toast.LENGTH_SHORT).show();
             }
 
-            Toast.makeText(getApplicationContext(),"Storage Used Capacity: "+storageusedcapacity+"\nStorage Capacity: "+ storagecapacity+"Payback: "+String.valueOf(payback)+"\n"+"Storage Yearly Cost: "+storageyearlycost,Toast.LENGTH_LONG).show();
-
-
-
-            Log.e("Degerler",turbinetypevalue+"\n"+dturbinecount+"\n"+ratedcapacity+"\n"+price+"\n"+windcapitalcost);
-            Log.e("WindHesap",price+"\n"+windcapitalcost+"\n"+systemcost+"\n"+systemyearlycost+"\n"+systemprofit+"\n"+payback+"\n"+cashflow[0]+"--"+cashflow[23]);
         }
 
     }

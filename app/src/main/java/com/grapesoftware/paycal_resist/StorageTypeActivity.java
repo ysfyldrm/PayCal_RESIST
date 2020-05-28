@@ -97,10 +97,6 @@ public class StorageTypeActivity extends AppCompatActivity {
                     SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("Storage Type","Thermal");
-                    editor.putString("Thermal Eff","0.9");
-                    editor.putString("Thermal Dod","1");
-                    editor.putString("Thermal Price","0.32");
-                    editor.putString("Thermal Om Price","0.1");
                     editor.commit();
 
                 }

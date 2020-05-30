@@ -19,4 +19,14 @@
     <color name="colorTransparentWhite">#CCCCCC</color>
     <color name="colorButton">#157DE6</color>
     <color name="backgroundBlue">#255ED6</color>
+
+
+    <color name="color1">#E32129</color>
+    <color name="color2">#E86244</color>
+    <color name="color3">#F8A41E</color>
+    <color name="color4">#FDD10E</color>
+    <color name="color5">#A8C23A</color>
+    <color name="color6">#51A246</color>
+
+
 </resources>

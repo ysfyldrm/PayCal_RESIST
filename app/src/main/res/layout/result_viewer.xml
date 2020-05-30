@@ -7,11 +7,11 @@
         android:id="@+id/results_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RESULTS"
+        android:text="RESULTS FOR CHECKING VALUES(EXPERIMENTAL USAGE)"
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
         android:layout_centerHorizontal="true"
-        android:textSize="20sp"
+        android:textSize="10sp"
         android:layout_marginTop="20dp"
         />
 

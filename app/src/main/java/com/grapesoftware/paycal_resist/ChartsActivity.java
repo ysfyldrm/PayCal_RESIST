@@ -22,6 +22,7 @@ public class ChartsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_charts);
         SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
+        int colorArray[]={R.color.color1,R.color.color2,R.color.color3,R.color.color4,R.color.color5,R.color.color6};
 
         for (int i=0;i<cashFloat.length;i++){
             cashFloat[i]=preferences.getFloat("Cashflow"+i,0.0f);
@@ -30,10 +31,14 @@ public class ChartsActivity extends AppCompatActivity {
 
         mpLineChart=(LineChart) findViewById(R.id.line_chart);
         LineDataSet lineDataSet1=new LineDataSet(dataValues1(),"CashFlow Diagram");
+        lineDataSet1.setColors(colorArray,ChartsActivity.this);
+        lineDataSet1.setDrawCircles(false);
+
         ArrayList<ILineDataSet> dataSets=new ArrayList<>();
         dataSets.add(lineDataSet1);
         LineData data=new LineData(dataSets);
         mpLineChart.setData(data);
+        mpLineChart.animateX(5000);
         mpLineChart.invalidate();
     }
 

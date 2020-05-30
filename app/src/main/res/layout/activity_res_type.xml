@@ -7,6 +7,16 @@
     android:background="@drawable/bg1"
     tools:context=".ResTypeActivity">
 
+
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/ic_backbutton"
+        />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextViewResult;
     private boolean LocationCompleted = false;
     private String Latitude,Longitude,Adress,Country;
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
 
 
@@ -133,9 +135,9 @@ public class MainActivity extends AppCompatActivity {
 //                        textView5.setText(Html.fromHtml("<font color='#181a24'><b>Address :</b><br></font>" + addresses.get(0).getAddressLine(0)));
 
 
-                        SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                        preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
                         Intent intent=new Intent(MainActivity.this,MapsActivity.class);
-                        SharedPreferences.Editor editor = preferences.edit();
+                        editor = preferences.edit();
                         editor.putString("Latitude",Latitude);
                         editor.putString("Longitude",Longitude);
                         editor.putString("Country",Country);

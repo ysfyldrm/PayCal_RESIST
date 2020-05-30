@@ -25,6 +25,9 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.FoldingCube;
+import com.github.ybq.android.spinkit.style.Wave;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,7 +37,7 @@ import org.json.JSONObject;
 public class CalculationActivity extends AppCompatActivity {
     String typeforuser, morning, peak, offpeak, tax, avgconsmonth, morconsmonth, avgmonthbill, resgendaily, resgenmonthly, storageperc, restype, turbinetype, turbinecount, consyear, solararea, latitude, longitude, storagetype;
     Double dlatitude, dlongitude, dmorning, dpeak, doffpeak, dtax, davgconsmonth, dmorconsmonth, davgmonthbill, dresgendaily, dresgenmonthly, dstorageperc, drestype, dturbinecount, dconsyear, dsolararea;
-    ProgressBar dataProgressBar;
+
     String adress,country;
     private RequestQueue mQueue;
     Double wwa13 = 0.00, wa13 = 0.00;
@@ -50,6 +53,7 @@ public class CalculationActivity extends AppCompatActivity {
     final Context context = this;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +61,10 @@ public class CalculationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calculation);
 
         mQueue = Volley.newRequestQueue(this);
-        dataProgressBar = findViewById(R.id.dataProgress_Bar);
+        progressBar = (ProgressBar)findViewById(R.id.spin_kit);
+        Wave wave=new Wave();
+        progressBar.setIndeterminateDrawable(wave);
+        progressBar.setVisibility(View.INVISIBLE);
 
 
         preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
@@ -125,7 +132,8 @@ public class CalculationActivity extends AppCompatActivity {
 
 //        SharedPreferences settings = context.getSharedPreferences("session", Context.MODE_PRIVATE);
 //        settings.edit().clear().commit();
-        dataProgressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
+
 
         if (storagetype.equals("Thermal")) {
             eff = 0.9;
@@ -227,7 +235,7 @@ public class CalculationActivity extends AppCompatActivity {
                         Double wwa8 = wind50.getDouble("8");
                         Double wwa9 = wind50.getDouble("9");
 
-                        dataProgressBar.setVisibility(View.GONE);
+                        progressBar.setVisibility(View.GONE);
 
                         if (typeforuser.equals("Consumer")) {
 
@@ -336,9 +344,11 @@ private void displayResults(){
         public void onClick(View v) {
             Intent intent = new Intent(CalculationActivity.this, ChartsActivity.class);
             startActivity(intent);
+            finish();
+
         }
     });
-
+    //finish();
 
     dialog.show();
     Window window = dialog.getWindow();
@@ -711,4 +721,5 @@ private void displayResults(){
     private void createCharts() {
 
     }
+
 }

@@ -34,7 +34,9 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" />
+            android:label="@string/title_activity_maps" >
+
+        </activity>
         <activity android:name=".SupplierMcpSelectionActivity" />
         <activity android:name=".StorageTypeActivity" />
         <activity android:name=".ResTypeActivity" />
@@ -44,16 +46,18 @@
         <activity android:name=".VerifyPhoneActivity" />
         <activity android:name=".CustomerActivity"></activity>
         <activity android:name=".IntroActivity">
+
+        </activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".ForgetPassActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".ForgetPassActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>

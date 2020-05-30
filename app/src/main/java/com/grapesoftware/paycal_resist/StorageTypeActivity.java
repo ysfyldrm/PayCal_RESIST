@@ -27,6 +27,8 @@ public class StorageTypeActivity extends AppCompatActivity {
     final Context context = this;
     SeekBar seekBar;
     TextView percentageView;
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +42,10 @@ public class StorageTypeActivity extends AppCompatActivity {
 
 
         SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
+        editor = preferences.edit();
         typeforuser = preferences.getString("Type", "Consumer");
-        restype=preferences.getString("RES Type",null);
+        restype=preferences.getString("RES Type","SOLAR");
 
-        Toast.makeText(context, restype, Toast.LENGTH_SHORT).show();
 
         if (typeforuser.equals("Prosumer")){
              noStorageBtn.setVisibility(View.GONE);
@@ -55,11 +57,8 @@ public class StorageTypeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent finalize=new Intent(StorageTypeActivity.this, CalculationActivity.class);
-                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("Storage Type","NoStorage");
                 editor.commit();
-
                 startActivity(finalize);
 
 
@@ -69,16 +68,17 @@ public class StorageTypeActivity extends AppCompatActivity {
         lionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (restype.equals("PV SOLAR")) {
-                    showMyCustomSolarArea();
+                if (restype.equals("SOLAR")) {
+                    editor.putString("Storage Type","Lion");
+                    editor.commit();
+                    showMyPercentageStorage();
                 }
                 else if(restype.equals("WIND")){
 
-                    showMyPercentageStorage();
-                    SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences.edit();
+
                     editor.putString("Storage Type","Lion");
                     editor.commit();
+                    showMyPercentageStorage();
 
                 }
 
@@ -88,16 +88,16 @@ public class StorageTypeActivity extends AppCompatActivity {
         thermalBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (restype.equals("SOLAR")) {
 
-                if (restype.equals("PV SOLAR")) {
-                    showMyCustomSolarArea();
-                }
-                else if(restype.equals("WIND")){
-                    showMyPercentageStorage();
-                    SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("Storage Type","Thermal");
                     editor.commit();
+                    showMyPercentageStorage();
+                }
+                else if(restype.equals("WIND")){
+                    editor.putString("Storage Type","Thermal");
+                    editor.commit();
+                    showMyPercentageStorage();
 
                 }
 
@@ -107,13 +107,13 @@ public class StorageTypeActivity extends AppCompatActivity {
         leadAcidBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (restype.equals("SOLAR")) {
+                    editor.putString("Storage Type","LeadAcid");
+                    editor.commit();
+                    showMyPercentageStorage();
 
-                if (restype.equals("PV SOLAR")) {
-                    showMyCustomSolarArea();
                 }
                 else if(restype.equals("WIND")){
-                    SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
-                    SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("Storage Type","LeadAcid");
                     editor.commit();
                     showMyPercentageStorage();
@@ -141,8 +141,6 @@ public class StorageTypeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 showMyPercentageStorage();
 
-                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("Solar Area", areaCount.getText().toString());
                 editor.commit();
 
@@ -195,14 +193,58 @@ public class StorageTypeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("Storage Percentage", percentageView.getText().toString());
                 editor.commit();
+                if (typeforuser.equals("Prosumer"))
+                {
+                    showMyAfterProsumerTariff();
+                }
+                else {
+                    Intent calculate = new Intent(StorageTypeActivity.this, CalculationActivity.class);
+                    startActivity(calculate);
+                }
 
-                Intent calculate=new Intent(StorageTypeActivity.this,CalculationActivity.class);
-                startActivity(calculate);
+            }
+        });
 
+
+        dialog.show();
+        Window window = dialog.getWindow();
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+    }
+
+    private void showMyAfterProsumerTariff() {
+
+        // dialog nesnesi oluştur ve layout dosyasına bağlan
+        final Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.after_prosumer_tariff);
+
+        // custom dialog elemanlarını tanımla - text, image ve button
+        Button ownconfirmbtn=dialog.findViewById(R.id.wanted_data_confirm_button);
+        final EditText consavgmonth=dialog.findViewById(R.id.cons_avgmonth_edt);
+        final EditText avgmonthbill=dialog.findViewById(R.id.avg_month_bill_edt);
+        final EditText morconsmonth=dialog.findViewById(R.id.morning_cons_month_edt);
+        final EditText resgendaily=dialog.findViewById(R.id.res_gen_daily_edt);
+        final EditText resgenmonthly=dialog.findViewById(R.id.res_gen_mothly_edt);
+
+
+
+        // tamam butonunun tıklanma olayları
+        ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                editor.putString("Cons Avg Month", consavgmonth.getText().toString());
+                editor.putString("Avg Month Bill", avgmonthbill.getText().toString());
+                editor.putString("Morning Cons Month", morconsmonth.getText().toString());
+                editor.putString("RES Gen Daily", resgendaily.getText().toString());
+                editor.putString("RES Gen Monthly", resgenmonthly.getText().toString());
+
+                editor.commit();
+
+                    Intent calculate = new Intent(StorageTypeActivity.this, CalculationActivity.class);
+                    startActivity(calculate);
 
             }
         });

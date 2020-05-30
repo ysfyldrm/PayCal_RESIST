@@ -31,7 +31,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     Marker marker;
-    String latitude,longitude;
+    String latitude,longitude,adress,country;
 
 
     @Override
@@ -94,12 +94,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 latitude=String.valueOf(latLng.latitude);
                 longitude=String.valueOf(latLng.longitude);
+                adress=list.get(0).getAddressLine(0);
+                country=list.get(0).getCountryName();
 
                 SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("Latitude",latitude);
                 editor.putString("Longitude",longitude);
+                editor.putString("Country",country);
+                editor.putString("Adress",adress);
                 editor.commit();
 
                 Toast.makeText(getApplicationContext(),"Latitude="+latLng.latitude+"Longitude"+latLng.longitude,Toast.LENGTH_SHORT).show();

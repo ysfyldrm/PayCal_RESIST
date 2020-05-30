@@ -36,7 +36,7 @@
         android:id="@+id/button_PV"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:text="PV SOLAR"
+        android:text="SOLAR"
         android:textSize="20dp"
         android:background="@drawable/button"
         android:fontFamily="@font/bold"

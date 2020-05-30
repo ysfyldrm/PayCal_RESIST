@@ -119,7 +119,7 @@ public class LocationActivity extends AppCompatActivity {
 
     private boolean LocationCompleted = false;
     private String Latitude;
-    private String Longitude;
+    private String Longitude,Adress,Country;
 
     private void getLocation() {
         fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
@@ -147,19 +147,23 @@ public class LocationActivity extends AppCompatActivity {
 
                         //set Country Name
                         textView3.setText(Html.fromHtml("<font color='#181a24'><b>Country :</b><br></font>" + addresses.get(0).getCountryName()));
+                        Country=String.valueOf(addresses.get(0).getCountryName());
 
                         //set Locality
                         textView4.setText(Html.fromHtml("<font color='#181a24'><b>Locality :</b><br></font>" + addresses.get(0).getLocality()));
 
+
                         //set address
                         textView5.setText(Html.fromHtml("<font color='#181a24'><b>Address :</b><br></font>" + addresses.get(0).getAddressLine(0)));
-
+                        Adress=String.valueOf(addresses.get(0).getAddressLine(0));
 
                         SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putString("Latitude",Latitude);
                         editor.putString("Longitude",Longitude);
+                        editor.putString("Country",Country);
+                        editor.putString("Adress",Adress);
                         editor.commit();
 
 

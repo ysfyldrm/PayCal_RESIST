@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CalculationActivity"></activity>
+        <activity android:name=".ChartsActivity"></activity>
+        <activity android:name=".CalculationActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -33,7 +34,7 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
         <activity android:name=".SupplierMcpSelectionActivity" />
         <activity android:name=".StorageTypeActivity" />
         <activity android:name=".ResTypeActivity" />
@@ -41,9 +42,7 @@
         <activity android:name=".LocationActivity" />
         <activity android:name=".SliderActivity" />
         <activity android:name=".VerifyPhoneActivity" />
-        <activity android:name=".CustomerActivity">
-
-        </activity>
+        <activity android:name=".CustomerActivity"></activity>
         <activity android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,9 +53,7 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ForgetPassActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity" >
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>

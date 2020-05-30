@@ -30,12 +30,13 @@
         >
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:textSize="15sp"
             android:textColor="@color/colorTransparentWhite"
             android:fontFamily="@font/bold"
             android:text="Storage %"
+            android:gravity="end"
             />
 
         <TextView
@@ -53,7 +54,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorTransparentWhite"
             android:max="100"
-            android:min="0"
+            android:min="1"
             />
 <!--            android:progressBackgroundTint=""-->
 

@@ -8,60 +8,58 @@
     tools:context="com.grapesoftware.paycal_resist.MapsActivity">;
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:background="@color/backgroundBlue"
         android:gravity="center"
-        >
+        android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:fontFamily="@font/bold"
-            android:textColor="@color/colorTransparentWhite"
-            android:id="@+id/textView"
             android:text="Location:"
+            android:textColor="@color/colorTransparentWhite"
             android:textSize="20sp" />
 
         <EditText
+            android:id="@+id/editTextLocate"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
-            android:id="@+id/editTextLocate"
-            android:textColor="@color/colorTransparentWhite"
-            android:backgroundTint="@color/colorTransparentWhite"
+            android:layout_gravity="center_horizontal"
             android:layout_marginLeft="10dp"
+            android:backgroundTint="@color/colorTransparentWhite"
             android:fontFamily="@font/medium"
             android:singleLine="true"
-            android:layout_gravity="center_horizontal" />
+            android:textColor="@color/colorTransparentWhite" />
 
         <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/button"
-            android:fontFamily="@font/bold"
-            android:textColor="@color/colorTransparentWhite"
-            android:layout_marginLeft="20dp"
-            android:text="Go"
             android:id="@+id/buttonmaps"
-            android:onClick="findLocation" />
-        <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
             android:background="@drawable/button"
             android:fontFamily="@font/bold"
-            android:textColor="@color/colorTransparentWhite"
-            android:layout_marginLeft="10dp"
-            android:text=">"
-            android:id="@+id/btnnextactivity"
-            />
+            android:onClick="findLocation"
+            android:text="Go"
+            android:textColor="@color/colorTransparentWhite" />
 
+        <Button
+            android:id="@+id/btnnextactivity"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button"
+            android:fontFamily="@font/bold"
+            android:text=">"
+            android:textColor="@color/colorTransparentWhite" />
 
 
     </LinearLayout>
-
 
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"

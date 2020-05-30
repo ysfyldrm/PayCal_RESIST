@@ -1,224 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/dialog_shape"
-    >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/enteryour_own"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter your own MCP"
-        android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
         android:layout_centerHorizontal="true"
-        android:textSize="15sp"
         android:layout_marginTop="20dp"
-        />
+        android:fontFamily="@font/bold"
+        android:text="Enter your own MCP"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/peakMCP_txt"
-        android:layout_width="wrap_content"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/enteryour_own"
-        android:textSize="15sp"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/bold"
+        android:gravity="end"
         android:text="Peak MCP = "
-        android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
-        />
+        android:textSize="15sp" />
 
-    <TextView
-        android:id="@+id/offPeak_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/peakMCP_txt"
-        android:textSize="15sp"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="30dp"
-        android:text="OffPeak MCP = "
-        android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
-        />
 
     <TextView
         android:id="@+id/morningMCP_txt"
-        android:layout_width="wrap_content"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/offPeak_txt"
-        android:textSize="15sp"
-        android:layout_marginTop="20dp"
+        android:layout_below="@id/peakMCP_txt"
         android:layout_marginLeft="30dp"
-        android:text="Morning MCP = "
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/bold"
+        android:gravity="end"
+        android:text="Morning MCP = "
         android:textColor="@color/colorTransparentWhite"
-        />
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/avg_peakMCP_txt"
-        android:layout_width="wrap_content"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:layout_below="@id/morningMCP_txt"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/bold"
+        android:gravity="end"
         android:text="Average Peak MCP = "
-        android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
-        />
-    <TextView
-        android:id="@+id/avg_offPeakMCP_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:layout_below="@id/avg_peakMCP_txt"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="30dp"
-        android:text="Average OffPeak MCP = "
-        android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
-        />
+        android:textSize="15sp" />
+
+
     <TextView
         android:id="@+id/avg_morningMCP_txt"
-        android:layout_width="wrap_content"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:layout_below="@id/avg_offPeakMCP_txt"
-        android:layout_marginTop="20dp"
+        android:layout_below="@id/avg_peakMCP_txt"
         android:layout_marginLeft="30dp"
-        android:text="Average Morning MCP = "
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/bold"
+        android:gravity="end"
+        android:text="Average Morning MCP = "
         android:textColor="@color/colorTransparentWhite"
-        />
+        android:textSize="15sp" />
+
     <TextView
         android:id="@+id/avg_yearMCP_txt"
-        android:layout_width="wrap_content"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/avg_morningMCP_txt"
-        android:layout_marginTop="20dp"
-        android:textSize="15sp"
         android:layout_marginLeft="30dp"
-        android:text="Average Year MCP = "
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/bold"
+        android:gravity="end"
+        android:text="Average Year MCP = "
         android:textColor="@color/colorTransparentWhite"
-        />
+        android:textSize="15sp" />
 
     <Button
         android:id="@+id/own_confirm_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button"
         android:layout_below="@id/avg_yearMCP_txt"
         android:layout_centerHorizontal="true"
-        android:textSize="15sp"
-        android:text="CONFIRM"
-        android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"
-        />
+        android:background="@drawable/button"
+        android:fontFamily="@font/bold"
+        android:text="CONFIRM"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp" />
 
     <EditText
         android:id="@+id/peakMCP_edt"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/peakMCP_txt"
-        android:digits="0123456789"
-        android:inputType="numberPassword"
         android:layout_below="@id/enteryour_own"
-        android:layout_marginRight="30dp"
-        android:textColor="@color/colorTransparentWhite"
-        android:backgroundTint="@color/colorTransparentWhite"
         android:layout_marginTop="5dp"
-        android:textSize="15sp"
-        />
+        android:layout_marginRight="30dp"
+        android:layout_toRightOf="@id/peakMCP_txt"
+        android:backgroundTint="@color/colorTransparentWhite"
+        android:digits="0123456789.,"
+        android:gravity="center"
+        android:inputType="number"
+        android:textColor="@color/colorTransparentWhite"
+        android:textColorHint="@color/colorTransparentWhite"
+        android:hint="$/Kwh"
+        android:textSize="15sp" />
 
-    <EditText
-        android:id="@+id/offPeak_edt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/offPeak_txt"
-        android:layout_below="@id/peakMCP_edt"
-        android:layout_marginRight="30dp"
-        android:digits="0123456789"
-        android:inputType="numberPassword"
-        android:textColor="@color/colorTransparentWhite"
-        android:backgroundTint="@color/colorTransparentWhite"
-        android:layout_marginTop="5dp"
-        android:textSize="15sp"
-        />
 
     <EditText
         android:id="@+id/morningMCP_edt"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/morningMCP_txt"
-        android:layout_below="@id/offPeak_edt"
+        android:layout_below="@id/peakMCP_edt"
         android:layout_marginRight="30dp"
-        android:textColor="@color/colorTransparentWhite"
+        android:layout_toRightOf="@id/morningMCP_txt"
         android:backgroundTint="@color/colorTransparentWhite"
-        android:digits="0123456789"
-        android:inputType="numberPassword"
-        android:textSize="15sp"
-        />
+        android:digits="0123456789.,"
+        android:gravity="center"
+        android:inputType="number"
+        android:textColor="@color/colorTransparentWhite"
+        android:textColorHint="@color/colorTransparentWhite"
+        android:hint="$/Kwh"
+        android:textSize="15sp" />
 
     <EditText
         android:id="@+id/avg_peakMCP_edt"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/avg_peakMCP_txt"
         android:layout_below="@id/morningMCP_edt"
         android:layout_marginRight="30dp"
-        android:textColor="@color/colorTransparentWhite"
+        android:layout_toRightOf="@id/avg_peakMCP_txt"
         android:backgroundTint="@color/colorTransparentWhite"
-        android:textSize="15sp"
-        android:digits="0123456789"
-        android:inputType="numberPassword"
-        />
+        android:digits="0123456789.,"
+        android:gravity="center"
+        android:inputType="number"
+        android:textColor="@color/colorTransparentWhite"
+        android:textColorHint="@color/colorTransparentWhite"
+        android:hint="$/Kwh"
+        android:textSize="15sp" />
 
-    <EditText
-        android:id="@+id/avg_offPeakMCP_edt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/avg_offPeakMCP_txt"
-        android:layout_below="@id/avg_peakMCP_edt"
-        android:layout_marginRight="30dp"
-        android:textColor="@color/colorTransparentWhite"
-        android:backgroundTint="@color/colorTransparentWhite"
-        android:textSize="15sp"
-        android:digits="0123456789"
-        android:inputType="numberPassword"
-        />
 
     <EditText
         android:id="@+id/avg_morningMCP_edt"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/avg_morningMCP_txt"
-        android:layout_below="@id/avg_offPeakMCP_edt"
+        android:layout_below="@id/avg_peakMCP_edt"
         android:layout_marginRight="30dp"
-        android:textColor="@color/colorTransparentWhite"
+        android:layout_toRightOf="@id/avg_morningMCP_txt"
         android:backgroundTint="@color/colorTransparentWhite"
-        android:textSize="15sp"
-        android:digits="0123456789"
-        android:inputType="numberPassword"
-        />
+        android:digits="0123456789.,"
+        android:gravity="center"
+        android:inputType="number"
+        android:textColor="@color/colorTransparentWhite"
+        android:textColorHint="@color/colorTransparentWhite"
+        android:hint="$/Kwh"
+        android:textSize="15sp" />
 
     <EditText
         android:id="@+id/avg_yearMCP_edt"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/avg_yearMCP_txt"
         android:layout_below="@id/avg_morningMCP_edt"
         android:layout_marginRight="30dp"
-        android:textColor="@color/colorTransparentWhite"
+        android:layout_toRightOf="@id/avg_yearMCP_txt"
         android:backgroundTint="@color/colorTransparentWhite"
-        android:textSize="15sp"
-        android:digits="0123456789"
-        android:inputType="numberPassword"
-        />
+        android:digits="0123456789.,"
+        android:gravity="center"
+        android:inputType="number"
+        android:textColor="@color/colorTransparentWhite"
+        android:textColorHint="@color/colorTransparentWhite"
+        android:hint="$/Kwh"
+        android:textSize="15sp" />
 
 
 </RelativeLayout>

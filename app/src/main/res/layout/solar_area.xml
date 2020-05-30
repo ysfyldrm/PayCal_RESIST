@@ -39,7 +39,7 @@
 
     <EditText
         android:id="@+id/area_count_edt"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:textColor="@color/colorTransparentWhite"
         android:backgroundTint="@color/colorTransparentWhite"
@@ -47,6 +47,9 @@
         android:layout_marginLeft="15dp"
         android:digits="0123456789"
         android:inputType="numberPassword"
+        android:gravity="center"
+        android:hint="m\u00B2"
+        android:textColorHint="@color/colorTransparentWhite"
         />
 
     </LinearLayout>

@@ -23,15 +23,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
+        android:layout_centerHorizontal="true"
         >
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:textColor="@color/colorTransparentWhite"
             android:text="Turbine Types :"
             android:fontFamily="@font/bold"
             android:textSize="15sp"
+            android:gravity="end"
             />
 <RadioGroup
     android:id="@+id/turbine_group"
@@ -77,24 +79,23 @@
         android:id="@+id/turbine_count_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
         >
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:textSize="15sp"
             android:textColor="@color/colorTransparentWhite"
             android:fontFamily="@font/bold"
             android:text="Turbine count :"
+            android:gravity="end"
             />
 
         <EditText
             android:id="@+id/turbine_count_edt"
-            android:layout_width="match_parent"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:textColor="@color/colorTransparentWhite"
             android:backgroundTint="@color/colorTransparentWhite"
@@ -102,6 +103,7 @@
             android:layout_marginLeft="15dp"
             android:digits="0123456789"
             android:inputType="numberPassword"
+            android:gravity="center"
             />
 
 

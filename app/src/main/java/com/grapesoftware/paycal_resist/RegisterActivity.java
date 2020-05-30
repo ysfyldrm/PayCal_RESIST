@@ -31,8 +31,8 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        registerUserName = (EditText)findViewById(R.id.registerUserName);
-        registerPassword = (EditText)findViewById(R.id.registerPassword);
+        registerUserName = (EditText) findViewById(R.id.registerUserName);
+        registerPassword = (EditText) findViewById(R.id.registerPassword);
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
         editTextMobile = findViewById(R.id.editTextMobile);
 
@@ -40,11 +40,11 @@ public class RegisterActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        backButton=findViewById(R.id.imageView5);
+        backButton = findViewById(R.id.imageView5);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 
                 /* finish();*/
             }
@@ -57,18 +57,18 @@ public class RegisterActivity extends AppCompatActivity {
 
                 userName = registerUserName.getText().toString();
                 userPassword = registerPassword.getText().toString();
-                if(userName.isEmpty() || userPassword.isEmpty()){
+                if (userName.isEmpty() || userPassword.isEmpty()) {
 
-                    Toast.makeText(getApplicationContext(),"Please fill in the required fields. ",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please fill in the required fields. ", Toast.LENGTH_SHORT).show();
 
-                }else{
+                } else {
                     registerFunc();
                 }
 
 
                 String mobile = editTextMobile.getText().toString().trim();
 
-                if(mobile.isEmpty() || mobile.length() < 10){
+                if (mobile.isEmpty() || mobile.length() < 10) {
                     editTextMobile.setError("Please enter a valid number");
                     editTextMobile.requestFocus();
                     return;
@@ -84,19 +84,18 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private void registerFunc(){
+    private void registerFunc() {
 
-        mAuth.createUserWithEmailAndPassword(userName,userPassword)
+        mAuth.createUserWithEmailAndPassword(userName, userPassword)
                 .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Intent i = new Intent(RegisterActivity.this,VerifyPhoneActivity.class);
+                        if (task.isSuccessful()) {
+                            Intent i = new Intent(RegisterActivity.this, VerifyPhoneActivity.class);
                             startActivity(i);
                             finish();
-                        }
-                        else{
-                            Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
 
                     }

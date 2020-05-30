@@ -1,34 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/dialog_shape"
-    >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/enter_your_own_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter wanted DATA"
-        android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
         android:layout_centerHorizontal="true"
-        android:textSize="15sp"
         android:layout_marginTop="20dp"
-        />
+        android:fontFamily="@font/bold"
+        android:text="Enter wanted DATA"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/cons_avgmonth_txt"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:layout_below="@id/enter_your_own_data"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
-        android:text="Average Consumption Month = "
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/bold"
+        android:gravity="end"
+        android:text="Average Consumption Month = "
         android:textColor="@color/colorTransparentWhite"
-        />
+        android:textSize="15sp" />
 
     <EditText
         android:id="@+id/cons_avgmonth_edt"
@@ -38,26 +37,29 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="30dp"
         android:layout_toRightOf="@id/cons_avgmonth_txt"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:digits="0123456789.,"
+        android:gravity="center"
         android:inputType="number"
         android:singleLine="true"
         android:textColor="@color/colorTransparentWhite"
-        android:backgroundTint="@color/colorTransparentWhite"
+        android:textColorHint="@color/colorTransparentWhite"
+        android:hint="Kwh"
         android:textSize="15sp" />
 
 
     <TextView
         android:id="@+id/morning_cons_month_txt"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:layout_below="@id/cons_avgmonth_txt"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
-        android:text="Morning Consumption Month = "
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/bold"
+        android:gravity="end"
+        android:text="Morning Consumption Month = "
         android:textColor="@color/colorTransparentWhite"
-        />
+        android:textSize="15sp" />
 
 
     <EditText
@@ -68,25 +70,28 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="30dp"
         android:layout_toRightOf="@id/morning_cons_month_txt"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:digits="0123456789.,"
+        android:gravity="center"
         android:inputType="number"
         android:singleLine="true"
         android:textColor="@color/colorTransparentWhite"
-        android:backgroundTint="@color/colorTransparentWhite"
+        android:textColorHint="@color/colorTransparentWhite"
+        android:hint="Kwh"
         android:textSize="15sp" />
 
     <TextView
         android:id="@+id/avg_month_bill_txt"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/morning_cons_month_txt"
-        android:layout_marginTop="20dp"
-        android:textSize="15sp"
         android:layout_marginLeft="30dp"
-        android:text="Average Month Bill = "
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/bold"
+        android:gravity="end"
+        android:text="Average Month Bill = "
         android:textColor="@color/colorTransparentWhite"
-        />
+        android:textSize="15sp" />
 
     <EditText
         android:id="@+id/avg_month_bill_edt"
@@ -95,25 +100,30 @@
         android:layout_below="@id/morning_cons_month_edt"
         android:layout_marginRight="30dp"
         android:layout_toRightOf="@id/avg_month_bill_txt"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:digits="0123456789.,"
+        android:gravity="center"
         android:inputType="number"
         android:singleLine="true"
         android:textColor="@color/colorTransparentWhite"
-        android:backgroundTint="@color/colorTransparentWhite"
+        android:textColorHint="@color/colorTransparentWhite"
+        android:hint="$"
         android:textSize="15sp" />
 
 
     <TextView
         android:id="@+id/res_gen_daily_txt"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:layout_below="@id/avg_month_bill_txt"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
-        android:text="RES Generation Daily = "
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/bold"
+        android:gravity="end"
+        android:text="RES Generation Daily = "
         android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp"
+
         />
 
     <EditText
@@ -123,25 +133,30 @@
         android:layout_below="@id/avg_month_bill_edt"
         android:layout_marginRight="30dp"
         android:layout_toRightOf="@id/res_gen_daily_txt"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:digits="0123456789.,"
+        android:gravity="center"
         android:inputType="number"
         android:singleLine="true"
         android:textColor="@color/colorTransparentWhite"
-        android:backgroundTint="@color/colorTransparentWhite"
+        android:textColorHint="@color/colorTransparentWhite"
+        android:hint="Kwh"
         android:textSize="15sp" />
 
     <TextView
         android:id="@+id/res_gen_monthly_txt"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:layout_below="@id/res_gen_daily_txt"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
-        android:text="RES Generation Monthly = "
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/bold"
+        android:gravity="end"
+        android:text="RES Generation Monthly = "
         android:textColor="@color/colorTransparentWhite"
-        />
+        android:textColorHint="@color/colorTransparentWhite"
+        android:hint="Kwh"
+        android:textSize="15sp" />
 
     <EditText
         android:id="@+id/res_gen_mothly_edt"
@@ -150,31 +165,30 @@
         android:layout_below="@id/res_gen_daily_edt"
         android:layout_marginRight="30dp"
         android:layout_toRightOf="@id/res_gen_monthly_txt"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:digits="0123456789.,"
+        android:gravity="center"
         android:inputType="number"
         android:singleLine="true"
         android:textColor="@color/colorTransparentWhite"
-        android:backgroundTint="@color/colorTransparentWhite"
+        android:textColorHint="@color/colorTransparentWhite"
+        android:hint="Kwh"
         android:textSize="15sp" />
-
-
 
 
     <Button
         android:id="@+id/wanted_data_confirm_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button"
         android:layout_below="@id/res_gen_monthly_txt"
         android:layout_centerHorizontal="true"
-        android:textSize="15sp"
-        android:text="CONFIRM"
-        android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"
-        />
-
+        android:background="@drawable/button"
+        android:fontFamily="@font/bold"
+        android:text="CONFIRM"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp" />
 
 
 </RelativeLayout>

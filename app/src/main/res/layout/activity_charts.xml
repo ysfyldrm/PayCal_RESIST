@@ -6,6 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".ChartsActivity"
     android:background="@drawable/bg"
+    android:id="@+id/relativeLayout_charts"
+    android:gravity="center"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:id="@+id/linearLayout_chart"
+    android:padding="5dp"
     >
 
     <com.github.mikephil.charting.charts.LineChart
@@ -14,8 +22,20 @@
         android:id="@+id/line_chart"
         android:layout_centerInParent="true"
         >
-
     </com.github.mikephil.charting.charts.LineChart>
+</LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/linearLayout_chart"
+        android:layout_marginTop="30dp"
+        android:id="@+id/buttonsave"
+        android:text="Save"
+>
+
+    </Button>
+
 
 
 </RelativeLayout>

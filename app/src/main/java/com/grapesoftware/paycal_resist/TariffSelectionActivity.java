@@ -20,7 +20,7 @@ import java.nio.BufferUnderflowException;
 
 public class TariffSelectionActivity extends AppCompatActivity {
 
-    private Button epdkbtn, useownbtn;
+    private Button epdkbtn, useownbtn,backbutton;
     final Context context = this;
     Bundle gelentype;
     String typeforuser;
@@ -32,6 +32,14 @@ public class TariffSelectionActivity extends AppCompatActivity {
 
         epdkbtn=findViewById(R.id.epdk_button);
         useownbtn=findViewById(R.id.useOwn_button);
+        backbutton=findViewById(R.id.backBtn);
+
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         gelentype=getIntent().getExtras();
         typeforuser=gelentype.getString("Type");

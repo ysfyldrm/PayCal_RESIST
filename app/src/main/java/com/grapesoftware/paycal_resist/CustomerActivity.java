@@ -10,7 +10,7 @@ import android.widget.Button;
 
 public class CustomerActivity extends AppCompatActivity {
 
-    private Button btnConsumer, btnProsumer, btnSupplier;
+    private Button btnConsumer, btnProsumer, btnSupplier,backbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,14 @@ public class CustomerActivity extends AppCompatActivity {
         btnConsumer= findViewById(R.id.button_consumer);
         btnProsumer=findViewById(R.id.button_prosumer);
         btnSupplier=findViewById(R.id.button_supplier);
+        backbutton=findViewById(R.id.backBtn);
 
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
         btnConsumer.setOnClickListener(new View.OnClickListener() {

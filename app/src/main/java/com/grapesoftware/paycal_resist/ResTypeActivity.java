@@ -19,7 +19,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ResTypeActivity extends AppCompatActivity {
-    Button windbtn, pvbtn, biomassbtn;
+    Button windbtn, pvbtn, biomassbtn,backbutton;
     RadioButton pickedTurbine;
     Bundle bundle1;
     String morning, peak, offpeak, tax, avgconsmonth, consyear, morconsmonth, avgmonthbill, typeforuser;
@@ -36,6 +36,14 @@ public class ResTypeActivity extends AppCompatActivity {
         windbtn = findViewById(R.id.button_wind);
         pvbtn = findViewById(R.id.button_PV);
         biomassbtn = findViewById(R.id.button_biomass);
+        backbutton=findViewById(R.id.backBtn);
+
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
         editor = preferences.edit();
 

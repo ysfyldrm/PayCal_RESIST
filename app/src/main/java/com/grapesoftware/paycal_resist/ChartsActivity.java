@@ -1,10 +1,19 @@
 package com.grapesoftware.paycal_resist;
 
+import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.drawable.GradientDrawable;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +23,9 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ChartsActivity extends AppCompatActivity {
@@ -21,6 +33,8 @@ public class ChartsActivity extends AppCompatActivity {
     Float[] cashFloat = new Float[24];
     private int currentIndex = 0;
     int kırmızı = 255, yesil = 0, mavi = 0;
+    LinearLayout content;
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +45,19 @@ public class ChartsActivity extends AppCompatActivity {
         int renk1, renk2;
         int[] colorArray = new int[24];
 
-
-
+        button = findViewById(R.id.buttonsave);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LinearLayout savingLayout = (LinearLayout) findViewById(R.id.linearLayout_chart);
+                File file = saveBitMap(ChartsActivity.this, savingLayout);
+                if (file != null) {
+                    Log.i("TAG", "Drawing saved to the gallery!");
+                } else {
+                    Log.i("TAG", "Oops! Image could not be saved.");
+                }
+            }
+        });
 
         SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
         int colorArraykırmızı[] = {R.color.kırmızı1, R.color.kırmızı2, R.color.kırmızı3, R.color.kırmızı4, R.color.kırmızı5, R.color.kırmızı6, R.color.kırmızı7, R.color.kırmızı8, R.color.kırmızı9, R.color.kırmızı10, R.color.kırmızı11, R.color.kırmızı12, R.color.kırmızı13, R.color.kırmızı14, R.color.kırmızı15, R.color.kırmızı16, R.color.kırmızı17, R.color.kırmızı18, R.color.kırmızı19, R.color.kırmızı20, R.color.kırmızı21, R.color.kırmızı22, R.color.kırmızı23, R.color.kırmızı24};
@@ -107,7 +132,6 @@ public class ChartsActivity extends AppCompatActivity {
         }
 
 
-
         mpLineChart = (LineChart) findViewById(R.id.line_chart);
         LineDataSet lineDataSet1 = new LineDataSet(dataValues1(), "CashFlow Diagram");
         lineDataSet1.setColors(colorArray, ChartsActivity.this);
@@ -137,6 +161,64 @@ public class ChartsActivity extends AppCompatActivity {
         return dataVals;
     }
 
-    public void addColorToArray(int red, int green, int blue) {
+
+    private File saveBitMap(Context context, View drawView) {
+        File pictureFileDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Logicchip");
+        if (!pictureFileDir.exists()) {
+            boolean isDirectoryCreated = pictureFileDir.mkdirs();
+            if (!isDirectoryCreated)
+                Log.i("TAG", "Can't create directory to save the image");
+            return null;
+        }
+        String filename = pictureFileDir.getPath() + File.separator + System.currentTimeMillis() + ".jpg";
+        File pictureFile = new File(filename);
+        Bitmap bitmap = getBitmapFromView(drawView);
+        try {
+            pictureFile.createNewFile();
+            FileOutputStream oStream = new FileOutputStream(pictureFile);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, oStream);
+            oStream.flush();
+            oStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.i("TAG", "There was an issue saving the image.");
+        }
+        scanGallery(context, pictureFile.getAbsolutePath());
+        return pictureFile;
+    }
+
+    //create bitmap from view and returns it
+    private Bitmap getBitmapFromView(View view) {
+        //Define a bitmap with the same size as the view
+        Bitmap returnedBitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
+        //Bind a canvas to it
+        Canvas canvas = new Canvas(returnedBitmap);
+        //Get the view's background
+        Drawable bgDrawable = view.getBackground();
+        if (bgDrawable != null) {
+            //has background drawable, then draw it on the canvas
+            bgDrawable.draw(canvas);
+        } else {
+            //does not have background drawable, then draw white background on the canvas
+            canvas.drawColor(Color.WHITE);
+        }
+        // draw the view on the canvas
+        view.draw(canvas);
+        //return the bitmap
+        return returnedBitmap;
+    }
+
+
+    // used for scanning gallery
+    private void scanGallery(Context cntx, String path) {
+        try {
+            MediaScannerConnection.scanFile(cntx, new String[]{path}, null, new MediaScannerConnection.OnScanCompletedListener() {
+                public void onScanCompleted(String path, Uri uri) {
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.i("TAG", "There was an issue scanning gallery.");
+        }
     }
 }

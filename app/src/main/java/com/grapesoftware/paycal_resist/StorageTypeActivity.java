@@ -23,7 +23,7 @@ public class StorageTypeActivity extends AppCompatActivity {
 
     Bundle gelentype;
     String typeforuser,restype;
-    private Button lionBtn, leadAcidBtn, thermalBtn, noStorageBtn;
+    private Button lionBtn, leadAcidBtn, thermalBtn, noStorageBtn,backbutton;
     final Context context = this;
     SeekBar seekBar;
     TextView percentageView;
@@ -39,6 +39,14 @@ public class StorageTypeActivity extends AppCompatActivity {
         leadAcidBtn = findViewById(R.id.button_leadAcid);
         thermalBtn = findViewById(R.id.button_thermal);
         noStorageBtn = findViewById(R.id.button_no_storage);
+        backbutton=findViewById(R.id.backBtn);
+
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
         SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);

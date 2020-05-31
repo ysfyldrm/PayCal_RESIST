@@ -39,7 +39,11 @@ public class ChartsActivity extends AppCompatActivity {
     private int currentIndex = 0;
     int kırmızı = 255, yesil = 0, mavi = 0;
     LinearLayout content;
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
     Button button;
+
+    String restype,storagetype,usertype;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,49 @@ public class ChartsActivity extends AppCompatActivity {
         int gecis1, gecis2;
         int renk1, renk2;
         int[] colorArray = new int[24];
+        preferences= getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
+
+        restype=preferences.getString("RES Type",null);
+        storagetype=preferences.getString("Storage Type",null);
+        usertype=preferences.getString("Type",null);
+        //CONSUMER WIND STORAGE & NO STORAGE
+        if (storagetype.equals("NoStorage")&&restype.equals("WIND")&&usertype.equals("Consumer")){
+
+        }
+        if (!storagetype.equals("NoStorage")&&restype.equals("WIND")&&usertype.equals("Consumer")){
+
+        }
+        //CONSUMER SOLAR STORAGE & NO STORAGE
+        if (storagetype.equals("NoStorage")&&restype.equals("SOLAR")&&usertype.equals("Consumer")){
+
+        }
+        if (!storagetype.equals("NoStorage")&&restype.equals("SOLAR")&&usertype.equals("Consumer")){
+
+        }
+        //CONSUMER SOLAR STORAGE & NO STORAGE
+        if (storagetype.equals("NoStorage")&&restype.equals("SOLAR")&&usertype.equals("Consumer")){
+
+        }
+        if (!storagetype.equals("NoStorage")&&restype.equals("SOLAR")&&usertype.equals("Consumer")){
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         button = findViewById(R.id.buttonsave);
         button.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +111,6 @@ public class ChartsActivity extends AppCompatActivity {
             }
         });
 
-        SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
 
         int colorArraykırmızı[] = {R.color.kırmızı1, R.color.kırmızı2, R.color.kırmızı3, R.color.kırmızı4, R.color.kırmızı5, R.color.kırmızı6, R.color.kırmızı7, R.color.kırmızı8, R.color.kırmızı9, R.color.kırmızı10, R.color.kırmızı11, R.color.kırmızı12, R.color.kırmızı13, R.color.kırmızı14, R.color.kırmızı15, R.color.kırmızı16, R.color.kırmızı17, R.color.kırmızı18, R.color.kırmızı19, R.color.kırmızı20, R.color.kırmızı21, R.color.kırmızı22, R.color.kırmızı23, R.color.kırmızı24};
         int colorArrayyesil[] = {R.color.yesil1, R.color.yesil2, R.color.yesil3, R.color.yesil4, R.color.yesil5, R.color.yesil6, R.color.yesil7, R.color.yesil8, R.color.yesil9, R.color.yesil10, R.color.yesil11, R.color.yesil12, R.color.yesil13, R.color.yesil14, R.color.yesil15, R.color.yesil16, R.color.yesil17, R.color.yesil18, R.color.yesil19, R.color.yesil20, R.color.yesil21, R.color.yesil22, R.color.yesil23, R.color.yesil24};

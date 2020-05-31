@@ -5,18 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CalculationActivity"
-    android:background="@drawable/bg"
+    android:background="#2b59d1"
     app:layout_gravity="center">
 
 
-    <com.github.ybq.android.spinkit.SpinKitView
+<!--    <com.github.ybq.android.spinkit.SpinKitView-->
+<!--        xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--        android:id="@+id/spin_kit"-->
+<!--        style="@style/SpinKitView.Large.Wave"-->
+<!--        android:layout_width="150dp"-->
+<!--        android:layout_height="150dp"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        app:SpinKit_Color="@color/colorTransparentWhite" />-->
+
+    <pl.droidsonroids.gif.GifImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/spin_kit"
-        style="@style/SpinKitView.Large.Wave"
-        android:layout_width="150dp"
+        android:id="@+id/gifloading"
+        android:layout_width="250dp"
         android:layout_height="150dp"
         android:layout_centerInParent="true"
-        app:SpinKit_Color="@color/colorTransparentWhite" />
+        android:src="@drawable/loadingscreen"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtLoading"
+        android:layout_below="@id/gifloading"
+        android:layout_marginTop="20dp"
+        android:textSize="24sp"
+        android:fontFamily="@font/bold"
+        android:textColor="@color/colorTransparentWhite"
+        android:layout_centerHorizontal="true">
+
+    </TextView>
+
 
 
 </RelativeLayout>
+

@@ -156,11 +156,7 @@ public class CalculationActivity extends AppCompatActivity {
             omprice = 10.0;
 
         }
-
-
         jsonParse();
-
-
     }
 
 
@@ -357,13 +353,6 @@ private void displayResults(){
 }
 
 
-
-
-
-
-
-
-
     private void windkwarraycalculate() {
         if (turbinetype.equals("1 Kw")) {
             if (wwa13 <= 1.8) {
@@ -489,15 +478,9 @@ private void displayResults(){
     }
 
     private void hesaplawindnostorage() {
-
         Double turbinetypevalue;
-
-
-
         Double[] cashflow = new Double[24];
-
         windkwarraycalculate();
-
         if (turbinetype.equals("1 Kw")) {
             price = 3466.45;
             turbinetypevalue = 1.0;
@@ -509,7 +492,6 @@ private void displayResults(){
             price = 2545.67;
             turbinetypevalue = 10.0;
         }
-
         ratedcapacity = dturbinecount * turbinetypevalue;
         windyearkwh = windkwarray * 12 * dturbinecount;
         winddaykwh = windyearkwh / 365;
@@ -523,7 +505,6 @@ private void displayResults(){
         windcapitalcost = ratedcapacity * price;
         payback = windcapitalcost / (windanualprofit - windyearcost);
 
-
         for (int i = 0; i < 24; i++) {
             cashflow[i] = -windcapitalcost + ((windanualprofit) * i);
 
@@ -532,7 +513,6 @@ private void displayResults(){
             editor.putFloat("Cashflow" + i, cashflow[i].floatValue());
         }
         editor.commit();
-
         displayResults();
 
     }
@@ -540,15 +520,10 @@ private void displayResults(){
     private void hesaplawindwithstorage() {
 
         if (!storagetype.equals("NoStorage")) {
-
-
             Double storagepercentage = dstorageperc / 100;
             Double turbinetypevalue;
-
             Double  systemprofit, systemyearlycost, storageusedcapacity, storagecapacity, storagecapitalcost, storageyearlycost, systemcost;
-
             Double[] cashflow = new Double[24];
-
             windkwarraycalculate();
             if (turbinetype.equals("1 Kw")) {
                 price = 3466.45;
@@ -560,8 +535,6 @@ private void displayResults(){
                 price = 2545.67;
                 turbinetypevalue = 10.0;
             }
-
-
             ratedcapacity = dturbinecount * turbinetypevalue;
             windyearkwh = windkwarray * 12 * dturbinecount;
             winddaykwh = windyearkwh / 365;
@@ -587,7 +560,6 @@ private void displayResults(){
             systemyearlycost = storageyearlycost + windyearcost;
             systemprofit = windanualprofit - systemyearlycost;
             payback = windcapitalcost / (systemprofit);
-
             for (int i = 0; i < 24; i++) {
                 cashflow[i] = -systemcost + ((systemprofit) * i);
 
@@ -595,8 +567,6 @@ private void displayResults(){
                 Log.e("CASHFLOW WITH STORAGE", "Cashflow" + i + ": " + cashflow[i]);
             }
             editor.commit();
-
-
             displayResults();
         }
 
@@ -612,12 +582,9 @@ private void displayResults(){
         Double pvomcost = 17.0;
         Double[] pvrad = {a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12};
         Double[] pvgenmonth = new Double[12];
-
         Double pvgenyear = 0.0;
 
-
         int[] Monthday = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-
         for (int i = 0; i < 12; i++) {
             pvgenmonth[i] = Monthday[i] * pvrad[i] * dsolararea * 0.125;
             pvgenyear = pvgenyear + pvgenmonth[i];
@@ -652,7 +619,6 @@ private void displayResults(){
             Log.e("PV NO STORAGE", "Cashflow" + i + ": " + cashflow[i]);
         }
         editor.commit();
-
         Double newavgmonthbill = davgmonthbill - pvprofitmonth;
         displayResults();
 

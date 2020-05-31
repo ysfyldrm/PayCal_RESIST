@@ -66,11 +66,9 @@ public class SupplierMcpSelectionActivity extends AppCompatActivity {
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.use_own_supplier);
 
+
         // custom dialog elemanlarını tanımla - text, image ve button
         Button ownconfirmbtn=dialog.findViewById(R.id.own_confirm_button);
-
-        // custom dialog elemanlarına değer ataması yap - text, image
-
 
         // tamam butonunun tıklanma olayları
         ownconfirmbtn.setOnClickListener(new View.OnClickListener() {

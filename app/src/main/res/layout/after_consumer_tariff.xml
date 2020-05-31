@@ -25,7 +25,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/bold"
         android:gravity="end"
-        android:text="Average Consumption Month = "
+        android:text="Monthly Average Consumption = "
         android:textColor="@color/colorTransparentWhite"
         android:textSize="15sp" />
 
@@ -55,7 +55,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/bold"
         android:gravity="end"
-        android:text="Morning Consumption Month = "
+        android:text="Monthly Morning Consumption = "
         android:textColor="@color/colorTransparentWhite"
         android:textSize="15sp" />
 
@@ -86,7 +86,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/bold"
         android:gravity="end"
-        android:text="Average Month Bill = "
+        android:text="Monthly Average Bill = "
         android:textColor="@color/colorTransparentWhite"
         android:textSize="15sp"
 

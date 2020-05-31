@@ -456,6 +456,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
         // custom dialog elemanlarına değer ataması yap - text, image
 
 
+
         // tamam butonunun tıklanma olayları
         ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -19,4 +19,67 @@
     <color name="colorTransparentWhite">#CCCCCC</color>
     <color name="colorButton">#157DE6</color>
     <color name="backgroundBlue">#255ED6</color>
+
+
+    <color name="color1">#E32129</color>
+    <color name="color2">#E86244</color>
+    <color name="color3">#F8A41E</color>
+    <color name="color4">#FDD10E</color>
+    <color name="color5">#A8C23A</color>
+    <color name="color6">#51A246</color>
+
+    <!--    kırmızılar-->
+    <color name="kırmızı1">#ff0000</color>
+    <color name="kırmızı2">#ff0a00</color>
+    <color name="kırmızı3">#ff1400</color>
+    <color name="kırmızı4">#ff1e00</color>
+    <color name="kırmızı5">#ff2800</color>
+    <color name="kırmızı6">#ff3200</color>
+    <color name="kırmızı7">#ff3c00</color>
+    <color name="kırmızı8">#ff4600</color>
+    <color name="kırmızı9">#ff5000</color>
+    <color name="kırmızı10">#ff5a00</color>
+    <color name="kırmızı11">#ff6400</color>
+    <color name="kırmızı12">#ff6e00</color>
+    <color name="kırmızı13">#ff7800</color>
+    <color name="kırmızı14">#ff8200</color>
+    <color name="kırmızı15">#ff8c00</color>
+    <color name="kırmızı16">#ff9600</color>
+    <color name="kırmızı17">#ffa000</color>
+    <color name="kırmızı18">#ffaa00</color>
+    <color name="kırmızı19">#ffb400</color>
+    <color name="kırmızı20">#ffbe00</color>
+    <color name="kırmızı21">#ffc800</color>
+    <color name="kırmızı22">#ffd200</color>
+    <color name="kırmızı23">#ffd200</color>
+    <color name="kırmızı24">#ffe600</color>
+
+    <!--    yesiller-->
+
+    <color name="yesil1">#ffff00</color>
+    <color name="yesil2">#f0ff00</color>
+    <color name="yesil3">#e6ff00</color>
+    <color name="yesil4">#dcff00</color>
+    <color name="yesil5">#d2ff00</color>
+    <color name="yesil6">#d2ff00</color>
+    <color name="yesil7">#c8ff00</color>
+    <color name="yesil8">#beff00</color>
+    <color name="yesil9">#a0ff00</color>
+    <color name="yesil10">#96ff00</color>
+    <color name="yesil11">#8cff00</color>
+    <color name="yesil12">#82ff00</color>
+    <color name="yesil13">#78ff00</color>
+    <color name="yesil14">#6eff00</color>
+    <color name="yesil15">#64ff00</color>
+    <color name="yesil16">#5aff00</color>
+    <color name="yesil17">#50ff00</color>
+    <color name="yesil18">#46ff00</color>
+    <color name="yesil19">#3cff00</color>
+    <color name="yesil20">#32ff00</color>
+    <color name="yesil21">#28ff00</color>
+    <color name="yesil22">#1eff00</color>
+    <color name="yesil23">#14ff00</color>
+    <color name="yesil24">#00ff00</color>
+
+
 </resources>

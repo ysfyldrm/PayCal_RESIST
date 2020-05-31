@@ -18,14 +18,14 @@
 
     <TextView
         android:id="@+id/cons_avgmonth_txt"
-        android:layout_width="230dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/enter_your_own_data"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/bold"
         android:gravity="end"
-        android:text="Average Consumption Month = "
+        android:text="Monthly Average Consumption = "
         android:textColor="@color/colorTransparentWhite"
         android:textSize="15sp" />
 
@@ -50,14 +50,14 @@
 
     <TextView
         android:id="@+id/morning_cons_month_txt"
-        android:layout_width="230dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/cons_avgmonth_txt"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/bold"
         android:gravity="end"
-        android:text="Morning Consumption Month = "
+        android:text="Monthly Morning Consumption = "
         android:textColor="@color/colorTransparentWhite"
         android:textSize="15sp" />
 
@@ -82,14 +82,14 @@
 
     <TextView
         android:id="@+id/avg_month_bill_txt"
-        android:layout_width="230dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/morning_cons_month_txt"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/bold"
         android:gravity="end"
-        android:text="Average Month Bill = "
+        android:text="Monthly Average Bill = "
         android:textColor="@color/colorTransparentWhite"
         android:textSize="15sp" />
 
@@ -113,14 +113,14 @@
 
     <TextView
         android:id="@+id/res_gen_daily_txt"
-        android:layout_width="230dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/avg_month_bill_txt"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/bold"
         android:gravity="end"
-        android:text="RES Generation Daily = "
+        android:text="Daily RES Generation = "
         android:textColor="@color/colorTransparentWhite"
         android:textSize="15sp"
 
@@ -145,14 +145,14 @@
 
     <TextView
         android:id="@+id/res_gen_monthly_txt"
-        android:layout_width="230dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/res_gen_daily_txt"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/bold"
         android:gravity="end"
-        android:text="RES Generation Monthly = "
+        android:text="Monthly RES Generation = "
         android:textColor="@color/colorTransparentWhite"
         android:textColorHint="@color/colorTransparentWhite"
         android:hint="Kwh"

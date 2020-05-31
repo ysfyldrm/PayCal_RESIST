@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -53,7 +54,7 @@ public class ChartsActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LinearLayout savingLayout = (LinearLayout) findViewById(R.id.linearLayout_chart);
+                RelativeLayout savingLayout = (RelativeLayout) findViewById(R.id.save_layout);
                 File file = saveBitMap(ChartsActivity.this, savingLayout);
                 if (file != null) {
                     Log.i("TAG", "Drawing saved to the gallery!");

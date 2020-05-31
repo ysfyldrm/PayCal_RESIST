@@ -1,133 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/dialog_shape"
-    >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/enteryour_own"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter your own tariff PROSUMER"
-        android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
         android:layout_centerHorizontal="true"
-        android:textSize="15sp"
         android:layout_marginTop="20dp"
-        />
+        android:fontFamily="@font/bold"
+        android:text="Enter your own tariff PROSUMER"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/morning_txt"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/enteryour_own"
-        android:textSize="15sp"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
-        android:text="Morning tariff = "
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
         android:gravity="end"
-        />
+        android:text="Morning tariff = "
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/peak_txt"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/morning_txt"
-        android:textSize="15sp"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
-        android:text="Peak tariff = "
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
         android:gravity="end"
-        />
+        android:text="Peak tariff = "
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/tax_txt"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/peak_txt"
-        android:textSize="15sp"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
-        android:text="Tax = "
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
         android:gravity="end"
-        />
+        android:text="Tax = "
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp" />
 
 
     <EditText
         android:id="@+id/morningTariff_edt"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/morning_txt"
-        android:digits="0123456789.,"
-        android:inputType="number"
         android:layout_below="@id/enteryour_own"
-        android:layout_marginRight="30dp"
-        android:textColor="@color/colorTransparentWhite"
-        android:backgroundTint="@color/colorTransparentWhite"
         android:layout_marginTop="5dp"
-        android:textColorHint="@color/colorTransparentWhite"
-        android:hint="$/Kw"
-        android:textSize="15sp"
+        android:layout_marginRight="30dp"
+        android:layout_toRightOf="@id/morning_txt"
+        android:backgroundTint="@color/colorTransparentWhite"
+        android:digits="0123456789.,"
         android:gravity="center"
-        />
+        android:hint="$/Kw"
+        android:inputType="number"
+        android:textColor="@color/colorTransparentWhite"
+        android:textColorHint="@color/colorTransparentWhite"
+        android:textSize="15sp" />
 
     <EditText
         android:id="@+id/peakTariff_edt"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/peak_txt"
         android:layout_below="@id/morningTariff_edt"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="30dp"
+        android:layout_toRightOf="@id/peak_txt"
+        android:backgroundTint="@color/colorTransparentWhite"
         android:digits="0123456789.,"
+        android:gravity="center"
+        android:hint="$/Kw"
         android:inputType="number"
         android:textColor="@color/colorTransparentWhite"
-        android:backgroundTint="@color/colorTransparentWhite"
         android:textColorHint="@color/colorTransparentWhite"
-        android:hint="$/Kw"
-        android:layout_marginTop="5dp"
-        android:textSize="15sp"
-        android:gravity="center"
-        />
+        android:textSize="15sp" />
 
     <EditText
         android:id="@+id/tax_edt"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/tax_txt"
         android:layout_below="@id/peakTariff_edt"
-        android:digits="0123456789.,"
-        android:inputType="number"
         android:layout_marginRight="30dp"
-        android:textColor="@color/colorTransparentWhite"
+        android:layout_toRightOf="@id/tax_txt"
         android:backgroundTint="@color/colorTransparentWhite"
-        android:textColorHint="@color/colorTransparentWhite"
-        android:maxLength="2"
-        android:hint="%"
-        android:textSize="15sp"
+        android:digits="0123456789.,"
         android:gravity="center"
-        />
+        android:hint="%"
+        android:inputType="number"
+        android:maxLength="2"
+        android:textColor="@color/colorTransparentWhite"
+        android:textColorHint="@color/colorTransparentWhite"
+        android:textSize="15sp" />
 
     <Button
         android:id="@+id/own_confirm_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button"
         android:layout_below="@id/tax_txt"
         android:layout_centerHorizontal="true"
-        android:textSize="15sp"
-        android:text="CONFIRM"
-        android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"
-        />
+        android:background="@drawable/button"
+        android:elevation="20dp"
+        android:fontFamily="@font/bold"
+        android:text="CONFIRM"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp" />
 
 
 </RelativeLayout>

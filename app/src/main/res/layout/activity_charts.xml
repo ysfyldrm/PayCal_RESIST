@@ -1,44 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout_charts"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChartsActivity"
     android:background="@drawable/bg"
-    android:id="@+id/relativeLayout_charts"
-    android:gravity="center"
-    >
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="300dp"
-    android:id="@+id/linearLayout_chart"
-    android:padding="5dp"
-    >
+    android:gravity="center_horizontal"
+    tools:context=".ChartsActivity">
 
-    <com.github.mikephil.charting.charts.LineChart
+    <TextView
+        android:id="@+id/result_txt"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:id="@+id/line_chart"
-        android:layout_centerInParent="true"
-        >
-    </com.github.mikephil.charting.charts.LineChart>
-</LinearLayout>
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/bold"
+        android:text="RESULT"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="25sp" />
+
+    <RelativeLayout
+        android:id="@+id/save_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/result_txt"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp">
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/line_chart"
+            android:elevation="20dp"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="250dp" />
+
+        <RelativeLayout
+            android:id="@+id/text_table"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line_chart"
+            android:background="@drawable/resultbox"
+            android:elevation="22dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <TextView
+                android:id="@+id/result_1"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/medium"
+                android:text="A : qfqeqfqefqefqef"
+                android:textColor="@color/backgroundBlue"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/result_1_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@id/result_1"
+                android:fontFamily="@font/medium"
+                android:text="A : eqfqeqefqefqe"
+                android:textColor="@color/backgroundBlue"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/result_2"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/medium"
+                android:text="B : qefqefqefqef"
+                android:textColor="@color/backgroundBlue"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/result_2_2"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_1_1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@id/result_2"
+                android:fontFamily="@font/medium"
+                android:text="B : rhsr  getheqef"
+                android:textColor="@color/backgroundBlue"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/result_3"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_2"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/medium"
+                android:text="B : jbqjnoskqhıb"
+                android:textColor="@color/backgroundBlue"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/result_3_3"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_2_2"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@id/result_3"
+                android:fontFamily="@font/medium"
+                android:text="B : "
+                android:textColor="@color/backgroundBlue"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/result_4"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_3"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/medium"
+                android:text="B : "
+                android:textColor="@color/backgroundBlue"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/result_4_4"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_3_3"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@id/result_4"
+                android:fontFamily="@font/medium"
+                android:text="B : "
+                android:textColor="@color/backgroundBlue"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/result_5"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_4"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/medium"
+                android:text="B : "
+                android:textColor="@color/backgroundBlue"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/result_5_5"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_4_4"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@id/result_5"
+                android:fontFamily="@font/medium"
+                android:text="B : "
+                android:textColor="@color/backgroundBlue"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/result_6"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_5"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/medium"
+                android:text="B : "
+                android:textColor="@color/backgroundBlue"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/result_6_6"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_5_5"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@id/result_6"
+                android:fontFamily="@font/medium"
+                android:text="B : "
+                android:textColor="@color/backgroundBlue"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/result_7"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_6"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/medium"
+                android:text="B : "
+                android:textColor="@color/backgroundBlue"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/result_7_7"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_6_6"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_toRightOf="@id/result_7"
+                android:fontFamily="@font/medium"
+                android:text="B : "
+                android:textColor="@color/backgroundBlue"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
 
     <Button
+        android:id="@+id/buttonsave"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_below="@id/linearLayout_chart"
-        android:layout_marginTop="30dp"
+        android:layout_below="@id/save_layout"
         android:layout_centerHorizontal="true"
-        android:id="@+id/buttonsave"
-        android:textColor="@color/colorTransparentWhite"
+        android:elevation="18dp"
         android:background="@drawable/button"
         android:text="Save"
->
-
-    </Button>
-
+        android:textColor="@color/colorTransparentWhite" />
 
 
 </RelativeLayout>

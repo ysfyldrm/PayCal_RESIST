@@ -116,6 +116,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/button"
+        android:elevation="20dp"
         android:fontFamily="@font/bold"
         android:text="CONFIRM"
         android:textColor="@color/colorTransparentWhite"
@@ -132,10 +133,10 @@
         android:backgroundTint="@color/colorTransparentWhite"
         android:digits="0123456789.,"
         android:gravity="center"
+        android:hint="$/Kw"
         android:inputType="number"
         android:textColor="@color/colorTransparentWhite"
         android:textColorHint="@color/colorTransparentWhite"
-        android:hint="$/Kw"
         android:textSize="15sp" />
 
     <EditText
@@ -149,10 +150,10 @@
         android:backgroundTint="@color/colorTransparentWhite"
         android:digits="0123456789.,"
         android:gravity="center"
+        android:hint="$/Kw"
         android:inputType="number"
         android:textColor="@color/colorTransparentWhite"
         android:textColorHint="@color/colorTransparentWhite"
-        android:hint="$/Kw"
         android:textSize="15sp" />
 
     <EditText
@@ -165,10 +166,10 @@
         android:backgroundTint="@color/colorTransparentWhite"
         android:digits="0123456789.,"
         android:gravity="center"
+        android:hint="%"
         android:inputType="number"
         android:textColor="@color/colorTransparentWhite"
         android:textColorHint="@color/colorTransparentWhite"
-        android:hint="%"
         android:textSize="15sp" />
 
     <EditText
@@ -181,10 +182,10 @@
         android:backgroundTint="@color/colorTransparentWhite"
         android:digits="0123456789.,"
         android:gravity="center"
+        android:hint="Kwh"
         android:inputType="number"
         android:textColor="@color/colorTransparentWhite"
         android:textColorHint="@color/colorTransparentWhite"
-        android:hint="Kwh"
         android:textSize="15sp" />
 
     <EditText
@@ -197,10 +198,10 @@
         android:backgroundTint="@color/colorTransparentWhite"
         android:digits="0123456789.,"
         android:gravity="center"
+        android:hint="Kwh"
         android:inputType="number"
         android:textColor="@color/colorTransparentWhite"
         android:textColorHint="@color/colorTransparentWhite"
-        android:hint="Kwh"
         android:textSize="15sp" />
 
     <EditText
@@ -213,10 +214,10 @@
         android:backgroundTint="@color/colorTransparentWhite"
         android:digits="0123456789.,"
         android:gravity="center"
+        android:hint="Kwh"
         android:inputType="number"
         android:textColor="@color/colorTransparentWhite"
         android:textColorHint="@color/colorTransparentWhite"
-        android:hint="Kwh"
         android:textSize="15sp" />
 
     <EditText
@@ -229,10 +230,10 @@
         android:backgroundTint="@color/colorTransparentWhite"
         android:digits="0123456789.,"
         android:gravity="center"
+        android:hint="$"
         android:inputType="number"
         android:textColor="@color/colorTransparentWhite"
         android:textColorHint="@color/colorTransparentWhite"
-        android:hint="$"
         android:textSize="15sp" />
 
 </RelativeLayout>

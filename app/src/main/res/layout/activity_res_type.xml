@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,78 +11,75 @@
         android:id="@+id/backBtn"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
-        android:background="@drawable/ic_backbutton"
-        />
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_backbutton" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/resType_txt"
-        android:text="RES Type"
-        android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
-        android:textSize="45dp"
-        android:layout_marginTop="100dp"
-        android:layout_centerHorizontal="true"
-        />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/resTypeExp_txt"
-        android:text="Please select your RES type"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
         android:fontFamily="@font/bold"
+        android:text="RES Type"
         android:textColor="@color/colorTransparentWhite"
-        android:textSize="17dp"
+        android:textSize="45dp" />
+
+    <TextView
+        android:id="@+id/resTypeExp_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/resType_txt"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        />
+        android:fontFamily="@font/bold"
+        android:text="Please select your RES type"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="17dp" />
 
     <Button
         android:id="@+id/button_PV"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:text="SOLAR"
-        android:textSize="20dp"
-        android:background="@drawable/button"
-        android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
         android:layout_below="@id/resTypeExp_txt"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-        />
+        android:background="@drawable/button"
+        android:elevation="20dp"
+        android:fontFamily="@font/bold"
+        android:text="SOLAR"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/button_wind"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:text="WIND"
-        android:textSize="20dp"
-        android:background="@drawable/button"
-        android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
         android:layout_below="@id/button_PV"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="50dp"
+        android:background="@drawable/button"
+        android:elevation="20dp"
+        android:fontFamily="@font/bold"
+        android:text="WIND"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/button_biomass"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:text="BIOMASS"
-        android:textSize="20dp"
-        android:visibility="gone"
-        android:enabled="false"
-        android:background="@drawable/button"
-        android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
         android:layout_below="@id/button_wind"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        />
+        android:background="@drawable/button"
+        android:enabled="false"
+        android:fontFamily="@font/bold"
+        android:text="BIOMASS"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="20dp"
+        android:visibility="gone" />
 
 
 </RelativeLayout>

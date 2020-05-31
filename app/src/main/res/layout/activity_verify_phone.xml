@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VerifyPhoneActivity"
-    android:background="@drawable/bg">
+    android:background="@drawable/bg"
+    tools:context=".VerifyPhoneActivity">
 
     <RelativeLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-       >
+        android:orientation="vertical">
+
         <Button
             android:id="@+id/backBtn"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
-            android:background="@drawable/ic_backbutton"
-            />
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ic_backbutton" />
 
 
         <TextView
@@ -82,6 +80,7 @@
             android:layout_marginTop="31dp"
             android:layout_marginEnd="36dp"
             android:background="@drawable/button"
+            android:elevation="20dp"
             android:fontFamily="@font/bold"
             android:text="Sign In"
             android:textAllCaps="false"

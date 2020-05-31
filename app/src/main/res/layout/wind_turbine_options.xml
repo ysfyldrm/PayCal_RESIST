@@ -1,111 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/dialog_shape"
-    android:layout_height="wrap_content">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/turbine_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select your turbine type and count"
-        android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
         android:layout_centerHorizontal="true"
-        android:textSize="15sp"
         android:layout_marginTop="20dp"
-        />
+        android:fontFamily="@font/bold"
+        android:text="Select your turbine type and count"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp" />
 
     <LinearLayout
-        android:layout_below="@id/turbine_txt"
-        android:layout_marginTop="20dp"
         android:id="@+id/linear_turbines"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
+        android:layout_below="@id/turbine_txt"
         android:layout_centerHorizontal="true"
-        >
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp">
 
         <TextView
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorTransparentWhite"
-            android:text="Turbine Types :"
             android:fontFamily="@font/bold"
-            android:textSize="15sp"
             android:gravity="end"
-            />
-<RadioGroup
-    android:id="@+id/turbine_group"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" >
+            android:text="Turbine Types :"
+            android:textColor="@color/colorTransparentWhite"
+            android:textSize="15sp" />
 
-        <RadioButton
-            android:id="@+id/turbine_1kw"
+        <RadioGroup
+            android:id="@+id/turbine_group"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1 Kw"
-            android:textColor="@color/colorTransparentWhite"
-            android:buttonTint="@color/colorTransparentWhite"
-            android:layout_marginLeft="15dp"
-            android:checked="false"
-            />
-        <RadioButton
-            android:id="@+id/turbine_3kw"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="3 Kw"
-            android:textColor="@color/colorTransparentWhite"
-            android:buttonTint="@color/colorTransparentWhite"
-            android:layout_marginLeft="15dp"
-            android:checked="false"
-            />
-        <RadioButton
-            android:id="@+id/turbine_10kw"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="10 Kw"
-            android:textColor="@color/colorTransparentWhite"
-            android:buttonTint="@color/colorTransparentWhite"
-            android:layout_marginLeft="15dp"
-            android:checked="false"
-            />
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/turbine_1kw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:buttonTint="@color/colorTransparentWhite"
+                android:checked="false"
+                android:text="1 Kw"
+                android:textColor="@color/colorTransparentWhite" />
+
+            <RadioButton
+                android:id="@+id/turbine_3kw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:buttonTint="@color/colorTransparentWhite"
+                android:checked="false"
+                android:text="3 Kw"
+                android:textColor="@color/colorTransparentWhite" />
+
+            <RadioButton
+                android:id="@+id/turbine_10kw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:buttonTint="@color/colorTransparentWhite"
+                android:checked="false"
+                android:text="10 Kw"
+                android:textColor="@color/colorTransparentWhite" />
         </RadioGroup>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_below="@id/linear_turbines"
-        android:layout_marginTop="20dp"
         android:id="@+id/turbine_count_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/linear_turbines"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="30dp"
-        >
+        android:layout_marginTop="20dp">
 
         <TextView
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textColor="@color/colorTransparentWhite"
             android:fontFamily="@font/bold"
-            android:text="Turbine count :"
             android:gravity="end"
-            />
+            android:text="Turbine count :"
+            android:textColor="@color/colorTransparentWhite"
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/turbine_count_edt"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorTransparentWhite"
-            android:backgroundTint="@color/colorTransparentWhite"
-            android:textSize="15sp"
             android:layout_marginLeft="15dp"
+            android:backgroundTint="@color/colorTransparentWhite"
             android:digits="0123456789"
-            android:inputType="numberPassword"
             android:gravity="center"
-            />
-
+            android:inputType="numberPassword"
+            android:textColor="@color/colorTransparentWhite"
+            android:textSize="15sp" />
 
 
     </LinearLayout>
@@ -114,17 +108,16 @@
         android:id="@+id/own_confirm_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button"
         android:layout_below="@id/turbine_count_txt"
         android:layout_centerHorizontal="true"
-        android:textSize="15sp"
-        android:text="CONFIRM"
-        android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"
-        />
-
+        android:background="@drawable/button"
+        android:elevation="20dp"
+        android:fontFamily="@font/bold"
+        android:text="CONFIRM"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp" />
 
 
 </RelativeLayout>

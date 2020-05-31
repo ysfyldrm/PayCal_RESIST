@@ -49,7 +49,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
         android:background="@drawable/button"
-        android:elevation="10dp"
+        android:elevation="20dp"
         android:fontFamily="@font/bold"
         android:text="CONSUMER"
         android:textColor="@color/colorTransparentWhite"
@@ -63,6 +63,8 @@
         android:textSize="20dp"
         android:background="@drawable/button"
         android:fontFamily="@font/bold"
+        android:elevation="20dp"
+
         android:textColor="@color/colorTransparentWhite"
         android:layout_below="@id/button_consumer"
         android:layout_centerHorizontal="true"
@@ -76,6 +78,8 @@
         android:textSize="20dp"
         android:background="@drawable/button"
         android:fontFamily="@font/bold"
+        android:elevation="20dp"
+
         android:textColor="@color/colorTransparentWhite"
         android:layout_below="@id/button_prosumer"
         android:layout_centerHorizontal="true"

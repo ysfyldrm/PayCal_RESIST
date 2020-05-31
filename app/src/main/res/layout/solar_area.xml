@@ -1,65 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:background="@drawable/dialog_shape"
-    >
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_shape">
 
     <Button
         android:id="@+id/backBtn"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
-        android:background="@drawable/ic_backbutton"
-        />
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_backbutton" />
 
     <TextView
         android:id="@+id/solararea_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Indicate your area"
-        android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
         android:layout_centerHorizontal="true"
-        android:textSize="15sp"
         android:layout_marginTop="20dp"
-        />
+        android:fontFamily="@font/bold"
+        android:text="Indicate your area"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp" />
 
     <LinearLayout
-        android:layout_below="@id/solararea_txt"
-        android:layout_marginTop="20dp"
         android:id="@+id/turbine_count_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
+        android:layout_below="@id/solararea_txt"
         android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="30dp"
-        >
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
 
-     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:textColor="@color/colorTransparentWhite"
-        android:fontFamily="@font/bold"
-        android:text="AREA :"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bold"
+            android:text="AREA :"
+            android:textColor="@color/colorTransparentWhite"
+            android:textSize="15sp" />
 
-    <EditText
-        android:id="@+id/area_count_edt"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorTransparentWhite"
-        android:backgroundTint="@color/colorTransparentWhite"
-        android:textSize="15sp"
-        android:layout_marginLeft="15dp"
-        android:digits="0123456789"
-        android:inputType="numberPassword"
-        android:gravity="center"
-        android:hint="m\u00B2"
-        android:textColorHint="@color/colorTransparentWhite"
-        />
+        <EditText
+            android:id="@+id/area_count_edt"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:backgroundTint="@color/colorTransparentWhite"
+            android:digits="0123456789"
+            android:gravity="center"
+            android:hint="m\u00B2"
+            android:inputType="numberPassword"
+            android:textColor="@color/colorTransparentWhite"
+            android:textColorHint="@color/colorTransparentWhite"
+            android:textSize="15sp" />
 
     </LinearLayout>
 
@@ -67,16 +62,16 @@
         android:id="@+id/own_confirm_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button"
         android:layout_below="@id/turbine_count_txt"
         android:layout_centerHorizontal="true"
-        android:textSize="15sp"
-        android:text="CONFIRM"
-        android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"
-        />
+        android:background="@drawable/button"
+        android:elevation="20dp"
+        android:fontFamily="@font/bold"
+        android:text="CONFIRM"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="15sp" />
 
 
 </RelativeLayout>

@@ -26,11 +26,14 @@
 </LinearLayout>
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_below="@id/linearLayout_chart"
         android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
         android:id="@+id/buttonsave"
+        android:textColor="@color/colorTransparentWhite"
+        android:background="@drawable/button"
         android:text="Save"
 >
 

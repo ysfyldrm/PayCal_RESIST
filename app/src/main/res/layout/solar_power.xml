@@ -4,6 +4,14 @@
     android:background="@drawable/dialog_shape"
     >
 
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/ic_backbutton"
+        />
     <TextView
         android:id="@+id/solararea_txt"
         android:layout_width="wrap_content"
@@ -38,7 +46,7 @@
             />
 
         <EditText
-            android:id="@+id/area_count_edt"
+            android:id="@+id/power_count_edt"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:textColor="@color/colorTransparentWhite"

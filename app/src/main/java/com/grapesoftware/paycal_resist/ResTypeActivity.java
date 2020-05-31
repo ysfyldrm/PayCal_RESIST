@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -19,7 +20,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ResTypeActivity extends AppCompatActivity {
-    Button windbtn, pvbtn, biomassbtn,backbutton;
+    Button windbtn, pvbtn, biomassbtn, backbutton;
     RadioButton pickedTurbine;
     Bundle bundle1;
     String morning, peak, offpeak, tax, avgconsmonth, consyear, morconsmonth, avgmonthbill, typeforuser;
@@ -36,7 +37,7 @@ public class ResTypeActivity extends AppCompatActivity {
         windbtn = findViewById(R.id.button_wind);
         pvbtn = findViewById(R.id.button_PV);
         biomassbtn = findViewById(R.id.button_biomass);
-        backbutton=findViewById(R.id.backBtn);
+        backbutton = findViewById(R.id.backBtn);
 
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,73 +57,27 @@ public class ResTypeActivity extends AppCompatActivity {
 //                Intent intent=new Intent(ResTypeActivity.this,StorageTypeActivity.class);
 //                startActivity(intent);
 
+
+                if (typeforuser.equals("Supplier")) {
+                    showMyCustomSuplierWindTurbineDialog();
+                } else {
+                    showMyCustomWindTurbinDialog();
+                }
+
                 editor.putString("RES Type", windbtn.getText().toString());
                 editor.commit();
-
-                showMyCustomWindTurbinDialog();
 
             }
         });
         pvbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-//                if (typeforuser.equals("Prosumer")) {
-//                    {
-//
-//                        final Dialog dialog1 = new Dialog(context);
-//                        dialog1.setContentView(R.layout.after_prosumer_tariff);
-//                        dialog1.show();
-//
-//                        Button confirm = dialog1.findViewById(R.id.wanted_data_confirm_button);
-//                        final EditText AvgConsMonth = dialog1.findViewById(R.id.cons_avgmonth_edt);
-//                        final EditText MorConsMonth = dialog1.findViewById(R.id.morning_cons_month_edt);
-//                        final EditText AvgMonthBill = dialog1.findViewById(R.id.avg_month_bill_edt);
-//                        final EditText ResGenDaily = dialog1.findViewById(R.id.res_gen_daily_edt);
-//                        final EditText ResGenMonthly = dialog1.findViewById(R.id.res_gen_mothly_edt);
-//
-//
-//                        confirm.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View view) {
-//                                Toast.makeText(getApplicationContext(), AvgConsMonth.getText() + "\n" + ResGenMonthly.getText() + "\n" + MorConsMonth.getText() + "\n" + AvgMonthBill.getText() + "\n" + ResGenDaily.getText(), Toast.LENGTH_LONG).show();
-//                                dialog1.dismiss();
-//                                Intent intent = new Intent(ResTypeActivity.this, StorageTypeActivity.class);
-//
-//
-//                                String avgconsmonth = AvgConsMonth.getText().toString();
-//                                String morconsmonth = MorConsMonth.getText().toString();
-//                                String avgmonthbill = AvgMonthBill.getText().toString();
-//                                String resgendaily = ResGenDaily.getText().toString();
-//                                String resgenmonthly = ResGenMonthly.getText().toString();
-//
-//                                Toast.makeText(getApplicationContext(), "RES TYPE1= "+pvbtn.getText().toString(), Toast.LENGTH_SHORT).show();
-//
-//                                editor.putString("RES Type", pvbtn.getText().toString());
-//                                editor.putString("Cons Avg Month", avgconsmonth);
-//                                editor.putString("Morning Cons Month", morconsmonth);
-//                                editor.putString("Avg Month Bill", avgmonthbill);
-//                                editor.putString("RES Gen Daily", resgendaily);
-//                                editor.putString("RES Gen Monthly", resgenmonthly);
-//
-//                                editor.commit();
-//
-//                                startActivity(intent);
-//                            }
-//                        });
-//
-//
-//                        Window window = dialog1.getWindow();
-//                        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                        window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-//
-//                    }
-//                }
+                if (typeforuser.equals("Supplier")) {
+                    showMyCustomSuplierSolarSelection();
+                } else {
+                    showMyCustomSolarArea();
+                }
                 editor.putString("RES Type", pvbtn.getText().toString());
-                showMyCustomSolarArea();
-                Toast.makeText(getApplicationContext(), "RES TYPE2= "+pvbtn.getText().toString(), Toast.LENGTH_SHORT).show();
-
-
             }
         });
         biomassbtn.setOnClickListener(new View.OnClickListener() {
@@ -132,6 +87,99 @@ public class ResTypeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void showMyCustomSuplierSolarSelection() {
+
+        final Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.power_or_solar);
+
+        // custom dialog elemanlarını tanımla - text, image ve button
+        final Button powerbutton = dialog.findViewById(R.id.power_button);
+        final Button areabutton = dialog.findViewById(R.id.area_button);
+
+        // tamam butonunun tıklanma olayları
+        powerbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+
+                final Dialog dialog1 = new Dialog(context);
+                dialog1.setContentView(R.layout.solar_power);
+                dialog1.show();
+
+                Button ownconfirmbutton = dialog1.findViewById(R.id.own_confirm_button);
+                Button backbutton2=dialog1.findViewById(R.id.backBtn);
+                final EditText poweredt = dialog1.findViewById(R.id.power_count_edt);
+                poweredt.setTransformationMethod(null);
+
+                backbutton2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        onBackPressed();
+                    }
+                });
+
+                ownconfirmbutton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog1.dismiss();
+                        Intent intent = new Intent(ResTypeActivity.this, StorageTypeActivity.class);
+                        editor.putString("Solar Power", poweredt.getText().toString());
+                        editor.putString("Solar Selection", "Power");
+                        editor.commit();
+                        startActivity(intent);
+                    }
+                });
+                windowstate(dialog1);
+            }
+        });
+
+        areabutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+
+                final Dialog dialog2 = new Dialog(context);
+                dialog2.setContentView(R.layout.solar_area);
+                dialog2.show();
+
+                Button ownconfirmbutton = dialog2.findViewById(R.id.own_confirm_button);
+                Button backbutton1=dialog2.findViewById(R.id.backBtn);
+
+                final EditText areaedt = dialog2.findViewById(R.id.area_count_edt);
+                areaedt.setTransformationMethod(null);
+                backbutton1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        onBackPressed();
+                    }
+                });
+
+                ownconfirmbutton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog2.dismiss();
+                        Intent intent = new Intent(ResTypeActivity.this, StorageTypeActivity.class);
+                        editor.putString("Solar Area", areaedt.getText().toString());
+                        editor.putString("Solar Selection", "Area");
+                        editor.commit();
+                        startActivity(intent);
+
+                    }
+                });
+                windowstate(dialog2);
+            }
+        });
+
+
+        dialog.show();
+        windowstate(dialog);
+    }
+    public void windowstate(Dialog dialog){
+        Window window = dialog.getWindow();
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
     }
 
 
@@ -163,9 +211,59 @@ public class ResTypeActivity extends AppCompatActivity {
 
 
         dialog.show();
-        Window window = dialog.getWindow();
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        windowstate(dialog);
+    }
+
+
+    public void showMyCustomSuplierWindTurbineDialog() {
+        // dialog nesnesi oluştur ve layout dosyasına bağlan
+        final Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.wind_turbine_options);
+
+        // custom dialog elemanlarını tanımla - text, image ve button
+        Button ownconfirmbtn = dialog.findViewById(R.id.own_confirm_button);
+        final RadioGroup turbineGroup = dialog.findViewById(R.id.turbine_group);
+        final EditText turbineCount = dialog.findViewById(R.id.turbine_count_edt);
+        final LinearLayout linearLayout = dialog.findViewById(R.id.linear_turbines);
+
+        linearLayout.setVisibility(View.GONE);
+
+        turbineCount.setTransformationMethod(null);
+
+        turbineGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                pickedTurbine = radioGroup.findViewById(i);
+                rdbtext = pickedTurbine.getText().toString();
+            }
+        });
+
+
+        // tamam butonunun tıklanma olayları
+        ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(context, rdbtext + "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, rdbtext + "\n" + turbineCount.getText(), Toast.LENGTH_SHORT).show();
+
+                Intent intentwind = new Intent(ResTypeActivity.this, StorageTypeActivity.class);
+                String turtype = rdbtext;
+                String turcount = turbineCount.getText().toString();
+
+                editor.putString("Turbine Type", turtype);
+                editor.putString("Turbine Count", turcount);
+                editor.commit();
+                startActivity(intentwind);
+
+
+            }
+        });
+
+
+        dialog.show();
+        windowstate(dialog);
+
     }
 
     public void showMyCustomWindTurbinDialog() {
@@ -212,8 +310,6 @@ public class ResTypeActivity extends AppCompatActivity {
 
 
         dialog.show();
-        Window window = dialog.getWindow();
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        windowstate(dialog);
     }
 }

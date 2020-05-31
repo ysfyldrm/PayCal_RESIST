@@ -18,10 +18,13 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.io.File;
@@ -119,49 +122,35 @@ public class ChartsActivity extends AppCompatActivity {
             }
         }
 
-        int countfourkırmızı = colorArraykırmızı.length / countkırmızı;
-
-        gecis1 = countkırmızı - sarı;
-        renk1 = 255 / gecis1;
-        gecis2 = countyesil - sarı;
-        renk2 = 255 / gecis2;
-
-        for (int i = 0; i < 12; i++) {
-            yesil = yesil + renk1;
-        }
-        for (int i = 12; i < 24; i++) {
-            kırmızı = kırmızı - renk2;
-        }
-
 
         mpLineChart = (LineChart) findViewById(R.id.line_chart);
         LineDataSet lineDataSet1 = new LineDataSet(dataValues1(), "         CashFlow Chart");
         lineDataSet1.setColors(colorArray, ChartsActivity.this);
         lineDataSet1.setDrawCircles(false);
-        lineDataSet1.setLineWidth(3);
-        lineDataSet1.setValueTextSize(10);
+        lineDataSet1.setLineWidth(3f);
+        lineDataSet1.setValueTextSize(10f);
         lineDataSet1.setDrawVerticalHighlightIndicator(true);
-
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(lineDataSet1);
         LineData data = new LineData(dataSets);
-        Legend legend=mpLineChart.getLegend();
+        Legend legend = mpLineChart.getLegend();
         legend.setEnabled(true);
         legend.setStackSpace(0);
 
+        //String[] values=new String[]{"0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23"};
         //mpLineChart.setDrawGridBackground(true);
+        XAxis xAxis = mpLineChart.getXAxis();
         mpLineChart.setDrawBorders(true);
         mpLineChart.getAxisRight().setEnabled(false);
         mpLineChart.getAxisLeft().setLabelCount((lineDataSet1.getEntryCount()));
         mpLineChart.getXAxis().setLabelCount(24);
         mpLineChart.setData(data);
         mpLineChart.animateX(5000);
+
         mpLineChart.invalidate();
     }
 
     private ArrayList<Entry> dataValues1() {
-
-
         ArrayList<Entry> dataVals = new ArrayList<Entry>();
         for (int i = 0; i < cashFloat.length; i++) {
             dataVals.add(new Entry(i, cashFloat[i]));
@@ -170,9 +159,23 @@ public class ChartsActivity extends AppCompatActivity {
         return dataVals;
     }
 
+    public class MyXAxisValueFormatter implements IAxisValueFormatter {
+        private String[] mValues;
+
+        public MyXAxisValueFormatter(String[] values) {
+            this.mValues = values;
+        }
+
+        @Override
+        public String getFormattedValue(float value, AxisBase axis) {
+            return mValues[(int) value];
+        }
+    }
+
 
     private File saveBitMap(Context context, View drawView) {
-        File pictureFileDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Logicchip");
+       // Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+        File pictureFileDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "DENEME");
         if (!pictureFileDir.exists()) {
             boolean isDirectoryCreated = pictureFileDir.mkdirs();
             if (!isDirectoryCreated)

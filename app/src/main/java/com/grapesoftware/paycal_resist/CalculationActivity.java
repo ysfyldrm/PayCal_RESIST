@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,8 +24,6 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.github.ybq.android.spinkit.sprite.Sprite;
-import com.github.ybq.android.spinkit.style.FoldingCube;
 import com.github.ybq.android.spinkit.style.Wave;
 
 import org.json.JSONArray;
@@ -35,22 +32,14 @@ import org.json.JSONObject;
 
 
 public class CalculationActivity extends AppCompatActivity {
-    String typeforuser, morning, peak, offpeak, tax, avgconsmonth, morconsmonth, avgmonthbill, resgendaily, resgenmonthly, storageperc, restype, turbinetype, turbinecount, consyear, solararea, latitude, longitude, storagetype;
-    Double dlatitude, dlongitude, dmorning, dpeak, doffpeak, dtax, davgconsmonth, dmorconsmonth, davgmonthbill, dresgendaily, dresgenmonthly, dstorageperc, drestype, dturbinecount, dconsyear, dsolararea;
-
-    String adress,country;
-    private RequestQueue mQueue;
-    Double wwa13 = 0.00, wa13 = 0.00;
-    Double eff, dod, storage_price, omprice;
-    Double a13, storagepercentagee, avgwind;
-    Double windkwarray;
-    Double ratedcapacity;
-    Double payback=0.0,price=0.0;
-    Double windanualprofit=0.0, windcapitalcost=0.0;
-    Double windyearcost = 0.00;
-    Double windyearkwh=0.0, winddaykwh=0.0;
+    String solarselection, adress, country, solarpower, peakmcp, morningmcp, avgpeakmcp, avgmorningmcp, avgyearmcp, typeforuser, morning, peak, offpeak, tax, avgconsmonth, morconsmonth, avgmonthbill, resgendaily, resgenmonthly, storageperc, restype, turbinetype, turbinecount, consyear, solararea, latitude, longitude, storagetype;
+    Double eff, a13, windkwarray, storagepercentagee, dod, storage_price, omprice, dsolarpower, dpeakmcp, dmorningmcp, davgpeakmcp, davgmorningmcp, davgyearmcp, dlatitude, dlongitude, dmorning, dpeak, doffpeak, dtax, davgconsmonth, dmorconsmonth, davgmonthbill, dresgendaily, dresgenmonthly, dstorageperc, drestype, dturbinecount, dconsyear, dsolararea;
+    Double wwa13 = 0.00, wa13 = 0.00, payback = 0.0, price = 0.0, ratedcapacity = 0.0, windanualprofit = 0.0, windcapitalcost = 0.0, windyearcost = 0.0, windyearkwh = 0.0, winddaykwh = 0.0;
     Double a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12;
+
+    private RequestQueue mQueue;
     final Context context = this;
+
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     ProgressBar progressBar;
@@ -61,8 +50,8 @@ public class CalculationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calculation);
 
         mQueue = Volley.newRequestQueue(this);
-        progressBar = (ProgressBar)findViewById(R.id.spin_kit);
-        Wave wave=new Wave();
+        progressBar = (ProgressBar) findViewById(R.id.spin_kit);
+        Wave wave = new Wave();
         progressBar.setIndeterminateDrawable(wave);
         progressBar.setVisibility(View.INVISIBLE);
 
@@ -85,12 +74,19 @@ public class CalculationActivity extends AppCompatActivity {
         storageperc = preferences.getString("Storage Percentage", "1.00");
         restype = preferences.getString("RES Type", "PV SOLAR");
         turbinecount = preferences.getString("Turbine Count", "1.00");
-        turbinetype = preferences.getString("Turbine Type", "1.00");
+        turbinetype = preferences.getString("Turbine Type", "1500.0");
         consyear = preferences.getString("Cons Year", "1.00");
         solararea = preferences.getString("Solar Area", "1.00");
+        solarpower = preferences.getString("Solar Power", "1.00");
         storagetype = preferences.getString("Storage Type", null);
-        adress=preferences.getString("Adress",null);
-        country=preferences.getString("Country",null);
+        adress = preferences.getString("Adress", null);
+        country = preferences.getString("Country", null);
+        peakmcp = preferences.getString("Peak MCP", "1.00");
+        morningmcp = preferences.getString("Morning MCP", "1.00");
+        avgpeakmcp = preferences.getString("AVG Peak MCP", "1.00");
+        avgmorningmcp = preferences.getString("AVG Morning MCP", "1.00");
+        avgyearmcp = preferences.getString("AVG Year MCP", "1.00");
+        solarselection = preferences.getString("Solar Selection", "Power");
 
 
         latitude = latitude.replace(",", ".");
@@ -109,8 +105,13 @@ public class CalculationActivity extends AppCompatActivity {
         restype = restype.replace(",", ".");
         turbinecount = turbinecount.replace(",", ".");
         turbinetype = turbinetype.replace(",", ".");
-        //consyear = consyear.replace(",", ".");
         solararea = solararea.replace(",", ".");
+        peakmcp = peakmcp.replace(",", ".");
+        morningmcp = morningmcp.replace(",", ".");
+        avgpeakmcp = avgpeakmcp.replace(",", ".");
+        avgmorningmcp = avgmorningmcp.replace(",", ".");
+        avgyearmcp = avgyearmcp.replace(",", ".");
+        solarpower = solarpower.replace(",", ".");
 
         dlatitude = ParseDouble(latitude);
         dlongitude = ParseDouble(longitude);
@@ -128,6 +129,12 @@ public class CalculationActivity extends AppCompatActivity {
         dturbinecount = ParseDouble(turbinecount);
         dconsyear = dmorconsmonth * 12;
         dsolararea = ParseDouble(solararea);
+        dsolarpower = ParseDouble(solarpower);
+        dpeakmcp = ParseDouble(peakmcp);
+        dmorningmcp = ParseDouble(morningmcp);
+        davgpeakmcp = ParseDouble(avgpeakmcp);
+        davgmorningmcp = ParseDouble(avgmorningmcp);
+        davgyearmcp = ParseDouble(avgyearmcp);
 
 
 //        SharedPreferences settings = context.getSharedPreferences("session", Context.MODE_PRIVATE);
@@ -232,34 +239,36 @@ public class CalculationActivity extends AppCompatActivity {
                         Double wwa9 = wind50.getDouble("9");
 
                         progressBar.setVisibility(View.GONE);
+                    }
 
-                        if (typeforuser.equals("Consumer")) {
+                    if (typeforuser.equals("Consumer")) {
 
-                            if (storagetype.equals("NoStorage") && restype.equals("WIND")) {
-                                hesaplawindnostorage();
-                                Toast.makeText(getApplicationContext(), "Consumer (NoStorage) Wind'e Girildi.", Toast.LENGTH_SHORT).show();
+                        if (storagetype.equals("NoStorage") && restype.equals("WIND")) {
+                            hesaplawindnostorage();
+                        } else if (!storagetype.equals("NoStorage") && restype.equals("WIND")) {
+                            hesaplawindwithstorage();
+                        } else if (storagetype.equals("NoStorage") && restype.equals("SOLAR")) {
+                            hesaplasolarnostorage();
+                        } else if (!storagetype.equals("NoStorage") && restype.equals("SOLAR")) {
+                            hesaplasolarwithstorage();
+                        }
+                    } else if (typeforuser.equals("Prosumer")) {
 
-                            } else if (!storagetype.equals("NoStorage") && restype.equals("WIND")) {
-                                hesaplawindwithstorage();
-                                Toast.makeText(getApplicationContext(), "Consumer Wind'e Girildi.", Toast.LENGTH_SHORT).show();
+                        if (restype.equals("WIND")) {
+                            hesaplawindpro();
+                        } else if (restype.equals("SOLAR")) {
+                            hesaplapvpro();
+                        }
+                    } else if (typeforuser.equals("Supplier")) {
 
-                            } else if (storagetype.equals("NoStorage") && restype.equals("SOLAR")) {
-                                hesaplasolarnostorage();
-                                Toast.makeText(getApplicationContext(), "Consumer (NoStorage) PV SOLAR'a Girildi.", Toast.LENGTH_SHORT).show();
-
-                            } else if (!storagetype.equals("NoStorage") && restype.equals("SOLAR")) {
-                                hesaplasolarwithstorage();
-                                Toast.makeText(getApplicationContext(), "Consumer PV SOLAR'a Girildi.", Toast.LENGTH_SHORT).show();
-                            }
-                        } else if (typeforuser.equals("Prosumer")) {
-
-                            if (restype.equals("WIND")) {
-                                hesaplawindpro();
-                                Toast.makeText(getApplicationContext(), "Prosumer Wind'e Girildi.", Toast.LENGTH_SHORT).show();
-                            } else if (restype.equals("SOLAR")) {
-                                hesaplapvpro();
-                                Toast.makeText(getApplicationContext(), "Prosumer PV SOLAR'a Girildi.", Toast.LENGTH_SHORT).show();
-                            }
+                        if (storagetype.equals("NoStorage") && restype.equals("WIND")) {
+                            hesaplaWindNoStorageSupplier();
+                        } else if (!storagetype.equals("NoStorage") && restype.equals("WIND")) {
+                            hesaplaWindWithStorageSupplier();
+                        } else if (storagetype.equals("NoStorage") && restype.equals("SOLAR")) {
+                            hesaplaSolarNoStorageSupplier();
+                        } else if (!storagetype.equals("NoStorage") && restype.equals("SOLAR")) {
+                            hesaplaSolarWithStorageSupplier();
                         }
                     }
                 } catch (JSONException e) {
@@ -273,136 +282,308 @@ public class CalculationActivity extends AppCompatActivity {
                 error.printStackTrace();
             }
         });
-        request.setRetryPolicy(new RetryPolicy() {
-            @Override
-            public int getCurrentTimeout() {
-                return 10000;
-            }
+        request.setRetryPolicy(new
 
-            @Override
-            public int getCurrentRetryCount() {
-                return 10000;
-            }
+                                       RetryPolicy() {
+                                           @Override
+                                           public int getCurrentTimeout() {
+                                               return 10000;
+                                           }
 
+                                           @Override
+                                           public int getCurrentRetryCount() {
+                                               return 10000;
+                                           }
+
+                                           @Override
+                                           public void retry(VolleyError error) throws VolleyError {
+
+                                           }
+                                       });
+        mQueue.add(request);
+    }
+
+    private void hesaplaSolarNoStorageSupplier() {
+        Double pvnum;
+        Double panelpower = 0.265;
+        Double panelarea = 1.63;
+        Double area;
+        Double pvpower;
+        Double pvcostconsumer = 1300.0;
+        Double omcostconsumer = 20.0;
+        Double pvcost = 1100.0;
+        Double pvomcost = 17.0;
+        Double[] pvrad = {a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12};
+        Double[] pvgenmonth = new Double[12];
+        Double pvgenyear = 0.0;
+
+        if (solarselection.equals("Power")) {
+            pvnum = dsolarpower / panelpower;
+            area = pvnum * panelarea;
+            pvpower = dsolarpower;
+        } else {
+            pvnum = dsolararea / panelarea;
+            pvpower = pvnum * panelpower;
+            area = dsolararea;
+        }
+        int[] Monthday = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        for (int i = 0; i < 12; i++) {
+            pvgenmonth[i] = Monthday[i] * pvrad[i] * area * 0.125;
+            pvgenyear = pvgenyear + pvgenmonth[i];
+        }
+        Double pvgenaverageday = pvgenyear / 365;
+        Double pvgenaveragemonth = pvgenyear / 12;
+        Double pvcapitalcost = pvpower * pvcost;
+        Double pvyearlycost = pvpower * pvomcost;
+
+        Double[] revenuemonth = new Double[12];
+        Double[] morningmcparray = {0.0465, 0.0496, 0.047, 0.0336, 0.0293, 0.035, 0.0534, 0.0517, 0.0518, 0.0509, 0.053, 0.0526};
+        Double revenueyear = 0.0;
+        for (int i = 0; i < 12; i++) {
+            revenuemonth[i] = (pvgenmonth[i] * morningmcparray[i]);
+            revenueyear = revenueyear + revenuemonth[i];
+        }
+        Double pvprofityear = revenueyear - pvyearlycost;
+        payback = pvcapitalcost / pvprofityear;
+        Double[] cashflow = new Double[24];
+
+        for (int i = 0; i < 24; i++) {
+            cashflow[i] = -pvcapitalcost + (pvprofityear * i);
+            editor.putFloat("Cashflow" + i, cashflow[i].floatValue());
+        }
+        editor.commit();
+        displayResults();
+    }
+
+    private void hesaplaSolarWithStorageSupplier() {
+
+        Double pvnum;
+        Double panelpower = 0.265;
+        Double panelarea = 1.63;
+        Double area;
+        Double pvpower;
+        Double pvcostconsumer = 1300.0;
+        Double omcostconsumer = 20.0;
+        Double pvcost = 1100.0;
+        Double pvomcost = 17.0;
+        Double[] pvrad = {a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12};
+        Double[] pvgenmonth = new Double[12];
+        Double pvgenyear = 0.0;
+
+        if (solarselection.equals("Power")) {
+            pvnum = dsolarpower / panelpower;
+            area = pvnum * panelarea;
+            pvpower = dsolarpower;
+        } else {
+            pvnum = dsolararea / panelarea;
+            pvpower = pvnum * panelpower;
+            area = dsolararea;
+        }
+        int[] Monthday = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        for (int i = 0; i < 12; i++) {
+            pvgenmonth[i] = Monthday[i] * pvrad[i] * area * 0.125;
+            pvgenyear = pvgenyear + pvgenmonth[i];
+        }
+        Double pvgenaverageday = pvgenyear / 365;
+        Double pvgenaveragemonth = pvgenyear / 12;
+        Double pvcapitalcost = pvpower * pvcost;
+        Double pvyearlycost = pvpower * pvomcost;
+        Double storageusedcapacity = pvgenaverageday * dstorageperc;
+        Double storagecapacity = (storageusedcapacity + (storageusedcapacity * (1 - eff * dod)));
+        Double storagecapitalcost = storagecapacity * storage_price;
+        Double storageyearlycost = storagecapacity * omprice;
+        Double[] revenuemonth = new Double[12];
+        Double[] morningmcparray = {0.0465, 0.0496, 0.047, 0.0336, 0.0293, 0.035, 0.0534, 0.0517, 0.0518, 0.0509, 0.053, 0.0526};
+        Double[] peakmcparray = {0.0527, 0.0577, 0.0548, 0.0434, 0.0444, 0.0457, 0.0561, 0.0559, 0.0547, 0.0551, 0.0569, 0.0548};
+
+        Double revenueyear = 0.0;
+        for (int i = 0; i < 12; i++) {
+            revenuemonth[i] = (pvgenmonth[i] * dstorageperc * peakmcparray[i]) + (pvgenmonth[i] * (1 - dstorageperc) * morningmcparray[i]);
+            revenueyear = revenueyear + revenuemonth[i];
+        }
+
+        Double systemcost = storagecapitalcost + pvcapitalcost;
+        Double systemyearlycost = storageyearlycost + pvyearlycost;
+        Double yearlyprofit = revenueyear - systemyearlycost;
+        payback = systemcost / yearlyprofit;
+
+        Double[] cashflow = new Double[24];
+
+        for (int i = 0; i < 24; i++) {
+            cashflow[i] = -systemcost + (yearlyprofit * i);
+            editor.putFloat("Cashflow" + i, cashflow[i].floatValue());
+        }
+        editor.commit();
+        displayResults();
+
+    }
+
+    private void hesaplaWindWithStorageSupplier() {
+        windkwarraycalculate();
+        ratedcapacity = dturbinecount * 1500;
+        Double turbineprice = 1154.76;
+        Double omcost1500kw = 0.03;
+        Double windyearkwh = windkwarray * 8760 * dturbinecount;
+        Double winddaykwh = windyearkwh / 365;
+        Double storageusedcapacity = winddaykwh * dstorageperc;
+        Double storagecapacity = (storageusedcapacity + (storageusedcapacity * (1 - eff * dod)));
+        Double storagecapitalcost = storagecapacity * storage_price;
+        Double storageyearlycost = storagecapacity * omprice;
+        Double windanualprofit = windyearkwh * (1 - dstorageperc) * davgmorningmcp + windyearkwh * dstorageperc * davgpeakmcp;
+        Double windyearlycost = windyearkwh * omcost1500kw;
+        Double windcapitalcost = ratedcapacity * turbineprice;
+        Double systemcost = storagecapitalcost + windcapitalcost;
+        Double systemyearlycost = windyearlycost + storageyearlycost;
+        Double systemprofit = windanualprofit - systemyearlycost;
+        payback = windcapitalcost / (systemprofit);
+        Double[] cashflow = new Double[24];
+
+        for (int i = 0; i < 24; i++) {
+            cashflow[i] = -systemcost + (systemprofit * i);
+            editor.putFloat("Cashflow" + i, cashflow[i].floatValue());
+        }
+        editor.commit();
+        displayResults();
+    }
+
+    private void hesaplaWindNoStorageSupplier() {
+        ratedcapacity = dturbinecount * 1500;
+        Double turbineprice = 1154.76;
+        Double omcost = 0.03;
+        Double turbineratedpower = ratedcapacity;
+        windkwarraycalculate();
+        Double windyearkwh = windkwarray * 8760 * dturbinecount;
+        Double winddaykwh = windyearkwh / 365;
+        Double windannualprofit = windyearkwh * davgmorningmcp;
+        Double windyearlycost = windyearkwh * omcost;
+        Double windcapitalcost = ratedcapacity * turbineprice;
+        payback = windcapitalcost / (windannualprofit - windyearlycost);
+        Double[] cashflow = new Double[24];
+
+        for (int i = 0; i < 24; i++) {
+            cashflow[i] = -windcapitalcost + ((windannualprofit - windyearlycost) * i);
+            editor.putFloat("Cashflow" + i, cashflow[i].floatValue());
+        }
+        editor.commit();
+        displayResults();
+    }
+
+
+    private void displayResults() {
+
+        // dialog nesnesi oluştur ve layout dosyasına bağlan
+        final Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.result_viewer);
+
+        // custom dialog elemanlarını tanımla - text, image ve button
+        Button ownconfirmbtn = dialog.findViewById(R.id.own_confirm_button);
+        final TextView resultPage = dialog.findViewById(R.id.results_txt);
+
+        resultPage.setText("Type: " + typeforuser + "\n"
+                + "Res Type: " + restype + "\n"
+                + "Storage Type: " + storagetype + "\n"
+                + "Latitude: " + latitude + "\n"
+                + "Longitude: " + longitude + "\n"
+                + "Country: " + country + "\n"
+                + "Adress: " + adress + "\n"
+                + "Morning Tariff: " + morning + "\n"
+                + "Peak Tariff: " + peak + "\n"
+                + "Tax: " + tax + "\n"
+                + "Cons Month Avg: " + avgconsmonth + "\n"
+                + "Morning Cons Month: " + morconsmonth + "\n"
+                + "Avg Month Bill: " + avgmonthbill + "\n"
+                + "RES Gen Daily: " + resgendaily + "\n"
+                + "RES Gen Monthly: " + resgenmonthly + "\n"
+                + "Storage Percentage: " + storageperc + "\n"
+                + "RES Type: " + restype + "\n"
+                + "Turbine Count: " + turbinecount + "\n"
+                + "Turbine Type: " + turbinetype + "\n"
+                + "Cons Year: " + consyear + "\n"
+                + "Solar Area: " + solararea + "\n"
+                + "Rated Capacity: " + ratedcapacity + "\n"
+                + "Wind Day Kwh: " + winddaykwh + "\n"
+                + "Wind Year Kwh: " + windyearkwh + "\n"
+                + "Wind Array Kwh: " + windkwarray + "\n"
+                + "Price: " + price + "\n"
+                + "Wind Annual Profit: " + windanualprofit + "\n"
+                + "Wind Year Cost: " + windyearcost + "\n"
+                + "Wind Capital Cost: " + windcapitalcost + "\n"
+                + "Payback: " + payback + "\n"
+                + "Average Wind 50M: " + wwa13
+        );
+
+        // tamam butonunun tıklanma olayları
+        ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void retry(VolleyError error) throws VolleyError {
+            public void onClick(View v) {
+                Intent intent = new Intent(CalculationActivity.this, ChartsActivity.class);
+                startActivity(intent);
+                finish();
 
             }
         });
-        mQueue.add(request);
+        //finish();
+
+        dialog.show();
+        Window window = dialog.getWindow();
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
     }
-private void displayResults(){
-
-    // dialog nesnesi oluştur ve layout dosyasına bağlan
-    final Dialog dialog = new Dialog(context);
-    dialog.setContentView(R.layout.result_viewer);
-
-    // custom dialog elemanlarını tanımla - text, image ve button
-    Button ownconfirmbtn = dialog.findViewById(R.id.own_confirm_button);
-    final TextView resultPage = dialog.findViewById(R.id.results_txt);
-
-    resultPage.setText("Type: "+typeforuser+"\n"
-                    +"Res Type: "+restype+"\n"
-            +"Storage Type: "+storagetype+"\n"
-            +"Latitude: " + latitude + "\n"
-            +"Longitude: " + longitude + "\n"
-            +"Country: "+country+"\n"
-            +"Adress: "+adress+"\n"
-            +"Morning Tariff: " + morning + "\n"
-            +"Peak Tariff: " + peak + "\n"
-            +"Tax: " + tax + "\n"
-            +"Cons Month Avg: " + avgconsmonth + "\n"
-            +"Morning Cons Month: " + morconsmonth + "\n"
-            +"Avg Month Bill: " + avgmonthbill + "\n"
-            +"RES Gen Daily: " + resgendaily + "\n"
-            +"RES Gen Monthly: " + resgenmonthly + "\n"
-            +"Storage Percentage: " + storageperc + "\n"
-            +"RES Type: " + restype + "\n"
-            +"Turbine Count: " + turbinecount + "\n"
-            +"Turbine Type: " + turbinetype + "\n"
-            +"Cons Year: " + consyear + "\n"
-            +"Solar Area: " + solararea + "\n"
-            +"Rated Capacity: " + ratedcapacity + "\n"
-            +"Wind Day Kwh: " + winddaykwh + "\n"
-            +"Wind Year Kwh: " + windyearkwh + "\n"
-            +"Wind Array Kwh: " + windkwarray + "\n"
-            +"Price: " + price + "\n"
-            +"Wind Annual Profit: " + windanualprofit + "\n"
-            +"Wind Year Cost: " + windyearcost + "\n"
-            +"Wind Capital Cost: " + windcapitalcost + "\n"
-            +"Payback: " + payback + "\n"
-            +"Average Wind 50M: " + wwa13
-    );
-
-    // tamam butonunun tıklanma olayları
-    ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(CalculationActivity.this, ChartsActivity.class);
-            startActivity(intent);
-            finish();
-
-        }
-    });
-    //finish();
-
-    dialog.show();
-    Window window = dialog.getWindow();
-    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-    window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-}
 
 
     private void windkwarraycalculate() {
-        if (turbinetype.equals("1 Kw")) {
-            if (wwa13 <= 1.8) {
-                windkwarray = 0.0;
-            } else if (wwa13 > 1.8 && wwa13 <= 2.7) {
-                windkwarray = 25.0;
-            } else if (wwa13 > 2.7 && wwa13 <= 3.6) {
-                windkwarray = 75.0;
-            } else if (wwa13 > 3.6 && wwa13 <= 4.5) {
-                windkwarray = 125.0;
-            } else if (wwa13 > 4.5 && wwa13 <= 5.4) {
-                windkwarray = 200.0;
-            } else if (wwa13 > 5.4 && wwa13 <= 6.3) {
-                windkwarray = 275.0;
-            } else if (wwa13 > 6.3 && wwa13 <= 7.2) {
-                windkwarray = 325.0;
-            } else {
-                windkwarray = 375.0;
+
+        if (typeforuser.equals("Consumer") || typeforuser.equals("Prosumer")) {
+            if (turbinetype.equals("1 Kw")) {
+                if (wwa13 <= 1.8) {
+                    windkwarray = 0.0;
+                } else if (wwa13 > 1.8 && wwa13 <= 2.7) {
+                    windkwarray = 25.0;
+                } else if (wwa13 > 2.7 && wwa13 <= 3.6) {
+                    windkwarray = 75.0;
+                } else if (wwa13 > 3.6 && wwa13 <= 4.5) {
+                    windkwarray = 125.0;
+                } else if (wwa13 > 4.5 && wwa13 <= 5.4) {
+                    windkwarray = 200.0;
+                } else if (wwa13 > 5.4 && wwa13 <= 6.3) {
+                    windkwarray = 275.0;
+                } else if (wwa13 > 6.3 && wwa13 <= 7.2) {
+                    windkwarray = 325.0;
+                } else {
+                    windkwarray = 375.0;
+                }
+            } else if (turbinetype.equals("3 Kw")) {
+                if (wwa13 <= 1.8) {
+                    windkwarray = 0.0;
+                } else if (wwa13 > 1.8 && wwa13 <= 2.7) {
+                    windkwarray = 75.0;
+                } else if (wwa13 > 2.7 && wwa13 <= 3.6) {
+                    windkwarray = 160.0;
+                } else if (wwa13 > 3.6 && wwa13 <= 4.5) {
+                    windkwarray = 325.0;
+                } else if (wwa13 > 4.5 && wwa13 <= 5.4) {
+                    windkwarray = 525.0;
+                } else if (wwa13 > 5.4 && wwa13 <= 6.3) {
+                    windkwarray = 675.0;
+                } else if (wwa13 > 6.3 && wwa13 <= 7.2) {
+                    windkwarray = 825.0;
+                } else {
+                    windkwarray = 1000.0;
+                }
+            } else if (turbinetype.equals("10 Kw")) {
+                if (wwa13 <= 3.6) {
+                    windkwarray = 410.0;
+                } else if (wwa13 > 3.6 && wwa13 <= 4.5) {
+                    windkwarray = 820.0;
+                } else if (wwa13 > 4.5 && wwa13 <= 5.4) {
+                    windkwarray = 1377.0;
+                } else if (wwa13 > 5.4 && wwa13 <= 6.3) {
+                    windkwarray = 2027.0;
+                } else {
+                    windkwarray = 2700.0;
+                }
             }
-        } else if (turbinetype.equals("3 Kw")) {
-            if (wwa13 <= 1.8) {
-                windkwarray = 0.0;
-            } else if (wwa13 > 1.8 && wwa13 <= 2.7) {
-                windkwarray = 75.0;
-            } else if (wwa13 > 2.7 && wwa13 <= 3.6) {
-                windkwarray = 160.0;
-            } else if (wwa13 > 3.6 && wwa13 <= 4.5) {
-                windkwarray = 325.0;
-            } else if (wwa13 > 4.5 && wwa13 <= 5.4) {
-                windkwarray = 525.0;
-            } else if (wwa13 > 5.4 && wwa13 <= 6.3) {
-                windkwarray = 675.0;
-            } else if (wwa13 > 6.3 && wwa13 <= 7.2) {
-                windkwarray = 825.0;
-            } else {
-                windkwarray = 1000.0;
-            }
-        } else if (turbinetype.equals("10 Kw")) {
-            if (wwa13 <= 3.6) {
-                windkwarray = 410.0;
-            } else if (wwa13 > 3.6 && wwa13 <= 4.5) {
-                windkwarray = 820.0;
-            } else if (wwa13 > 4.5 && wwa13 <= 5.4) {
-                windkwarray = 1377.0;
-            } else if (wwa13 > 5.4 && wwa13 <= 6.3) {
-                windkwarray = 2027.0;
-            } else {
-                windkwarray = 2700.0;
-            }
-        } else if (turbinetype.equals("1500 Kw")) {
+        } else if (typeforuser.equals("Supplier")) {
             if (wwa13 <= 3.0) {
                 windkwarray = 0.0;
             } else if (wwa13 > 3.0 && wwa13 <= 4.5) {
@@ -424,25 +605,24 @@ private void displayResults(){
     }
 
     private void hesaplawindpro() {
-        Double resgenyear=dresgenmonthly*12;
-        Double storageusedcapacity=dresgendaily*dstorageperc;
-        Double storagecapacity=(storageusedcapacity+(storageusedcapacity*(1-eff*dod)));
-        Double storagecapitalcost=storagecapacity*storage_price;
-        Double storageyearlycost=storagecapacity*omprice;
+        Double resgenyear = dresgenmonthly * 12;
+        Double storageusedcapacity = dresgendaily * dstorageperc;
+        Double storagecapacity = (storageusedcapacity + (storageusedcapacity * (1 - eff * dod)));
+        Double storagecapitalcost = storagecapacity * storage_price;
+        Double storageyearlycost = storagecapacity * omprice;
         Double systemrevenue;
         Double[] cashflow = new Double[24];
 
-        if (davgconsmonth>=dresgenmonthly*(1-dstorageperc)){
-            systemrevenue=(resgenyear*dstorageperc*dpeak)-(resgenyear*dstorageperc*dmorning+(resgenyear*dstorageperc*dmorning*dtax));
+        if (davgconsmonth >= dresgenmonthly * (1 - dstorageperc)) {
+            systemrevenue = (resgenyear * dstorageperc * dpeak) - (resgenyear * dstorageperc * dmorning + (resgenyear * dstorageperc * dmorning * dtax));
+        } else {
+            systemrevenue = (resgenyear * dstorageperc * dpeak + (resgenyear * dstorageperc * dpeak * dtax)) - (resgenyear * dstorageperc * dmorning);
         }
-        else{
-            systemrevenue=(resgenyear*dstorageperc*dpeak+(resgenyear*dstorageperc*dpeak*dtax))-(resgenyear*dstorageperc*dmorning);
-        }
-        Double systemprofit=systemrevenue-storageyearlycost;
-        payback=storagecapitalcost/systemprofit;
+        Double systemprofit = systemrevenue - storageyearlycost;
+        payback = storagecapitalcost / systemprofit;
 
-        for (int i=0;i<24;i++){
-            cashflow[i]=-storagecapitalcost+(systemprofit*i);
+        for (int i = 0; i < 24; i++) {
+            cashflow[i] = -storagecapitalcost + (systemprofit * i);
             editor.putFloat("Cashflow" + i, cashflow[i].floatValue());
         }
         editor.commit();
@@ -450,25 +630,24 @@ private void displayResults(){
     }
 
     private void hesaplapvpro() {
-        Double resgenyear=dresgenmonthly*12;
-        Double storageusedcapacity=dresgendaily*dstorageperc;
-        Double storagecapacity=(storageusedcapacity+(storageusedcapacity*(1-eff*dod)));
-        Double storagecapitalcost=storagecapacity*storage_price;
-        Double storageyearlycost=storagecapacity*omprice;
+        Double resgenyear = dresgenmonthly * 12;
+        Double storageusedcapacity = dresgendaily * dstorageperc;
+        Double storagecapacity = (storageusedcapacity + (storageusedcapacity * (1 - eff * dod)));
+        Double storagecapitalcost = storagecapacity * storage_price;
+        Double storageyearlycost = storagecapacity * omprice;
         Double systemrevenue;
         Double[] cashflow = new Double[24];
 
-        if (dmorconsmonth>=dresgenmonthly*(1-dstorageperc)){
-            systemrevenue=(resgenyear*dstorageperc*dpeak)-(resgenyear*dstorageperc*dmorning+(resgenyear*dstorageperc*dmorning*dtax));
+        if (dmorconsmonth >= dresgenmonthly * (1 - dstorageperc)) {
+            systemrevenue = (resgenyear * dstorageperc * dpeak) - (resgenyear * dstorageperc * dmorning + (resgenyear * dstorageperc * dmorning * dtax));
+        } else {
+            systemrevenue = (resgenyear * dstorageperc * dpeak + (resgenyear * dstorageperc * dpeak * dtax)) - (resgenyear * dstorageperc * dmorning);
         }
-        else{
-            systemrevenue=(resgenyear*dstorageperc*dpeak+(resgenyear*dstorageperc*dpeak*dtax))-(resgenyear*dstorageperc*dmorning);
-        }
-        Double systemprofit=systemrevenue-storageyearlycost;
-        payback=storagecapitalcost/systemprofit;
+        Double systemprofit = systemrevenue - storageyearlycost;
+        payback = storagecapitalcost / systemprofit;
 
-        for (int i=0;i<24;i++){
-            cashflow[i]=-storagecapitalcost+(systemprofit*i);
+        for (int i = 0; i < 24; i++) {
+            cashflow[i] = -storagecapitalcost + (systemprofit * i);
             editor.putFloat("Cashflow" + i, cashflow[i].floatValue());
         }
         editor.commit();
@@ -522,7 +701,7 @@ private void displayResults(){
         if (!storagetype.equals("NoStorage")) {
             Double storagepercentage = dstorageperc / 100;
             Double turbinetypevalue;
-            Double  systemprofit, systemyearlycost, storageusedcapacity, storagecapacity, storagecapitalcost, storageyearlycost, systemcost;
+            Double systemprofit, systemyearlycost, storageusedcapacity, storagecapacity, storagecapitalcost, storageyearlycost, systemcost;
             Double[] cashflow = new Double[24];
             windkwarraycalculate();
             if (turbinetype.equals("1 Kw")) {

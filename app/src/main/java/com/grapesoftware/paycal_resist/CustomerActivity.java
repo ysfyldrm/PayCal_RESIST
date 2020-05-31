@@ -21,7 +21,6 @@ public class CustomerActivity extends AppCompatActivity {
         btnProsumer=findViewById(R.id.button_prosumer);
         btnSupplier=findViewById(R.id.button_supplier);
         backbutton=findViewById(R.id.backBtn);
-
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

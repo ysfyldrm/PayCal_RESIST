@@ -1,7 +1,5 @@
 package com.grapesoftware.paycal_resist;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -16,11 +14,11 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import java.nio.BufferUnderflowException;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class TariffSelectionActivity extends AppCompatActivity {
 
-    private Button epdkbtn, useownbtn,backbutton;
+    private Button epdkbtn, useownbtn, backbutton;
     final Context context = this;
     Bundle gelentype;
     String typeforuser;
@@ -30,9 +28,9 @@ public class TariffSelectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tariff_selection);
 
-        epdkbtn=findViewById(R.id.epdk_button);
-        useownbtn=findViewById(R.id.useOwn_button);
-        backbutton=findViewById(R.id.backBtn);
+        epdkbtn = findViewById(R.id.epdk_button);
+        useownbtn = findViewById(R.id.useOwn_button);
+        backbutton = findViewById(R.id.backBtn);
 
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,10 +39,8 @@ public class TariffSelectionActivity extends AppCompatActivity {
             }
         });
 
-        gelentype=getIntent().getExtras();
-        typeforuser=gelentype.getString("Type");
-
-
+        gelentype = getIntent().getExtras();
+        typeforuser = gelentype.getString("Type");
 
 
         epdkbtn.setOnClickListener(new View.OnClickListener() {
@@ -52,10 +48,9 @@ public class TariffSelectionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(context, typeforuser, Toast.LENGTH_LONG).show();
 
-                if (typeforuser.equals("Consumer")){
+                if (typeforuser.equals("Consumer")) {
                     showMyCustomEPDKAlertDialog();
-                }
-                else{
+                } else {
                     showMyCustomEPDKAlertDialogPro();
                 }
             }
@@ -67,10 +62,9 @@ public class TariffSelectionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(context, typeforuser, Toast.LENGTH_LONG).show();
 
-                if (typeforuser.equals("Consumer")){
+                if (typeforuser.equals("Consumer")) {
                     showMyCustomOwnAlertDialog();
-                }
-                else{
+                } else {
                     showMyCustomOwnAlertDialogPro();
                 }
 
@@ -79,7 +73,8 @@ public class TariffSelectionActivity extends AppCompatActivity {
 
 
     }
-//Bunu klassa çekelim her seferinde ayrı ayrı layoutlar için yazmak zorunda kalmayalım..
+
+    //Bunu klassa çekelim her seferinde ayrı ayrı layoutlar için yazmak zorunda kalmayalım..
     public void showMyCustomEPDKAlertDialog() {
 
         // dialog nesnesi oluştur ve layout dosyasına bağlan
@@ -87,12 +82,12 @@ public class TariffSelectionActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.consumer_type);
 
         // custom dialog elemanlarını tanımla - text, image ve button
-        Button reslowvolt=dialog.findViewById(R.id.button_res_low_voltage);
-        Button resmedvolt=dialog.findViewById(R.id.button_res_med_voltage);
-        Button comlowvolt=dialog.findViewById(R.id.button_com_low_voltage);
-        Button commedvolt=dialog.findViewById(R.id.button_com_med_voltage);
-        Button indlowvolt=dialog.findViewById(R.id.button_ind_low_voltage);
-        Button indmedvolt=dialog.findViewById(R.id.button_ind_med_voltage);
+        Button reslowvolt = dialog.findViewById(R.id.button_res_low_voltage);
+        Button resmedvolt = dialog.findViewById(R.id.button_res_med_voltage);
+        Button comlowvolt = dialog.findViewById(R.id.button_com_low_voltage);
+        Button commedvolt = dialog.findViewById(R.id.button_com_med_voltage);
+        Button indlowvolt = dialog.findViewById(R.id.button_ind_low_voltage);
+        Button indmedvolt = dialog.findViewById(R.id.button_ind_med_voltage);
 
 
         reslowvolt.setOnClickListener(new View.OnClickListener() {
@@ -102,49 +97,46 @@ public class TariffSelectionActivity extends AppCompatActivity {
 
                 {
 
-                    final Dialog dialog1=new Dialog(context);
+                    final Dialog dialog1 = new Dialog(context);
                     dialog1.setContentView(R.layout.after_consumer_tariff);
                     dialog1.show();
 
-                    Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
-                    final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
-                    final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
-                    final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
+                    Button confirm = dialog1.findViewById(R.id.wanted_data_confirm_button);
+                    final EditText AvgConsMonth = dialog1.findViewById(R.id.cons_avgmonth_edt);
+                    final EditText MorConsMonth = dialog1.findViewById(R.id.morning_cons_month_edt);
+                    final EditText AvgMonthBill = dialog1.findViewById(R.id.avg_month_bill_edt);
 
 
                     confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             dialog1.dismiss();
-                            Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
-                            Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
+                            Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
+                            Intent calculationIntent = new Intent(TariffSelectionActivity.this, CalculationActivity.class);
 
-                            String morning="0,08";
-                            String peak="0,12";
+                            String morning = "0,08";
+                            String peak = "0,12";
                             //String offpeak="0,37";
-                            String tax="0,24";
-                            String avgconsmonth=AvgConsMonth.getText().toString();
-                            String morconsmonth=MorConsMonth.getText().toString();
-                            String avgmonthbill=AvgMonthBill.getText().toString();
-                            SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                            String tax = "0,24";
+                            String avgconsmonth = AvgConsMonth.getText().toString();
+                            String morconsmonth = MorConsMonth.getText().toString();
+                            String avgmonthbill = AvgMonthBill.getText().toString();
+                            SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
 
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("Morning Tariff",morning);
-                            editor.putString("Peak Tariff",peak);
+                            editor.putString("Morning Tariff", morning);
+                            editor.putString("Peak Tariff", peak);
                             //editor.putString("Off Peak Tariff",offpeak);
-                            editor.putString("Tax",tax);
-                            editor.putString("Cons Avg Month",avgconsmonth);
-                            editor.putString("Morning Cons Month",morconsmonth);
-                            editor.putString("Avg Month Bill",avgmonthbill);
+                            editor.putString("Tax", tax);
+                            editor.putString("Cons Avg Month", avgconsmonth);
+                            editor.putString("Morning Cons Month", morconsmonth);
+                            editor.putString("Avg Month Bill", avgmonthbill);
 
                             editor.commit();
 
                             startActivity(intent);
                         }
                     });
-
-
-
 
 
                     Window window = dialog1.getWindow();
@@ -162,40 +154,40 @@ public class TariffSelectionActivity extends AppCompatActivity {
 
                 {
 
-                    final Dialog dialog1=new Dialog(context);
+                    final Dialog dialog1 = new Dialog(context);
                     dialog1.setContentView(R.layout.after_consumer_tariff);
                     dialog1.show();
 
-                    Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
-                    final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
-                    final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
-                    final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
+                    Button confirm = dialog1.findViewById(R.id.wanted_data_confirm_button);
+                    final EditText AvgConsMonth = dialog1.findViewById(R.id.cons_avgmonth_edt);
+                    final EditText MorConsMonth = dialog1.findViewById(R.id.morning_cons_month_edt);
+                    final EditText AvgMonthBill = dialog1.findViewById(R.id.avg_month_bill_edt);
 
 
                     confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             dialog1.dismiss();
-                            Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                            Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
 
-                            String morning="0,08";
-                            String peak="0,12";
+                            String morning = "0,08";
+                            String peak = "0,12";
                             //String offpeak="0,34";
-                            String tax="0,24";
-                            String avgconsmonth=AvgConsMonth.getText().toString();
-                            String morconsmonth=MorConsMonth.getText().toString();
-                            String avgmonthbill=AvgMonthBill.getText().toString();
+                            String tax = "0,24";
+                            String avgconsmonth = AvgConsMonth.getText().toString();
+                            String morconsmonth = MorConsMonth.getText().toString();
+                            String avgmonthbill = AvgMonthBill.getText().toString();
 
-                            SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                            SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
 
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("Morning Tariff",morning);
-                            editor.putString("Peak Tariff",peak);
+                            editor.putString("Morning Tariff", morning);
+                            editor.putString("Peak Tariff", peak);
                             //editor.putString("Off Peak Tariff",offpeak);
-                            editor.putString("Tax",tax);
-                            editor.putString("Cons Avg Month",avgconsmonth);
-                            editor.putString("Morning Cons Month",morconsmonth);
-                            editor.putString("Avg Month Bill",avgmonthbill);
+                            editor.putString("Tax", tax);
+                            editor.putString("Cons Avg Month", avgconsmonth);
+                            editor.putString("Morning Cons Month", morconsmonth);
+                            editor.putString("Avg Month Bill", avgmonthbill);
 
                             editor.commit();
 
@@ -204,15 +196,11 @@ public class TariffSelectionActivity extends AppCompatActivity {
                     });
 
 
-
-
-
                     Window window = dialog1.getWindow();
                     window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
                 }
-
 
 
             }
@@ -224,49 +212,46 @@ public class TariffSelectionActivity extends AppCompatActivity {
 
                 {
 
-                    final Dialog dialog1=new Dialog(context);
+                    final Dialog dialog1 = new Dialog(context);
                     dialog1.setContentView(R.layout.after_consumer_tariff);
                     dialog1.show();
 
-                    Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
-                    final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
-                    final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
-                    final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
+                    Button confirm = dialog1.findViewById(R.id.wanted_data_confirm_button);
+                    final EditText AvgConsMonth = dialog1.findViewById(R.id.cons_avgmonth_edt);
+                    final EditText MorConsMonth = dialog1.findViewById(R.id.morning_cons_month_edt);
+                    final EditText AvgMonthBill = dialog1.findViewById(R.id.avg_month_bill_edt);
 
 
                     confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             dialog1.dismiss();
-                            Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
-                            Intent calculationIntent=new Intent(TariffSelectionActivity.this,CalculationActivity.class);
+                            Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
+                            Intent calculationIntent = new Intent(TariffSelectionActivity.this, CalculationActivity.class);
 
-                            String morning="0,11";
-                            String peak="0,16";
+                            String morning = "0,11";
+                            String peak = "0,16";
                             //String offpeak="0,49";
-                            String tax="0,24";
-                            String avgconsmonth=AvgConsMonth.getText().toString();
-                            String morconsmonth=MorConsMonth.getText().toString();
-                            String avgmonthbill=AvgMonthBill.getText().toString();
+                            String tax = "0,24";
+                            String avgconsmonth = AvgConsMonth.getText().toString();
+                            String morconsmonth = MorConsMonth.getText().toString();
+                            String avgmonthbill = AvgMonthBill.getText().toString();
 
-                            SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                            SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("Morning Tariff",morning);
-                            editor.putString("Peak Tariff",peak);
+                            editor.putString("Morning Tariff", morning);
+                            editor.putString("Peak Tariff", peak);
                             //editor.putString("Off Peak Tariff",offpeak);
-                            editor.putString("Tax",tax);
-                            editor.putString("Cons Avg Month",avgconsmonth);
-                            editor.putString("Morning Cons Month",morconsmonth);
-                            editor.putString("Avg Month Bill",avgmonthbill);
+                            editor.putString("Tax", tax);
+                            editor.putString("Cons Avg Month", avgconsmonth);
+                            editor.putString("Morning Cons Month", morconsmonth);
+                            editor.putString("Avg Month Bill", avgmonthbill);
 
                             editor.commit();
 
                             startActivity(intent);
                         }
                     });
-
-
-
 
 
                     Window window = dialog1.getWindow();
@@ -283,48 +268,45 @@ public class TariffSelectionActivity extends AppCompatActivity {
 
                 {
 
-                    final Dialog dialog1=new Dialog(context);
+                    final Dialog dialog1 = new Dialog(context);
                     dialog1.setContentView(R.layout.after_consumer_tariff);
                     dialog1.show();
 
-                    Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
-                    final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
-                    final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
-                    final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
+                    Button confirm = dialog1.findViewById(R.id.wanted_data_confirm_button);
+                    final EditText AvgConsMonth = dialog1.findViewById(R.id.cons_avgmonth_edt);
+                    final EditText MorConsMonth = dialog1.findViewById(R.id.morning_cons_month_edt);
+                    final EditText AvgMonthBill = dialog1.findViewById(R.id.avg_month_bill_edt);
 
 
                     confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             dialog1.dismiss();
-                            Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                            Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
 
-                            String morning="0,11";
-                            String peak="0,16";
+                            String morning = "0,11";
+                            String peak = "0,16";
                             //String offpeak="0,45";
-                            String tax="0,24";
-                            String avgconsmonth=AvgConsMonth.getText().toString();
-                            String morconsmonth=MorConsMonth.getText().toString();
-                            String avgmonthbill=AvgMonthBill.getText().toString();
-                            SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                            String tax = "0,24";
+                            String avgconsmonth = AvgConsMonth.getText().toString();
+                            String morconsmonth = MorConsMonth.getText().toString();
+                            String avgmonthbill = AvgMonthBill.getText().toString();
+                            SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
 
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("Morning Tariff",morning);
-                            editor.putString("Peak Tariff",peak);
+                            editor.putString("Morning Tariff", morning);
+                            editor.putString("Peak Tariff", peak);
                             //editor.putString("Off Peak Tariff",offpeak);
-                            editor.putString("Tax",tax);
-                            editor.putString("Cons Avg Month",avgconsmonth);
-                            editor.putString("Morning Cons Month",morconsmonth);
-                            editor.putString("Avg Month Bill",avgmonthbill);
+                            editor.putString("Tax", tax);
+                            editor.putString("Cons Avg Month", avgconsmonth);
+                            editor.putString("Morning Cons Month", morconsmonth);
+                            editor.putString("Avg Month Bill", avgmonthbill);
 
                             editor.commit();
 
                             startActivity(intent);
                         }
                     });
-
-
-
 
 
                     Window window = dialog1.getWindow();
@@ -341,48 +323,45 @@ public class TariffSelectionActivity extends AppCompatActivity {
 
                 {
 
-                    final Dialog dialog1=new Dialog(context);
+                    final Dialog dialog1 = new Dialog(context);
                     dialog1.setContentView(R.layout.after_consumer_tariff);
                     dialog1.show();
 
-                    Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
-                    final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
-                    final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
-                    final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
+                    Button confirm = dialog1.findViewById(R.id.wanted_data_confirm_button);
+                    final EditText AvgConsMonth = dialog1.findViewById(R.id.cons_avgmonth_edt);
+                    final EditText MorConsMonth = dialog1.findViewById(R.id.morning_cons_month_edt);
+                    final EditText AvgMonthBill = dialog1.findViewById(R.id.avg_month_bill_edt);
 
 
                     confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             dialog1.dismiss();
-                            Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                            Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
 
-                            String morning="0,1";
-                            String peak="0,14";
+                            String morning = "0,1";
+                            String peak = "0,14";
                             //String offpeak="0,40";
-                            String tax="0,24";
-                            String avgconsmonth=AvgConsMonth.getText().toString();
-                            String morconsmonth=MorConsMonth.getText().toString();
-                            String avgmonthbill=AvgMonthBill.getText().toString();
-                            SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                            String tax = "0,24";
+                            String avgconsmonth = AvgConsMonth.getText().toString();
+                            String morconsmonth = MorConsMonth.getText().toString();
+                            String avgmonthbill = AvgMonthBill.getText().toString();
+                            SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
 
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("Morning Tariff",morning);
-                            editor.putString("Peak Tariff",peak);
+                            editor.putString("Morning Tariff", morning);
+                            editor.putString("Peak Tariff", peak);
                             //editor.putString("Off Peak Tariff",offpeak);
-                            editor.putString("Tax",tax);
-                            editor.putString("Cons Avg Month",avgconsmonth);
-                            editor.putString("Morning Cons Month",morconsmonth);
-                            editor.putString("Avg Month Bill",avgmonthbill);
+                            editor.putString("Tax", tax);
+                            editor.putString("Cons Avg Month", avgconsmonth);
+                            editor.putString("Morning Cons Month", morconsmonth);
+                            editor.putString("Avg Month Bill", avgmonthbill);
 
                             editor.commit();
 
                             startActivity(intent);
                         }
                     });
-
-
-
 
 
                     Window window = dialog1.getWindow();
@@ -400,48 +379,45 @@ public class TariffSelectionActivity extends AppCompatActivity {
 
                 {
 
-                    final Dialog dialog1=new Dialog(context);
+                    final Dialog dialog1 = new Dialog(context);
                     dialog1.setContentView(R.layout.after_consumer_tariff);
                     dialog1.show();
 
-                    Button confirm=dialog1.findViewById(R.id.wanted_data_confirm_button);
-                    final EditText AvgConsMonth=dialog1.findViewById(R.id.cons_avgmonth_edt);
-                    final EditText MorConsMonth=dialog1.findViewById(R.id.morning_cons_month_edt);
-                    final EditText AvgMonthBill=dialog1.findViewById(R.id.avg_month_bill_edt);
+                    Button confirm = dialog1.findViewById(R.id.wanted_data_confirm_button);
+                    final EditText AvgConsMonth = dialog1.findViewById(R.id.cons_avgmonth_edt);
+                    final EditText MorConsMonth = dialog1.findViewById(R.id.morning_cons_month_edt);
+                    final EditText AvgMonthBill = dialog1.findViewById(R.id.avg_month_bill_edt);
 
 
                     confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             dialog1.dismiss();
-                            Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                            Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
 
-                            String morning="0,09";
-                            String peak="0,13";
+                            String morning = "0,09";
+                            String peak = "0,13";
                             //String offpeak="0,34";
-                            String tax="0,24";
-                            String avgconsmonth=AvgConsMonth.getText().toString();
-                            String morconsmonth=MorConsMonth.getText().toString();
-                            String avgmonthbill=AvgMonthBill.getText().toString();
-                            SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                            String tax = "0,24";
+                            String avgconsmonth = AvgConsMonth.getText().toString();
+                            String morconsmonth = MorConsMonth.getText().toString();
+                            String avgmonthbill = AvgMonthBill.getText().toString();
+                            SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
 
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("Morning Tariff",morning);
-                            editor.putString("Peak Tariff",peak);
+                            editor.putString("Morning Tariff", morning);
+                            editor.putString("Peak Tariff", peak);
                             //editor.putString("Off Peak Tariff",offpeak);
-                            editor.putString("Tax",tax);
-                            editor.putString("Cons Avg Month",avgconsmonth);
-                            editor.putString("Morning Cons Month",morconsmonth);
-                            editor.putString("Avg Month Bill",avgmonthbill);
+                            editor.putString("Tax", tax);
+                            editor.putString("Cons Avg Month", avgconsmonth);
+                            editor.putString("Morning Cons Month", morconsmonth);
+                            editor.putString("Avg Month Bill", avgmonthbill);
 
                             editor.commit();
 
                             startActivity(intent);
                         }
                     });
-
-
-
 
 
                     Window window = dialog1.getWindow();
@@ -459,6 +435,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
     }
+
     public void showMyCustomOwnAlertDialog() {
 
         // dialog nesnesi oluştur ve layout dosyasına bağlan
@@ -466,14 +443,14 @@ public class TariffSelectionActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.use_own_consumer);
 
         // custom dialog elemanlarını tanımla - text, image ve button
-        Button ownconfirmbtn=dialog.findViewById(R.id.own_confirm_button);
-        final EditText morningTariff=dialog.findViewById(R.id.morningTariff_edt);
-        final EditText peakTariff=dialog.findViewById(R.id.peakTariff_edt);
-        final EditText taxx=dialog.findViewById(R.id.tax_edt);
-        final EditText consavgMonth=dialog.findViewById(R.id.cons_avgmonth_edt);
-        final EditText consyear=dialog.findViewById(R.id.cons_year_edt);
-        final EditText morningconsmonth=dialog.findViewById(R.id.morning_cons_month_edt);
-        final EditText avgmonthbill=dialog.findViewById(R.id.avg_month_bill_edt);
+        Button ownconfirmbtn = dialog.findViewById(R.id.own_confirm_button);
+        final EditText morningTariff = dialog.findViewById(R.id.morningTariff_edt);
+        final EditText peakTariff = dialog.findViewById(R.id.peakTariff_edt);
+        final EditText taxx = dialog.findViewById(R.id.tax_edt);
+        final EditText consavgMonth = dialog.findViewById(R.id.cons_avgmonth_edt);
+        final EditText consyear = dialog.findViewById(R.id.cons_year_edt);
+        final EditText morningconsmonth = dialog.findViewById(R.id.morning_cons_month_edt);
+        final EditText avgmonthbill = dialog.findViewById(R.id.avg_month_bill_edt);
 
 
         // custom dialog elemanlarına değer ataması yap - text, image
@@ -483,19 +460,22 @@ public class TariffSelectionActivity extends AppCompatActivity {
         ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
 
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("Morning Tariff",morningTariff.getText().toString());
-                editor.putString("Peak Tariff",peakTariff.getText().toString());
-                editor.putString("Tax",taxx.getText().toString());
-                editor.putString("Cons Avg Month",consavgMonth.getText().toString());
-                editor.putString("Cons Year",consyear.getText().toString());
-                editor.putString("Morning Cons Month",morningconsmonth.getText().toString());
-                editor.putString("Avg Month Bill",avgmonthbill.getText().toString());
+                Double tax = Double.valueOf(taxx.getText().toString());
+                Double taxpercent = tax / 100;
+
+                editor.putString("Morning Tariff", morningTariff.getText().toString());
+                editor.putString("Peak Tariff", peakTariff.getText().toString());
+                editor.putString("Tax", taxpercent.toString());
+                editor.putString("Cons Avg Month", consavgMonth.getText().toString());
+                editor.putString("Cons Year", consyear.getText().toString());
+                editor.putString("Morning Cons Month", morningconsmonth.getText().toString());
+                editor.putString("Avg Month Bill", avgmonthbill.getText().toString());
                 editor.commit();
 
-                Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
                 startActivity(intent);
 
             }
@@ -507,6 +487,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
     }
+
     public void showMyCustomEPDKAlertDialogPro() {
 
         // dialog nesnesi oluştur ve layout dosyasına bağlan
@@ -515,37 +496,35 @@ public class TariffSelectionActivity extends AppCompatActivity {
 
 
         // custom dialog elemanlarını tanımla - text, image ve button
-        Button reslowvolt=dialog.findViewById(R.id.button_res_low_voltage);
-        Button resmedvolt=dialog.findViewById(R.id.button_res_med_voltage);
-        Button comlowvolt=dialog.findViewById(R.id.button_com_low_voltage);
-        Button commedvolt=dialog.findViewById(R.id.button_com_med_voltage);
-        Button indlowvolt=dialog.findViewById(R.id.button_ind_low_voltage);
-        Button indmedvolt=dialog.findViewById(R.id.button_ind_med_voltage);
+        Button reslowvolt = dialog.findViewById(R.id.button_res_low_voltage);
+        Button resmedvolt = dialog.findViewById(R.id.button_res_med_voltage);
+        Button comlowvolt = dialog.findViewById(R.id.button_com_low_voltage);
+        Button commedvolt = dialog.findViewById(R.id.button_com_med_voltage);
+        Button indlowvolt = dialog.findViewById(R.id.button_ind_low_voltage);
+        Button indmedvolt = dialog.findViewById(R.id.button_ind_med_voltage);
 
         // custom dialog elemanlarına değer ataması yap - text, image
-
-
 
 
         reslowvolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
 
-                           String morning="0,08";
-                           String peak="0,12";
-                           //String offpeak="0,37";
-                           String tax="0,24";
+                String morning = "0,08";
+                String peak = "0,12";
+                //String offpeak="0,37";
+                String tax = "0,24";
 
 
-                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
 
-                         SharedPreferences.Editor editor = preferences.edit();
-                           editor.putString("Morning Tariff",morning);
-                           editor.putString("Peak Tariff",peak);
-                           //editor.putString("Off Peak Tariff",offpeak);
-                           editor.putString("Tax",tax);
-                           editor.commit();
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("Morning Tariff", morning);
+                editor.putString("Peak Tariff", peak);
+                //editor.putString("Off Peak Tariff",offpeak);
+                editor.putString("Tax", tax);
+                editor.commit();
                 startActivity(intent);
 
 
@@ -620,19 +599,19 @@ public class TariffSelectionActivity extends AppCompatActivity {
         resmedvolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
 
-                            String morning="0,08";
-                            String peak="0,12";
-                            //String offpeak="0,34";
-                            String tax="0,24";
-                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                String morning = "0,08";
+                String peak = "0,12";
+                //String offpeak="0,34";
+                String tax = "0,24";
+                SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
 
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("Morning Tariff",morning);
-                editor.putString("Peak Tariff",peak);
+                editor.putString("Morning Tariff", morning);
+                editor.putString("Peak Tariff", peak);
                 //editor.putString("Off Peak Tariff",offpeak);
-                editor.putString("Tax",tax);
+                editor.putString("Tax", tax);
                 editor.commit();
                 startActivity(intent);
 
@@ -704,19 +683,19 @@ public class TariffSelectionActivity extends AppCompatActivity {
         comlowvolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
 
-                String morning="0,11";
-                String peak="0,16";
+                String morning = "0,11";
+                String peak = "0,16";
                 //String offpeak="0,49";
-                String tax="0,24";
-                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                String tax = "0,24";
+                SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
 
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("Morning Tariff",morning);
-                editor.putString("Peak Tariff",peak);
+                editor.putString("Morning Tariff", morning);
+                editor.putString("Peak Tariff", peak);
                 //editor.putString("Off Peak Tariff",offpeak);
-                editor.putString("Tax",tax);
+                editor.putString("Tax", tax);
                 editor.commit();
                 startActivity(intent);
 
@@ -788,19 +767,19 @@ public class TariffSelectionActivity extends AppCompatActivity {
         commedvolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
 
-                String morning="0,11";
-                String peak="0,16";
+                String morning = "0,11";
+                String peak = "0,16";
                 //String offpeak="0,45";
-                String tax="0,24";
-                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                String tax = "0,24";
+                SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
 
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("Morning Tariff",morning);
-                editor.putString("Peak Tariff",peak);
+                editor.putString("Morning Tariff", morning);
+                editor.putString("Peak Tariff", peak);
                 //editor.putString("Off Peak Tariff",offpeak);
-                editor.putString("Tax",tax);
+                editor.putString("Tax", tax);
                 editor.commit();
                 startActivity(intent);
 
@@ -874,19 +853,19 @@ public class TariffSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "Morning: 0,66 \nPeak: 0,99 \nOffPeak: 0,40 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
 
-                String morning="0,1";
-                String peak="0,14";
+                String morning = "0,1";
+                String peak = "0,14";
                 //String offpeak="0,40";
-                String tax="0,24";
-                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                String tax = "0,24";
+                SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
 
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("Morning Tariff",morning);
-                editor.putString("Peak Tariff",peak);
+                editor.putString("Morning Tariff", morning);
+                editor.putString("Peak Tariff", peak);
                 //editor.putString("Off Peak Tariff",offpeak);
-                editor.putString("Tax",tax);
+                editor.putString("Tax", tax);
                 editor.commit();
                 startActivity(intent);
 
@@ -960,19 +939,19 @@ public class TariffSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
+                Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
 
-                String morning="0,09";
-                String peak="0,13";
+                String morning = "0,09";
+                String peak = "0,13";
                 //String offpeak="0,34";
-                String tax="0,24";
-                SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                String tax = "0,24";
+                SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
 
                 SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("Morning Tariff",morning);
-                editor.putString("Peak Tariff",peak);
+                editor.putString("Morning Tariff", morning);
+                editor.putString("Peak Tariff", peak);
                 //editor.putString("Off Peak Tariff",offpeak);
-                editor.putString("Tax",tax);
+                editor.putString("Tax", tax);
                 editor.commit();
                 startActivity(intent);
 
@@ -1047,7 +1026,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
     }
 
 
-
     public void showMyCustomOwnAlertDialogPro() {
 
         // dialog nesnesi oluştur ve layout dosyasına bağlan
@@ -1055,16 +1033,13 @@ public class TariffSelectionActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.use_own_prosumer);
 
         // custom dialog elemanlarını tanımla - text, image ve button
-        Button ownconfirmbtn=dialog.findViewById(R.id.own_confirm_button);
-        final EditText morning =dialog.findViewById(R.id.morningTariff_edt);
-        final EditText peak=dialog.findViewById(R.id.peakTariff_edt);
-        final EditText tax=dialog.findViewById(R.id.tax_edt);
-
+        Button ownconfirmbtn = dialog.findViewById(R.id.own_confirm_button);
+        final EditText morning = dialog.findViewById(R.id.morningTariff_edt);
+        final EditText peak = dialog.findViewById(R.id.peakTariff_edt);
+        final EditText taxx = dialog.findViewById(R.id.tax_edt);
 
 
         // custom dialog elemanlarına değer ataması yap - text, image
-
-
 
 
         // tamam butonunun tıklanma olayları
@@ -1074,18 +1049,18 @@ public class TariffSelectionActivity extends AppCompatActivity {
 
                 dialog.dismiss();
 
-                            Intent intent=new Intent(TariffSelectionActivity.this,ResTypeActivity.class);
-                            SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+                Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
+                SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
+                Double tax = Double.valueOf(taxx.getText().toString());
+                Double taxpercent = tax / 100;
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("Morning Tariff", morning.getText().toString());
+                editor.putString("Peak Tariff", peak.getText().toString());
+                editor.putString("Tax", taxpercent.toString());
 
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("Morning Tariff",morning.getText().toString());
-                            editor.putString("Peak Tariff",peak.getText().toString());
-                            editor.putString("Tax",tax.getText().toString());
+                editor.commit();
 
-                            editor.commit();
-
-                            startActivity(intent);
-
+                startActivity(intent);
 
             }
         });

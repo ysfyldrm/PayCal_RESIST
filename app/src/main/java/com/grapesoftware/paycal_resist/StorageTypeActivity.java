@@ -77,14 +77,14 @@ public class StorageTypeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (restype.equals("SOLAR")) {
-                    editor.putString("Storage Type","Lion");
+                    editor.putString("Storage Type","Li-ion");
                     editor.commit();
                     showMyPercentageStorage();
                 }
                 else if(restype.equals("WIND")){
 
 
-                    editor.putString("Storage Type","Lion");
+                    editor.putString("Storage Type","Li-ion");
                     editor.commit();
                     showMyPercentageStorage();
 
@@ -116,13 +116,13 @@ public class StorageTypeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (restype.equals("SOLAR")) {
-                    editor.putString("Storage Type","LeadAcid");
+                    editor.putString("Storage Type","Lead Acid");
                     editor.commit();
                     showMyPercentageStorage();
 
                 }
                 else if(restype.equals("WIND")){
-                    editor.putString("Storage Type","LeadAcid");
+                    editor.putString("Storage Type","Lead Acid");
                     editor.commit();
                     showMyPercentageStorage();
                 }

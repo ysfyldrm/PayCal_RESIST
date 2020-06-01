@@ -30,6 +30,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
+
 
 public class CalculationActivity extends AppCompatActivity {
     String solarselection, adress, country, solarpower, peakmcp, morningmcp, avgpeakmcp, avgmorningmcp, avgyearmcp, typeforuser, morning, peak, offpeak, tax, avgconsmonth, morconsmonth, avgmonthbill, resgendaily, resgenmonthly, storageperc, restype, turbinetype, turbinecount, consyear, solararea, latitude, longitude, storagetype;
@@ -149,14 +151,14 @@ public class CalculationActivity extends AppCompatActivity {
             omprice = 0.1;
 
 
-        } else if (storagetype.equals("Lion")) {
+        } else if (storagetype.equals("Li-ion")) {
             eff = 0.96;
             dod = 0.9;
             storage_price = 1260.0;
             omprice = 10.0;
 
         }
-        if (storagetype.equals("LeadAcid")) {
+        if (storagetype.equals("Lead Acid")) {
             eff = 0.8;
             dod = 0.6;
             storage_price = 550.0;
@@ -351,11 +353,14 @@ public class CalculationActivity extends AppCompatActivity {
             cashflow[i] = -pvcapitalcost + (pvprofityear * i);
             editor.putFloat("Cashflow" + i, cashflow[i].floatValue());
         }
+        editor.putString("Payback", payback.toString());
+
         editor.commit();
         displayResults();
     }
 
     private void hesaplaSolarWithStorageSupplier() {
+
 
         Double pvnum;
         Double panelpower = 0.265;
@@ -413,13 +418,15 @@ public class CalculationActivity extends AppCompatActivity {
             cashflow[i] = -systemcost + (yearlyprofit * i);
             editor.putFloat("Cashflow" + i, cashflow[i].floatValue());
         }
+        editor.putString("Payback", payback.toString());
+
         editor.commit();
         displayResults();
 
     }
 
     private void hesaplaWindWithStorageSupplier() {
-        windkwarraycalculate();
+                windkwarraycalculate();
         ratedcapacity = dturbinecount * 1500;
         Double turbineprice = 1154.76;
         Double omcost1500kw = 0.03;
@@ -442,6 +449,12 @@ public class CalculationActivity extends AppCompatActivity {
             cashflow[i] = -systemcost + (systemprofit * i);
             editor.putFloat("Cashflow" + i, cashflow[i].floatValue());
         }
+        editor.putString("Payback",  payback.toString());
+        editor.putString("Wind Year Kwh", windyearkwh.toString());
+        editor.putString("Wind Capital Cost", windcapitalcost.toString());
+        editor.putString("Wind Yearly Cost", windyearlycost.toString());
+        editor.putString("Storage Capacity", storagecapacity.toString());
+        editor.putString("Storage Capital Cost", storagecapitalcost.toString());
         editor.commit();
         displayResults();
     }
@@ -459,11 +472,16 @@ public class CalculationActivity extends AppCompatActivity {
         Double windcapitalcost = ratedcapacity * turbineprice;
         payback = windcapitalcost / (windannualprofit - windyearlycost);
         Double[] cashflow = new Double[24];
+        Double newavgmonthbill = davgmonthbill - (windannualprofit - windyearlycost) / 12;
 
         for (int i = 0; i < 24; i++) {
             cashflow[i] = -windcapitalcost + ((windannualprofit - windyearlycost) * i);
             editor.putFloat("Cashflow" + i, cashflow[i].floatValue());
         }
+        editor.putString("Payback", payback.toString());
+        editor.putString("Wind Year Kwh", windyearkwh.toString());
+        editor.putString("Wind Capital Cost", windcapitalcost.toString());
+        editor.putString("Wind Yearly Cost", windyearlycost.toString());
         editor.commit();
         displayResults();
     }
@@ -683,6 +701,7 @@ public class CalculationActivity extends AppCompatActivity {
 
         windcapitalcost = ratedcapacity * price;
         payback = windcapitalcost / (windanualprofit - windyearcost);
+        Double newavgmonthbill =  davgmonthbill - (windanualprofit - windyearcost)/12;
 
         for (int i = 0; i < 24; i++) {
             cashflow[i] = -windcapitalcost + ((windanualprofit) * i);
@@ -691,6 +710,11 @@ public class CalculationActivity extends AppCompatActivity {
 
             editor.putFloat("Cashflow" + i, cashflow[i].floatValue());
         }
+        editor.putString("Payback", payback.toString());
+        editor.putString("Wind Month Kwh", windkwarray.toString());
+        editor.putString("Wind Day Kwh", winddaykwh.toString());
+        editor.putString("New Avg Month Bill", newavgmonthbill.toString());
+        editor.putString("Wind Capital Cost", windcapitalcost.toString());
         editor.commit();
         displayResults();
 
@@ -739,12 +763,21 @@ public class CalculationActivity extends AppCompatActivity {
             systemyearlycost = storageyearlycost + windyearcost;
             systemprofit = windanualprofit - systemyearlycost;
             payback = windcapitalcost / (systemprofit);
+            Double newavgmonthbill =  davgmonthbill - systemprofit/12;
+
             for (int i = 0; i < 24; i++) {
                 cashflow[i] = -systemcost + ((systemprofit) * i);
 
                 editor.putFloat("Cashflow" + i, cashflow[i].floatValue());
                 Log.e("CASHFLOW WITH STORAGE", "Cashflow" + i + ": " + cashflow[i]);
             }
+            editor.putString("Payback", payback.toString());
+            editor.putString("Wind Month Kwh", windkwarray.toString());
+            editor.putString("Wind Day Kwh", winddaykwh.toString());
+            editor.putString("New Avg Month Bill", newavgmonthbill.toString());
+            editor.putString("Wind Capital Cost", windcapitalcost.toString());
+            editor.putString("Storage Capacity", storagecapacity.toString());
+            editor.putString("Storage Capital Cost", storagecapitalcost.toString());
             editor.commit();
             displayResults();
         }

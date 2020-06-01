@@ -10,11 +10,15 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,15 +35,20 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ChartsActivity extends AppCompatActivity {
+    String typeforuser, storagetype, restype, payback, winddaykwh, windmonthkwh, windyearkwh, windyearlycost, windcapitalcost, newavgmonthbill, storagecapacity, storagecapitalcost, storagepercentage, turbinecount, turbinetype, address, country;
     LineChart mpLineChart;
     Float[] cashFloat = new Float[24];
     private int currentIndex = 0;
     int kırmızı = 255, yesil = 0, mavi = 0;
     LinearLayout content;
+    TextView title1, title2, title3, title4, title5, title6, title7, title8, title9, title10, output1, output2, output3, output4, output5, output6, output7, output8, output9, output10;
     Button button;
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +58,49 @@ public class ChartsActivity extends AppCompatActivity {
         int gecis1, gecis2;
         int renk1, renk2;
         int[] colorArray = new int[24];
+
+        title1 = findViewById(R.id.result_1);
+        title2 = findViewById(R.id.result_2);
+        title3 = findViewById(R.id.result_3);
+        title4 = findViewById(R.id.result_4);
+        title5 = findViewById(R.id.result_5);
+        title6 = findViewById(R.id.result_6);
+        title7 = findViewById(R.id.result_7);
+        title8 = findViewById(R.id.result_8);
+        title9 = findViewById(R.id.result_9);
+        title10 = findViewById(R.id.result_10);
+        output1 = findViewById(R.id.result_1_1);
+        output2 = findViewById(R.id.result_2_2);
+        output3 = findViewById(R.id.result_3_3);
+        output4 = findViewById(R.id.result_4_4);
+        output5 = findViewById(R.id.result_5_5);
+        output6 = findViewById(R.id.result_6_6);
+        output7 = findViewById(R.id.result_7_7);
+        output8 = findViewById(R.id.result_8_8);
+        output9 = findViewById(R.id.result_9_9);
+        output10 = findViewById(R.id.result_10_10);
+
+        preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
+        editor = preferences.edit();
+
+        typeforuser = preferences.getString("Type", "Consumer");
+        storagetype = preferences.getString("Storage Type", null);
+        restype = preferences.getString("RES Type", "PV SOLAR");
+        payback = preferences.getString("Payback", null);
+        winddaykwh = preferences.getString("Wind Day Kwh", null);
+        windmonthkwh = preferences.getString("Wind Month Kwh", null);
+        windyearkwh = preferences.getString("Wind Year Kwh", null);
+        windyearlycost = preferences.getString("Wind Yearly Cost", null);
+        newavgmonthbill = preferences.getString("New Avg Month Bill", null);
+        windcapitalcost = preferences.getString("Wind Capital Cost", null);
+        storagecapacity = preferences.getString("Storage Capacity", null);
+        storagecapitalcost = preferences.getString("Storage Capital Cost", null);
+        storagepercentage = preferences.getString("Storage Percentage", null);
+        turbinecount = preferences.getString("Turbine Count", "1.00");
+        turbinetype = preferences.getString("Turbine Type", "1500.0");
+        address = preferences.getString("Adress", null);
+        country = preferences.getString("Country", null);
+
 
         button = findViewById(R.id.buttonsave);
         button.setOnClickListener(new View.OnClickListener() {
@@ -149,6 +201,7 @@ public class ChartsActivity extends AppCompatActivity {
         mpLineChart.animateX(5000);
 
         mpLineChart.invalidate();
+        showResult();
     }
 
     private ArrayList<Entry> dataValues1() {
@@ -175,7 +228,7 @@ public class ChartsActivity extends AppCompatActivity {
 
 
     private File saveBitMap(Context context, View drawView) {
-       // Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+        // Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
         File pictureFileDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "DENEME");
         if (!pictureFileDir.exists()) {
             boolean isDirectoryCreated = pictureFileDir.mkdirs();
@@ -221,6 +274,150 @@ public class ChartsActivity extends AppCompatActivity {
         return returnedBitmap;
     }
 
+    private void showResult() {
+
+        if (typeforuser.equals("Consumer")) {
+            if (restype.equals("WIND") && storagetype.equals("NoStorage")) {
+                title1.setText("Location : ");
+                title2.setText("User Type : ");
+                title3.setText("RES Type : ");
+                title4.setText("Storage Type : ");
+                title5.setText("Turbine Type : ");
+                title6.setText("Turbine Number : ");
+                title7.setText("Monthly Wind Kwh : ");
+                title8.setText("Wind Capital Cost : ");
+                title9.setText("PAYBACK : ");
+                title10.setVisibility(View.GONE);
+
+                output1.setText(address);
+                output2.setText(typeforuser);
+                output3.setText(restype);
+                output4.setText("No Storage");
+                output5.setText(turbinetype);
+                output6.setText(turbinecount);
+                output7.setText(windmonthkwh);
+                output8.setText(windcapitalcost);
+                output9.setText(payback);
+                output10.setVisibility(View.GONE);
+
+            } else if (restype.equals("WIND") && !storagetype.equals("NoStorage")) {
+                title1.setText("Location : ");
+                title2.setText("User Type : ");
+                title3.setText("RES Type : ");
+                title4.setText("Storage Type : ");
+                title5.setText("Storage Capital Cost : ");
+                title6.setText("Turbine Type : ");
+                title7.setText("Turbine Number : ");
+                title8.setText("Monthly Wind Kwh : ");
+                title9.setText("Wind Capital Cost : ");
+                title10.setText("PAYBACK : ");
+
+
+                output1.setText(address);
+                output2.setText(typeforuser);
+                output3.setText(restype);
+                if (storagetype.equals("Li-ion")) {
+                    SpannableString ss = new SpannableString(storagetype + "   Capacity : " + storagepercentage + "%");
+                    ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
+                    ss.setSpan(fcsTitleBlue, 7, 20, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    output4.setText(ss);
+                }
+                if (storagetype.equals("Thermal")) {
+                    SpannableString ss = new SpannableString(storagetype + "   Capacity : " + storagepercentage + "%");
+                    ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
+                    ss.setSpan(fcsTitleBlue, 8, 21, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    output4.setText(ss);
+                }
+                if (storagetype.equals("Lead Acid")) {
+                    SpannableString ss = new SpannableString(storagetype + "   Capacity : " + storagepercentage + "%");
+                    ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
+                    ss.setSpan(fcsTitleBlue, 10, 23, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    output4.setText(ss);
+                }
+                output5.setText(storagecapitalcost);
+                output6.setText(turbinetype);
+                output7.setText(turbinecount);
+                output8.setText(windmonthkwh);
+                output9.setText(windcapitalcost);
+                output10.setText(payback);
+
+
+            } else if (restype.equals("SOLAR") && storagetype.equals("NoStorage")) {
+
+            } else { //SOLAR AND STORAGE TYPE
+
+            }
+        } else if (typeforuser.equals("Supplier")) {
+            if (restype.equals("WIND") && storagetype.equals("NoStorage")) {
+                title1.setText("Location : ");
+                title2.setText("User Type : ");
+                title3.setText("RES Type : ");
+                title4.setText("Storage Type : ");
+                title5.setText("Turbine Type : ");
+                title6.setText("Turbine Number : ");
+                title7.setText("Yearly Wind Kwh : ");
+                title8.setText("Yearly Wind Cost : ");
+                title9.setText("Wind Capital Cost : ");
+                title10.setText("PAYBACK : ");
+
+                output1.setText(address);
+                output2.setText(typeforuser);
+                output3.setText(restype);
+                output4.setText("No Storage");
+                output5.setText("1500 Kw");
+                output6.setText(turbinecount);
+                output7.setText(windyearkwh);
+                output8.setText(windyearlycost);
+                output9.setText(windcapitalcost);
+                output10.setText(payback);
+            } else if (restype.equals("WIND") && !storagetype.equals("NoStorage")) {
+                title1.setText("Location : ");
+                title2.setText("User Type : ");
+                title3.setText("RES Type : ");
+                title4.setText("Storage Type : ");
+                title5.setText("Storage Capital Cost : ");
+                title6.setText("Turbine Type : ");
+                title7.setText("Turbine Number : ");
+                title8.setText("Yearly Wind Kwh : ");
+                title9.setText("Wind Capital Cost : ");
+                title10.setText("PAYBACK : ");
+                output1.setText(address);
+                output2.setText(typeforuser);
+                output3.setText(restype);
+                if (storagetype.equals("Li-ion")) {
+                    SpannableString ss = new SpannableString(storagetype + "   Capacity : " + storagepercentage + "%");
+                    ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
+                    ss.setSpan(fcsTitleBlue, 7, 20, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    output4.setText(ss);
+                }
+                else if (storagetype.equals("Thermal")) {
+                    SpannableString ss = new SpannableString(storagetype + "   Capacity : " + storagepercentage + "%");
+                    ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
+                    ss.setSpan(fcsTitleBlue, 8, 21, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    output4.setText(ss);
+                }
+                 else if (storagetype.equals("Lead Acid")) {
+                    SpannableString ss = new SpannableString(storagetype + "   Capacity : " + storagepercentage + "%");
+                    ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
+                    ss.setSpan(fcsTitleBlue, 10, 23, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    output4.setText(ss);
+                }
+                output5.setText(storagecapitalcost);
+                output6.setText("1500 Kw");
+                output7.setText(turbinecount);
+                output8.setText(windyearkwh);
+                output9.setText(windcapitalcost);
+                output10.setText(payback);
+
+            } else if (restype.equals("SOLAR") && storagetype.equals("NoStorage")) {
+
+            } else { //SOLAR AND STORAGE TYPE
+
+            }
+        } else {
+
+        }
+    }
 
     // used for scanning gallery
     private void scanGallery(Context cntx, String path) {

@@ -11,11 +11,11 @@
     <TextView
         android:id="@+id/result_txt"
         android:layout_width="match_parent"
-        android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/bold"
+        android:gravity="center"
         android:text="RESULT"
         android:textColor="@color/colorTransparentWhite"
         android:textSize="25sp" />
@@ -25,38 +25,39 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/result_txt"
+        android:layout_above="@id/buttonsave"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="10dp">
 
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/line_chart"
-            android:elevation="20dp"
             android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
+            android:layout_height="250dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
-            android:layout_height="250dp" />
+            android:elevation="20dp" />
 
         <RelativeLayout
             android:id="@+id/text_table"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_below="@id/line_chart"
-            android:background="@drawable/resultbox"
-            android:elevation="22dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp">
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/resultbox"
+            android:elevation="22dp">
 
             <TextView
                 android:id="@+id/result_1"
-                android:layout_width="160dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/medium"
-                android:text="A : qfqeqfqefqefqef"
+                android:text="Title 1 : "
                 android:textColor="@color/backgroundBlue"
                 android:textSize="15sp" />
 
@@ -65,29 +66,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/result_1"
                 android:fontFamily="@font/medium"
-                android:text="A : eqfqeqefqefqe"
-                android:textColor="@color/backgroundBlue"
+                android:text="Output 1"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/result_2"
-                android:layout_width="160dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/result_1"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/medium"
-                android:text="B : qefqefqefqef"
+                android:gravity="end"
+                android:text="Title 2 : "
                 android:textColor="@color/backgroundBlue"
                 android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/result_2_2"
-                android:layout_width="160dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/result_1_1"
                 android:layout_marginLeft="10dp"
@@ -95,25 +98,27 @@
                 android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/result_2"
                 android:fontFamily="@font/medium"
-                android:text="B : rhsr  getheqef"
-                android:textColor="@color/backgroundBlue"
+                android:text="Output 2"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/result_3"
-                android:layout_width="160dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/result_2"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/medium"
-                android:text="B : jbqjnoskqhıb"
+                android:gravity="end"
+                android:text="Title 3 : "
                 android:textColor="@color/backgroundBlue"
                 android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/result_3_3"
-                android:layout_width="160dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/result_2_2"
                 android:layout_marginLeft="10dp"
@@ -121,25 +126,27 @@
                 android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/result_3"
                 android:fontFamily="@font/medium"
-                android:text="B : "
-                android:textColor="@color/backgroundBlue"
+                android:text="Output 3"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/result_4"
-                android:layout_width="160dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/result_3"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/medium"
-                android:text="B : "
+                android:gravity="end"
+                android:text="Title 4 : "
                 android:textColor="@color/backgroundBlue"
                 android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/result_4_4"
-                android:layout_width="160dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/result_3_3"
                 android:layout_marginLeft="10dp"
@@ -147,25 +154,27 @@
                 android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/result_4"
                 android:fontFamily="@font/medium"
-                android:text="B : "
-                android:textColor="@color/backgroundBlue"
+                android:text="Output 4"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/result_5"
-                android:layout_width="160dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/result_4"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/medium"
-                android:text="B : "
+                android:gravity="end"
+                android:text="Title 5 : "
                 android:textColor="@color/backgroundBlue"
                 android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/result_5_5"
-                android:layout_width="160dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/result_4_4"
                 android:layout_marginLeft="10dp"
@@ -173,25 +182,27 @@
                 android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/result_5"
                 android:fontFamily="@font/medium"
-                android:text="B : "
-                android:textColor="@color/backgroundBlue"
+                android:text="Output 5"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/result_6"
-                android:layout_width="160dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/result_5"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/medium"
-                android:text="B : "
+                android:gravity="end"
+                android:text="Title 6 : "
                 android:textColor="@color/backgroundBlue"
                 android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/result_6_6"
-                android:layout_width="160dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/result_5_5"
                 android:layout_marginLeft="10dp"
@@ -199,36 +210,118 @@
                 android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/result_6"
                 android:fontFamily="@font/medium"
-                android:text="B : "
-                android:textColor="@color/backgroundBlue"
+                android:text="Output 6"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/result_7"
-                android:layout_width="160dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/result_6"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
                 android:fontFamily="@font/medium"
-                android:text="B : "
+                android:gravity="end"
+                android:text="Title 7 : "
                 android:textColor="@color/backgroundBlue"
                 android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/result_7_7"
-                android:layout_width="160dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/result_6_6"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
                 android:layout_toRightOf="@id/result_7"
                 android:fontFamily="@font/medium"
-                android:text="B : "
+                android:text="Output 7"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack"
+                android:textSize="15sp" />
+            <TextView
+                android:id="@+id/result_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_7"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/medium"
+                android:gravity="end"
+                android:text="Title 8 : "
                 android:textColor="@color/backgroundBlue"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/result_8_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_7_7"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@id/result_8"
+                android:fontFamily="@font/medium"
+                android:text="Output 8"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack"
+                android:textSize="15sp" />
+            <TextView
+                android:id="@+id/result_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_8"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/medium"
+                android:gravity="end"
+                android:text="Title 9 : "
+                android:textColor="@color/backgroundBlue"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/result_9_9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_8_8"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@id/result_9"
+                android:fontFamily="@font/medium"
+                android:text="Output 9"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack"
+                android:textSize="15sp" />
+            <TextView
+                android:id="@+id/result_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_9"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/medium"
+                android:gravity="end"
+                android:text="Title 10 : "
+                android:textColor="@color/backgroundBlue"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/result_10_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_9_9"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@id/result_10"
+                android:fontFamily="@font/medium"
+                android:text="Output 10"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
         </RelativeLayout>
 
@@ -238,10 +331,11 @@
         android:id="@+id/buttonsave"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_below="@id/save_layout"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:elevation="18dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/button"
+        android:elevation="18dp"
         android:text="Save"
         android:textColor="@color/colorTransparentWhite" />
 

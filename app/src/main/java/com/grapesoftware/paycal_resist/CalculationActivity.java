@@ -7,15 +7,18 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.loader.content.Loader;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -30,8 +33,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DecimalFormat;
-
 
 public class CalculationActivity extends AppCompatActivity {
     String solarselection, adress, country, solarpower, peakmcp, morningmcp, avgpeakmcp, avgmorningmcp, avgyearmcp, typeforuser, morning, peak, offpeak, tax, avgconsmonth, morconsmonth, avgmonthbill, resgendaily, resgenmonthly, storageperc, restype, turbinetype, turbinecount, consyear, solararea, latitude, longitude, storagetype;
@@ -41,10 +42,13 @@ public class CalculationActivity extends AppCompatActivity {
 
     private RequestQueue mQueue;
     final Context context = this;
-
+    TextView txtView;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
-    ProgressBar progressBar;
+    //ProgressBar progressBar;
+    Handler hdlr = new Handler();
+    int CounterLoader=0;
+    int loadercontentcounter=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +56,36 @@ public class CalculationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calculation);
 
         mQueue = Volley.newRequestQueue(this);
-        progressBar = (ProgressBar) findViewById(R.id.spin_kit);
-        Wave wave = new Wave();
-        progressBar.setIndeterminateDrawable(wave);
-        progressBar.setVisibility(View.INVISIBLE);
+        txtView=findViewById(R.id.txtLoading);
+        //progressBar = (ProgressBar) findViewById(R.id.spin_kit);
+        //Wave wave = new Wave();
+        //progressBar.setIndeterminateDrawable(wave);
+        //progressBar.setVisibility(View.INVISIBLE);
+
+        final String []LoaderContext={"Hold On","Gathering Values","Testing Processor","Benching Network","Processing Equations","Overflowing Stack","Checking Accuracy","Creating Cashflow Chart","Calculating Payback","Ready..."};
+
+        new Thread(new Runnable() {
+            public void run() {
+                while (CounterLoader < 180) {
+                    CounterLoader += 1;
+                    // Update the progress bar and display the current value in text view
+                    hdlr.post(new Runnable() {
+                        public void run() {
+                            if(CounterLoader%20==0){
+                                loadercontentcounter++;
+                            }
+                            txtView.setText(LoaderContext[loadercontentcounter]);
+                        }
+                    });
+                    try {
+                        // Sleep for 100 milliseconds to show the progress slowly.
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
 
 
         preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
@@ -141,7 +171,7 @@ public class CalculationActivity extends AppCompatActivity {
 
 //        SharedPreferences settings = context.getSharedPreferences("session", Context.MODE_PRIVATE);
 //        settings.edit().clear().commit();
-        progressBar.setVisibility(View.VISIBLE);
+        //progressBar.setVisibility(View.VISIBLE);
 
 
         if (storagetype.equals("Thermal")) {
@@ -240,7 +270,7 @@ public class CalculationActivity extends AppCompatActivity {
                         Double wwa8 = wind50.getDouble("8");
                         Double wwa9 = wind50.getDouble("9");
 
-                        progressBar.setVisibility(View.GONE);
+                        //progressBar.setVisibility(View.GONE);
                     }
 
                     if (typeforuser.equals("Consumer")) {
@@ -284,24 +314,22 @@ public class CalculationActivity extends AppCompatActivity {
                 error.printStackTrace();
             }
         });
-        request.setRetryPolicy(new
+        request.setRetryPolicy(new RetryPolicy() {
+            @Override
+            public int getCurrentTimeout() {
+                return 10000;
+            }
 
-                                       RetryPolicy() {
-                                           @Override
-                                           public int getCurrentTimeout() {
-                                               return 10000;
-                                           }
+            @Override
+            public int getCurrentRetryCount() {
+                return 10000;
+            }
 
-                                           @Override
-                                           public int getCurrentRetryCount() {
-                                               return 10000;
-                                           }
+            @Override
+            public void retry(VolleyError error) throws VolleyError {
 
-                                           @Override
-                                           public void retry(VolleyError error) throws VolleyError {
-
-                                           }
-                                       });
+            }
+        });
         mQueue.add(request);
     }
 
@@ -426,7 +454,7 @@ public class CalculationActivity extends AppCompatActivity {
     }
 
     private void hesaplaWindWithStorageSupplier() {
-                windkwarraycalculate();
+        windkwarraycalculate();
         ratedcapacity = dturbinecount * 1500;
         Double turbineprice = 1154.76;
         Double omcost1500kw = 0.03;
@@ -449,7 +477,7 @@ public class CalculationActivity extends AppCompatActivity {
             cashflow[i] = -systemcost + (systemprofit * i);
             editor.putFloat("Cashflow" + i, cashflow[i].floatValue());
         }
-        editor.putString("Payback",  payback.toString());
+        editor.putString("Payback", payback.toString());
         editor.putString("Wind Year Kwh", windyearkwh.toString());
         editor.putString("Wind Capital Cost", windcapitalcost.toString());
         editor.putString("Wind Yearly Cost", windyearlycost.toString());
@@ -701,7 +729,7 @@ public class CalculationActivity extends AppCompatActivity {
 
         windcapitalcost = ratedcapacity * price;
         payback = windcapitalcost / (windanualprofit - windyearcost);
-        Double newavgmonthbill =  davgmonthbill - (windanualprofit - windyearcost)/12;
+        Double newavgmonthbill = davgmonthbill - (windanualprofit - windyearcost) / 12;
 
         for (int i = 0; i < 24; i++) {
             cashflow[i] = -windcapitalcost + ((windanualprofit) * i);
@@ -763,7 +791,7 @@ public class CalculationActivity extends AppCompatActivity {
             systemyearlycost = storageyearlycost + windyearcost;
             systemprofit = windanualprofit - systemyearlycost;
             payback = windcapitalcost / (systemprofit);
-            Double newavgmonthbill =  davgmonthbill - systemprofit/12;
+            Double newavgmonthbill = davgmonthbill - systemprofit / 12;
 
             for (int i = 0; i < 24; i++) {
                 cashflow[i] = -systemcost + ((systemprofit) * i);

@@ -17,13 +17,17 @@
 <!--        android:layout_height="150dp"-->
 <!--        android:layout_centerInParent="true"-->
 <!--        app:SpinKit_Color="@color/colorTransparentWhite" />-->
-
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:gravity="center"
+    >
     <pl.droidsonroids.gif.GifImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/gifloading"
         android:layout_width="250dp"
         android:layout_height="150dp"
-        android:layout_centerInParent="true"
         android:src="@drawable/loadingscreen"
         />
 
@@ -39,7 +43,7 @@
         android:layout_centerHorizontal="true">
 
     </TextView>
-
+</RelativeLayout>
 
 
 </RelativeLayout>

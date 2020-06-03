@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
 
     tools:context="com.grapesoftware.paycal_resist.MapsActivity">;
@@ -19,7 +20,8 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="20dp"
             android:fontFamily="@font/bold"
             android:text="Location:"
             android:textColor="@color/colorTransparentWhite"
@@ -47,12 +49,14 @@
             android:text="Go"
             android:textColor="@color/colorTransparentWhite" />
 
+
+
         <Button
             android:id="@+id/btnnextactivity"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="40dp"
             android:background="@drawable/button"
             android:fontFamily="@font/bold"
             android:text=">"

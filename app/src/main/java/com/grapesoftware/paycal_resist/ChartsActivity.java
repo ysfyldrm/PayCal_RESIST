@@ -6,6 +6,9 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Image;
+
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,6 +22,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,12 +35,15 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
+
+
 
 public class ChartsActivity extends AppCompatActivity {
     String typeforuser, storagetype, restype, payback, winddaykwh, windmonthkwh, windyearkwh, windyearlycost, windcapitalcost, newavgmonthbill, storagecapacity, storagecapitalcost, storagepercentage, turbinecount, turbinetype, address, country;
@@ -44,11 +51,17 @@ public class ChartsActivity extends AppCompatActivity {
     Float[] cashFloat = new Float[24];
     private int currentIndex = 0;
     int kırmızı = 255, yesil = 0, mavi = 0;
+    final Context context = this;
     LinearLayout content;
     TextView title1, title2, title3, title4, title5, title6, title7, title8, title9, title10, output1, output2, output3, output4, output5, output6, output7, output8, output9, output10;
     Button button;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
+    Document document;
+    String filename;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +71,7 @@ public class ChartsActivity extends AppCompatActivity {
         int gecis1, gecis2;
         int renk1, renk2;
         int[] colorArray = new int[24];
+
 
         title1 = findViewById(R.id.result_1);
         title2 = findViewById(R.id.result_2);
@@ -108,11 +122,38 @@ public class ChartsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 RelativeLayout savingLayout = (RelativeLayout) findViewById(R.id.save_layout);
                 File file = saveBitMap(ChartsActivity.this, savingLayout);
+
                 if (file != null) {
                     Log.i("TAG", "Drawing saved to the gallery!");
+
                 } else {
                     Log.i("TAG", "Oops! Image could not be saved.");
                 }
+
+                // Will run the conversion in another thread to avoid the UI to be frozen
+                Thread t = new Thread() {
+                    public void run()
+                    {
+                        // Input file
+                        String inputPath = filename;
+
+                        // Output file
+                        String outputPath = Environment.getExternalStorageDirectory() + File.separator + "out.pdf";
+
+                        // Run conversion
+                        final boolean result = ChartsActivity.this.convertToPdf(inputPath, outputPath);
+
+                        // Notify the UI
+                        runOnUiThread(new Runnable() {
+                            public void run()
+                            {
+                                if (result) Toast.makeText(ChartsActivity.this, "The JPG was successfully converted to PDF.", Toast.LENGTH_SHORT).show();
+                                else Toast.makeText(ChartsActivity.this, "An error occured while converting the JPG to PDF.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                };
+                t.start();
             }
         });
 
@@ -229,14 +270,14 @@ public class ChartsActivity extends AppCompatActivity {
 
     private File saveBitMap(Context context, View drawView) {
         // Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
-        File pictureFileDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "DENEME");
+        File pictureFileDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "PayCal_RESIST");
         if (!pictureFileDir.exists()) {
             boolean isDirectoryCreated = pictureFileDir.mkdirs();
             if (!isDirectoryCreated)
                 Log.i("TAG", "Can't create directory to save the image");
             return null;
         }
-        String filename = pictureFileDir.getPath() + File.separator + System.currentTimeMillis() + ".jpg";
+        filename = pictureFileDir.getPath() + File.separator + System.currentTimeMillis() + ".jpg";
         File pictureFile = new File(filename);
         Bitmap bitmap = getBitmapFromView(drawView);
         try {
@@ -252,6 +293,7 @@ public class ChartsActivity extends AppCompatActivity {
         scanGallery(context, pictureFile.getAbsolutePath());
         return pictureFile;
     }
+
 
     //create bitmap from view and returns it
     private Bitmap getBitmapFromView(View view) {
@@ -358,7 +400,7 @@ public class ChartsActivity extends AppCompatActivity {
                 title7.setText("Yearly Wind Kwh : ");
                 title8.setText("Yearly Wind Cost : ");
                 title9.setText("Wind Capital Cost : ");
-                title10.setText("PAYBACK : ");
+                title10.setText("Payback : ");
 
                 output1.setText(address);
                 output2.setText(typeforuser);
@@ -430,5 +472,39 @@ public class ChartsActivity extends AppCompatActivity {
             e.printStackTrace();
             Log.i("TAG", "There was an issue scanning gallery.");
         }
+    }
+    public static boolean convertToPdf(String jpgFilePath, String outputPdfPath)
+    {
+        try
+        {
+            // Check if Jpg file exists or not
+            File inputFile = new File(jpgFilePath);
+            if (!inputFile.exists()) throw new Exception("File '" + jpgFilePath + "' doesn't exist.");
+
+            // Create output file if needed
+            File outputFile = new File(outputPdfPath);
+            if (!outputFile.exists()) outputFile.createNewFile();
+
+            Document document = new Document();
+            PdfWriter.getInstance(document, new FileOutputStream(outputFile));
+            document.open();
+            Image image = Image.getInstance(jpgFilePath);
+            int indentation = 0;
+
+            float scaler = ((document.getPageSize().getWidth() - document.leftMargin()
+                    - document.rightMargin() - indentation) / image.getWidth()) * 100;
+
+            image.scalePercent(scaler);
+            document.add(image);
+            document.close();
+
+            return true;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 }

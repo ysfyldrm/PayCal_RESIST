@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.content.Loader;
@@ -28,6 +29,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.github.ybq.android.spinkit.style.Wave;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -61,8 +67,24 @@ public class CalculationActivity extends AppCompatActivity {
         //Wave wave = new Wave();
         //progressBar.setIndeterminateDrawable(wave);
         //progressBar.setVisibility(View.INVISIBLE);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("paycal-resist");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue(String.class);
+                Log.d("TAG", "Value is: " + value);
+            }
 
-        final String []LoaderContext={"Hold On","Gathering Values","Testing Processor","Benching Network","Processing Equations","Overflowing Stack","Checking Accuracy","Creating Cashflow Chart","Calculating Payback","Ready..."};
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("TAG", "Failed to read value.", error.toException());
+            }
+        });
+        final String []LoaderContext={"Hold On","Gathering Values","Testing Processor","Benching Network","Processing Equations","Overflowing Stack","Checking Accuracy","Creating Cashflow Chart","Calculating Payback","Ready.","Ready..","Ready..."};
 
         new Thread(new Runnable() {
             public void run() {
@@ -175,6 +197,7 @@ public class CalculationActivity extends AppCompatActivity {
 
 
         if (storagetype.equals("Thermal")) {
+
             eff = 0.9;
             dod = 1.0;
             storage_price = 0.32;
@@ -239,6 +262,8 @@ public class CalculationActivity extends AppCompatActivity {
                         a7 = allsky.getDouble("7");
                         a8 = allsky.getDouble("8");
                         a9 = allsky.getDouble("9");
+
+
 
 //                        JSONObject wind10 = params.getJSONObject("WS10M");
 //                        Double wa1 = wind10.getDouble("1");
@@ -564,6 +589,7 @@ public class CalculationActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(CalculationActivity.this, ChartsActivity.class);
                 startActivity(intent);
+                dialog.dismiss();
                 finish();
 
             }

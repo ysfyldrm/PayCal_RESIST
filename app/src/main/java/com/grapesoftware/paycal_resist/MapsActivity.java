@@ -34,6 +34,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     String latitude,longitude,adress,country;
 
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

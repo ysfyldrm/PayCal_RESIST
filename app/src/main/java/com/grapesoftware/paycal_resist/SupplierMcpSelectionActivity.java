@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 public class SupplierMcpSelectionActivity extends AppCompatActivity {
 
-    private Button TurkeyMcpbtn, useownbtn;
+    private Button TurkeyMcpbtn, useownbtn, backbutton;
     final Context context = this;
     Bundle gelentype;
     SharedPreferences preferences;
@@ -38,6 +38,15 @@ public class SupplierMcpSelectionActivity extends AppCompatActivity {
         typeforuser=gelentype.getString("Type");
         preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
         editor = preferences.edit();
+
+        backbutton = findViewById(R.id.backBtn);
+
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         useownbtn.setOnClickListener(new View.OnClickListener() {
             @Override

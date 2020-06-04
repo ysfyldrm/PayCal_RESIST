@@ -55,9 +55,11 @@
             android:layout_marginStart="36dp"
             android:layout_marginTop="360dp"
             android:layout_marginEnd="35dp"
+
             android:background="@drawable/textboxlr"
             android:digits="0123456789"
-            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/ic_verified_user_black_22dp"
+            android:drawablePadding="12dp"
             android:fontFamily="@font/medium"
             android:gravity="center_vertical"
             android:hint="Activation code..."

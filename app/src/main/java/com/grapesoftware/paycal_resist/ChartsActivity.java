@@ -13,6 +13,7 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
@@ -43,6 +44,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import github.ishaan.buttonprogressbar.ButtonProgressBar;
 
 
 public class ChartsActivity extends AppCompatActivity {
@@ -72,6 +74,54 @@ public class ChartsActivity extends AppCompatActivity {
         int renk1, renk2;
         int[] colorArray = new int[24];
 
+        final ButtonProgressBar bar = (ButtonProgressBar) findViewById(R.id.bpb_main);
+        bar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bar.startLoader();
+                bar.setProgressColor(Color.parseColor("#157de6"));
+                RelativeLayout savingLayout = (RelativeLayout) findViewById(R.id.save_layout);
+                File file = saveBitMap(ChartsActivity.this, savingLayout);
+
+                if (file != null) {
+                    Log.i("TAG", "Drawing saved to the gallery!");
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            bar.stopLoader();
+                        }
+                    }, 1800);
+
+                } else {
+                    Log.i("TAG", "Oops! Image could not be saved.");
+                }
+
+                // Will run the conversion in another thread to avoid the UI to be frozen
+                Thread t = new Thread() {
+                    public void run()
+                    {
+                        // Input file
+                        String inputPath = filename;
+
+                        // Output file
+                        String outputPath = Environment.getExternalStorageDirectory() + File.separator + "out.pdf";
+
+                        // Run conversion
+                        final boolean result = ChartsActivity.this.convertToPdf(inputPath, outputPath);
+
+                        // Notify the UI
+                        runOnUiThread(new Runnable() {
+                            public void run()
+                            {
+                                if (result) Toast.makeText(ChartsActivity.this, "The JPG was successfully converted to PDF.", Toast.LENGTH_SHORT).show();
+                                else Toast.makeText(ChartsActivity.this, "An error occured while converting the JPG to PDF.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                };
+                t.start();
+            }
+        });
 
         title1 = findViewById(R.id.result_1);
         title2 = findViewById(R.id.result_2);
@@ -116,46 +166,46 @@ public class ChartsActivity extends AppCompatActivity {
         country = preferences.getString("Country", null);
 
 
-        button = findViewById(R.id.buttonsave);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                RelativeLayout savingLayout = (RelativeLayout) findViewById(R.id.save_layout);
-                File file = saveBitMap(ChartsActivity.this, savingLayout);
-
-                if (file != null) {
-                    Log.i("TAG", "Drawing saved to the gallery!");
-
-                } else {
-                    Log.i("TAG", "Oops! Image could not be saved.");
-                }
-
-                // Will run the conversion in another thread to avoid the UI to be frozen
-                Thread t = new Thread() {
-                    public void run()
-                    {
-                        // Input file
-                        String inputPath = filename;
-
-                        // Output file
-                        String outputPath = Environment.getExternalStorageDirectory() + File.separator + "out.pdf";
-
-                        // Run conversion
-                        final boolean result = ChartsActivity.this.convertToPdf(inputPath, outputPath);
-
-                        // Notify the UI
-                        runOnUiThread(new Runnable() {
-                            public void run()
-                            {
-                                if (result) Toast.makeText(ChartsActivity.this, "The JPG was successfully converted to PDF.", Toast.LENGTH_SHORT).show();
-                                else Toast.makeText(ChartsActivity.this, "An error occured while converting the JPG to PDF.", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-                };
-                t.start();
-            }
-        });
+//        button = findViewById(R.id.buttonsave);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                RelativeLayout savingLayout = (RelativeLayout) findViewById(R.id.save_layout);
+//                File file = saveBitMap(ChartsActivity.this, savingLayout);
+//
+//                if (file != null) {
+//                    Log.i("TAG", "Drawing saved to the gallery!");
+//
+//                } else {
+//                    Log.i("TAG", "Oops! Image could not be saved.");
+//                }
+//
+//                // Will run the conversion in another thread to avoid the UI to be frozen
+//                Thread t = new Thread() {
+//                    public void run()
+//                    {
+//                        // Input file
+//                        String inputPath = filename;
+//
+//                        // Output file
+//                        String outputPath = Environment.getExternalStorageDirectory() + File.separator + "out.pdf";
+//
+//                        // Run conversion
+//                        final boolean result = ChartsActivity.this.convertToPdf(inputPath, outputPath);
+//
+//                        // Notify the UI
+//                        runOnUiThread(new Runnable() {
+//                            public void run()
+//                            {
+//                                if (result) Toast.makeText(ChartsActivity.this, "The JPG was successfully converted to PDF.", Toast.LENGTH_SHORT).show();
+//                                else Toast.makeText(ChartsActivity.this, "An error occured while converting the JPG to PDF.", Toast.LENGTH_SHORT).show();
+//                            }
+//                        });
+//                    }
+//                };
+//                t.start();
+//            }
+//        });
 
         SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
 

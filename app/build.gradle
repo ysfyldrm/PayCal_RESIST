@@ -43,6 +43,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:19.3.0'
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
     implementation 'com.itextpdf:itextg:5.5.10'
+    implementation 'com.github.ishaan1995:ButtonProgressBar:1.0'
+
 
 
 

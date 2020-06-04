@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/result_txt"
-        android:layout_above="@id/buttonsave"
+        android:layout_above="@id/bpb_main"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp">
 
@@ -328,17 +328,30 @@
 
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/buttonsave"
-        android:layout_width="100dp"
+<!--    <Button-->
+<!--        android:id="@+id/buttonsave"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginBottom="15dp"-->
+<!--        android:background="@drawable/button"-->
+<!--        android:elevation="18dp"-->
+<!--        android:text="Save"-->
+<!--        android:textColor="@color/colorTransparentWhite" />-->
+
+    <github.ishaan.buttonprogressbar.ButtonProgressBar
+        android:id="@+id/bpb_main"
+        app:text="Save"
+        app:textColor="@color/colorTransparentWhite"
+        app:type="indeterminate"
+        android:layout_width="match_parent"
+        app:bgColor="@color/backgroundBlue"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/button"
-        android:elevation="18dp"
-        android:text="Save"
-        android:textColor="@color/colorTransparentWhite" />
+        android:layout_centerHorizontal="true" />
 
 
 

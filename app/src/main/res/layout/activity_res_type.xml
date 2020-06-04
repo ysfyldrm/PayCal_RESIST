@@ -40,10 +40,8 @@
 
     <Button
         android:id="@+id/button_PV"
-        android:layout_width="170dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:padding="20dp"
         android:layout_below="@id/resTypeExp_txt"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
@@ -51,32 +49,30 @@
         android:elevation="20dp"
         android:fontFamily="@font/bold"
         android:drawableLeft="@drawable/icons8_solar_panel_64"
+        android:drawablePadding="12dp"
         android:text="SOLAR"
-        android:drawablePadding="20dp"
         android:textColor="@color/colorTransparentWhite"
-        android:textSize="20sp" />
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/button_wind"
-        android:layout_width="170dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:padding="20dp"
         android:layout_below="@id/button_PV"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/button"
         android:drawableLeft="@drawable/icons8_wind_turbine_64"
+        android:drawablePadding="12dp"
         android:elevation="20dp"
         android:fontFamily="@font/bold"
         android:text="WIND"
-        android:drawablePadding="20dp"
         android:textColor="@color/colorTransparentWhite"
-        android:textSize="20sp" />
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/button_biomass"
-        android:layout_width="140dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/button_wind"
         android:layout_centerHorizontal="true"

@@ -20,49 +20,51 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/solararea_txt"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="30dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
 
         <Button
             android:id="@+id/area_button"
-            android:layout_width="wrap_content"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/turbine_count_txt"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/button"
+            android:drawableLeft="@drawable/deneme_icon_logo"
             android:elevation="20dp"
             android:fontFamily="@font/bold"
             android:text="AREA"
             android:textColor="@color/colorTransparentWhite"
             android:textSize="15sp" />
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/bold"
             android:text="OR"
             android:textColor="@color/colorTransparentWhite"
             android:textSize="15sp" />
 
+
         <Button
             android:id="@+id/power_button"
-            android:layout_width="wrap_content"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/turbine_count_txt"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/button"
+            android:drawableLeft="@drawable/deneme_icon_logo"
             android:elevation="20dp"
             android:fontFamily="@font/bold"
             android:text="POWER"

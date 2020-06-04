@@ -39,11 +39,12 @@
 
     <Button
         android:id="@+id/button_Li_ion"
-        android:layout_width="160dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="LI-ION"
         android:textSize="20dp"
         android:background="@drawable/button"
+        android:drawableLeft="@drawable/deneme_icon_logo"
         android:elevation="20dp"
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
@@ -53,7 +54,7 @@
 
     <Button
         android:id="@+id/button_leadAcid"
-        android:layout_width="160dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="LEAD ACID"
         android:textSize="20dp"
@@ -61,26 +62,28 @@
         android:background="@drawable/button"
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
+        android:drawableLeft="@drawable/deneme_icon_logo"
         android:layout_below="@id/button_Li_ion"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="10dp" />
 
     <Button
         android:id="@+id/button_thermal"
-        android:layout_width="160dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="THERMAL"
         android:textSize="20dp"
         android:background="@drawable/button"
         android:fontFamily="@font/bold"
         android:textColor="@color/colorTransparentWhite"
+        android:drawableLeft="@drawable/deneme_icon_logo"
         android:layout_below="@id/button_leadAcid"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="10dp" />
 
     <Button
         android:id="@+id/button_no_storage"
-        android:layout_width="160dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="NO STORAGE"
         android:textSize="20dp"
@@ -90,7 +93,7 @@
         android:textColor="@color/colorTransparentWhite"
         android:layout_below="@id/button_thermal"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="10dp" />
 
 
 </RelativeLayout>

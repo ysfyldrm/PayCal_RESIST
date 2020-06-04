@@ -23,12 +23,14 @@ public class RegisterActivity extends AppCompatActivity {
     ImageView backButton;
     private EditText registerUserName;
     private EditText registerPassword;
-    private EditText editTextMobile;
+    //private EditText editTextMobile;
     private Button buttonRegister;
     private FirebaseAuth mAuth;
     private String userName;
     private String userPassword;
     String text11;
+    MaskedEditText editTextMobile;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +40,11 @@ public class RegisterActivity extends AppCompatActivity {
         registerUserName = (EditText) findViewById(R.id.registerUserName);
         registerPassword = (EditText) findViewById(R.id.registerPassword);
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
-        //editTextMobile = findViewById(R.id.editTextMobile);
 
-        //editTextMobile.setTransformationMethod(null);
-        MaskedEditText editText = (MaskedEditText) findViewById(R.id.editTextMobile);
+        editTextMobile = (MaskedEditText) findViewById(R.id.editTextMobile);
 
-        editText.setMask("+90 (5##) ### ## ##");
-        text11=editText.getRawText();
+        editTextMobile.setMask("+90 (5##) ### ## ##");
+
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -53,7 +53,6 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-
                 /* finish();*/
             }
         });
@@ -63,32 +62,30 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getApplicationContext(),text11,Toast.LENGTH_SHORT).show();
+                userName = registerUserName.getText().toString();
+                userPassword = registerPassword.getText().toString();
+                if (userName.isEmpty() || userPassword.isEmpty()) {
 
-//                userName = registerUserName.getText().toString();
-//                userPassword = registerPassword.getText().toString();
-//                if (userName.isEmpty() || userPassword.isEmpty()) {
-//
-//                    Toast.makeText(getApplicationContext(), "Please fill in the required fields. ", Toast.LENGTH_SHORT).show();
-//
-//                } else {
-//                    registerFunc();
-//                }
-//
-//
-//                String mobile = editTextMobile.getText().toString().trim();
-//
-//                if (mobile.isEmpty() || mobile.length() < 10) {
-//                    editTextMobile.setError("Please enter a valid number");
-//                    editTextMobile.requestFocus();
-//                    return;
-//                }
-//
-//                Intent intent = new Intent(RegisterActivity.this, VerifyPhoneActivity.class);
-//                intent.putExtra("mobile", mobile);
-//                intent.putExtra("userName", userName);
-//                intent.putExtra("userPassword", userPassword);
-//                startActivity(intent);
+                    Toast.makeText(getApplicationContext(), "Please fill in the required fields. ", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    registerFunc();
+                }
+
+
+                String mobile ="5"+editTextMobile.getRawText();
+
+                if (mobile.isEmpty() || mobile.length() < 10) {
+                    editTextMobile.setError("Please enter a valid number");
+                    editTextMobile.requestFocus();
+                    return;
+                }
+
+                Intent intent = new Intent(RegisterActivity.this, VerifyPhoneActivity.class);
+                intent.putExtra("mobile", mobile);
+                intent.putExtra("userName", userName);
+                intent.putExtra("userPassword", userPassword);
+                startActivity(intent);
 
             }
         });

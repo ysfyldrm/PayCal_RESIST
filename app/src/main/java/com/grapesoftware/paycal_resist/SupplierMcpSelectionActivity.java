@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -51,7 +52,7 @@ public class SupplierMcpSelectionActivity extends AppCompatActivity {
         useownbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, typeforuser, Toast.LENGTH_LONG).show();
+
 
                 if (typeforuser.equals("Supplier")){
                     showMyCustomOwnAlertDialog();
@@ -99,17 +100,41 @@ public class SupplierMcpSelectionActivity extends AppCompatActivity {
         ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                editor.putString("Peak MCP", peakmcp.getText().toString());
-                editor.putString("Morning MCP", morningmcp.getText().toString());
-                editor.putString("AVG Peak MCP", avgpeakmcp.toString());
-                editor.putString("AVG Morning MCP", avgmorningmcp.getText().toString());
-                editor.putString("AVG Year MCP", avgyearmcp.getText().toString());
-                editor.commit();
-
-                Intent intent = new Intent(SupplierMcpSelectionActivity.this, ResTypeActivity.class);
-                startActivity(intent);
-
+                if(TextUtils.isEmpty(peakmcp.getText().toString())) {
+                    peakmcp.setError("This field cannot be empty");
+                    peakmcp.requestFocus();
+                    return;
+                }
+                else if(TextUtils.isEmpty(morningmcp.getText().toString())){
+                    morningmcp.setError("This field cannot be empty");
+                    morningmcp.requestFocus();
+                    return;
+                }
+                else if(TextUtils.isEmpty(avgpeakmcp.getText().toString())){
+                    avgpeakmcp.setError("This field cannot be empty");
+                    avgpeakmcp.requestFocus();
+                    return;
+                }
+                else if(TextUtils.isEmpty(avgmorningmcp.getText().toString())){
+                    avgmorningmcp.setError("This field cannot be empty");
+                    avgmorningmcp.requestFocus();
+                    return;
+                }
+                else if(TextUtils.isEmpty(avgyearmcp.getText().toString())){
+                    avgyearmcp.setError("This field cannot be empty");
+                    avgyearmcp.requestFocus();
+                    return;
+                }
+                else {
+                    editor.putString("Peak MCP", peakmcp.getText().toString());
+                    editor.putString("Morning MCP", morningmcp.getText().toString());
+                    editor.putString("AVG Peak MCP", avgpeakmcp.toString());
+                    editor.putString("AVG Morning MCP", avgmorningmcp.getText().toString());
+                    editor.putString("AVG Year MCP", avgyearmcp.getText().toString());
+                    editor.commit();
+                    Intent intent = new Intent(SupplierMcpSelectionActivity.this, ResTypeActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 

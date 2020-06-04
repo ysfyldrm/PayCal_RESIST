@@ -96,6 +96,7 @@
             android:layout_marginLeft="15dp"
             android:backgroundTint="@color/colorTransparentWhite"
             android:digits="0123456789"
+            android:imeOptions="actionDone"
             android:gravity="center"
             android:inputType="numberPassword"
             android:textColor="@color/colorTransparentWhite"

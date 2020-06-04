@@ -51,6 +51,7 @@
             android:digits="0123456789"
             android:gravity="center"
             android:hint="Kw"
+            android:imeOptions="actionDone"
             android:inputType="numberPassword"
             android:textColor="@color/colorTransparentWhite"
             android:textColorHint="@color/colorTransparentWhite"

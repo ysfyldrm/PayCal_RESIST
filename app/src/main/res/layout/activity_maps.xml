@@ -36,6 +36,8 @@
             android:backgroundTint="@color/colorTransparentWhite"
             android:fontFamily="@font/medium"
             android:singleLine="true"
+            android:inputType="textAutoCorrect"
+            android:imeOptions="actionDone"
             android:textColor="@color/colorTransparentWhite" />
 
         <Button

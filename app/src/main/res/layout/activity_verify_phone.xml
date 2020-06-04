@@ -65,6 +65,7 @@
             android:hint="Activation code..."
             android:inputType="numberPassword"
             android:maxLength="10"
+            android:imeOptions="actionDone"
             android:scrollbarThumbHorizontal="@color/colorTransparentWhite"
             android:scrollbarThumbVertical="@color/colorTransparentWhite"
             android:textColor="@color/colorTransparentWhite"

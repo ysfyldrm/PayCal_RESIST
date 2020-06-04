@@ -31,17 +31,20 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+import info.hoang8f.widget.FButton;
+
 
 public class MainActivity extends AppCompatActivity {
     FusedLocationProviderClient fusedLocationProviderClient;
     private RequestQueue mQueue;
     private FirebaseAuth mAuth;
     private Button startButton;
-    private TextView mTextViewResult;
+
     private boolean LocationCompleted = false;
     private String Latitude,Longitude,Adress,Country;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
+
 
 
 
@@ -57,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please log in.", Toast.LENGTH_SHORT).show();
         }
 
-        mTextViewResult =findViewById(R.id.text_view_result);
+
         Button startButton=findViewById(R.id.btn_basla);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 

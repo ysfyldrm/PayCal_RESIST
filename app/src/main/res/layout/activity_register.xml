@@ -75,7 +75,7 @@
         android:drawablePadding="12dp"
         android:fontFamily="@font/bold"
         android:hint="Mail Address"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:textColor="@color/colorTransparentWhite"
         android:textColorHint="@color/colorTransparentWhite"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -60,7 +60,7 @@ public class ChartsActivity extends AppCompatActivity {
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     Document document;
-    String filename;
+    String filename,filenamepdf;
 
 
 
@@ -104,17 +104,22 @@ public class ChartsActivity extends AppCompatActivity {
                         String inputPath = filename;
 
                         // Output file
-                        String outputPath = Environment.getExternalStorageDirectory() + File.separator + "out.pdf";
+                        String outputPath = Environment.getExternalStorageDirectory() + File.separator + filename+"PaycalPDF.pdf";
+
+                        File pdfFileDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "PayCal_RESIST");
+                        filenamepdf = pdfFileDir.getPath() + File.separator +"Results"+ System.currentTimeMillis() + ".pdf";
 
                         // Run conversion
-                        final boolean result = ChartsActivity.this.convertToPdf(inputPath, outputPath);
+                        final boolean result = ChartsActivity.this.convertToPdf(inputPath, filenamepdf);
 
                         // Notify the UI
                         runOnUiThread(new Runnable() {
                             public void run()
                             {
-                                if (result) Toast.makeText(ChartsActivity.this, "The JPG was successfully converted to PDF.", Toast.LENGTH_SHORT).show();
-                                else Toast.makeText(ChartsActivity.this, "An error occured while converting the JPG to PDF.", Toast.LENGTH_SHORT).show();
+                                if (!result) Toast.makeText(ChartsActivity.this, "An error occured while converting the JPG to PDF.", Toast.LENGTH_SHORT).show();
+
+//                                if (result) Toast.makeText(ChartsActivity.this, "The JPG was successfully converted to PDF.", Toast.LENGTH_SHORT).show();
+//                                else Toast.makeText(ChartsActivity.this, "An error occured while converting the JPG to PDF.", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -547,7 +552,6 @@ public class ChartsActivity extends AppCompatActivity {
             image.scalePercent(scaler);
             document.add(image);
             document.close();
-
             return true;
         }
         catch (Exception e)

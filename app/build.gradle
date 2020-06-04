@@ -45,6 +45,7 @@ dependencies {
     implementation 'com.itextpdf:itextg:5.5.10'
     implementation 'com.github.ishaan1995:ButtonProgressBar:1.0'
     implementation 'info.hoang8f:fbutton:1.0.5'
+    implementation 'ru.egslava:MaskedEditText:1.0.5'
 
 
 

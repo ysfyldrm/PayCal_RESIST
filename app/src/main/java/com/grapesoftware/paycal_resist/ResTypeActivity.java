@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -18,6 +19,8 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.w3c.dom.Text;
 
 public class ResTypeActivity extends AppCompatActivity {
     Button windbtn, pvbtn, biomassbtn, backbutton;
@@ -123,12 +126,19 @@ public class ResTypeActivity extends AppCompatActivity {
                 ownconfirmbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        dialog1.dismiss();
-                        Intent intent = new Intent(ResTypeActivity.this, StorageTypeActivity.class);
-                        editor.putString("Solar Power", poweredt.getText().toString());
-                        editor.putString("Solar Selection", "Power");
-                        editor.commit();
-                        startActivity(intent);
+                        if(TextUtils.isEmpty(poweredt.getText().toString())) {
+                            poweredt.setError("This field cannot be empty");
+                            poweredt.requestFocus();
+                            return;
+                        }
+                        else {
+                            dialog1.dismiss();
+                            Intent intent = new Intent(ResTypeActivity.this, StorageTypeActivity.class);
+                            editor.putString("Solar Power", poweredt.getText().toString());
+                            editor.putString("Solar Selection", "Power");
+                            editor.commit();
+                            startActivity(intent);
+                        }
                     }
                 });
                 windowstate(dialog1);
@@ -159,13 +169,19 @@ public class ResTypeActivity extends AppCompatActivity {
                 ownconfirmbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        dialog2.dismiss();
-                        Intent intent = new Intent(ResTypeActivity.this, StorageTypeActivity.class);
-                        editor.putString("Solar Area", areaedt.getText().toString());
-                        editor.putString("Solar Selection", "Area");
-                        editor.commit();
-                        startActivity(intent);
-
+                        if(TextUtils.isEmpty(areaedt.getText().toString())) {
+                            areaedt.setError("This field cannot be empty");
+                            areaedt.requestFocus();
+                            return;
+                        }
+                        else {
+                            dialog2.dismiss();
+                            Intent intent = new Intent(ResTypeActivity.this, StorageTypeActivity.class);
+                            editor.putString("Solar Area", areaedt.getText().toString());
+                            editor.putString("Solar Selection", "Area");
+                            editor.commit();
+                            startActivity(intent);
+                        }
                     }
                 });
                 windowstate(dialog2);
@@ -199,12 +215,17 @@ public class ResTypeActivity extends AppCompatActivity {
         ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent intent = new Intent(ResTypeActivity.this, StorageTypeActivity.class);
-                editor.putString("Solar Area", areaCount.getText().toString());
-                editor.commit();
-                startActivity(intent);
-
+                if(TextUtils.isEmpty(areaCount.getText().toString())) {
+                    areaCount.setError("This field cannot be empty");
+                    areaCount.requestFocus();
+                    return;
+                }
+                else {
+                    Intent intent = new Intent(ResTypeActivity.this, StorageTypeActivity.class);
+                    editor.putString("Solar Area", areaCount.getText().toString());
+                    editor.commit();
+                    startActivity(intent);
+                }
 
             }
         });
@@ -239,27 +260,34 @@ public class ResTypeActivity extends AppCompatActivity {
         });
 
 
+
         // tamam butonunun tıklanma olayları
         ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(context, rdbtext + "", Toast.LENGTH_SHORT).show();
-                Toast.makeText(context, rdbtext + "\n" + turbineCount.getText(), Toast.LENGTH_SHORT).show();
+                if(TextUtils.isEmpty(turbineCount.getText().toString())) {
+                    turbineCount.setError("This field cannot be empty");
+                    turbineCount.requestFocus();
+                    return;
+                }
+                else if(TextUtils.isEmpty(rdbtext)){
+                    Toast.makeText(getApplicationContext(),"You have to choose Turbine Type!",Toast.LENGTH_SHORT).show();
+                }
+                else {
 
-                Intent intentwind = new Intent(ResTypeActivity.this, StorageTypeActivity.class);
-                String turtype = rdbtext;
-                String turcount = turbineCount.getText().toString();
+                    Intent intentwind = new Intent(ResTypeActivity.this, StorageTypeActivity.class);
+                    String turtype = rdbtext;
+                    String turcount = turbineCount.getText().toString();
 
-                editor.putString("Turbine Type", turtype);
-                editor.putString("Turbine Count", turcount);
-                editor.commit();
-                startActivity(intentwind);
+                    editor.putString("Turbine Type", turtype);
+                    editor.putString("Turbine Count", turcount);
+                    editor.commit();
+                    startActivity(intentwind);
 
-
+                }
             }
         });
-
 
         dialog.show();
         windowstate(dialog);
@@ -277,7 +305,6 @@ public class ResTypeActivity extends AppCompatActivity {
         final RadioGroup turbineGroup = dialog.findViewById(R.id.turbine_group);
         final EditText turbineCount = dialog.findViewById(R.id.turbine_count_edt);
         turbineCount.setTransformationMethod(null);
-
         turbineGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -291,20 +318,27 @@ public class ResTypeActivity extends AppCompatActivity {
         ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(TextUtils.isEmpty(turbineCount.getText().toString())) {
+                    turbineCount.setError("This field cannot be empty");
+                    turbineCount.requestFocus();
+                    return;
+                }
+                else if(TextUtils.isEmpty(rdbtext)){
+                    Toast.makeText(getApplicationContext(),"You have to choose Turbine Type!",Toast.LENGTH_SHORT).show();
+                }
 
-                Toast.makeText(context, rdbtext + "", Toast.LENGTH_SHORT).show();
-                Toast.makeText(context, rdbtext + "\n" + turbineCount.getText(), Toast.LENGTH_SHORT).show();
+                else {
 
-                Intent intentwind = new Intent(ResTypeActivity.this, StorageTypeActivity.class);
-                String turtype = rdbtext;
-                String turcount = turbineCount.getText().toString();
+                    Intent intentwind = new Intent(ResTypeActivity.this, StorageTypeActivity.class);
+                    String turtype = rdbtext;
+                    String turcount = turbineCount.getText().toString();
 
-                editor.putString("Turbine Type", turtype);
-                editor.putString("Turbine Count", turcount);
-                editor.commit();
-                startActivity(intentwind);
+                    editor.putString("Turbine Type", turtype);
+                    editor.putString("Turbine Count", turcount);
+                    editor.commit();
+                    startActivity(intentwind);
 
-
+                }
             }
         });
 

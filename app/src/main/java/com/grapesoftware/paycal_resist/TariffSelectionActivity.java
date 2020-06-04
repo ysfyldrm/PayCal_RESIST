@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -31,14 +32,12 @@ public class TariffSelectionActivity extends AppCompatActivity {
         epdkbtn = findViewById(R.id.epdk_button);
         useownbtn = findViewById(R.id.useOwn_button);
         backbutton = findViewById(R.id.backBtn);
-
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-
         gelentype = getIntent().getExtras();
         typeforuser = gelentype.getString("Type");
 
@@ -46,7 +45,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
         epdkbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, typeforuser, Toast.LENGTH_LONG).show();
+
 
                 if (typeforuser.equals("Consumer")) {
                     showMyCustomEPDKAlertDialog();
@@ -60,7 +59,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
         useownbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, typeforuser, Toast.LENGTH_LONG).show();
 
                 if (typeforuser.equals("Consumer")) {
                     showMyCustomOwnAlertDialog();
@@ -110,31 +108,46 @@ public class TariffSelectionActivity extends AppCompatActivity {
                     confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            dialog1.dismiss();
-                            Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
-                            Intent calculationIntent = new Intent(TariffSelectionActivity.this, CalculationActivity.class);
+                            if (TextUtils.isEmpty(AvgConsMonth.getText().toString())) {
+                                AvgConsMonth.setError("This field cannot be empty");
+                                AvgConsMonth.requestFocus();
+                                return;
+                            } else if (TextUtils.isEmpty(MorConsMonth.getText().toString())) {
+                                MorConsMonth.setError("This field cannot be empty");
+                                MorConsMonth.requestFocus();
+                                return;
+                            } else if (TextUtils.isEmpty(AvgMonthBill.getText().toString())) {
+                                AvgMonthBill.setError("This field cannot be empty");
+                                AvgMonthBill.requestFocus();
+                                return;
+                            } else {
 
-                            String morning = "0,08";
-                            String peak = "0,12";
-                            //String offpeak="0,37";
-                            String tax = "0,24";
-                            String avgconsmonth = AvgConsMonth.getText().toString();
-                            String morconsmonth = MorConsMonth.getText().toString();
-                            String avgmonthbill = AvgMonthBill.getText().toString();
-                            SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
+                                dialog1.dismiss();
+                                Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
+                                Intent calculationIntent = new Intent(TariffSelectionActivity.this, CalculationActivity.class);
 
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("Morning Tariff", morning);
-                            editor.putString("Peak Tariff", peak);
-                            //editor.putString("Off Peak Tariff",offpeak);
-                            editor.putString("Tax", tax);
-                            editor.putString("Cons Avg Month", avgconsmonth);
-                            editor.putString("Morning Cons Month", morconsmonth);
-                            editor.putString("Avg Month Bill", avgmonthbill);
+                                String morning = "0,08";
+                                String peak = "0,12";
+                                //String offpeak="0,37";
+                                String tax = "0,24";
+                                String avgconsmonth = AvgConsMonth.getText().toString();
+                                String morconsmonth = MorConsMonth.getText().toString();
+                                String avgmonthbill = AvgMonthBill.getText().toString();
+                                SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
 
-                            editor.commit();
+                                SharedPreferences.Editor editor = preferences.edit();
+                                editor.putString("Morning Tariff", morning);
+                                editor.putString("Peak Tariff", peak);
+                                //editor.putString("Off Peak Tariff",offpeak);
+                                editor.putString("Tax", tax);
+                                editor.putString("Cons Avg Month", avgconsmonth);
+                                editor.putString("Morning Cons Month", morconsmonth);
+                                editor.putString("Avg Month Bill", avgmonthbill);
 
-                            startActivity(intent);
+                                editor.commit();
+
+                                startActivity(intent);
+                            }
                         }
                     });
 
@@ -167,6 +180,19 @@ public class TariffSelectionActivity extends AppCompatActivity {
                     confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            if (TextUtils.isEmpty(AvgConsMonth.getText().toString())) {
+                                AvgConsMonth.setError("This field cannot be empty");
+                                AvgConsMonth.requestFocus();
+                                return;
+                            } else if (TextUtils.isEmpty(MorConsMonth.getText().toString())) {
+                                MorConsMonth.setError("This field cannot be empty");
+                                MorConsMonth.requestFocus();
+                                return;
+                            } else if (TextUtils.isEmpty(AvgMonthBill.getText().toString())) {
+                                AvgMonthBill.setError("This field cannot be empty");
+                                AvgMonthBill.requestFocus();
+                                return;
+                            } else {
                             dialog1.dismiss();
                             Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
 
@@ -192,6 +218,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             editor.commit();
 
                             startActivity(intent);
+                            }
                         }
                     });
 
@@ -225,31 +252,45 @@ public class TariffSelectionActivity extends AppCompatActivity {
                     confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            dialog1.dismiss();
-                            Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
-                            Intent calculationIntent = new Intent(TariffSelectionActivity.this, CalculationActivity.class);
+                            if (TextUtils.isEmpty(AvgConsMonth.getText().toString())) {
+                                AvgConsMonth.setError("This field cannot be empty");
+                                AvgConsMonth.requestFocus();
+                                return;
+                            } else if (TextUtils.isEmpty(MorConsMonth.getText().toString())) {
+                                MorConsMonth.setError("This field cannot be empty");
+                                MorConsMonth.requestFocus();
+                                return;
+                            } else if (TextUtils.isEmpty(AvgMonthBill.getText().toString())) {
+                                AvgMonthBill.setError("This field cannot be empty");
+                                AvgMonthBill.requestFocus();
+                                return;
+                            } else {
+                                dialog1.dismiss();
+                                Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
+                                Intent calculationIntent = new Intent(TariffSelectionActivity.this, CalculationActivity.class);
 
-                            String morning = "0,11";
-                            String peak = "0,16";
-                            //String offpeak="0,49";
-                            String tax = "0,24";
-                            String avgconsmonth = AvgConsMonth.getText().toString();
-                            String morconsmonth = MorConsMonth.getText().toString();
-                            String avgmonthbill = AvgMonthBill.getText().toString();
+                                String morning = "0,11";
+                                String peak = "0,16";
+                                //String offpeak="0,49";
+                                String tax = "0,24";
+                                String avgconsmonth = AvgConsMonth.getText().toString();
+                                String morconsmonth = MorConsMonth.getText().toString();
+                                String avgmonthbill = AvgMonthBill.getText().toString();
 
-                            SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("Morning Tariff", morning);
-                            editor.putString("Peak Tariff", peak);
-                            //editor.putString("Off Peak Tariff",offpeak);
-                            editor.putString("Tax", tax);
-                            editor.putString("Cons Avg Month", avgconsmonth);
-                            editor.putString("Morning Cons Month", morconsmonth);
-                            editor.putString("Avg Month Bill", avgmonthbill);
+                                SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
+                                SharedPreferences.Editor editor = preferences.edit();
+                                editor.putString("Morning Tariff", morning);
+                                editor.putString("Peak Tariff", peak);
+                                //editor.putString("Off Peak Tariff",offpeak);
+                                editor.putString("Tax", tax);
+                                editor.putString("Cons Avg Month", avgconsmonth);
+                                editor.putString("Morning Cons Month", morconsmonth);
+                                editor.putString("Avg Month Bill", avgmonthbill);
 
-                            editor.commit();
+                                editor.commit();
 
-                            startActivity(intent);
+                                startActivity(intent);
+                            }
                         }
                     });
 
@@ -281,30 +322,44 @@ public class TariffSelectionActivity extends AppCompatActivity {
                     confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            dialog1.dismiss();
-                            Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
+                            if (TextUtils.isEmpty(AvgConsMonth.getText().toString())) {
+                                AvgConsMonth.setError("This field cannot be empty");
+                                AvgConsMonth.requestFocus();
+                                return;
+                            } else if (TextUtils.isEmpty(MorConsMonth.getText().toString())) {
+                                MorConsMonth.setError("This field cannot be empty");
+                                MorConsMonth.requestFocus();
+                                return;
+                            } else if (TextUtils.isEmpty(AvgMonthBill.getText().toString())) {
+                                AvgMonthBill.setError("This field cannot be empty");
+                                AvgMonthBill.requestFocus();
+                                return;
+                            } else {
+                                dialog1.dismiss();
+                                Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
 
-                            String morning = "0,11";
-                            String peak = "0,16";
-                            //String offpeak="0,45";
-                            String tax = "0,24";
-                            String avgconsmonth = AvgConsMonth.getText().toString();
-                            String morconsmonth = MorConsMonth.getText().toString();
-                            String avgmonthbill = AvgMonthBill.getText().toString();
-                            SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
+                                String morning = "0,11";
+                                String peak = "0,16";
+                                //String offpeak="0,45";
+                                String tax = "0,24";
+                                String avgconsmonth = AvgConsMonth.getText().toString();
+                                String morconsmonth = MorConsMonth.getText().toString();
+                                String avgmonthbill = AvgMonthBill.getText().toString();
+                                SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
 
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("Morning Tariff", morning);
-                            editor.putString("Peak Tariff", peak);
-                            //editor.putString("Off Peak Tariff",offpeak);
-                            editor.putString("Tax", tax);
-                            editor.putString("Cons Avg Month", avgconsmonth);
-                            editor.putString("Morning Cons Month", morconsmonth);
-                            editor.putString("Avg Month Bill", avgmonthbill);
+                                SharedPreferences.Editor editor = preferences.edit();
+                                editor.putString("Morning Tariff", morning);
+                                editor.putString("Peak Tariff", peak);
+                                //editor.putString("Off Peak Tariff",offpeak);
+                                editor.putString("Tax", tax);
+                                editor.putString("Cons Avg Month", avgconsmonth);
+                                editor.putString("Morning Cons Month", morconsmonth);
+                                editor.putString("Avg Month Bill", avgmonthbill);
 
-                            editor.commit();
+                                editor.commit();
 
-                            startActivity(intent);
+                                startActivity(intent);
+                            }
                         }
                     });
 
@@ -336,6 +391,19 @@ public class TariffSelectionActivity extends AppCompatActivity {
                     confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            if (TextUtils.isEmpty(AvgConsMonth.getText().toString())) {
+                                AvgConsMonth.setError("This field cannot be empty");
+                                AvgConsMonth.requestFocus();
+                                return;
+                            } else if (TextUtils.isEmpty(MorConsMonth.getText().toString())) {
+                                MorConsMonth.setError("This field cannot be empty");
+                                MorConsMonth.requestFocus();
+                                return;
+                            } else if (TextUtils.isEmpty(AvgMonthBill.getText().toString())) {
+                                AvgMonthBill.setError("This field cannot be empty");
+                                AvgMonthBill.requestFocus();
+                                return;
+                            } else {
                             dialog1.dismiss();
                             Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
 
@@ -360,6 +428,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             editor.commit();
 
                             startActivity(intent);
+                            }
                         }
                     });
 
@@ -392,6 +461,19 @@ public class TariffSelectionActivity extends AppCompatActivity {
                     confirm.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            if (TextUtils.isEmpty(AvgConsMonth.getText().toString())) {
+                                AvgConsMonth.setError("This field cannot be empty");
+                                AvgConsMonth.requestFocus();
+                                return;
+                            } else if (TextUtils.isEmpty(MorConsMonth.getText().toString())) {
+                                MorConsMonth.setError("This field cannot be empty");
+                                MorConsMonth.requestFocus();
+                                return;
+                            } else if (TextUtils.isEmpty(AvgMonthBill.getText().toString())) {
+                                AvgMonthBill.setError("This field cannot be empty");
+                                AvgMonthBill.requestFocus();
+                                return;
+                            } else {
                             dialog1.dismiss();
                             Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
 
@@ -416,6 +498,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
                             editor.commit();
 
                             startActivity(intent);
+                            }
                         }
                     });
 
@@ -456,28 +539,61 @@ public class TariffSelectionActivity extends AppCompatActivity {
         // custom dialog elemanlarına değer ataması yap - text, image
 
 
-
         // tamam butonunun tıklanma olayları
         ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
+                if (TextUtils.isEmpty(morningTariff.getText().toString())) {
+                    morningTariff.setError("This field cannot be empty");
+                    morningTariff.requestFocus();
+                    return;
+                } else if (TextUtils.isEmpty(peakTariff.getText().toString())) {
+                    peakTariff.setError("This field cannot be empty");
+                    peakTariff.requestFocus();
+                    return;
+                } else if (TextUtils.isEmpty(taxx.getText().toString())) {
+                    taxx.setError("This field cannot be empty");
+                    taxx.requestFocus();
+                    return;
+                }
+                else if (TextUtils.isEmpty(consavgMonth.getText().toString())) {
+                    consavgMonth.setError("This field cannot be empty");
+                    consavgMonth.requestFocus();
+                    return;
+                }
+                else if (TextUtils.isEmpty(consyear.getText().toString())) {
+                    consyear.setError("This field cannot be empty");
+                    consyear.requestFocus();
+                    return;
+                }
+                else if (TextUtils.isEmpty(morningconsmonth.getText().toString())) {
+                    morningconsmonth.setError("This field cannot be empty");
+                    morningconsmonth.requestFocus();
+                    return;
+                }
+                else if (TextUtils.isEmpty(avgmonthbill.getText().toString())) {
+                    avgmonthbill.setError("This field cannot be empty");
+                    avgmonthbill.requestFocus();
+                    return;
+                } else {
+                    SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
 
-                SharedPreferences.Editor editor = preferences.edit();
-                Double tax = Double.valueOf(taxx.getText().toString());
-                Double taxpercent = tax / 100;
+                    SharedPreferences.Editor editor = preferences.edit();
+                    Double tax = Double.valueOf(taxx.getText().toString());
+                    Double taxpercent = tax / 100;
 
-                editor.putString("Morning Tariff", morningTariff.getText().toString());
-                editor.putString("Peak Tariff", peakTariff.getText().toString());
-                editor.putString("Tax", taxpercent.toString());
-                editor.putString("Cons Avg Month", consavgMonth.getText().toString());
-                editor.putString("Cons Year", consyear.getText().toString());
-                editor.putString("Morning Cons Month", morningconsmonth.getText().toString());
-                editor.putString("Avg Month Bill", avgmonthbill.getText().toString());
-                editor.commit();
+                    editor.putString("Morning Tariff", morningTariff.getText().toString());
+                    editor.putString("Peak Tariff", peakTariff.getText().toString());
+                    editor.putString("Tax", taxpercent.toString());
+                    editor.putString("Cons Avg Month", consavgMonth.getText().toString());
+                    editor.putString("Cons Year", consyear.getText().toString());
+                    editor.putString("Morning Cons Month", morningconsmonth.getText().toString());
+                    editor.putString("Avg Month Bill", avgmonthbill.getText().toString());
+                    editor.commit();
 
-                Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
-                startActivity(intent);
+                    Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
+                    startActivity(intent);
+                }
 
             }
         });
@@ -853,7 +969,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
         indlowvolt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Morning: 0,66 \nPeak: 0,99 \nOffPeak: 0,40 \nTax: 0,2366", Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
 
                 String morning = "0,1";
@@ -1007,11 +1123,6 @@ public class TariffSelectionActivity extends AppCompatActivity {
 //                            startActivity(intent);
 //                        }
 //                    });
-//
-//
-//
-//
-//
 //                    Window window = dialog1.getWindow();
 //                    window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 //                    window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -1047,22 +1158,32 @@ public class TariffSelectionActivity extends AppCompatActivity {
         ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (TextUtils.isEmpty(morning.getText().toString())) {
+                    morning.setError("This field cannot be empty");
+                    morning.requestFocus();
+                    return;
+                } else if (TextUtils.isEmpty(peak.getText().toString())) {
+                    peak.setError("This field cannot be empty");
+                    peak.requestFocus();
+                    return;
+                } else if (TextUtils.isEmpty(taxx.getText().toString())) {
+                    taxx.setError("This field cannot be empty");
+                    taxx.requestFocus();
+                    return;
+                } else {
+                    dialog.dismiss();
+                    Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
+                    SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
+                    Double tax = Double.valueOf(taxx.getText().toString());
+                    Double taxpercent = tax / 100;
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("Morning Tariff", morning.getText().toString());
+                    editor.putString("Peak Tariff", peak.getText().toString());
+                    editor.putString("Tax", taxpercent.toString());
 
-                dialog.dismiss();
-
-                Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
-                SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
-                Double tax = Double.valueOf(taxx.getText().toString());
-                Double taxpercent = tax / 100;
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("Morning Tariff", morning.getText().toString());
-                editor.putString("Peak Tariff", peak.getText().toString());
-                editor.putString("Tax", taxpercent.toString());
-
-                editor.commit();
-
-                startActivity(intent);
-
+                    editor.commit();
+                    startActivity(intent);
+                }
             }
         });
 

@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,12 +26,10 @@ public class RegisterActivity extends AppCompatActivity {
     ImageView backButton;
     private EditText registerUserName;
     private EditText registerPassword;
-    //private EditText editTextMobile;
     private Button buttonRegister;
     private FirebaseAuth mAuth;
     private String userName;
     private String userPassword;
-    String text11;
     MaskedEditText editTextMobile;
 
 
@@ -64,21 +65,29 @@ public class RegisterActivity extends AppCompatActivity {
 
                 userName = registerUserName.getText().toString();
                 userPassword = registerPassword.getText().toString();
-                if (userName.isEmpty() || userPassword.isEmpty()) {
-
-                    Toast.makeText(getApplicationContext(), "Please fill in the required fields. ", Toast.LENGTH_SHORT).show();
-
-                } else {
-                    registerFunc();
-                }
-
-
                 String mobile ="5"+editTextMobile.getRawText();
 
-                if (mobile.isEmpty() || mobile.length() < 10) {
-                    editTextMobile.setError("Please enter a valid number");
+                if(TextUtils.isEmpty(userName)) {
+                    registerUserName.setError("This field cannot be empty");
+                    registerUserName.requestFocus();
+                    return;
+                }
+
+                else if(TextUtils.isEmpty(userPassword)){
+                    registerPassword.setError("This field cannot be empty");
+                    registerPassword.requestFocus();
+                    return;
+                }
+
+                else if (mobile.isEmpty() || mobile.length() < 10) {
+                    editTextMobile.setError("Please enter a valid  phone number");
                     editTextMobile.requestFocus();
                     return;
+                }
+
+                else{
+                    registerFunc();
+
                 }
 
                 Intent intent = new Intent(RegisterActivity.this, VerifyPhoneActivity.class);

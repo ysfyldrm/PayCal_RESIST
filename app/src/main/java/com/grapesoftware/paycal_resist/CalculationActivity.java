@@ -1,25 +1,14 @@
 package com.grapesoftware.paycal_resist;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.View;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.content.Loader;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -28,7 +17,6 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.github.ybq.android.spinkit.style.Wave;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,20 +29,19 @@ import org.json.JSONObject;
 
 
 public class CalculationActivity extends AppCompatActivity {
+    final Context context = this;
     String solarselection, adress, country, solarpower, peakmcp, morningmcp, avgpeakmcp, avgmorningmcp, avgyearmcp, typeforuser, morning, peak, offpeak, tax, avgconsmonth, morconsmonth, avgmonthbill, resgendaily, resgenmonthly, storageperc, restype, turbinetype, turbinecount, consyear, solararea, latitude, longitude, storagetype;
     Double eff, a13, windkwarray, storagepercentagee, dod, storage_price, omprice, dsolarpower, dpeakmcp, dmorningmcp, davgpeakmcp, davgmorningmcp, davgyearmcp, dlatitude, dlongitude, dmorning, dpeak, doffpeak, dtax, davgconsmonth, dmorconsmonth, davgmonthbill, dresgendaily, dresgenmonthly, dstorageperc, drestype, dturbinecount, dconsyear, dsolararea;
     Double wwa13 = 0.00, wa13 = 0.00, payback = 0.0, price = 0.0, ratedcapacity = 0.0, windanualprofit = 0.0, windcapitalcost = 0.0, windyearcost = 0.0, windyearkwh = 0.0, winddaykwh = 0.0;
     Double a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12;
-
-    private RequestQueue mQueue;
-    final Context context = this;
     TextView txtView;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     //ProgressBar progressBar;
     Handler hdlr = new Handler();
-    int CounterLoader=0;
-    int loadercontentcounter=0;
+    int CounterLoader = 0;
+    int loadercontentcounter = 0;
+    private RequestQueue mQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +49,7 @@ public class CalculationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calculation);
 
         mQueue = Volley.newRequestQueue(this);
-        txtView=findViewById(R.id.txtLoading);
+        txtView = findViewById(R.id.txtLoading);
         //progressBar = (ProgressBar) findViewById(R.id.spin_kit);
         //Wave wave = new Wave();
         //progressBar.setIndeterminateDrawable(wave);
@@ -84,7 +71,7 @@ public class CalculationActivity extends AppCompatActivity {
                 Log.w("TAG", "Failed to read value.", error.toException());
             }
         });
-        final String []LoaderContext={"Hold On","Gathering Values","Testing Processor","Benching Network","Processing Equations","Overflowing Stack","Checking Accuracy","Creating Cashflow Chart","Calculating Payback","Ready.","Ready..","Ready..."};
+        final String[] LoaderContext = {"Hold On", "Gathering Values", "Testing Processor", "Benching Network", "Processing Equations", "Overflowing Stack", "Checking Accuracy", "Creating Cashflow Chart", "Calculating Payback", "Ready.", "Ready..", "Ready..."};
 
         new Thread(new Runnable() {
             public void run() {
@@ -93,7 +80,7 @@ public class CalculationActivity extends AppCompatActivity {
                     // Update the progress bar and display the current value in text view
                     hdlr.post(new Runnable() {
                         public void run() {
-                            if(CounterLoader%20==0){
+                            if (CounterLoader % 20 == 0) {
                                 loadercontentcounter++;
                             }
                             txtView.setText(LoaderContext[loadercontentcounter]);
@@ -262,7 +249,6 @@ public class CalculationActivity extends AppCompatActivity {
                         a7 = allsky.getDouble("7");
                         a8 = allsky.getDouble("8");
                         a9 = allsky.getDouble("9");
-
 
 
 //                        JSONObject wind10 = params.getJSONObject("WS10M");
@@ -542,64 +528,9 @@ public class CalculationActivity extends AppCompatActivity {
 
     private void displayResults() {
 
-        // dialog nesnesi oluştur ve layout dosyasına bağlan
-        final Dialog dialog = new Dialog(context);
-        dialog.setContentView(R.layout.result_viewer);
-
-        // custom dialog elemanlarını tanımla - text, image ve button
-        Button ownconfirmbtn = dialog.findViewById(R.id.own_confirm_button);
-        final TextView resultPage = dialog.findViewById(R.id.results_txt);
-
-        resultPage.setText("Type: " + typeforuser + "\n"
-                + "Res Type: " + restype + "\n"
-                + "Storage Type: " + storagetype + "\n"
-                + "Latitude: " + latitude + "\n"
-                + "Longitude: " + longitude + "\n"
-                + "Country: " + country + "\n"
-                + "Adress: " + adress + "\n"
-                + "Morning Tariff: " + morning + "\n"
-                + "Peak Tariff: " + peak + "\n"
-                + "Tax: " + tax + "\n"
-                + "Cons Month Avg: " + avgconsmonth + "\n"
-                + "Morning Cons Month: " + morconsmonth + "\n"
-                + "Avg Month Bill: " + avgmonthbill + "\n"
-                + "RES Gen Daily: " + resgendaily + "\n"
-                + "RES Gen Monthly: " + resgenmonthly + "\n"
-                + "Storage Percentage: " + storageperc + "\n"
-                + "RES Type: " + restype + "\n"
-                + "Turbine Count: " + turbinecount + "\n"
-                + "Turbine Type: " + turbinetype + "\n"
-                + "Cons Year: " + consyear + "\n"
-                + "Solar Area: " + solararea + "\n"
-                + "Rated Capacity: " + ratedcapacity + "\n"
-                + "Wind Day Kwh: " + winddaykwh + "\n"
-                + "Wind Year Kwh: " + windyearkwh + "\n"
-                + "Wind Array Kwh: " + windkwarray + "\n"
-                + "Price: " + price + "\n"
-                + "Wind Annual Profit: " + windanualprofit + "\n"
-                + "Wind Year Cost: " + windyearcost + "\n"
-                + "Wind Capital Cost: " + windcapitalcost + "\n"
-                + "Payback: " + payback + "\n"
-                + "Average Wind 50M: " + wwa13
-        );
-
-        // tamam butonunun tıklanma olayları
-        ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CalculationActivity.this, ChartsActivity.class);
-                startActivity(intent);
-                dialog.dismiss();
-                finish();
-
-            }
-        });
-        //finish();
-
-        dialog.show();
-        Window window = dialog.getWindow();
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        Intent intent = new Intent(CalculationActivity.this, ChartsActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 

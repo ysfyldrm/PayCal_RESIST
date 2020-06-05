@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -598,21 +599,37 @@ public class CalculationActivity extends AppCompatActivity {
             }
         } else if (typeforuser.equals("Supplier")) {
             if (wwa13 <= 3.0) {
-                windkwarray = 0.0;
-            } else if (wwa13 > 3.0 && wwa13 <= 4.5) {
-                windkwarray = 1800.0;
-            } else if (wwa13 > 4.5 && wwa13 <= 6.0) {
-                windkwarray = 6600.0;
-            } else if (wwa13 > 6.0 && wwa13 <= 7.5) {
-                windkwarray = 12000.0;
-            } else if (wwa13 > 7.5 && wwa13 <= 9.0) {
-                windkwarray = 21600.0;
-            } else if (wwa13 > 9.0 && wwa13 <= 10.5) {
-                windkwarray = 31200.0;
-            } else if (wwa13 > 10.5 && wwa13 <= 12.0) {
-                windkwarray = 34200.0;
+                windkwarray = 0.6;
+            } else if (wwa13 > 3.0 && wwa13 <= 3.5) {
+                windkwarray = 18.91;
+            } else if (wwa13 > 3.5 && wwa13 <= 4) {
+                windkwarray = 58.88;
+            } else if (wwa13 > 4 && wwa13 <= 4.5) {
+                windkwarray = 101.0;
+            }else if (wwa13 > 4.5 && wwa13 <= 5) {
+                windkwarray = 163.0;
+            } else if (wwa13 > 5 && wwa13 <= 5.5) {
+                windkwarray = 235.0;
+            } else if (wwa13 > 5.5 && wwa13 <= 6) {
+                windkwarray = 304.0;
+            } else if (wwa13 > 6 && wwa13 <= 6.5) {
+                windkwarray = 400.0;
+            } else if (wwa13 > 6.5 && wwa13 <= 7) {
+                windkwarray = 513.0;
+            } else if (wwa13 > 7 && wwa13 <= 7.5) {
+                windkwarray = 610.0;
+            } else if (wwa13 > 7.5 && wwa13 <= 8) {
+                windkwarray = 743.0;
+            } else if (wwa13 > 8 && wwa13 <= 8.5) {
+                windkwarray = 854.0;
+            } else if (wwa13 > 8.5 && wwa13 <= 9) {
+                windkwarray = 975.0;
+            }else if (wwa13 > 9 && wwa13 <= 9.5) {
+                windkwarray = 1096.0;
+            }else if (wwa13 > 9.5 && wwa13 <= 10) {
+                windkwarray = 1200.0;
             } else {
-                windkwarray = 36000.0;
+                windkwarray = 1260.0;
             }
         }
     }
@@ -679,11 +696,13 @@ public class CalculationActivity extends AppCompatActivity {
         } else if (turbinetype.equals("3 Kw")) {
             price = 3068.89;
             turbinetypevalue = 3.0;
-
         } else {
             price = 2545.67;
             turbinetypevalue = 10.0;
         }
+
+        Double consyear=davgconsmonth*12;
+
         ratedcapacity = dturbinecount * turbinetypevalue;
         windyearkwh = windkwarray * 12 * dturbinecount;
         winddaykwh = windyearkwh / 365;
@@ -691,9 +710,8 @@ public class CalculationActivity extends AppCompatActivity {
         if (dconsyear >= windyearkwh) {
             windanualprofit = (windyearkwh * dmorning * dtax) + windyearkwh * dmorning;
         } else {
-            windanualprofit = (dconsyear * dmorning + dconsyear * dmorning * dtax) + (windyearkwh - dconsyear) * dmorning;
+            windanualprofit = (consyear * dmorning + consyear * dmorning * dtax) + (windyearkwh - consyear) * dmorning;
         }
-
         windcapitalcost = ratedcapacity * price;
         payback = windcapitalcost / (windanualprofit - windyearcost);
         Double newavgmonthbill = davgmonthbill - (windanualprofit - windyearcost) / 12;
@@ -734,6 +752,8 @@ public class CalculationActivity extends AppCompatActivity {
                 price = 2545.67;
                 turbinetypevalue = 10.0;
             }
+
+            Double consyear=davgconsmonth*12;
             ratedcapacity = dturbinecount * turbinetypevalue;
             windyearkwh = windkwarray * 12 * dturbinecount;
             winddaykwh = windyearkwh / 365;
@@ -747,10 +767,10 @@ public class CalculationActivity extends AppCompatActivity {
                         + (windyearkwh * storagepercentage * dpeak * dtax)
                         + (windyearkwh * storagepercentage * dpeak);
             } else {
-                windanualprofit = (dconsyear * dmorning
-                        + dconsyear * dmorning * dtax)
+                windanualprofit = (consyear * dmorning
+                        + consyear * dmorning * dtax)
                         + (windyearkwh * (1 - storagepercentage)
-                        - dconsyear) * dmorning
+                        - consyear) * dmorning
                         + (windyearkwh * storagepercentage * dpeak * dtax)
                         + (windyearkwh * storagepercentage * dpeak);
             }
@@ -893,8 +913,5 @@ public class CalculationActivity extends AppCompatActivity {
         displayResults();
     }
 
-    private void createCharts() {
-
-    }
 
 }

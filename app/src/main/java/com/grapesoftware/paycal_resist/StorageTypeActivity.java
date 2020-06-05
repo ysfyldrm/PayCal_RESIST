@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -156,13 +157,15 @@ public class StorageTypeActivity extends AppCompatActivity {
         ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showMyPercentageStorage();
-
-                editor.putString("Solar Area", areaCount.getText().toString());
-                editor.commit();
-
-                Toast.makeText(context, areaCount.getText(), Toast.LENGTH_SHORT).show();
-
+                if (TextUtils.isEmpty(areaCount.getText().toString())) {
+                    areaCount.setError("This field cannot be empty");
+                    areaCount.requestFocus();
+                    return;
+                } else {
+                    showMyPercentageStorage();
+                    editor.putString("Solar Area", areaCount.getText().toString());
+                    editor.commit();
+                }
             }
         });
 
@@ -251,18 +254,38 @@ public class StorageTypeActivity extends AppCompatActivity {
         ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (TextUtils.isEmpty(consavgmonth.getText().toString())) {
+                    consavgmonth.setError("This field cannot be empty");
+                    consavgmonth.requestFocus();
+                    return;
+                } else if (TextUtils.isEmpty(avgmonthbill.getText().toString())) {
+                    avgmonthbill.setError("This field cannot be empty");
+                    avgmonthbill.requestFocus();
+                    return;
+                } else if (TextUtils.isEmpty(morconsmonth.getText().toString())) {
+                    morconsmonth.setError("This field cannot be empty");
+                    morconsmonth.requestFocus();
+                    return;
+                }else if (TextUtils.isEmpty(resgendaily.getText().toString())) {
+                    resgendaily.setError("This field cannot be empty");
+                    resgendaily.requestFocus();
+                    return;
+                }else if (TextUtils.isEmpty(resgenmonthly.getText().toString())) {
+                    resgenmonthly.setError("This field cannot be empty");
+                    resgenmonthly.requestFocus();
+                    return;
+                } else {
+                    editor.putString("Cons Avg Month", consavgmonth.getText().toString());
+                    editor.putString("Avg Month Bill", avgmonthbill.getText().toString());
+                    editor.putString("Morning Cons Month", morconsmonth.getText().toString());
+                    editor.putString("RES Gen Daily", resgendaily.getText().toString());
+                    editor.putString("RES Gen Monthly", resgenmonthly.getText().toString());
 
-                editor.putString("Cons Avg Month", consavgmonth.getText().toString());
-                editor.putString("Avg Month Bill", avgmonthbill.getText().toString());
-                editor.putString("Morning Cons Month", morconsmonth.getText().toString());
-                editor.putString("RES Gen Daily", resgendaily.getText().toString());
-                editor.putString("RES Gen Monthly", resgenmonthly.getText().toString());
-
-                editor.commit();
+                    editor.commit();
 
                     Intent calculate = new Intent(StorageTypeActivity.this, CalculationActivity.class);
                     startActivity(calculate);
-
+                }
             }
         });
 

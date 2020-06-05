@@ -54,7 +54,7 @@ public class ChartsActivity extends AppCompatActivity {
     int kırmızı = 255, yesil = 0, mavi = 0;
     final Context context = this;
     LinearLayout content;
-    TextView title1, title2, title3, title4, title5, title6, title7, title8, title9, title10, output1, output2, output3, output4, output5, output6, output7, output8, output9, output10;
+    TextView title1, title2, title3, title4, title5, title6, title7, title8, title9, title10, title11, title12, output1, output2, output3, output4, output5, output6, output7, output8, output9, output10, output11, output12;
     Button button, backbutton, profile;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -153,6 +153,8 @@ public class ChartsActivity extends AppCompatActivity {
         title8 = findViewById(R.id.result_8);
         title9 = findViewById(R.id.result_9);
         title10 = findViewById(R.id.result_10);
+        title11 = findViewById(R.id.result_11);
+        title12 = findViewById(R.id.result_12);
         output1 = findViewById(R.id.result_1_1);
         output2 = findViewById(R.id.result_2_2);
         output3 = findViewById(R.id.result_3_3);
@@ -163,6 +165,8 @@ public class ChartsActivity extends AppCompatActivity {
         output8 = findViewById(R.id.result_8_8);
         output9 = findViewById(R.id.result_9_9);
         output10 = findViewById(R.id.result_10_10);
+        output11 = findViewById(R.id.result_11_11);
+        output12 = findViewById(R.id.result_12_12);
 
         preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
         editor = preferences.edit();
@@ -500,7 +504,7 @@ public class ChartsActivity extends AppCompatActivity {
                 output2.setText(typeforuser);
                 output3.setText(restype);
                 output4.setText("No Storage");
-                SpannableString ss = new SpannableString("1500 Kw   Price : " + turbineprice + "$");
+                SpannableString ss = new SpannableString("1500 Kw   Price : 1154.76 $");
                 ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
                 ss.setSpan(fcsTitleBlue, 10, 17, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 output5.setText(ss);
@@ -559,7 +563,9 @@ public class ChartsActivity extends AppCompatActivity {
                 title7.setText("Yearly Generation : ");
                 title8.setText("Panel number : ");
                 title9.setText("Area : ");
-                title10.setText("PAYBACK : ");
+                title10.setText("Solar Capital Cost : ");
+                title11.setText("Yearly Solar Cost : ");
+                title12.setText("PAYBACK : ");
                 output1.setText(address);
                 output2.setText(typeforuser);
                 output3.setText(restype);
@@ -568,19 +574,27 @@ public class ChartsActivity extends AppCompatActivity {
                 output6.setText(pvgenavgday);
                 output7.setText(pvgenyear);
                 Double dpvnum = ParseDouble(pvnum);
-                if (dpvnum < 10) {
-                    SpannableString ss = new SpannableString(pvnum + "   Solar Power : " + pvpower + "Kw");
+                int ipvnum = (int)Math.round(dpvnum);
+                pvnum = Integer.toString(ipvnum);
+                Double dpvpower = ParseDouble(pvpower);
+                int ipvpower = (int)Math.round(dpvpower);
+                pvpower = Integer.toString(ipvpower);
+                Toast.makeText(getApplicationContext(),pvpower,Toast.LENGTH_LONG).show();
+                if (ipvnum < 10) {
+                    SpannableString ss = new SpannableString( pvnum + "   Solar Power : " + pvpower + " Kw");
                     ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
                     ss.setSpan(fcsTitleBlue, 3, 17, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     output8.setText(ss);
-                } else if (dpvnum > 9 && dpvnum < 100) {
-                    SpannableString ss = new SpannableString(pvnum + "   Solar Power : " + pvpower + "Kw");
+                } else if (ipvnum > 9 && ipvnum < 100) {
+                    SpannableString ss = new SpannableString(pvnum + "   Solar Power : " + pvpower + " Kw");
                     ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
                     ss.setSpan(fcsTitleBlue, 4, 18, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     output8.setText(ss);
                 }
-                    output9.setText(area);
-                    output10.setText(payback);
+                    output9.setText(area + " m\u00B2");
+                    output10.setText(pvcapitalcost);
+                    output11.setText(pvyearlycost);
+                    output12.setText(payback);
 
                 } else { //SOLAR AND STORAGE TYPE
 

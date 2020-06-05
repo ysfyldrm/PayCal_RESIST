@@ -428,6 +428,9 @@ public class ChartsActivity extends AppCompatActivity {
                 title8.setText("Wind Capital Cost : ");
                 title9.setText("PAYBACK : ");
                 title10.setVisibility(View.GONE);
+                title11.setVisibility(View.GONE);
+                title12.setVisibility(View.GONE);
+                title13.setVisibility(View.GONE);
 
                 output1.setText(address);
                 output2.setText(typeforuser);
@@ -442,6 +445,9 @@ public class ChartsActivity extends AppCompatActivity {
                 output8.setText(windcapitalcost);
                 output9.setText(payback);
                 output10.setVisibility(View.GONE);
+                output11.setVisibility(View.GONE);
+                output12.setVisibility(View.GONE);
+                output13.setVisibility(View.GONE);
 
             } else if (restype.equals("WIND") && !storagetype.equals("NoStorage")) {
                 title1.setText("Location : ");
@@ -454,6 +460,9 @@ public class ChartsActivity extends AppCompatActivity {
                 title8.setText("Monthly Wind Kwh : ");
                 title9.setText("Wind Capital Cost : ");
                 title10.setText("PAYBACK : ");
+                title11.setVisibility(View.GONE);
+                title12.setVisibility(View.GONE);
+                title13.setVisibility(View.GONE);
                 output1.setText(address);
                 output2.setText(typeforuser);
                 output3.setText(restype);
@@ -484,7 +493,9 @@ public class ChartsActivity extends AppCompatActivity {
                 output8.setText(windmonthkwh);
                 output9.setText(windcapitalcost);
                 output10.setText(payback);
-
+                output11.setVisibility(View.GONE);
+                output12.setVisibility(View.GONE);
+                output13.setVisibility(View.GONE);
 
             } else if (restype.equals("SOLAR") && storagetype.equals("NoStorage")) {
                 title1.setText("Location : ");
@@ -578,6 +589,9 @@ public class ChartsActivity extends AppCompatActivity {
                 title8.setText("Yearly Wind Cost : ");
                 title9.setText("Wind Capital Cost : ");
                 title10.setText("Payback : ");
+                title11.setVisibility(View.GONE);
+                title12.setVisibility(View.GONE);
+                title13.setVisibility(View.GONE);
 
                 output1.setText(address);
                 output2.setText(typeforuser);
@@ -592,6 +606,9 @@ public class ChartsActivity extends AppCompatActivity {
                 output8.setText(windyearlycost);
                 output9.setText(windcapitalcost);
                 output10.setText(payback);
+                output11.setVisibility(View.GONE);
+                output12.setVisibility(View.GONE);
+                output13.setVisibility(View.GONE);
             } else if (restype.equals("WIND") && !storagetype.equals("NoStorage")) {
                 title1.setText("Location : ");
                 title2.setText("User Type : ");

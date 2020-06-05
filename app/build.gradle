@@ -46,9 +46,7 @@ dependencies {
     implementation 'com.github.ishaan1995:ButtonProgressBar:1.0'
     implementation 'info.hoang8f:fbutton:1.0.5'
     implementation 'ru.egslava:MaskedEditText:1.0.5'
-
-
-
+    implementation 'com.hlab.fabrevealmenu:fab-reveal-menu:1.0.4'
 
 
 

@@ -3,11 +3,13 @@ package com.grapesoftware.paycal_resist;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.RestrictionEntry;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -23,7 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.w3c.dom.Text;
 
 public class ResTypeActivity extends AppCompatActivity {
-    Button windbtn, pvbtn, biomassbtn, backbutton;
+    Button windbtn, pvbtn, biomassbtn, backbutton,profile;
     RadioButton pickedTurbine;
     Bundle bundle1;
     String morning, peak, offpeak, tax, avgconsmonth, consyear, morconsmonth, avgmonthbill, typeforuser;
@@ -48,6 +50,16 @@ public class ResTypeActivity extends AppCompatActivity {
                 finish();
             }
         });
+        profile=findViewById(R.id.profile);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ResTypeActivity.this,ProfileActivity.class);
+                startActivity(intent);
+                //finish();
+            }
+        });
+
         preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
         editor = preferences.edit();
 
@@ -119,7 +131,8 @@ public class ResTypeActivity extends AppCompatActivity {
                 backbutton2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        onBackPressed();
+                        dialog1.dismiss();
+                        dialog.show();
                     }
                 });
 
@@ -162,7 +175,8 @@ public class ResTypeActivity extends AppCompatActivity {
                 backbutton1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        onBackPressed();
+                        dialog2.dismiss();
+                        dialog.show();
                     }
                 });
 

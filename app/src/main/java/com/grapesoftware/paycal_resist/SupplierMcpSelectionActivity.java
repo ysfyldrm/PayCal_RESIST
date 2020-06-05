@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 public class SupplierMcpSelectionActivity extends AppCompatActivity {
 
-    private Button TurkeyMcpbtn, useownbtn, backbutton;
+    private Button TurkeyMcpbtn, useownbtn, backbutton,profile;
     final Context context = this;
     Bundle gelentype;
     SharedPreferences preferences;
@@ -46,6 +46,15 @@ public class SupplierMcpSelectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+        profile=findViewById(R.id.profile);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(SupplierMcpSelectionActivity.this,ProfileActivity.class);
+                startActivity(intent);
+                //finish();
             }
         });
 

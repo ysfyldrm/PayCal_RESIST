@@ -1,6 +1,7 @@
 package com.grapesoftware.paycal_resist;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -56,7 +57,7 @@ public class ChartsActivity extends AppCompatActivity {
     final Context context = this;
     LinearLayout content;
     TextView title1, title2, title3, title4, title5, title6, title7, title8, title9, title10, output1, output2, output3, output4, output5, output6, output7, output8, output9, output10;
-    Button button;
+    Button button,backbutton,profile;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     Document document;
@@ -73,6 +74,25 @@ public class ChartsActivity extends AppCompatActivity {
         int gecis1, gecis2;
         int renk1, renk2;
         int[] colorArray = new int[24];
+
+        backbutton=findViewById(R.id.backBtn);
+
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        profile=findViewById(R.id.profile);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ChartsActivity.this,ProfileActivity.class);
+                startActivity(intent);
+                //finish();
+            }
+        });
+
 
         final ButtonProgressBar bar = (ButtonProgressBar) findViewById(R.id.bpb_main);
         bar.setOnClickListener(new View.OnClickListener() {

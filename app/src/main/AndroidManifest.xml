@@ -12,18 +12,17 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
-        android:requestLegacyExternalStorage="true"
-        >
-        <activity android:name=".ChartsActivity"></activity>
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".ChartsActivity" />
         <activity android:name=".CalculationActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -39,26 +38,22 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" >
-
-        </activity>
+            android:label="@string/title_activity_maps"></activity>
         <activity android:name=".SupplierMcpSelectionActivity" />
         <activity android:name=".StorageTypeActivity" />
         <activity android:name=".ResTypeActivity" />
         <activity android:name=".TariffSelectionActivity" />
-        <activity android:name=".LocationActivity" />
         <activity android:name=".SliderActivity" />
         <activity android:name=".VerifyPhoneActivity" />
-        <activity android:name=".CustomerActivity"></activity>
-        <activity android:name=".IntroActivity">
-
-        </activity>
+        <activity android:name=".CustomerActivity" />
+        <activity android:name=".IntroActivity"></activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ForgetPassActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

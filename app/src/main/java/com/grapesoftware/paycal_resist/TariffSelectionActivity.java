@@ -19,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class TariffSelectionActivity extends AppCompatActivity {
 
-    private Button epdkbtn, useownbtn, backbutton;
+    private Button epdkbtn, useownbtn, backbutton,profile;
     final Context context = this;
     Bundle gelentype;
     String typeforuser;
@@ -38,6 +38,16 @@ public class TariffSelectionActivity extends AppCompatActivity {
                 finish();
             }
         });
+        profile=findViewById(R.id.profile);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(TariffSelectionActivity.this,ProfileActivity.class);
+                startActivity(intent);
+                //finish();
+            }
+        });
+
         gelentype = getIntent().getExtras();
         typeforuser = gelentype.getString("Type");
 

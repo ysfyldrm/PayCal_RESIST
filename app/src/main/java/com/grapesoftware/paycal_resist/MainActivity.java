@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private RequestQueue mQueue;
     private FirebaseAuth mAuth;
     private Button startButton;
-
+    private Button profile;
     private boolean LocationCompleted = false;
     private String Latitude,Longitude,Adress,Country;
     SharedPreferences preferences;
@@ -63,6 +63,16 @@ public class MainActivity extends AppCompatActivity {
 
         Button startButton=findViewById(R.id.btn_basla);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+        profile=findViewById(R.id.profile);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,ProfileActivity.class);
+                startActivity(intent);
+                //finish();
+            }
+        });
 
 
 

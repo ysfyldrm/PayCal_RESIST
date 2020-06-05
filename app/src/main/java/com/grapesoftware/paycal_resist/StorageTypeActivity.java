@@ -23,7 +23,7 @@ public class StorageTypeActivity extends AppCompatActivity {
 
     Bundle gelentype;
     String typeforuser,restype;
-    private Button lionBtn, leadAcidBtn, thermalBtn, noStorageBtn,backbutton;
+    private Button lionBtn, leadAcidBtn, thermalBtn, noStorageBtn,backbutton,profile;
     final Context context = this;
     SeekBar seekBar;
     TextView percentageView;
@@ -45,6 +45,15 @@ public class StorageTypeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+        profile=findViewById(R.id.profile);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(StorageTypeActivity.this,ProfileActivity.class);
+                startActivity(intent);
+                //finish();
             }
         });
 

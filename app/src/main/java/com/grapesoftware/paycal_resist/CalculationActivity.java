@@ -466,6 +466,14 @@ public class CalculationActivity extends AppCompatActivity {
             cashflow[i] = -systemcost + (yearlyprofit * i);
             editor.putFloat("Cashflow" + i, cashflow[i].floatValue());
         }
+        editor.putString("PV Yearly Cost",pvyearlycost.toString());
+        editor.putString("PV Capital Cost",pvcapitalcost.toString());
+        editor.putString("Area",area.toString());
+        editor.putString("PV Power", pvpower.toString());
+        editor.putString("Panel Num", pvnum.toString());
+        editor.putString("PV Gen Year", pvgenyear.toString());
+        editor.putString("PV Gen Average Day", pvgenaverageday.toString());
+        editor.putString("Yearly Profit", yearlyprofit.toString());
         editor.putString("Storage Capacity", storagecapacity.toString());
         editor.putString("Storage Capital Cost", storagecapitalcost.toString());
         editor.putString("Payback", payback.toString());
@@ -655,6 +663,11 @@ public class CalculationActivity extends AppCompatActivity {
             cashflow[i] = -storagecapitalcost + (systemprofit * i);
             editor.putFloat("Cashflow" + i, cashflow[i].floatValue());
         }
+        editor.putString("System Profit",systemprofit.toString());
+        editor.putString("Yearly Storage Cost",storageyearlycost.toString());
+        editor.putString("Storage Capital Cost",storagecapitalcost.toString());
+        editor.putString("Storage Capacity",storagecapacity.toString());
+        editor.putString("Payback",payback.toString());
         editor.commit();
         displayResults();
     }
@@ -840,6 +853,7 @@ public class CalculationActivity extends AppCompatActivity {
         Double pvprofityear = revenueyear - pvyearlycost;
         Double pvprofitmonth = pvprofityear / 12;
         payback = pvcapitalcost / pvprofityear;
+        Double newavgmonthbill = davgmonthbill - pvprofitmonth;
         Double[] cashflow = new Double[24];
         for (int i = 0; i < 24; i++) {
             cashflow[i] = -pvcapitalcost + (pvprofityear * i);
@@ -847,8 +861,18 @@ public class CalculationActivity extends AppCompatActivity {
             editor.putFloat("Cashflow" + i, cashflow[i].floatValue());
             Log.e("PV NO STORAGE", "Cashflow" + i + ": " + cashflow[i]);
         }
+        editor.putString("PV Yearly Cost",pvyearlycost.toString());
+        editor.putString("PV Capital Cost",pvcapitalcost.toString());
+        editor.putString("Area",dsolararea.toString());
+        editor.putString("PV Power", pvpower.toString());
+        editor.putString("Panel Num", panelnum.toString());
+        editor.putString("PV Gen Year", pvgenyear.toString());
+        editor.putString("PV Gen Average Day", pvgenaverageday.toString());
+        editor.putString("PV Profit Year", pvprofityear.toString());
+        editor.putString("Payback", payback.toString());
+        editor.putString("New Avg Month Bill",newavgmonthbill.toString());
         editor.commit();
-        Double newavgmonthbill = davgmonthbill - pvprofitmonth;
+
         displayResults();
 
     }

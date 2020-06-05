@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout_charts"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     android:gravity="center_horizontal"
     tools:context=".ChartsActivity">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginTop="20dp"
-        >
+        android:layout_marginTop="20dp">
+
         <Button
             android:id="@+id/backBtn"
             android:layout_width="30dp"
@@ -53,7 +54,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/result_txt"
-        android:layout_above="@id/bpb_main"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp">
 
@@ -74,9 +74,9 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
-            android:paddingBottom="5dp"
             android:background="@drawable/resultbox"
-            android:elevation="22dp">
+            android:elevation="22dp"
+            android:paddingBottom="5dp">
 
             <TextView
                 android:id="@+id/result_1"
@@ -98,8 +98,8 @@
                 android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/result_1"
                 android:fontFamily="@font/medium"
-                android:text="Output 1"
                 android:maxLines="1"
+                android:text="Output 1"
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
 
@@ -126,8 +126,8 @@
                 android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/result_2"
                 android:fontFamily="@font/medium"
-                android:text="Output 2"
                 android:maxLines="1"
+                android:text="Output 2"
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
 
@@ -154,8 +154,8 @@
                 android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/result_3"
                 android:fontFamily="@font/medium"
-                android:text="Output 3"
                 android:maxLines="1"
+                android:text="Output 3"
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
 
@@ -182,8 +182,8 @@
                 android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/result_4"
                 android:fontFamily="@font/medium"
-                android:text="Output 4"
                 android:maxLines="1"
+                android:text="Output 4"
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
 
@@ -210,8 +210,8 @@
                 android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/result_5"
                 android:fontFamily="@font/medium"
-                android:text="Output 5"
                 android:maxLines="1"
+                android:text="Output 5"
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
 
@@ -238,8 +238,8 @@
                 android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/result_6"
                 android:fontFamily="@font/medium"
-                android:text="Output 6"
                 android:maxLines="1"
+                android:text="Output 6"
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
 
@@ -266,10 +266,11 @@
                 android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/result_7"
                 android:fontFamily="@font/medium"
-                android:text="Output 7"
                 android:maxLines="1"
+                android:text="Output 7"
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
+
             <TextView
                 android:id="@+id/result_8"
                 android:layout_width="wrap_content"
@@ -293,10 +294,11 @@
                 android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/result_8"
                 android:fontFamily="@font/medium"
-                android:text="Output 8"
                 android:maxLines="1"
+                android:text="Output 8"
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
+
             <TextView
                 android:id="@+id/result_9"
                 android:layout_width="wrap_content"
@@ -320,10 +322,11 @@
                 android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/result_9"
                 android:fontFamily="@font/medium"
-                android:text="Output 9"
                 android:maxLines="1"
+                android:text="Output 9"
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
+
             <TextView
                 android:id="@+id/result_10"
                 android:layout_width="wrap_content"
@@ -347,10 +350,11 @@
                 android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/result_10"
                 android:fontFamily="@font/medium"
-                android:text="Output 10"
                 android:maxLines="1"
+                android:text="Output 10"
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
+
             <TextView
                 android:id="@+id/result_11"
                 android:layout_width="wrap_content"
@@ -374,10 +378,11 @@
                 android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/result_11"
                 android:fontFamily="@font/medium"
-                android:text="Output 11"
                 android:maxLines="1"
+                android:text="Output 11"
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
+
             <TextView
                 android:id="@+id/result_12"
                 android:layout_width="wrap_content"
@@ -401,10 +406,11 @@
                 android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/result_12"
                 android:fontFamily="@font/medium"
-                android:text="Output 12"
                 android:maxLines="1"
+                android:text="Output 12"
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
+
             <TextView
                 android:id="@+id/result_13"
                 android:layout_width="wrap_content"
@@ -428,8 +434,8 @@
                 android:layout_marginRight="20dp"
                 android:layout_toRightOf="@id/result_13"
                 android:fontFamily="@font/medium"
-                android:text="Output 13"
                 android:maxLines="1"
+                android:text="Output 13"
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />
 
@@ -437,31 +443,30 @@
 
     </RelativeLayout>
 
-<!--    <Button-->
-<!--        android:id="@+id/buttonsave"-->
-<!--        android:layout_width="100dp"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:layout_marginBottom="15dp"-->
-<!--        android:background="@drawable/button"-->
-<!--        android:elevation="18dp"-->
-<!--        android:text="Save"-->
-<!--        android:textColor="@color/colorTransparentWhite" />-->
-
+    <!--    <Button-->
+    <!--        android:id="@+id/buttonsave"-->
+    <!--        android:layout_width="100dp"-->
+    <!--        android:layout_height="40dp"-->
+    <!--        android:layout_alignParentBottom="true"-->
+    <!--        android:layout_centerHorizontal="true"-->
+    <!--        android:layout_marginBottom="15dp"-->
+    <!--        android:background="@drawable/button"-->
+    <!--        android:elevation="18dp"-->
+    <!--        android:text="Save"-->
+    <!--        android:textColor="@color/colorTransparentWhite" />-->
+    //app:type="indeterminate"
     <github.ishaan.buttonprogressbar.ButtonProgressBar
         android:id="@+id/bpb_main"
-        app:text="Save"
-        app:textColor="@color/colorTransparentWhite"
-        app:type="indeterminate"
         android:layout_width="match_parent"
-        app:bgColor="@color/backgroundBlue"
+        android:layout_below="@id/save_layout"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
+        app:bgColor="#147de6"
+        app:text="Save"
+        app:textColor="@color/colorTransparentWhite"
+         />
 
 
 </RelativeLayout>

@@ -74,7 +74,6 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp"
             android:paddingBottom="5dp"
             android:background="@drawable/resultbox"
             android:elevation="22dp">
@@ -403,6 +402,33 @@
                 android:layout_toRightOf="@id/result_12"
                 android:fontFamily="@font/medium"
                 android:text="Output 12"
+                android:maxLines="1"
+                android:textColor="@color/colorBlack"
+                android:textSize="15sp" />
+            <TextView
+                android:id="@+id/result_13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_12"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/medium"
+                android:gravity="end"
+                android:text="Title 13 : "
+                android:textColor="@color/backgroundBlue"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/result_13_13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/result_12_12"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@id/result_13"
+                android:fontFamily="@font/medium"
+                android:text="Output 13"
                 android:maxLines="1"
                 android:textColor="@color/colorBlack"
                 android:textSize="15sp" />

@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.icu.text.CaseMap;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
@@ -54,7 +55,7 @@ public class ChartsActivity extends AppCompatActivity {
     int kırmızı = 255, yesil = 0, mavi = 0;
     final Context context = this;
     LinearLayout content;
-    TextView title1, title2, title3, title4, title5, title6, title7, title8, title9, title10, title11, title12, output1, output2, output3, output4, output5, output6, output7, output8, output9, output10, output11, output12;
+    TextView title1, title2, title3, title4, title5, title6, title7, title8, title9, title10, title11, title12, title13, output1, output2, output3, output4, output5, output6, output7, output8, output9, output10, output11, output12, output13;
     Button button, backbutton, profile;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -155,6 +156,7 @@ public class ChartsActivity extends AppCompatActivity {
         title10 = findViewById(R.id.result_10);
         title11 = findViewById(R.id.result_11);
         title12 = findViewById(R.id.result_12);
+        title13 = findViewById(R.id.result_13);
         output1 = findViewById(R.id.result_1_1);
         output2 = findViewById(R.id.result_2_2);
         output3 = findViewById(R.id.result_3_3);
@@ -167,6 +169,7 @@ public class ChartsActivity extends AppCompatActivity {
         output10 = findViewById(R.id.result_10_10);
         output11 = findViewById(R.id.result_11_11);
         output12 = findViewById(R.id.result_12_12);
+        output13 = findViewById(R.id.result_13_13);
 
         preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
         editor = preferences.edit();
@@ -524,6 +527,9 @@ public class ChartsActivity extends AppCompatActivity {
                 title8.setText("Yearly Wind Kwh : ");
                 title9.setText("Wind Capital Cost : ");
                 title10.setText("PAYBACK : ");
+                title11.setVisibility(View.GONE);
+                title12.setVisibility(View.GONE);
+                title13.setVisibility(View.GONE);
                 output1.setText(address);
                 output2.setText(typeforuser);
                 output3.setText(restype);
@@ -552,6 +558,9 @@ public class ChartsActivity extends AppCompatActivity {
                 output8.setText(windyearkwh);
                 output9.setText(windcapitalcost);
                 output10.setText(payback);
+                output11.setVisibility(View.GONE);
+                output12.setVisibility(View.GONE);
+                output13.setVisibility(View.GONE);
 
             } else if (restype.equals("SOLAR") && storagetype.equals("NoStorage")) {
                 title1.setText("Location : ");
@@ -566,10 +575,28 @@ public class ChartsActivity extends AppCompatActivity {
                 title10.setText("Solar Capital Cost : ");
                 title11.setText("Yearly Solar Cost : ");
                 title12.setText("PAYBACK : ");
+                title13.setVisibility(View.GONE);
                 output1.setText(address);
                 output2.setText(typeforuser);
                 output3.setText(restype);
-                output4.setText("No Storage");
+                if (storagetype.equals("Li-ion")) {
+                    SpannableString ss = new SpannableString(storagetype + "   Capacity : " + storagepercentage + "%");
+                    ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
+                    ss.setSpan(fcsTitleBlue, 7, 20, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    output4.setText(ss);
+                }
+                if (storagetype.equals("Thermal")) {
+                    SpannableString ss = new SpannableString(storagetype + "   Capacity : " + storagepercentage + "%");
+                    ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
+                    ss.setSpan(fcsTitleBlue, 8, 21, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    output4.setText(ss);
+                }
+                if (storagetype.equals("Lead Acid")) {
+                    SpannableString ss = new SpannableString(storagetype + "   Capacity : " + storagepercentage + "%");
+                    ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
+                    ss.setSpan(fcsTitleBlue, 10, 23, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    output4.setText(ss);
+                }
                 output5.setText(pvprofityear);
                 output6.setText(pvgenavgday);
                 output7.setText(pvgenyear);
@@ -595,9 +622,52 @@ public class ChartsActivity extends AppCompatActivity {
                     output10.setText(pvcapitalcost);
                     output11.setText(pvyearlycost);
                     output12.setText(payback);
+                    output13.setVisibility(View.GONE);
 
                 } else { //SOLAR AND STORAGE TYPE
-
+                title1.setText("Location : ");
+                title2.setText("User Type : ");
+                title3.setText("RES Type : ");
+                title4.setText("Storage Type : ");
+                title5.setText("Yearly Solar Profit : ");
+                title6.setText("Daily Average Generation : ");
+                title7.setText("Yearly Generation : ");
+                title8.setText("Panel number : ");
+                title9.setText("Area : ");
+                title10.setText("Solar Capital Cost : ");
+                title11.setText("Yearly Solar Cost : ");
+                title12.setText("PAYBACK : ");
+                title13.setVisibility(View.GONE);
+                output1.setText(address);
+                output2.setText(typeforuser);
+                output3.setText(restype);
+                output4.setText("No Storage");
+                output5.setText(pvprofityear);
+                output6.setText(pvgenavgday);
+                output7.setText(pvgenyear);
+                Double dpvnum = ParseDouble(pvnum);
+                int ipvnum = (int)Math.round(dpvnum);
+                pvnum = Integer.toString(ipvnum);
+                Double dpvpower = ParseDouble(pvpower);
+                int ipvpower = (int)Math.round(dpvpower);
+                pvpower = Integer.toString(ipvpower);
+                Toast.makeText(getApplicationContext(),pvpower,Toast.LENGTH_LONG).show();
+                if (ipvnum < 10) {
+                    SpannableString ss = new SpannableString( pvnum + "   Solar Power : " + pvpower + " Kw");
+                    ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
+                    ss.setSpan(fcsTitleBlue, 3, 17, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    output8.setText(ss);
+                } else if (ipvnum > 9 && ipvnum < 100) {
+                    SpannableString ss = new SpannableString(pvnum + "   Solar Power : " + pvpower + " Kw");
+                    ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
+                    ss.setSpan(fcsTitleBlue, 4, 18, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    output8.setText(ss);
+                }
+                output9.setText(area + " m\u00B2");
+                output10.setText(pvcapitalcost);
+                output11.setText(pvyearlycost);
+                output12.setText(payback);
+                output13.setVisibility(View.GONE);
                 }
             } else {
 

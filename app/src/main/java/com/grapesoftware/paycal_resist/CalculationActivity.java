@@ -465,6 +465,8 @@ public class CalculationActivity extends AppCompatActivity {
             cashflow[i] = -systemcost + (yearlyprofit * i);
             editor.putFloat("Cashflow" + i, cashflow[i].floatValue());
         }
+        editor.putString("Storage Capacity", storagecapacity.toString());
+        editor.putString("Storage Capital Cost", storagecapitalcost.toString());
         editor.putString("Payback", payback.toString());
 
         editor.commit();

@@ -7,9 +7,6 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Image;
-
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
@@ -37,7 +34,8 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-import com.itextpdf.text.Element;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.File;
@@ -49,7 +47,7 @@ import github.ishaan.buttonprogressbar.ButtonProgressBar;
 
 
 public class ChartsActivity extends AppCompatActivity {
-    String typeforuser, storagetype, restype, payback, winddaykwh, windmonthkwh, windyearkwh, windyearlycost, windcapitalcost, newavgmonthbill, storagecapacity, storagecapitalcost, storagepercentage, turbinecount, turbinetype, address, country;
+    String typeforuser, storagetype, restype, payback, winddaykwh, windmonthkwh, windyearkwh, windyearlycost, windcapitalcost, newavgmonthbill, storagecapacity, storagecapitalcost, storagepercentage, turbinecount, turbinetype, address, country, area, pvprofityear, pvgenavgday, pvgenyear, pvnum, pvpower, pvcapitalcost, pvyearlycost, turbineprice;
     LineChart mpLineChart;
     Float[] cashFloat = new Float[24];
     private int currentIndex = 0;
@@ -57,13 +55,11 @@ public class ChartsActivity extends AppCompatActivity {
     final Context context = this;
     LinearLayout content;
     TextView title1, title2, title3, title4, title5, title6, title7, title8, title9, title10, output1, output2, output3, output4, output5, output6, output7, output8, output9, output10;
-    Button button,backbutton,profile;
+    Button button, backbutton, profile;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     Document document;
-    String filename,filenamepdf;
-
-
+    String filename, filenamepdf;
 
 
     @Override
@@ -75,7 +71,7 @@ public class ChartsActivity extends AppCompatActivity {
         int renk1, renk2;
         int[] colorArray = new int[24];
 
-        backbutton=findViewById(R.id.backBtn);
+        backbutton = findViewById(R.id.backBtn);
 
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,11 +79,11 @@ public class ChartsActivity extends AppCompatActivity {
                 finish();
             }
         });
-        profile=findViewById(R.id.profile);
+        profile = findViewById(R.id.profile);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(ChartsActivity.this,ProfileActivity.class);
+                Intent intent = new Intent(ChartsActivity.this, ProfileActivity.class);
                 startActivity(intent);
                 //finish();
             }
@@ -118,25 +114,24 @@ public class ChartsActivity extends AppCompatActivity {
 
                 // Will run the conversion in another thread to avoid the UI to be frozen
                 Thread t = new Thread() {
-                    public void run()
-                    {
+                    public void run() {
                         // Input file
                         String inputPath = filename;
 
                         // Output file
-                        String outputPath = Environment.getExternalStorageDirectory() + File.separator + filename+"PaycalPDF.pdf";
+                        String outputPath = Environment.getExternalStorageDirectory() + File.separator + filename + "PaycalPDF.pdf";
 
                         File pdfFileDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "PayCal_RESIST");
-                        filenamepdf = pdfFileDir.getPath() + File.separator +"Results"+ System.currentTimeMillis() + ".pdf";
+                        filenamepdf = pdfFileDir.getPath() + File.separator + "Results" + System.currentTimeMillis() + ".pdf";
 
                         // Run conversion
                         final boolean result = ChartsActivity.this.convertToPdf(inputPath, filenamepdf);
 
                         // Notify the UI
                         runOnUiThread(new Runnable() {
-                            public void run()
-                            {
-                                if (!result) Toast.makeText(ChartsActivity.this, "An error occured while converting the JPG to PDF.", Toast.LENGTH_SHORT).show();
+                            public void run() {
+                                if (!result)
+                                    Toast.makeText(ChartsActivity.this, "An error occured while converting the JPG to PDF.", Toast.LENGTH_SHORT).show();
 
 //                                if (result) Toast.makeText(ChartsActivity.this, "The JPG was successfully converted to PDF.", Toast.LENGTH_SHORT).show();
 //                                else Toast.makeText(ChartsActivity.this, "An error occured while converting the JPG to PDF.", Toast.LENGTH_SHORT).show();
@@ -189,7 +184,15 @@ public class ChartsActivity extends AppCompatActivity {
         turbinetype = preferences.getString("Turbine Type", "1500.0");
         address = preferences.getString("Adress", null);
         country = preferences.getString("Country", null);
-
+        pvprofityear = preferences.getString("PV Profit Year", null);
+        pvgenavgday = preferences.getString("PV Gen Average Day", null);
+        pvgenyear = preferences.getString("PV Gen Year", null);
+        pvnum = preferences.getString("Panel Num", null);
+        pvpower = preferences.getString("PV Power", null);
+        area = preferences.getString("Area", null);
+        pvcapitalcost = preferences.getString("PV Capital Cost", null);
+        pvyearlycost = preferences.getString("PV Yearly Cost", null);
+        turbineprice = preferences.getString("Price",null);
 
 //        button = findViewById(R.id.buttonsave);
 //        button.setOnClickListener(new View.OnClickListener() {
@@ -320,6 +323,16 @@ public class ChartsActivity extends AppCompatActivity {
         showResult();
     }
 
+    double ParseDouble(String strNumber) {
+        if (strNumber != null && strNumber.length() > 0) {
+            try {
+                return Double.parseDouble(strNumber);
+            } catch (Exception e) {
+                return -1;   // or some value to mark this field is wrong. or make a function validates field first ...
+            }
+        } else return 0;
+    }
+
     private ArrayList<Entry> dataValues1() {
         ArrayList<Entry> dataVals = new ArrayList<Entry>();
         for (int i = 0; i < cashFloat.length; i++) {
@@ -410,7 +423,10 @@ public class ChartsActivity extends AppCompatActivity {
                 output2.setText(typeforuser);
                 output3.setText(restype);
                 output4.setText("No Storage");
-                output5.setText(turbinetype);
+                SpannableString ss = new SpannableString(turbinetype + "   Price : " + turbineprice + "$");
+                ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
+                ss.setSpan(fcsTitleBlue, 7, 15, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                output5.setText(ss);
                 output6.setText(turbinecount);
                 output7.setText(windmonthkwh);
                 output8.setText(windcapitalcost);
@@ -452,7 +468,10 @@ public class ChartsActivity extends AppCompatActivity {
                     output4.setText(ss);
                 }
                 output5.setText(storagecapitalcost);
-                output6.setText(turbinetype);
+                SpannableString ss = new SpannableString(turbinetype + "   Price : " + turbineprice + "$");
+                ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
+                ss.setSpan(fcsTitleBlue, 7, 15, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                output6.setText(ss);
                 output7.setText(turbinecount);
                 output8.setText(windmonthkwh);
                 output9.setText(windcapitalcost);
@@ -481,7 +500,10 @@ public class ChartsActivity extends AppCompatActivity {
                 output2.setText(typeforuser);
                 output3.setText(restype);
                 output4.setText("No Storage");
-                output5.setText("1500 Kw");
+                SpannableString ss = new SpannableString("1500 Kw   Price : " + turbineprice + "$");
+                ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
+                ss.setSpan(fcsTitleBlue, 10, 17, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                output5.setText(ss);
                 output6.setText(turbinecount);
                 output7.setText(windyearkwh);
                 output8.setText(windyearlycost);
@@ -506,79 +528,109 @@ public class ChartsActivity extends AppCompatActivity {
                     ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
                     ss.setSpan(fcsTitleBlue, 7, 20, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     output4.setText(ss);
-                }
-                else if (storagetype.equals("Thermal")) {
+                } else if (storagetype.equals("Thermal")) {
                     SpannableString ss = new SpannableString(storagetype + "   Capacity : " + storagepercentage + "%");
                     ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
                     ss.setSpan(fcsTitleBlue, 8, 21, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     output4.setText(ss);
-                }
-                 else if (storagetype.equals("Lead Acid")) {
+                } else if (storagetype.equals("Lead Acid")) {
                     SpannableString ss = new SpannableString(storagetype + "   Capacity : " + storagepercentage + "%");
                     ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
                     ss.setSpan(fcsTitleBlue, 10, 23, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     output4.setText(ss);
                 }
                 output5.setText(storagecapitalcost);
-                output6.setText("1500 Kw");
+                SpannableString ss = new SpannableString("1500 Kw   Price : 1154.76 $");
+                ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
+                ss.setSpan(fcsTitleBlue, 10, 17, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                output6.setText(ss);
                 output7.setText(turbinecount);
                 output8.setText(windyearkwh);
                 output9.setText(windcapitalcost);
                 output10.setText(payback);
 
             } else if (restype.equals("SOLAR") && storagetype.equals("NoStorage")) {
+                title1.setText("Location : ");
+                title2.setText("User Type : ");
+                title3.setText("RES Type : ");
+                title4.setText("Storage Type : ");
+                title5.setText("Yearly Solar Profit : ");
+                title6.setText("Daily Average Generation : ");
+                title7.setText("Yearly Generation : ");
+                title8.setText("Panel number : ");
+                title9.setText("Area : ");
+                title10.setText("PAYBACK : ");
+                output1.setText(address);
+                output2.setText(typeforuser);
+                output3.setText(restype);
+                output4.setText("No Storage");
+                output5.setText(pvprofityear);
+                output6.setText(pvgenavgday);
+                output7.setText(pvgenyear);
+                Double dpvnum = ParseDouble(pvnum);
+                if (dpvnum < 10) {
+                    SpannableString ss = new SpannableString(pvnum + "   Solar Power : " + pvpower + "Kw");
+                    ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
+                    ss.setSpan(fcsTitleBlue, 3, 17, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    output8.setText(ss);
+                } else if (dpvnum > 9 && dpvnum < 100) {
+                    SpannableString ss = new SpannableString(pvnum + "   Solar Power : " + pvpower + "Kw");
+                    ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
+                    ss.setSpan(fcsTitleBlue, 4, 18, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    output8.setText(ss);
+                }
+                    output9.setText(area);
+                    output10.setText(payback);
 
-            } else { //SOLAR AND STORAGE TYPE
+                } else { //SOLAR AND STORAGE TYPE
+
+                }
+            } else {
 
             }
-        } else {
+        }
 
+        // used for scanning gallery
+        private void scanGallery (Context cntx, String path){
+            try {
+                MediaScannerConnection.scanFile(cntx, new String[]{path}, null, new MediaScannerConnection.OnScanCompletedListener() {
+                    public void onScanCompleted(String path, Uri uri) {
+                    }
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.i("TAG", "There was an issue scanning gallery.");
+            }
+        }
+
+        public static boolean convertToPdf (String jpgFilePath, String outputPdfPath){
+            try {
+                // Check if Jpg file exists or not
+                File inputFile = new File(jpgFilePath);
+                if (!inputFile.exists())
+                    throw new Exception("File '" + jpgFilePath + "' doesn't exist.");
+
+                // Create output file if needed
+                File outputFile = new File(outputPdfPath);
+                if (!outputFile.exists()) outputFile.createNewFile();
+
+                Document document = new Document();
+                PdfWriter.getInstance(document, new FileOutputStream(outputFile));
+                document.open();
+                Image image = Image.getInstance(jpgFilePath);
+                int indentation = 0;
+
+                float scaler = ((document.getPageSize().getWidth() - document.leftMargin()
+                        - document.rightMargin() - indentation) / image.getWidth()) * 100;
+
+                image.scalePercent(scaler);
+                document.add(image);
+                document.close();
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return false;
         }
     }
-
-    // used for scanning gallery
-    private void scanGallery(Context cntx, String path) {
-        try {
-            MediaScannerConnection.scanFile(cntx, new String[]{path}, null, new MediaScannerConnection.OnScanCompletedListener() {
-                public void onScanCompleted(String path, Uri uri) {
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-            Log.i("TAG", "There was an issue scanning gallery.");
-        }
-    }
-    public static boolean convertToPdf(String jpgFilePath, String outputPdfPath)
-    {
-        try
-        {
-            // Check if Jpg file exists or not
-            File inputFile = new File(jpgFilePath);
-            if (!inputFile.exists()) throw new Exception("File '" + jpgFilePath + "' doesn't exist.");
-
-            // Create output file if needed
-            File outputFile = new File(outputPdfPath);
-            if (!outputFile.exists()) outputFile.createNewFile();
-
-            Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream(outputFile));
-            document.open();
-            Image image = Image.getInstance(jpgFilePath);
-            int indentation = 0;
-
-            float scaler = ((document.getPageSize().getWidth() - document.leftMargin()
-                    - document.rightMargin() - indentation) / image.getWidth()) * 100;
-
-            image.scalePercent(scaler);
-            document.add(image);
-            document.close();
-            return true;
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-
-        return false;
-    }
-}

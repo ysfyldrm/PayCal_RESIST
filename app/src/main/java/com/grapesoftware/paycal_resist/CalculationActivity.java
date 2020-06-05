@@ -392,6 +392,14 @@ public class CalculationActivity extends AppCompatActivity {
             cashflow[i] = -pvcapitalcost + (pvprofityear * i);
             editor.putFloat("Cashflow" + i, cashflow[i].floatValue());
         }
+        editor.putString("PV Yearly Cost",pvyearlycost.toString());
+        editor.putString("PV Capital Cost",pvcapitalcost.toString());
+        editor.putString("Area",area.toString());
+        editor.putString("PV Power", pvpower.toString());
+        editor.putString("Panel Num", pvnum.toString());
+        editor.putString("PV Gen Year", pvgenyear.toString());
+        editor.putString("PV Gen Average Day", pvgenaverageday.toString());
+        editor.putString("PV Profit Year", pvprofityear.toString());
         editor.putString("Payback", payback.toString());
 
         editor.commit();
@@ -695,6 +703,7 @@ public class CalculationActivity extends AppCompatActivity {
 
             editor.putFloat("Cashflow" + i, cashflow[i].floatValue());
         }
+        editor.putString("Price",price.toString());
         editor.putString("Payback", payback.toString());
         editor.putString("Wind Month Kwh", windkwarray.toString());
         editor.putString("Wind Day Kwh", winddaykwh.toString());
@@ -756,6 +765,7 @@ public class CalculationActivity extends AppCompatActivity {
                 editor.putFloat("Cashflow" + i, cashflow[i].floatValue());
                 Log.e("CASHFLOW WITH STORAGE", "Cashflow" + i + ": " + cashflow[i]);
             }
+            editor.putString("Price",price.toString());
             editor.putString("Payback", payback.toString());
             editor.putString("Wind Month Kwh", windkwarray.toString());
             editor.putString("Wind Day Kwh", winddaykwh.toString());

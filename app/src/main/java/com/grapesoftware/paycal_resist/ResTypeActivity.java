@@ -285,9 +285,7 @@ public class ResTypeActivity extends AppCompatActivity {
                     turbineCount.requestFocus();
                     return;
                 }
-                else if(TextUtils.isEmpty(rdbtext)){
-                    Toast.makeText(getApplicationContext(),"You have to choose Turbine Type!",Toast.LENGTH_SHORT).show();
-                }
+
                 else {
 
                     Intent intentwind = new Intent(ResTypeActivity.this, StorageTypeActivity.class);

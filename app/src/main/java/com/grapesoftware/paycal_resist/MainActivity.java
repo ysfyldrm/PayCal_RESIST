@@ -129,24 +129,10 @@ public class MainActivity extends AppCompatActivity {
                                 location.getLatitude(), location.getLongitude(), 1
                         );
 
-//                        //set Latitude on TextView
-//                        textView1.setText(Html.fromHtml("<font color='#181a24'><b>Latitude :</b><br></font>" + addresses.get(0).getLatitude()));
                         Latitude = String.valueOf(addresses.get(0).getLatitude());
-//
-//                        //set Longitude on TextView
-//                        textView2.setText(Html.fromHtml("<font color='#181a24'><b>Longitude :</b><br></font>" + addresses.get(0).getLongitude()));
                         Longitude = String.valueOf(addresses.get(0).getLongitude());
                         Country=String.valueOf(addresses.get(0).getCountryName());
                         Adress=String.valueOf(addresses.get(0).getAddressLine(0));
-//                        //set Country Name
-//                        textView3.setText(Html.fromHtml("<font color='#181a24'><b>Country :</b><br></font>" + addresses.get(0).getCountryName()));
-//
-//                        //set Locality
-//                        textView4.setText(Html.fromHtml("<font color='#181a24'><b>Locality :</b><br></font>" + addresses.get(0).getLocality()));
-//
-//                        //set address
-//                        textView5.setText(Html.fromHtml("<font color='#181a24'><b>Address :</b><br></font>" + addresses.get(0).getAddressLine(0)));
-
 
                         preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
                         Intent intent=new Intent(MainActivity.this,MapsActivity.class);

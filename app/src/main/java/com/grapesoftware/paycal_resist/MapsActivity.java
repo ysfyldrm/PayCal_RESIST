@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -30,6 +31,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     Marker marker;
     String latitude, longitude, adress, country;
+    SearchView searchview;
     private GoogleMap mMap;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -48,8 +50,48 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         longitude = preferences.getString("Longitude", null);
         editor = preferences.edit();
 
-        Button button = findViewById(R.id.btnnextactivity);
+        //Button button = findViewById(R.id.btnnextactivity);
+        searchview = findViewById(R.id.sv_location);
 
+        searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                String location = searchview.getQuery().toString();
+                List<Address> addressList = null;
+
+                if (location !=null || !location.equals("")) {
+                    Geocoder geocoder = new Geocoder(MapsActivity.this);
+                    try {
+                        addressList = geocoder.getFromLocationName(location,1);
+                    } catch (IOException e){
+                        e.printStackTrace();
+                    }
+                    Address address = addressList.get(0);
+                    LatLng latLng = new LatLng(address.getLatitude(),address.getLongitude());
+                    mMap.addMarker(new MarkerOptions().position(latLng).title(location));
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
+                    latitude = String.valueOf(latLng.latitude);
+                    longitude = String.valueOf(latLng.longitude);
+                    adress = addressList.get(0).getAddressLine(0);
+                    country = addressList.get(0).getCountryName();
+
+                    editor.putString("Latitude", latitude);
+                    editor.putString("Longitude", longitude);
+                    editor.putString("Country", country);
+                    editor.putString("Adress", adress);
+                    editor.commit();
+
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+        mapFragment.getMapAsync(this);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

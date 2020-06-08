@@ -1,19 +1,16 @@
 package com.grapesoftware.paycal_resist;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.FragmentActivity;
-
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -22,7 +19,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.material.button.MaterialButton;
 
 import java.io.IOException;
 import java.util.List;
@@ -81,26 +77,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     } catch (IOException e){
                         e.printStackTrace();
                     }
-                    Address address = addressList.get(0);
-                    LatLng latLng = new LatLng(address.getLatitude(),address.getLongitude());
-                    MarkerOptions options = new MarkerOptions()
-                            .title(address.getLocality())
-                            .position(latLng);
+                    if(!addressList.isEmpty()) {
+                        Address address = addressList.get(0);
+                        LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+                        MarkerOptions options = new MarkerOptions()
+                                .title(address.getLocality())
+                                .position(latLng);
 
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,15));
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
 
-                    marker=mMap.addMarker(options);
+                        marker = mMap.addMarker(options);
 
-                    latitude = String.valueOf(latLng.latitude);
-                    longitude = String.valueOf(latLng.longitude);
-                    adress = addressList.get(0).getAddressLine(0);
-                    country = addressList.get(0).getCountryName();
+                        latitude = String.valueOf(latLng.latitude);
+                        longitude = String.valueOf(latLng.longitude);
+                        adress = addressList.get(0).getAddressLine(0);
+                        country = addressList.get(0).getCountryName();
 
-                    editor.putString("Latitude", latitude);
-                    editor.putString("Longitude", longitude);
-                    editor.putString("Country", country);
-                    editor.putString("Adress", adress);
-                    editor.commit();
+                        editor.putString("Latitude", latitude);
+                        editor.putString("Longitude", longitude);
+                        editor.putString("Country", country);
+                        editor.putString("Adress", adress);
+                        editor.commit();
+                    }
+                    else
+                        Toast.makeText(getApplicationContext(),"We couldn't find the address you specified. Please select from the map.",Toast.LENGTH_LONG).show();
 
                 }
                 return false;

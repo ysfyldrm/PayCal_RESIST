@@ -105,7 +105,6 @@
         android:imeOptions="actionDone"
         android:hint="%"
         android:inputType="number"
-        android:maxLength="2"
         android:textColor="@color/colorTransparentWhite"
         android:textColorHint="@color/colorTransparentWhite"
         android:textSize="15sp" />

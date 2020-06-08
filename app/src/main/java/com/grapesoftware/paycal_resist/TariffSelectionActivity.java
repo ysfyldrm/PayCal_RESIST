@@ -13,7 +13,6 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -589,7 +588,10 @@ public class TariffSelectionActivity extends AppCompatActivity {
                     SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
 
                     SharedPreferences.Editor editor = preferences.edit();
-                    Double tax = Double.valueOf(taxx.getText().toString());
+                    String dtaxxvalue;
+                    dtaxxvalue = taxx.getText().toString().replace(",", ".");
+
+                    Double tax = ParseDouble(dtaxxvalue);
                     Double taxpercent = tax / 100;
 
                     editor.putString("Morning Tariff", morningTariff.getText().toString());
@@ -613,6 +615,16 @@ public class TariffSelectionActivity extends AppCompatActivity {
         Window window = dialog.getWindow();
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+    }
+
+    double ParseDouble(String strNumber) {
+        if (strNumber != null && strNumber.length() > 0) {
+            try {
+                return Double.parseDouble(strNumber);
+            } catch (Exception e) {
+                return -1;   // or some value to mark this field is wrong. or make a function validates field first ...
+            }
+        } else return 0;
     }
 
     public void showMyCustomEPDKAlertDialogPro() {
@@ -1184,7 +1196,10 @@ public class TariffSelectionActivity extends AppCompatActivity {
                     dialog.dismiss();
                     Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
                     SharedPreferences preferences = getSharedPreferences("session", getApplicationContext().MODE_PRIVATE);
-                    Double tax = Double.valueOf(taxx.getText().toString());
+
+                    String dtaxxvalue;
+                    dtaxxvalue = taxx.getText().toString().replace(",", ".");
+                    Double tax = ParseDouble(dtaxxvalue);
                     Double taxpercent = tax / 100;
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("Morning Tariff", morning.getText().toString());

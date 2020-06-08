@@ -10,6 +10,7 @@
         android:layout_height="25dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
+        android:visibility="gone"
         android:background="@drawable/ic_backbutton" />
 
     <TextView

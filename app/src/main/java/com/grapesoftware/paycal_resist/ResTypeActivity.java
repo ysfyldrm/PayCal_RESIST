@@ -3,13 +3,11 @@ package com.grapesoftware.paycal_resist;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.RestrictionEntry;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -21,8 +19,6 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import org.w3c.dom.Text;
 
 public class ResTypeActivity extends AppCompatActivity {
     Button windbtn, pvbtn, biomassbtn, backbutton,profile;
@@ -169,6 +165,7 @@ public class ResTypeActivity extends AppCompatActivity {
 
                 Button ownconfirmbutton = dialog2.findViewById(R.id.own_confirm_button);
                 Button backbutton1=dialog2.findViewById(R.id.backBtn);
+                backbutton1.setVisibility(View.VISIBLE);
 
                 final EditText areaedt = dialog2.findViewById(R.id.area_count_edt);
                 areaedt.setTransformationMethod(null);

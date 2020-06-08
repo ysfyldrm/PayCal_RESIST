@@ -168,6 +168,7 @@
         android:layout_toRightOf="@id/tax_txt"
         android:backgroundTint="@color/colorTransparentWhite"
         android:digits="0123456789.,"
+
         android:gravity="center"
         android:hint="%"
         android:imeOptions="actionNext"

@@ -31,10 +31,9 @@
             android:layout_below="@id/avg_month_bill_txt"
             android:layout_centerHorizontal="true"
             android:background="@drawable/button"
-            android:drawableLeft="@drawable/deneme_icon_logo"
             android:elevation="20dp"
             android:fontFamily="@font/bold"
-            android:text="RESIDENTIAL\nLOW VOLTAGE"
+            android:text="RESIDENTIAL\nLOW \nVOLTAGE"
             android:textColor="@color/colorTransparentWhite"
             android:textSize="15sp" />
 
@@ -46,10 +45,9 @@
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="10dp"
             android:background="@drawable/button"
-            android:drawableLeft="@drawable/deneme_icon_logo"
             android:elevation="20dp"
             android:fontFamily="@font/bold"
-            android:text="RESIDENTIAL\nMEDIUM VOLTAGE"
+            android:text="RESIDENTIAL\nMEDIUM \nVOLTAGE"
             android:textColor="@color/colorTransparentWhite"
             android:textSize="15sp" />
 
@@ -71,10 +69,9 @@
             android:layout_below="@id/avg_month_bill_txt"
             android:layout_centerHorizontal="true"
             android:background="@drawable/button"
-            android:drawableLeft="@drawable/deneme_icon_logo"
             android:elevation="20dp"
             android:fontFamily="@font/bold"
-            android:text="COMMERCIAL\nLOW VOLTAGE"
+            android:text="COMMERCIAL\nLOW \nVOLTAGE"
             android:textColor="@color/colorTransparentWhite"
             android:textSize="15sp" />
 
@@ -86,10 +83,9 @@
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="10dp"
             android:background="@drawable/button"
-            android:drawableLeft="@drawable/deneme_icon_logo"
             android:elevation="20dp"
             android:fontFamily="@font/bold"
-            android:text="COMMERCIAL\nMEDIUM VOLTAGE"
+            android:text="COMMERCIAL\nMEDIUM \nVOLTAGE"
             android:textColor="@color/colorTransparentWhite"
             android:textSize="15sp" />
 
@@ -112,10 +108,9 @@
             android:layout_below="@id/avg_month_bill_txt"
             android:layout_centerHorizontal="true"
             android:background="@drawable/button"
-            android:drawableLeft="@drawable/deneme_icon_logo"
             android:elevation="20dp"
             android:fontFamily="@font/bold"
-            android:text="INDUSTRIAL\nLOW VOLTAGE"
+            android:text="INDUSTRIAL\nLOW \nVOLTAGE"
             android:textColor="@color/colorTransparentWhite"
             android:textSize="15sp" />
 
@@ -127,10 +122,9 @@
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="10dp"
             android:background="@drawable/button"
-            android:drawableLeft="@drawable/deneme_icon_logo"
             android:elevation="20dp"
             android:fontFamily="@font/bold"
-            android:text="INDUSTRIAL\nMEDIUM VOLTAGE"
+            android:text="INDUSTRIAL\nMEDIUM \nVOLTAGE"
             android:textColor="@color/colorTransparentWhite"
             android:textSize="15sp" />
 

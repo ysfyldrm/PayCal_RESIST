@@ -51,10 +51,7 @@ public class CalculationActivity extends AppCompatActivity {
 
         mQueue = Volley.newRequestQueue(this);
         txtView = findViewById(R.id.txtLoading);
-        //progressBar = (ProgressBar) findViewById(R.id.spin_kit);
-        //Wave wave = new Wave();
-        //progressBar.setIndeterminateDrawable(wave);
-        //progressBar.setVisibility(View.INVISIBLE);
+        loadercontentcounter = 0;
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("paycal-resist");
         myRef.addValueEventListener(new ValueEventListener() {

@@ -6,16 +6,15 @@ import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
+
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.FragmentActivity;
 
-import com.google.android.gms.maps.CameraUpdate;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -23,6 +22,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.button.MaterialButton;
 
 import java.io.IOException;
 import java.util.List;
@@ -35,6 +35,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
+    Button buttongo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         latitude = preferences.getString("Latitude", null);
         longitude = preferences.getString("Longitude", null);
         editor = preferences.edit();
+        buttongo=findViewById(R.id.buttongo);
+
+        buttongo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MapsActivity.this, CustomerActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //Button button = findViewById(R.id.btnnextactivity);
         searchview = findViewById(R.id.sv_location);
@@ -56,6 +67,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+
+                if (marker != null) {
+                    marker.remove();
+                }
                 String location = searchview.getQuery().toString();
                 List<Address> addressList = null;
 
@@ -68,8 +83,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     }
                     Address address = addressList.get(0);
                     LatLng latLng = new LatLng(address.getLatitude(),address.getLongitude());
-                    mMap.addMarker(new MarkerOptions().position(latLng).title(location));
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
+                    MarkerOptions options = new MarkerOptions()
+                            .title(address.getLocality())
+                            .position(latLng);
+
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,15));
+
+                    marker=mMap.addMarker(options);
+
                     latitude = String.valueOf(latLng.latitude);
                     longitude = String.valueOf(latLng.longitude);
                     adress = addressList.get(0).getAddressLine(0);
@@ -93,14 +114,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mapFragment.getMapAsync(this);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MapsActivity.this, CustomerActivity.class);
-                startActivity(intent);
-
-            }
-        });
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MapsActivity.this, CustomerActivity.class);
+//                startActivity(intent);
+//
+//            }
+//        });
     }
 
 
@@ -116,10 +137,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.getUiSettings().setTiltGesturesEnabled(true);
+        mMap.setMyLocationEnabled(true);
+        mMap.setPadding(0,searchview.getHeight()+10,0,buttongo.getHeight()+10);
+        mMap.getUiSettings().setCompassEnabled(true);
+//        mMap.getUiSettings().setMyLocationButtonEnabled(true);
+
+
 
         mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override
             public void onMapLongClick(LatLng latLng) {
+                mMap.clear();
                 Geocoder geocoder = new Geocoder(MapsActivity.this);
                 List<Address> list;
                 try {
@@ -128,9 +158,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     return;
                 }
                 Address address = list.get(0);
-                if (marker != null) {
-                    marker.remove();
-                }
+//                if (marker != null) {
+//                    marker.remove();
+//                }
                 MarkerOptions options = new MarkerOptions()
                         .title(address.getLocality())
                         .position(new LatLng(latLng.latitude, latLng.longitude));
@@ -153,6 +183,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
 
 
+
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(Double.valueOf(latitude), Double.valueOf(longitude));
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Your Location"));
@@ -160,44 +191,44 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-    public void findLocation(View v) throws IOException {
-
-        EditText et = (EditText) findViewById(R.id.editTextLocate);
-        String location = et.getText().toString();
-        Geocoder geocoder = new Geocoder(this);
-        List<Address> list = geocoder.getFromLocationName(location, 1);
-        Address add = list.get(0);
-        String locality = add.getLocality();
-        LatLng ll = new LatLng(add.getLatitude(), add.getLongitude());
-
-        latitude = String.valueOf(add.getLatitude());
-        longitude = String.valueOf(add.getLongitude());
-
-
-        CameraUpdate update = CameraUpdateFactory.newLatLngZoom(ll, 15);
-        mMap.moveCamera(update);
-        if (marker != null)
-            marker.remove();
-        MarkerOptions markerOptions = new MarkerOptions()
-                .title(locality)
-                .position(new LatLng(add.getLatitude(), add.getLongitude()));
-        marker = mMap.addMarker(markerOptions);
-        adress = list.get(0).getAddressLine(0);
-        country = list.get(0).getCountryName();
-
-        editor.putString("Latitude", latitude);
-        editor.putString("Longitude", longitude);
-        editor.putString("Country", country);
-        editor.putString("Adress", adress);
-        editor.commit();
-
-        View view = this.getCurrentFocus();
-        if (view != null) {
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }
-
-    }
+//    public void findLocation(View v) throws IOException {
+//
+//        EditText et = (EditText) findViewById(R.id.editTextLocate);
+//        String location = et.getText().toString();
+//        Geocoder geocoder = new Geocoder(this);
+//        List<Address> list = geocoder.getFromLocationName(location, 1);
+//        Address add = list.get(0);
+//        String locality = add.getLocality();
+//        LatLng ll = new LatLng(add.getLatitude(), add.getLongitude());
+//
+//        latitude = String.valueOf(add.getLatitude());
+//        longitude = String.valueOf(add.getLongitude());
+//
+//
+//        CameraUpdate update = CameraUpdateFactory.newLatLngZoom(ll, 15);
+//        mMap.moveCamera(update);
+//        if (marker != null)
+//            marker.remove();
+//        MarkerOptions markerOptions = new MarkerOptions()
+//                .title(locality)
+//                .position(new LatLng(add.getLatitude(), add.getLongitude()));
+//        marker = mMap.addMarker(markerOptions);
+//        adress = list.get(0).getAddressLine(0);
+//        country = list.get(0).getCountryName();
+//
+//        editor.putString("Latitude", latitude);
+//        editor.putString("Longitude", longitude);
+//        editor.putString("Country", country);
+//        editor.putString("Adress", adress);
+//        editor.commit();
+//
+//        View view = this.getCurrentFocus();
+//        if (view != null) {
+//            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+//        }
+//
+//    }
 
 
 }

@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import br.com.sapereaude.maskedEditText.MaskedEditText;
 
@@ -33,6 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
     MaskedEditText editTextMobile;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
         registerUserName = (EditText) findViewById(R.id.registerUserName);
         registerPassword = (EditText) findViewById(R.id.registerPassword);
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
-
         editTextMobile = (MaskedEditText) findViewById(R.id.editTextMobile);
-
         editTextMobile.setMask("+90 (5##) ### ## ##");
 
 

@@ -55,12 +55,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/result_txt"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:paddingBottom="10dp">
 
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/line_chart"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="220dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
@@ -454,7 +455,7 @@
     <!--        android:elevation="18dp"-->
     <!--        android:text="Save"-->
     <!--        android:textColor="@color/colorTransparentWhite" />-->
-    //app:type="indeterminate"
+    //
     <github.ishaan.buttonprogressbar.ButtonProgressBar
         android:id="@+id/bpb_main"
         android:layout_width="match_parent"
@@ -465,6 +466,7 @@
         android:layout_marginRight="40dp"
         app:bgColor="#147de6"
         app:text="Save"
+        app:type="indeterminate"
         app:textColor="@color/colorTransparentWhite"
          />
 

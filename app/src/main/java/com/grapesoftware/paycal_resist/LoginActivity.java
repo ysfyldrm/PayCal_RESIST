@@ -27,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private String userName,userPassword;
     private TextView txtRegister;
     private TextView txtForgetPass;
+    String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,8 @@ public class LoginActivity extends AppCompatActivity {
         firebaseUser = mAuth.getCurrentUser();
 
         if(firebaseUser != null){ // check user session
+            email=mAuth.getCurrentUser().getEmail();
+            edtuserName.setText(email);
 
             Intent i=new Intent(LoginActivity.this,MainActivity.class);
             startActivity(i);
@@ -111,6 +114,9 @@ public class LoginActivity extends AppCompatActivity {
     //Change UI according to user data.
     private void  updateUI(FirebaseUser account){
         if(account != null){
+
+            email=mAuth.getCurrentUser().getEmail();
+            edtuserName.setText(email);
             Toast.makeText(this,"Successfully signed in.",Toast.LENGTH_LONG).show();
             startActivity(new Intent(this,MainActivity.class));
         }else {

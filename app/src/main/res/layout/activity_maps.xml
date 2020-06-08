@@ -23,55 +23,74 @@
         android:background="@drawable/search_bg"
         android:elevation="5dp"
         app:iconifiedByDefault="false"
+        android:alpha="0.85"
         app:queryHint="Search..." />
 
-    <!--    <LinearLayout-->
-    <!--        android:layout_alignParentTop="true"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:background="@color/backgroundBlue"-->
-    <!--        android:gravity="center"-->
-    <!--        android:orientation="horizontal">-->
+
+    <Button
+        android:id="@+id/buttongo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Set Location"
+        android:layout_alignBottom="@id/map"
+        android:background="@drawable/search_bg"
+        android:textFontWeight="1"
+        android:elevation="5dp"
+        android:textAllCaps="false"
+        android:alpha="0.85"
+        android:layout_margin="10dp"
+        android:textSize="20sp"
+        android:fontFamily="@font/bold"
+         />
 
 
-    <!--        <EditText-->
-    <!--            android:id="@+id/editTextLocate"-->
-    <!--            android:layout_width="170dp"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_gravity="center_horizontal"-->
-    <!--            android:layout_marginLeft="10dp"-->
-    <!--            android:backgroundTint="@color/colorTransparentWhite"-->
-    <!--            android:fontFamily="@font/medium"-->
-    <!--            android:singleLine="true"-->
-    <!--            android:inputType="textAutoCorrect"-->
-    <!--            android:imeOptions="actionDone"-->
-    <!--            android:textColor="@color/colorTransparentWhite" />-->
-
-    <!--        <Button-->
-    <!--            android:id="@+id/buttonmaps"-->
-    <!--            android:layout_width="50dp"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:layout_marginLeft="10dp"-->
-    <!--            android:background="@drawable/button"-->
-    <!--            android:fontFamily="@font/bold"-->
-    <!--            android:onClick="findLocation"-->
-    <!--            android:text="Go"-->
-    <!--            android:textColor="@color/colorTransparentWhite" />-->
+<!--        <LinearLayout-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@color/backgroundBlue"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="horizontal">-->
 
 
-    <!--        <Button-->
-    <!--            android:id="@+id/btnnextactivity"-->
-    <!--            android:layout_width="50dp"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:layout_marginLeft="10dp"-->
-    <!--            android:layout_marginRight="40dp"-->
-    <!--            android:background="@drawable/button"-->
-    <!--            android:fontFamily="@font/bold"-->
-    <!--            android:text=">"-->
-    <!--            android:textColor="@color/colorTransparentWhite" />-->
+<!--            <EditText-->
+<!--                android:id="@+id/editTextLocate"-->
+<!--                android:layout_width="170dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:backgroundTint="@color/colorTransparentWhite"-->
+<!--                android:fontFamily="@font/medium"-->
+<!--                android:singleLine="true"-->
+<!--                android:inputType="textAutoCorrect"-->
+<!--                android:imeOptions="actionDone"-->
+<!--                android:textColor="@color/colorTransparentWhite" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/buttonmaps"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:background="@drawable/button"-->
+<!--                android:fontFamily="@font/bold"-->
+<!--                android:onClick="findLocation"-->
+<!--                android:text="Go"-->
+<!--                android:textColor="@color/colorTransparentWhite" />-->
 
 
-    <!--    </LinearLayout>-->
+<!--            <Button-->
+<!--                android:id="@+id/btnnextactivity"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:layout_marginRight="40dp"-->
+<!--                android:background="@drawable/button"-->
+<!--                android:fontFamily="@font/bold"-->
+<!--                android:text=">"-->
+<!--                android:textColor="@color/colorTransparentWhite" />-->
+
+
+<!--        </LinearLayout>-->
 
 
 </RelativeLayout>

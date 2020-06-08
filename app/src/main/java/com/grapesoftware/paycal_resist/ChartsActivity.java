@@ -60,6 +60,7 @@ public class ChartsActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     Document document;
     String filename, filenamepdf;
+    ButtonProgressBar bar;
 
 
     @Override
@@ -90,12 +91,12 @@ public class ChartsActivity extends AppCompatActivity {
         });
 
 
-        final ButtonProgressBar bar = (ButtonProgressBar) findViewById(R.id.bpb_main);
+        bar = (ButtonProgressBar) findViewById(R.id.bpb_main);
         bar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bar.startLoader();
-                bar.setProgressColor(Color.parseColor("#157de6"));
+                bar.setProgressColor(Color.parseColor("#3488e2"));
                 RelativeLayout savingLayout = (RelativeLayout) findViewById(R.id.save_layout);
                 File file = saveBitMap(ChartsActivity.this, savingLayout);
 
@@ -105,6 +106,14 @@ public class ChartsActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             bar.stopLoader();
+                            Toast.makeText(getApplicationContext(),"Results are saved as PNG / PDF formats to in your documents PayCal_Resist folder.",Toast.LENGTH_SHORT).show();
+
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    bar.reset();
+                                }
+                            },5000);
                         }
                     }, 1800);
 

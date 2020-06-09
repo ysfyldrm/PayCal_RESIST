@@ -140,7 +140,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setTiltGesturesEnabled(true);
         mMap.setMyLocationEnabled(true);
-        mMap.setPadding(0,searchview.getHeight()+10,0,buttongo.getHeight()+10);
+        mMap.setPadding(0,searchview.getHeight()+40,0,buttongo.getHeight()+40);
         mMap.getUiSettings().setCompassEnabled(true);
 //        mMap.getUiSettings().setMyLocationButtonEnabled(true);
 

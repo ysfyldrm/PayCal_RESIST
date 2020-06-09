@@ -10,8 +10,8 @@
         android:layout_height="25dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:visibility="gone"
-        android:background="@drawable/ic_backbutton" />
+        android:background="@drawable/ic_backbutton"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/solararea_txt"
@@ -54,6 +54,8 @@
             android:hint="m\u00B2"
             android:imeOptions="actionDone"
             android:inputType="numberPassword"
+            android:maxLength="8"
+            android:maxLines="1"
             android:textColor="@color/colorTransparentWhite"
             android:textColorHint="@color/colorTransparentWhite"
             android:textSize="15sp" />

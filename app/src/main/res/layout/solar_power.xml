@@ -53,6 +53,8 @@
             android:hint="Kw"
             android:imeOptions="actionDone"
             android:inputType="numberPassword"
+            android:maxLength="8"
+            android:maxLines="1"
             android:textColor="@color/colorTransparentWhite"
             android:textColorHint="@color/colorTransparentWhite"
             android:textSize="15sp" />

@@ -137,6 +137,8 @@
         android:hint="$/Kw"
         android:imeOptions="actionNext"
         android:inputType="number"
+        android:maxLength="8"
+        android:maxLines="1"
         android:textColor="@color/colorTransparentWhite"
         android:textColorHint="@color/colorTransparentWhite"
         android:textSize="15sp" />
@@ -155,6 +157,8 @@
         android:hint="$/Kw"
         android:imeOptions="actionNext"
         android:inputType="number"
+        android:maxLength="8"
+        android:maxLines="1"
         android:textColor="@color/colorTransparentWhite"
         android:textColorHint="@color/colorTransparentWhite"
         android:textSize="15sp" />
@@ -168,11 +172,12 @@
         android:layout_toRightOf="@id/tax_txt"
         android:backgroundTint="@color/colorTransparentWhite"
         android:digits="0123456789.,"
-
         android:gravity="center"
         android:hint="%"
         android:imeOptions="actionNext"
         android:inputType="number"
+        android:maxLength="5"
+        android:maxLines="1"
         android:textColor="@color/colorTransparentWhite"
         android:textColorHint="@color/colorTransparentWhite"
         android:textSize="15sp" />
@@ -190,6 +195,8 @@
         android:hint="Kwh"
         android:imeOptions="actionNext"
         android:inputType="number"
+        android:maxLength="8"
+        android:maxLines="1"
         android:textColor="@color/colorTransparentWhite"
         android:textColorHint="@color/colorTransparentWhite"
         android:textSize="15sp" />
@@ -205,8 +212,10 @@
         android:digits="0123456789.,"
         android:gravity="center"
         android:hint="Kwh"
-        android:inputType="number"
         android:imeOptions="actionNext"
+        android:inputType="number"
+        android:maxLength="8"
+        android:maxLines="1"
         android:textColor="@color/colorTransparentWhite"
         android:textColorHint="@color/colorTransparentWhite"
         android:textSize="15sp" />
@@ -222,8 +231,10 @@
         android:digits="0123456789.,"
         android:gravity="center"
         android:hint="Kwh"
-        android:inputType="number"
         android:imeOptions="actionNext"
+        android:inputType="number"
+        android:maxLength="8"
+        android:maxLines="1"
         android:textColor="@color/colorTransparentWhite"
         android:textColorHint="@color/colorTransparentWhite"
         android:textSize="15sp" />
@@ -239,8 +250,10 @@
         android:digits="0123456789.,"
         android:gravity="center"
         android:hint="$"
-        android:inputType="number"
         android:imeOptions="actionDone"
+        android:inputType="number"
+        android:maxLength="8"
+        android:maxLines="1"
         android:textColor="@color/colorTransparentWhite"
         android:textColorHint="@color/colorTransparentWhite"
         android:textSize="15sp" />

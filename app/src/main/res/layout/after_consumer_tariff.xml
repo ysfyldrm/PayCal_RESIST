@@ -41,8 +41,10 @@
         android:digits="0123456789.,"
         android:gravity="center"
         android:hint="Kwh"
-        android:inputType="number"
         android:imeOptions="actionNext"
+        android:inputType="number"
+        android:maxLength="8"
+        android:maxLines="1"
         android:textColor="@color/colorTransparentWhite"
         android:textColorHint="@color/colorTransparentWhite"
         android:textSize="15sp" />
@@ -75,6 +77,8 @@
         android:hint="Kwh"
         android:imeOptions="actionNext"
         android:inputType="number"
+        android:maxLength="8"
+        android:maxLines="1"
         android:textColor="@color/colorTransparentWhite"
         android:textColorHint="@color/colorTransparentWhite"
         android:textSize="15sp" />
@@ -107,6 +111,8 @@
         android:hint="$"
         android:imeOptions="actionDone"
         android:inputType="number"
+        android:maxLength="8"
+        android:maxLines="1"
         android:textColor="@color/colorTransparentWhite"
         android:textColorHint="@color/colorTransparentWhite"
         android:textSize="15sp" />

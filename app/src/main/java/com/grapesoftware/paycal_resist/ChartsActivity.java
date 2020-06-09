@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.dd.morphingbutton.MorphingButton;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
@@ -55,12 +56,12 @@ public class ChartsActivity extends AppCompatActivity {
     final Context context = this;
     LinearLayout content;
     TextView title1, title2, title3, title4, title5, title6, title7, title8, title9, title10, title11, title12, title13, output1, output2, output3, output4, output5, output6, output7, output8, output9, output10, output11, output12, output13;
-    Button button, backbutton, profile;
+    Button button, backbutton, profile, gomainactivity, savebutton;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     Document document;
     String filename, filenamepdf;
-    ButtonProgressBar bar;
+    MorphingButton savePDFbutton, savePNGbutton;
 
 
     @Override
@@ -73,7 +74,10 @@ public class ChartsActivity extends AppCompatActivity {
         int[] colorArray = new int[24];
 
         backbutton = findViewById(R.id.backBtn);
-
+        savebutton = findViewById(R.id.bpb_main);
+        savePDFbutton = findViewById(R.id.savePDF);
+        savePNGbutton = findViewById(R.id.savePNG);
+        gomainactivity = findViewById(R.id.goMainActButton);
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,31 +95,21 @@ public class ChartsActivity extends AppCompatActivity {
         });
 
 
-        bar = (ButtonProgressBar) findViewById(R.id.bpb_main);
-        bar.setOnClickListener(new View.OnClickListener() {
+        savebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bar.startLoader();
-                bar.setProgressColor(Color.parseColor("#3488e2"));
+//                bar.startLoader();
+//                bar.setProgressColor(Color.parseColor("#3488e2"));
+
                 RelativeLayout savingLayout = (RelativeLayout) findViewById(R.id.save_layout);
                 File file = saveBitMap(ChartsActivity.this, savingLayout);
 
                 if (file != null) {
                     Log.i("TAG", "Drawing saved to the gallery!");
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            bar.stopLoader();
-                            Toast.makeText(getApplicationContext(),"Results are saved as PNG / PDF formats to in your documents PayCal_Resist folder.",Toast.LENGTH_SHORT).show();
 
-                            new Handler().postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    bar.reset();
-                                }
-                            },5000);
-                        }
-                    }, 1800);
+                    savebutton.setVisibility(View.GONE);
+                    savePDFbutton.setVisibility(View.VISIBLE);
+                    savePNGbutton.setVisibility(View.VISIBLE);
 
                 } else {
                     Log.i("TAG", "Oops! Image could not be saved.");
@@ -149,6 +143,41 @@ public class ChartsActivity extends AppCompatActivity {
                     }
                 };
                 t.start();
+            }
+        });
+
+        savePDFbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final MorphingButton.Params circle = MorphingButton.Params.create()
+                            .duration(500)
+                            .cornerRadius(R.dimen.mb_height_56)// 56 dp
+                            .width((int) getResources().getDimension(R.dimen.mb_height_50)) // 56 dp
+                            .height((int) getResources().getDimension(R.dimen.mb_height_50)) // 56 dp
+                            .color(getResources().getColor(R.color.color6)) // normal state color
+                            .colorPressed(getResources().getColor(R.color.backgroundBlue)) // pressed state color
+                            .icon(R.drawable.ic_done); // icon
+                    savePDFbutton.morph(circle);
+                    savePNGbutton.setVisibility(View.GONE);
+                    gomainactivity.setVisibility(View.VISIBLE);
+            }
+        });
+
+        savePNGbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final MorphingButton.Params circle = MorphingButton.Params.create()
+                        .duration(500)
+                        .cornerRadius(R.dimen.mb_height_56)// 56 dp
+                        .width((int) getResources().getDimension(R.dimen.mb_height_50)) // 56 dp
+                        .height((int) getResources().getDimension(R.dimen.mb_height_50)) // 56 dp
+                        .color(getResources().getColor(R.color.color6)) // normal state color
+                        .colorPressed(getResources().getColor(R.color.backgroundBlue)) // pressed state color
+                        .icon(R.drawable.ic_done); // icon
+                savePNGbutton.morph(circle);
+                savePDFbutton.setVisibility(View.GONE);
+                gomainactivity.setVisibility(View.VISIBLE);
+
             }
         });
 

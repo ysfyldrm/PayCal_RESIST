@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        <color name="mb_gray">#ffdedede</color>
+        <color name="mb_blue">#157DE6</color>
+        <color name="mb_blue_dark">#157DE6</color>
+        <dimen name="mb_corner_radius_2">18dp</dimen>
+
+
+</resources>

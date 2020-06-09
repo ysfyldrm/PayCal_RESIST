@@ -52,6 +52,7 @@ public class CustomerActivity extends AppCompatActivity {
                 intent1.putExtras(bundle);
                 startActivity(intent1);
 
+
                 SharedPreferences preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("Type", type);

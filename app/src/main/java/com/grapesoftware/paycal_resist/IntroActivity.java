@@ -68,9 +68,9 @@ public class IntroActivity extends AppCompatActivity {
         // fill list screen
 
         final List<ScreenItem> mList = new ArrayList<>();
-        mList.add(new ScreenItem("Lorem ipsum","Morbi quam risus, ultricies nec magna quis, ullamcorper tempor nibh. Quisque tempus sem non sapien ullamcorper aliquet. Integer consequat nisl vel congue congue.",R.drawable.rnw1));
-        mList.add(new ScreenItem("Etiam tincidunt","Duis aliquet mi elit, vel consectetur arcu vulputate in. Curabitur eu fermentum sapien. Fusce tincidunt ultricies orci et ultricies. Sed maximus nec justo et sollicitudin.",R.drawable.rnw3));
-        mList.add(new ScreenItem("Praesent lacus sem","Sed risus ipsum, sagittis in euismod vel, sodales et dui. Maecenas quis consequat augue, sit amet faucibus erat. Maecenas at nibh tincidunt, ornare urna at, sollicitudin lacus.",R.drawable.rnw7));
+        mList.add(new ScreenItem("Welcome to RESIST Paycal","Your Renewable Energy and Integrated Storage Payback calculator.",R.drawable.rnw1));
+        mList.add(new ScreenItem("","Customize your case by choosing your RESIST options, user type and entering your Data.",R.drawable.rnw3));
+        mList.add(new ScreenItem("","Get your results and get ready to enter The Renewable Energy investment world.",R.drawable.rnw7));
 
         // setup viewpager
         screenPager =findViewById(R.id.screen_viewpager);

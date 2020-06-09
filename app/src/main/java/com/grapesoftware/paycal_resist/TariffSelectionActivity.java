@@ -23,6 +23,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
     Bundle gelentype;
     String typeforuser;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -535,7 +536,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.use_own_consumer);
 
         // custom dialog elemanlarını tanımla - text, image ve button
-        Button ownconfirmbtn = dialog.findViewById(R.id.own_confirm_button);
+
         final EditText morningTariff = dialog.findViewById(R.id.morningTariff_edt);
         final EditText peakTariff = dialog.findViewById(R.id.peakTariff_edt);
         final EditText taxx = dialog.findViewById(R.id.tax_edt);
@@ -543,10 +544,9 @@ public class TariffSelectionActivity extends AppCompatActivity {
         final EditText consyear = dialog.findViewById(R.id.cons_year_edt);
         final EditText morningconsmonth = dialog.findViewById(R.id.morning_cons_month_edt);
         final EditText avgmonthbill = dialog.findViewById(R.id.avg_month_bill_edt);
-
+        final Button ownconfirmbtn = dialog.findViewById(R.id.own_confirm_button);
 
         // custom dialog elemanlarına değer ataması yap - text, image
-
 
         // tamam butonunun tıklanma olayları
         ownconfirmbtn.setOnClickListener(new View.OnClickListener() {
@@ -606,8 +606,12 @@ public class TariffSelectionActivity extends AppCompatActivity {
                     editor.putString("Avg Month Bill", avgmonthbill.getText().toString());
                     editor.commit();
 
+
                     Intent intent = new Intent(TariffSelectionActivity.this, ResTypeActivity.class);
                     startActivity(intent);
+                    //dialog.dismiss();
+
+
                 }
 
             }
@@ -618,6 +622,10 @@ public class TariffSelectionActivity extends AppCompatActivity {
         Window window = dialog.getWindow();
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         window.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+    }
+
+    public void clickedMorphButton() {
+
     }
 
     double ParseDouble(String strNumber) {

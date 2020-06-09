@@ -8,6 +8,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -18,6 +19,7 @@ import androidx.core.app.ActivityCompat;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.dd.morphingbutton.MorphingButton;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     FusedLocationProviderClient fusedLocationProviderClient;
     private RequestQueue mQueue;
     private FirebaseAuth mAuth;
-    private Button startButton;
     private Button profile;
     private boolean LocationCompleted = false;
     private String Latitude,Longitude,Adress,Country;
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please log in.", Toast.LENGTH_SHORT).show();
         }
 
-        Button startButton=findViewById(R.id.btn_basla);
+        final MorphingButton startButton=findViewById(R.id.btn_basla);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         profile=findViewById(R.id.profile);
         profile.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +77,25 @@ public class MainActivity extends AppCompatActivity {
                 if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     getLocation();
                     LocationCompleted = true;
+                    final MorphingButton.Params circle = MorphingButton.Params.create()
+                            .duration(500)
+                            .cornerRadius(R.dimen.mb_height_56)// 56 dp
+                            .width((int) getResources().getDimension(R.dimen.mb_height_56)) // 56 dp
+                            .height((int) getResources().getDimension(R.dimen.mb_height_56)) // 56 dp
+                            .color(getResources().getColor(R.color.color6)) // normal state color
+                            .colorPressed(getResources().getColor(R.color.backgroundBlue)) // pressed state color
+                            .icon(R.drawable.ic_done); // icon
+                    startButton.morph(circle);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            Intent intent=new Intent(MainActivity.this,MapsActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }, 1500);
                 } else {
                     ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
                 }
@@ -129,14 +149,14 @@ public class MainActivity extends AppCompatActivity {
                         Adress=String.valueOf(addresses.get(0).getAddressLine(0));
 
                         preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
-                        Intent intent=new Intent(MainActivity.this,MapsActivity.class);
+
                         editor = preferences.edit();
                         editor.putString("Latitude",Latitude);
                         editor.putString("Longitude",Longitude);
                         editor.putString("Country",Country);
                         editor.putString("Adress",Adress);
                         editor.commit();
-                        startActivity(intent);
+
 
 
                     } catch (IOException e) {

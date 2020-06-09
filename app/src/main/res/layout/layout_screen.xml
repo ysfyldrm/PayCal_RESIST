@@ -23,6 +23,7 @@
         android:fontFamily="@font/bold"
         android:text="TextView"
         android:textColor="@color/colorTransparentWhite"
+        android:gravity="center"
         android:textSize="32dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline"

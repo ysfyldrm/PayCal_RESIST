@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -56,6 +57,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 startActivity(intent);
             }
         });
+
+
 
         //Button button = findViewById(R.id.btnnextactivity);
         searchview = findViewById(R.id.sv_location);
@@ -113,6 +116,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
 
         mapFragment.getMapAsync(this);
+
 
 //        button.setOnClickListener(new View.OnClickListener() {
 //            @Override

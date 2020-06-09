@@ -444,31 +444,74 @@
 
     </RelativeLayout>
 
-    <!--    <Button-->
-    <!--        android:id="@+id/buttonsave"-->
-    <!--        android:layout_width="100dp"-->
-    <!--        android:layout_height="40dp"-->
-    <!--        android:layout_alignParentBottom="true"-->
-    <!--        android:layout_centerHorizontal="true"-->
-    <!--        android:layout_marginBottom="15dp"-->
-    <!--        android:background="@drawable/button"-->
-    <!--        android:elevation="18dp"-->
-    <!--        android:text="Save"-->
-    <!--        android:textColor="@color/colorTransparentWhite" />-->
-    //
-    <github.ishaan.buttonprogressbar.ButtonProgressBar
-        android:id="@+id/bpb_main"
-        android:layout_width="match_parent"
-        android:layout_below="@id/save_layout"
-        android:layout_height="40dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        app:bgColor="#147de6"
-        app:text="Save"
-        app:type="indeterminate"
-        app:textColor="@color/colorTransparentWhite"
-         />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/save_layout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/bpb_main"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/button"
+            android:elevation="18dp"
+            android:text="Save"
+            android:textColor="@color/colorTransparentWhite"
+        />
+
+        <!--        <com.dd.morphingbutton.MorphingButton-->
+        <!--            android:id="@+id/bpb_main"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="40dp"-->
+        <!--            android:text="Save"-->
+        <!--            android:textColor="@color/colorTransparentWhite"-->
+        <!--            app:bgColor="#147de6"-->
+        <!--            app:type="indeterminate" />-->
+
+        <com.dd.morphingbutton.MorphingButton
+            android:id="@+id/savePDF"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/save_layout"
+            android:layout_marginRight="15dp"
+            android:layout_toRightOf="@id/goMainActButton"
+            android:background="@drawable/button"
+            android:text="PDF"
+            android:visibility="gone"
+            android:textColor="@color/colorTransparentWhite"
+
+            />
+
+        <Button
+            android:id="@+id/goMainActButton"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/save_layout"
+            android:layout_toRightOf="@id/savePNG"
+            android:background="@drawable/button"
+            android:text="HOME"
+            android:textColor="@color/colorTransparentWhite"
+            android:visibility="gone"
+            />
+
+        <com.dd.morphingbutton.MorphingButton
+            android:id="@+id/savePNG"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/save_layout"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/savePDF"
+            android:background="@drawable/button"
+            android:text="PNG"
+            android:visibility="gone"
+            android:textColor="@color/colorTransparentWhite"
+
+            />
+
+    </LinearLayout>
 
 </RelativeLayout>

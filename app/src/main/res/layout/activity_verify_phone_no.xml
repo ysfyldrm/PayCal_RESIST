@@ -22,6 +22,7 @@
             android:textAlignment="center"
             android:textColor="@color/colorTransparentWhite"
             android:textSize="30sp" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,16 +42,18 @@
                 android:id="@+id/phone_no_fromuser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorTransparentWhite"
                 android:hint="Phone"
                 android:textColor="@color/colorTransparentWhite"
                 android:textColorHighlight="@color/colorTransparentWhite"
                 android:textColorHint="@color/colorTransparentWhite"
-                android:textColorLink="@color/colorTransparentWhite"/>
+                android:textColorLink="@color/colorTransparentWhite" />
 
             <EditText
                 android:id="@+id/verification_code_entered_by_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorTransparentWhite"
                 android:hint="Enter Code"
                 android:textColor="@color/colorTransparentWhite"
                 android:textColorHighlight="@color/colorTransparentWhite"
@@ -63,14 +66,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/button"
-                android:text="Verify"
+                android:fontFamily="@font/bungee"
+                android:text="VERIFY"
                 android:textColor="@color/colorTransparentWhite" />
+
             <Button
                 android:id="@+id/lock_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/button"
+                android:fontFamily="@font/bungee"
                 android:text="Lock the Number"
                 android:textColor="@color/colorTransparentWhite" />
 

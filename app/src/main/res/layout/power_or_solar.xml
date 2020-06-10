@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/bold"
+        android:fontFamily="@font/bungee"
         android:text="Select Input Type"
         android:textColor="@color/colorTransparentWhite"
         android:textSize="15sp" />
@@ -35,7 +35,7 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/button"
             android:elevation="20dp"
-            android:fontFamily="@font/bold"
+            android:fontFamily="@font/bungee"
             android:text="AREA"
             android:textColor="@color/colorTransparentWhite"
             android:textSize="15sp" />
@@ -64,7 +64,7 @@
             android:layout_marginBottom="30dp"
             android:background="@drawable/button"
             android:elevation="20dp"
-            android:fontFamily="@font/bold"
+            android:fontFamily="@font/bungee"
             android:text="POWER"
             android:textColor="@color/colorTransparentWhite"
             android:textSize="15sp" />

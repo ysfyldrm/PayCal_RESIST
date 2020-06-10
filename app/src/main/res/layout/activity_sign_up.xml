@@ -30,6 +30,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/bold"
         android:text="SignUp to start your new journey"
         android:textColor="@color/colorTransparentWhite"
         android:textSize="18sp"/>
@@ -47,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Full Name"
+            android:backgroundTint="@color/colorTransparentWhite"
             android:textColorHint="@color/colorTransparentWhite"
             app:boxStrokeColor="@color/colorTransparentWhite">
 
@@ -56,6 +58,7 @@
                 android:inputType="text"
                 android:shadowColor="@color/colorTransparentWhite"
                 android:textColor="@color/colorTransparentWhite"
+                android:backgroundTint="@color/colorTransparentWhite"
                 android:textColorHighlight="@color/colorTransparentWhite"
                 android:textColorHint="@color/colorTransparentWhite"
                 android:textColorLink="@color/colorTransparentWhite"/>
@@ -70,14 +73,15 @@
             android:layout_height="wrap_content"
             android:hint="Username"
             android:textColorHint="@color/colorTransparentWhite"
+            android:textColor="@color/colorTransparentWhite"
             android:transitionName="username_tran"
-
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
+                android:backgroundTint="@color/colorTransparentWhite"
 
                 />
 
@@ -97,6 +101,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/colorTransparentWhite"
+                android:backgroundTint="@color/colorTransparentWhite"
                 android:textColorHighlight="@color/colorTransparentWhite"
                 android:textColorLink="@color/colorTransparentWhite"/>
 
@@ -115,6 +120,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:textColor="@color/colorTransparentWhite"
+                android:backgroundTint="@color/colorTransparentWhite"
                 android:textColorHighlight="@color/colorTransparentWhite"
                 android:textColorLink="@color/colorTransparentWhite"/>
 
@@ -137,6 +143,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:textColor="@color/colorTransparentWhite"
+                android:backgroundTint="@color/colorTransparentWhite"
                 android:textColorHighlight="@color/colorTransparentWhite"
                 android:textColorLink="@color/colorTransparentWhite"/>
 
@@ -160,6 +167,7 @@
         android:id="@+id/reg_login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/bungee"
         android:background="#00000000"
         android:text="Already have an account? Log In"
         android:textColor="@color/colorTransparentWhite"

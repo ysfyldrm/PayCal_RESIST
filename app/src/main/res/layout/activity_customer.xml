@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CustomerActivity"
     android:background="@drawable/bg1"
-    >
+    tools:context=".CustomerActivity">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginTop="20dp"
-        >
+        android:layout_marginTop="20dp">
+
         <Button
             android:id="@+id/backBtn"
             android:layout_width="30dp"
@@ -37,29 +37,27 @@
 
 
     <TextView
+        android:id="@+id/customType_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/customType_txt"
-        android:text="Customer Type"
-        android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
-        android:textSize="45dp"
-        android:layout_marginTop="100dp"
         android:layout_centerHorizontal="true"
-        />
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/bungee"
+        android:text="Customer Type"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="45dp" />
 
     <TextView
+        android:id="@+id/customTypeExp_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/customTypeExp_txt"
-        android:text="Please select your customer type"
-        android:fontFamily="@font/bold"
-        android:textColor="@color/colorTransparentWhite"
-        android:textSize="17dp"
         android:layout_below="@+id/customType_txt"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        />
+        android:fontFamily="@font/bold"
+        android:text="Please select your customer type"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="17dp" />
 
     <Button
         android:id="@+id/button_consumer"
@@ -70,7 +68,7 @@
         android:layout_marginTop="80dp"
         android:background="@drawable/button"
         android:elevation="20dp"
-        android:fontFamily="@font/bold"
+        android:fontFamily="@font/bungee"
         android:text="CONSUMER"
         android:textColor="@color/colorTransparentWhite"
         android:textSize="20dp" />
@@ -79,29 +77,28 @@
         android:id="@+id/button_prosumer"
         android:layout_width="200dp"
         android:layout_height="70dp"
-        android:text="PROSUMER"
-        android:textSize="20dp"
-        android:background="@drawable/button"
-        android:fontFamily="@font/bold"
-        android:elevation="20dp"
-        android:textColor="@color/colorTransparentWhite"
         android:layout_below="@id/button_consumer"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button"
+        android:elevation="20dp"
+        android:fontFamily="@font/bungee"
+        android:text="PROSUMER"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/button_supplier"
         android:layout_width="200dp"
         android:layout_height="70dp"
-        android:text="SUPPLIER"
-        android:textSize="20dp"
-        android:background="@drawable/button"
-        android:fontFamily="@font/bold"
-        android:elevation="20dp"
-        android:textColor="@color/colorTransparentWhite"
         android:layout_below="@id/button_prosumer"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-         />
+        android:background="@drawable/button"
+        android:elevation="20dp"
+        android:fontFamily="@font/bungee"
+        android:text="SUPPLIER"
+        android:textColor="@color/colorTransparentWhite"
+        android:textSize="20dp" />
 
 </RelativeLayout>

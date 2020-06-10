@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/bold"
+        android:fontFamily="@font/bungee"
         android:text="Choose your Prosumer Type"
         android:textColor="@color/colorTransparentWhite"
         android:textSize="15sp" />
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/choose_your_prosumer_type"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:gravity="center_horizontal">
 
         <Button
@@ -32,10 +32,11 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/button"
             android:elevation="20dp"
+            android:padding="5dp"
             android:fontFamily="@font/bold"
             android:text="RESIDENTIAL\nLOW \nVOLTAGE"
             android:textColor="@color/colorTransparentWhite"
-            android:textSize="15sp" />
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/button_res_med_voltage"
@@ -46,10 +47,11 @@
             android:layout_marginLeft="10dp"
             android:background="@drawable/button"
             android:elevation="20dp"
+            android:padding="5dp"
             android:fontFamily="@font/bold"
             android:text="RESIDENTIAL\nMEDIUM \nVOLTAGE"
             android:textColor="@color/colorTransparentWhite"
-            android:textSize="15sp" />
+            android:textSize="12sp" />
 
 
     </LinearLayout>
@@ -70,10 +72,11 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/button"
             android:elevation="20dp"
+            android:padding="5dp"
             android:fontFamily="@font/bold"
             android:text="COMMERCIAL\nLOW \nVOLTAGE"
             android:textColor="@color/colorTransparentWhite"
-            android:textSize="15sp" />
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/button_com_med_voltage"
@@ -85,9 +88,10 @@
             android:background="@drawable/button"
             android:elevation="20dp"
             android:fontFamily="@font/bold"
+            android:padding="5dp"
             android:text="COMMERCIAL\nMEDIUM \nVOLTAGE"
             android:textColor="@color/colorTransparentWhite"
-            android:textSize="15sp" />
+            android:textSize="12sp" />
 
     </LinearLayout>
 
@@ -110,9 +114,10 @@
             android:background="@drawable/button"
             android:elevation="20dp"
             android:fontFamily="@font/bold"
+            android:padding="5dp"
             android:text="INDUSTRIAL\nLOW \nVOLTAGE"
             android:textColor="@color/colorTransparentWhite"
-            android:textSize="15sp" />
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/button_ind_med_voltage"
@@ -124,9 +129,10 @@
             android:background="@drawable/button"
             android:elevation="20dp"
             android:fontFamily="@font/bold"
+            android:padding="5dp"
             android:text="INDUSTRIAL\nMEDIUM \nVOLTAGE"
             android:textColor="@color/colorTransparentWhite"
-            android:textSize="15sp" />
+            android:textSize="12sp" />
 
     </LinearLayout>
 

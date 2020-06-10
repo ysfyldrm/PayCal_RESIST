@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    val progressDrawable = CircularProgressDrawable(this).apply {
+    // let's use large style just to better see one issue
+    setStyle(CircularProgressDrawable.LARGE)
+    setColorSchemeColors(Color.WHITE)
+
+    //bounds definition is required to show drawable correctly
+    val size = (centerRadius + strokeWidth).toInt() * 2
+    setBounds(0, 0, size, size)
+    }
+
+    // create a drawable span using our progress drawable
+    val drawableSpan = object : DynamicDrawableSpan() {
+    override fun getDrawable() = progressDrawable
+    }
+
+    // create a SpannableString like "Loading [our_progress_bar]"
+    val spannableString = SpannableString("Loading ").apply {
+    setSpan(drawableSpan, length - 1, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+    }
+
+    //start progress drawable animation
+    progressDrawable.start()
+
+    button.text = spannableString
+</selector>

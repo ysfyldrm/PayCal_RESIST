@@ -157,6 +157,7 @@ public class ChartsActivity extends AppCompatActivity {
                     savePDFbutton.morph(circle);
                     savePNGbutton.setVisibility(View.GONE);
                     gomainactivity.setVisibility(View.VISIBLE);
+
             }
         });
 

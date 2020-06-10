@@ -41,7 +41,7 @@
         android:alpha="0.85"
         android:layout_margin="10dp"
         android:textSize="20sp"
-        android:fontFamily="@font/bold"
+        android:fontFamily="@font/bungee"
          />
 
 

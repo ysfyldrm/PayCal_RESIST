@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:fontFamily="@font/bold"
+        android:fontFamily="@font/bungee"
         android:text="MCP Selection"
         android:textColor="@color/colorTransparentWhite"
         android:textSize="45dp" />
@@ -62,6 +62,7 @@
         android:id="@+id/button_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/bungee"
         android:layout_below="@id/tariffSelExp_txt"
         android:layout_marginTop="50dp"
         android:gravity="center">
@@ -73,7 +74,7 @@
             android:background="@drawable/button"
             android:drawableLeft="@drawable/turkey_tariff_icon"
             android:elevation="20dp"
-            android:fontFamily="@font/bold"
+            android:fontFamily="@font/bungee"
             android:text="Turkey's 2019\nMCP"
             android:textColor="@color/colorTransparentWhite" />
 
@@ -85,7 +86,7 @@
             android:background="@drawable/button"
             android:drawableLeft="@drawable/use_own_icon"
             android:elevation="20dp"
-            android:fontFamily="@font/bold"
+            android:fontFamily="@font/bungee"
             android:text="use own\nMCP"
             android:textColor="@color/colorTransparentWhite" />
 

@@ -16,8 +16,16 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:background="@color/colorButton"
+            android:background="@color/backgroundBlue"
             android:padding="20dp">
+
+            <Button
+                android:id="@+id/backBtn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/ic_backbutton"
+                />
 
             <Button
                 android:id="@+id/logout"
@@ -88,7 +96,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/colorButton"
-                    android:padding="5dp"
+                    android:padding="18dp"
                     >
 
                     <ImageView
@@ -116,6 +124,7 @@
                         android:layout_below="@id/counter_label"
                         android:layout_centerHorizontal="true"
                         android:includeFontPadding="false"
+                        android:fontFamily="@font/bungee"
                         android:text="Times Calculated."
                         android:textColor="@color/colorTransparentWhite"
                         android:textSize="20sp" />

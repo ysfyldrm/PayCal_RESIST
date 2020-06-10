@@ -72,16 +72,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Username"
-            android:textColorHint="@color/colorTransparentWhite"
             android:textColor="@color/colorTransparentWhite"
             android:transitionName="username_tran"
+            android:backgroundTint="@color/colorTransparentWhite"
+            android:textColorHint="@color/colorTransparentWhite"
+            app:boxStrokeColor="@color/colorTransparentWhite"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
+                android:shadowColor="@color/colorTransparentWhite"
+                android:textColor="@color/colorTransparentWhite"
                 android:backgroundTint="@color/colorTransparentWhite"
+                android:textColorHighlight="@color/colorTransparentWhite"
+                android:textColorHint="@color/colorTransparentWhite"
+                android:textColorLink="@color/colorTransparentWhite"
 
                 />
 

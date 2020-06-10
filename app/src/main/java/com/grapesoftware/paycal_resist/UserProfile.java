@@ -83,14 +83,23 @@ public class UserProfile extends AppCompatActivity {
     }
 
     public void update(View view){
-        if(isNameChanged()||isPasswordChanged()||isMailChanged()){
+        if(isNameChanged()||isPasswordChanged()||isMailChanged()|isPhoneChanged()){
             Toast.makeText(this,"Data has been updated",Toast.LENGTH_LONG).show();
         }
         else{
             Toast.makeText(this,"Data is same and can not be updated",Toast.LENGTH_LONG).show();
         }
     }
-
+    private boolean isPhoneChanged() {
+        if(!_PHONENO.equals(phoneNo.getEditText().getText().toString()))
+        {
+            reference.child(_USERNAME).child("phoneNo").setValue(phoneNo.getEditText().getText().toString());
+            _PHONENO=phoneNo.getEditText().getText().toString();
+            return true;
+        }else{
+            return false;
+        }
+    }
     private boolean isMailChanged() {
         if(!_EMAIL.equals(email.getEditText().getText().toString()))
         {

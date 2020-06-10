@@ -67,7 +67,6 @@
                 android:maxLines="1"
                 android:fontFamily="@font/bold"
                 android:textColor="@color/colorTransparentWhite"
-                android:textColorHighlight="@color/colorTransparentWhite"
                 android:textColorLink="@color/colorTransparentWhite" />
 
 
@@ -95,7 +94,6 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:textColor="@color/colorTransparentWhite"
-                android:textColorHighlight="@color/colorTransparentWhite"
                 android:textColorLink="@color/colorTransparentWhite" />
 
 

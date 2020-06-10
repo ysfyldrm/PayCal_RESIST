@@ -453,18 +453,23 @@
         android:layout_marginRight="20dp"
         android:gravity="center">
 
+
+
         <Button
             android:id="@+id/bpb_main"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
             android:background="@drawable/button"
             android:fontFamily="@font/bungee"
             android:elevation="18dp"
+            android:drawableLeft="@drawable/ic_save_trans_50dp"
+            android:paddingLeft="10dp"
             android:text="Save"
-            android:visibility="gone"
+            android:textColor="@color/colorTransparentWhite"/>
 
-            android:textColor="@color/colorTransparentWhite"
-        />
+
+
+
 
         <!--        <com.dd.morphingbutton.MorphingButton-->
         <!--            android:id="@+id/bpb_main"-->
@@ -485,6 +490,7 @@
             android:fontFamily="@font/bungee"
             android:background="@drawable/button"
             android:text="PDF"
+            android:visibility="gone"
             android:textColor="@color/colorTransparentWhite"
 
             />
@@ -492,14 +498,16 @@
         <Button
             android:id="@+id/goMainActButton"
             android:layout_width="160dp"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:layout_below="@id/save_layout"
             android:layout_toRightOf="@id/savePNG"
             android:background="@drawable/button"
             android:gravity="center"
+            android:layout_marginLeft="20dp"
             android:fontFamily="@font/bungee"
-            android:drawableLeft="@drawable/home_icon_foreground"
+            android:drawableLeft="@drawable/ic_home_trans_50dp"
             android:text="HOME"
+            android:paddingLeft="10dp"
             android:textColor="@color/colorTransparentWhite"
             />
 

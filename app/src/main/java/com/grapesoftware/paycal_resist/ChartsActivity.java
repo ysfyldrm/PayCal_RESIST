@@ -91,7 +91,6 @@ public class ChartsActivity extends AppCompatActivity {
             }
         });
 
-
         savebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,13 +102,13 @@ public class ChartsActivity extends AppCompatActivity {
 
                 if (file != null) {
                     Log.i("TAG", "Drawing saved to the gallery!");
-
-                    savebutton.setVisibility(View.GONE);
-                    savePDFbutton.setVisibility(View.VISIBLE);
-                    savePNGbutton.setVisibility(View.VISIBLE);
+                    Toast.makeText(ChartsActivity.this, "Drawing saved to the gallery!", Toast.LENGTH_SHORT).show();
+                    savebutton.setEnabled(false);
 
                 } else {
                     Log.i("TAG", "Oops! Image could not be saved.");
+                    Toast.makeText(ChartsActivity.this, "Oops! Image could not be saved.", Toast.LENGTH_SHORT).show();
+
                 }
 
                 // Will run the conversion in another thread to avoid the UI to be frozen
@@ -140,6 +139,15 @@ public class ChartsActivity extends AppCompatActivity {
                     }
                 };
                 t.start();
+            }
+        });
+
+        gomainactivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChartsActivity.this, StartActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 

@@ -164,7 +164,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:hint="Full Name">
+                android:hint="Full Name"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -217,16 +218,22 @@
                 android:id="@+id/password_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_marginBottom="10dp"
-                android:hint="Password">
+                android:hint="Password"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="#157DE6"
+
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/drawablekeyblue"
-                    android:drawablePadding="10dp"
+                    android:inputType="textPassword"
                     android:maxLines="1"
-                    android:text="+90-551-4199131" />
+                    android:text="123456"
+
+                    />
 
 
             </com.google.android.material.textfield.TextInputLayout>

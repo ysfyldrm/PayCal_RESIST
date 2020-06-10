@@ -38,11 +38,11 @@ public class StartActivity extends AppCompatActivity {
     private String Latitude,Longitude,Adress,Country;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
-
+    int counterforlogout=0;
 
     @Override
     public void onBackPressed() {
-        int counterforlogout=0;
+        ;
         counterforlogout++;
         Toast.makeText(getApplicationContext(),"To close the app please press back button again.",Toast.LENGTH_SHORT).show();
         if (counterforlogout>=2){
@@ -52,6 +52,7 @@ public class StartActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);

@@ -20,35 +20,46 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        android:fontFamily="@font/bold"
+        android:fontFamily="@font/bungee"
+        android:gravity="center"
         android:text="TextView"
         android:textColor="@color/colorTransparentWhite"
-        android:gravity="center"
         android:textSize="32dp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorTransparentWhite"
+        android:paddingTop="-25dp"
+
+        app:layout_constraintEnd_toEndOf="@+id/intro_title"
+        app:layout_constraintStart_toStartOf="@+id/intro_title"
+        app:layout_constraintTop_toBottomOf="@id/intro_title"></ImageView>
 
     <TextView
         android:id="@+id/intro_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/medium"
+        android:fontFamily="@font/bold"
         android:lineSpacingExtra="16dp"
         android:text="TextView"
         android:textAlignment="center"
         android:textColor="@color/colorTransparentWhite"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/intro_title"
-        app:layout_constraintVertical_bias="0.13" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/intro_img"

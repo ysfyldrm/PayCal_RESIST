@@ -42,7 +42,7 @@ public class TariffSelectionActivity extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TariffSelectionActivity.this, ProfileActivity.class);
+                Intent intent = new Intent(TariffSelectionActivity.this, UserProfile.class);
                 startActivity(intent);
                 //finish();
             }

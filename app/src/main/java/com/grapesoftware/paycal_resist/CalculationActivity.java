@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,11 +17,8 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,32 +39,24 @@ public class CalculationActivity extends AppCompatActivity {
     int CounterLoader = 0;
     int loadercontentcounter = 0;
     private RequestQueue mQueue;
+    String _USERNAME;
+    int _COUNTER;
+
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculation);
 
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("users");
+
         mQueue = Volley.newRequestQueue(this);
         txtView = findViewById(R.id.txtLoading);
         loadercontentcounter = 0;
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("paycal-resist");
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                String value = dataSnapshot.getValue(String.class);
-                Log.d("TAG", "Value is: " + value);
-            }
 
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w("TAG", "Failed to read value.", error.toException());
-            }
-        });
         final String[] LoaderContext = {"Hold On", "Gathering Values", "Testing Processor", "Benching Network", "Processing Equations", "Overflowing Stack", "Checking Accuracy", "Creating Cashflow Chart", "Calculating Payback", "Ready.", "Ready..", "Ready..."};
 
         new Thread(new Runnable() {
@@ -126,6 +114,8 @@ public class CalculationActivity extends AppCompatActivity {
         avgmorningmcp = preferences.getString("AVG Morning MCP", "1.00");
         avgyearmcp = preferences.getString("AVG Year MCP", "1.00");
         solarselection = preferences.getString("Solar Selection", "Power");
+        _USERNAME=preferences.getString("username","");
+        _COUNTER=preferences.getInt("counter",0);
 
 
         latitude = latitude.replace(",", ".");
@@ -312,6 +302,12 @@ public class CalculationActivity extends AppCompatActivity {
                             hesaplaSolarWithStorageSupplier();
                         }
                     }
+                    int newCounter=_COUNTER+1;
+                    reference.child(_USERNAME).child("counter").setValue(newCounter);
+                    editor.putInt("counter",newCounter);
+                    editor.commit();
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

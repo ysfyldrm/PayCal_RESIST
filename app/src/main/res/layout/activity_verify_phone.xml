@@ -58,7 +58,7 @@
 
             android:background="@drawable/textboxlr"
             android:digits="0123456789"
-            android:drawableLeft="@drawable/ic_verified_user_black_22dp"
+            android:drawableLeft="@drawable/drawableverificationwhite"
             android:drawablePadding="12dp"
             android:fontFamily="@font/medium"
             android:gravity="center_vertical"

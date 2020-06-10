@@ -1,23 +1,25 @@
 package com.grapesoftware.paycal_resist;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
 import java.util.Objects;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity2 extends AppCompatActivity {
 
 
     private Button loginButton;
@@ -32,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login2);
 
         txtRegister = findViewById(R.id.txtViewReq);
         edtuserName= findViewById(R.id.edtLogin);
@@ -42,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         txtForgetPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this,ForgetPassActivity.class);
+                Intent intent = new Intent(LoginActivity2.this,ForgetPassActivity.class);
                 startActivity(intent);
             }
         });
@@ -55,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
             email=mAuth.getCurrentUser().getEmail();
             edtuserName.setText(email);
 
-            Intent i=new Intent(LoginActivity.this,MainActivity.class);
+            Intent i=new Intent(LoginActivity2.this, StartActivity.class);
             startActivity(i);
         }
         loginButton=findViewById(R.id.btnLogin);
@@ -74,13 +76,13 @@ public class LoginActivity extends AppCompatActivity {
 
             private void loginFunc() {
 
-                mAuth.signInWithEmailAndPassword(userName,userPassword).addOnCompleteListener(LoginActivity.this,
+                mAuth.signInWithEmailAndPassword(userName,userPassword).addOnCompleteListener(LoginActivity2.this,
                         new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
 
-                                    Intent i = new Intent(LoginActivity.this,MainActivity.class);
+                                    Intent i = new Intent(LoginActivity2.this, StartActivity.class);
                                     startActivity(i);
                                     finish();
 
@@ -98,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
         txtRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                Intent intent = new Intent(LoginActivity2.this,RegisterActivity.class);
                 startActivity(intent);
             }
         });
@@ -118,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
             email=mAuth.getCurrentUser().getEmail();
             edtuserName.setText(email);
             Toast.makeText(this,"Successfully signed in.",Toast.LENGTH_LONG).show();
-            startActivity(new Intent(this,MainActivity.class));
+            startActivity(new Intent(this, StartActivity.class));
         }else {
             Toast.makeText(this,"You have to sign in.", Toast.LENGTH_LONG).show();
         }

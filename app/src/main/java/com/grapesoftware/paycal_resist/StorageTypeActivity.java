@@ -1,7 +1,5 @@
 package com.grapesoftware.paycal_resist;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -14,11 +12,11 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class StorageTypeActivity extends AppCompatActivity {
 
@@ -52,7 +50,7 @@ public class StorageTypeActivity extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(StorageTypeActivity.this,ProfileActivity.class);
+                Intent intent=new Intent(StorageTypeActivity.this,UserProfile.class);
                 startActivity(intent);
                 //finish();
             }

@@ -1,8 +1,5 @@
 package com.grapesoftware.paycal_resist;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,9 +7,11 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -46,7 +45,7 @@ public class IntroActivity extends AppCompatActivity {
 
        /** if (restorePrefData()) {
 
-            Intent mainActivity = new Intent(getApplicationContext(),MainActivity.class );
+            Intent mainActivity = new Intent(getApplicationContext(),StartActivity.class );
             startActivity(mainActivity);
             finish();
 
@@ -68,9 +67,9 @@ public class IntroActivity extends AppCompatActivity {
         // fill list screen
 
         final List<ScreenItem> mList = new ArrayList<>();
-        mList.add(new ScreenItem("Welcome to RESIST Paycal","Your Renewable Energy and Integrated Storage Payback calculator.",R.drawable.rnw1));
-        mList.add(new ScreenItem("","Customize your case by choosing your RESIST options, user type and entering your Data.",R.drawable.rnw3));
-        mList.add(new ScreenItem("","Get your results and get ready to enter The Renewable Energy investment world.",R.drawable.rnw7));
+        mList.add(new ScreenItem("Sign Up","Register the system.",R.drawable.rnw1));
+        mList.add(new ScreenItem("Calculate","Let the app guide you.",R.drawable.rnw3));
+        mList.add(new ScreenItem("Gain","Get ready to enter the Renewable Energy Investment World.",R.drawable.rnw7));
 
         // setup viewpager
         screenPager =findViewById(R.id.screen_viewpager);
@@ -141,7 +140,7 @@ public class IntroActivity extends AppCompatActivity {
 
                 //open main activity
 
-                Intent mainActivity = new Intent(getApplicationContext(),LoginActivity.class);
+                Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(mainActivity);
                 // also we need to save a boolean value to storage so next time when the user run the app
                 // we could know that he is already checked the intro screen activity

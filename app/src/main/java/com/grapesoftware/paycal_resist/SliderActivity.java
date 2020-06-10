@@ -1,8 +1,5 @@
 package com.grapesoftware.paycal_resist;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -10,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 public class SliderActivity extends AppCompatActivity {
 
@@ -44,7 +44,7 @@ public class SliderActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(mNextButton.getText()=="Finish"){
-                    Intent i=new Intent(SliderActivity.this,LoginActivity.class);
+                    Intent i=new Intent(SliderActivity.this, LoginActivity2.class);
                     startActivity(i);
 
                 }

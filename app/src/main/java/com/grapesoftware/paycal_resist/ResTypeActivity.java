@@ -50,7 +50,7 @@ public class ResTypeActivity extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(ResTypeActivity.this,ProfileActivity.class);
+                Intent intent=new Intent(ResTypeActivity.this,UserProfile.class);
                 startActivity(intent);
                 //finish();
             }

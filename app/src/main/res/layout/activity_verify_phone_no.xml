@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical"
+    tools:context=".VerifyPhoneNo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bungee"
+            android:text="Verify Phone No"
+            android:textAlignment="center"
+            android:textColor="@color/colorTransparentWhite"
+            android:textSize="30sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter verification code if not automatically authenticated."
+            android:textAlignment="center"
+            android:textColor="@color/colorTransparentWhite"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:orientation="vertical"
+            android:padding="50dp">
+
+            <EditText
+                android:id="@+id/phone_no_fromuser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone"
+                android:textColor="@color/colorTransparentWhite"
+                android:textColorHighlight="@color/colorTransparentWhite"
+                android:textColorHint="@color/colorTransparentWhite"
+                android:textColorLink="@color/colorTransparentWhite"/>
+
+            <EditText
+                android:id="@+id/verification_code_entered_by_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Code"
+                android:textColor="@color/colorTransparentWhite"
+                android:textColorHighlight="@color/colorTransparentWhite"
+                android:textColorHint="@color/colorTransparentWhite"
+                android:textColorLink="@color/colorTransparentWhite" />
+
+            <Button
+                android:id="@+id/verify_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button"
+                android:text="Verify"
+                android:textColor="@color/colorTransparentWhite" />
+            <Button
+                android:id="@+id/lock_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button"
+                android:text="Lock the Number"
+                android:textColor="@color/colorTransparentWhite" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</ScrollView>

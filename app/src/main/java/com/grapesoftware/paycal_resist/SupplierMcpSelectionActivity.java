@@ -1,7 +1,5 @@
 package com.grapesoftware.paycal_resist;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +13,8 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SupplierMcpSelectionActivity extends AppCompatActivity {
 
@@ -52,7 +51,7 @@ public class SupplierMcpSelectionActivity extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(SupplierMcpSelectionActivity.this,ProfileActivity.class);
+                Intent intent=new Intent(SupplierMcpSelectionActivity.this,UserProfile.class);
                 startActivity(intent);
                 //finish();
             }

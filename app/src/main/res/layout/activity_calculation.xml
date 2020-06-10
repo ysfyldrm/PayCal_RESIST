@@ -38,7 +38,7 @@
         android:layout_below="@id/gifloading"
         android:layout_marginTop="20dp"
         android:textSize="24sp"
-        android:fontFamily="@font/bold"
+        android:fontFamily="@font/bungee"
         android:textColor="@color/colorTransparentWhite"
         android:layout_centerHorizontal="true">
 

@@ -21,7 +21,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".VerifyPhoneNo" />
+        <activity android:name=".UserProfile" />
+        <activity android:name=".SignUp" />
+        <activity android:name=".Login" />
+        <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".ProfileActivity" />
         <activity android:name=".ChartsActivity" />
         <activity android:name=".CalculationActivity" />
         <!--
@@ -35,10 +42,13 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
         <activity android:name=".SupplierMcpSelectionActivity" />
         <activity android:name=".StorageTypeActivity" />
         <activity android:name=".ResTypeActivity" />
@@ -49,15 +59,14 @@
         <activity android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ForgetPassActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".LoginActivity2" />
+        <activity android:name=".StartActivity" />
     </application>
 
 </manifest>

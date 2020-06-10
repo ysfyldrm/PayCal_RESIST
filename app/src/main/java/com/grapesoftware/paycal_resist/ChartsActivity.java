@@ -11,7 +11,6 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
@@ -43,8 +42,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import github.ishaan.buttonprogressbar.ButtonProgressBar;
 
 
 public class ChartsActivity extends AppCompatActivity {
@@ -88,7 +85,7 @@ public class ChartsActivity extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ChartsActivity.this, ProfileActivity.class);
+                Intent intent = new Intent(ChartsActivity.this, UserProfile.class);
                 startActivity(intent);
                 //finish();
             }

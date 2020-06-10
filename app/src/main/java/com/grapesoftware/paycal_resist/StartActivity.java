@@ -48,13 +48,20 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+        preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+        editor = preferences.edit();
+
         mQueue = Volley.newRequestQueue(this);
         mAuth = FirebaseAuth.getInstance();
+        String user=preferences.getString("user","");
+        if (user.length()>0){
         if (mAuth.getCurrentUser() == null) {
-            Intent loginIntent = new Intent(StartActivity.this, LoginActivity2.class);
+            Intent loginIntent = new Intent(StartActivity.this, Login.class);
             startActivity(loginIntent);
             Toast.makeText(getApplicationContext(), "Please log in.", Toast.LENGTH_SHORT).show();
         }
+        }
+
 
         final MorphingButton startButton=findViewById(R.id.btn_basla);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -148,9 +155,7 @@ public class StartActivity extends AppCompatActivity {
                         Country=String.valueOf(addresses.get(0).getCountryName());
                         Adress=String.valueOf(addresses.get(0).getAddressLine(0));
 
-                        preferences = getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
 
-                        editor = preferences.edit();
                         editor.putString("Latitude",Latitude);
                         editor.putString("Longitude",Longitude);
                         editor.putString("Country",Country);

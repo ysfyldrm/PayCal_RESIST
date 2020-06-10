@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -309,6 +310,7 @@ public class CalculationActivity extends AppCompatActivity {
 
 
                 } catch (JSONException e) {
+                    Toast.makeText(getApplicationContext(),"NASA's API currently not available.\nPlease try agian later.",Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
 
@@ -316,6 +318,7 @@ public class CalculationActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),"NASA's API currently not available.\nPlease try agian later.",Toast.LENGTH_LONG).show();
                 error.printStackTrace();
             }
         });
@@ -332,7 +335,8 @@ public class CalculationActivity extends AppCompatActivity {
 
             @Override
             public void retry(VolleyError error) throws VolleyError {
-
+                Toast.makeText(getApplicationContext(),"NASA's API currently not available.\nPlease try again later.",Toast.LENGTH_LONG).show();
+                onBackPressed();
             }
         });
         mQueue.add(request);

@@ -28,7 +28,6 @@
         <activity android:name=".MainActivity">
 
         </activity>
-        <activity android:name=".ProfileActivity" />
         <activity android:name=".ChartsActivity" />
         <activity android:name=".CalculationActivity" />
         <!--
@@ -53,8 +52,6 @@
         <activity android:name=".StorageTypeActivity" />
         <activity android:name=".ResTypeActivity" />
         <activity android:name=".TariffSelectionActivity" />
-        <activity android:name=".SliderActivity" />
-        <activity android:name=".VerifyPhoneActivity" />
         <activity android:name=".CustomerActivity" />
         <activity android:name=".IntroActivity">
             <intent-filter>
@@ -63,9 +60,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
         <activity android:name=".ForgetPassActivity" />
-        <activity android:name=".LoginActivity2" />
         <activity android:name=".StartActivity" />
     </application>
 

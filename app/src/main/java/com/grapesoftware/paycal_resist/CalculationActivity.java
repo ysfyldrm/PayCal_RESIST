@@ -311,6 +311,7 @@ public class CalculationActivity extends AppCompatActivity {
 
                 } catch (JSONException e) {
                     Toast.makeText(getApplicationContext(),"NASA's API currently not available.\nPlease try agian later.",Toast.LENGTH_LONG).show();
+                    onBackPressed();
                     e.printStackTrace();
                 }
 
@@ -319,6 +320,7 @@ public class CalculationActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(),"NASA's API currently not available.\nPlease try agian later.",Toast.LENGTH_LONG).show();
+                onBackPressed();
                 error.printStackTrace();
             }
         });

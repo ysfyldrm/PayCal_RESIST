@@ -8,7 +8,6 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -19,7 +18,6 @@ import androidx.core.app.ActivityCompat;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-import com.dd.morphingbutton.MorphingButton;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -42,7 +40,15 @@ public class StartActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
 
 
-
+    @Override
+    public void onBackPressed() {
+        int counterforlogout=0;
+        counterforlogout++;
+        Toast.makeText(getApplicationContext(),"To close the app please press back button again.",Toast.LENGTH_SHORT).show();
+        if (counterforlogout>=2){
+            finish();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +69,8 @@ public class StartActivity extends AppCompatActivity {
         }
 
 
-        final MorphingButton startButton=findViewById(R.id.btn_basla);
+
+        final Button startButton=findViewById(R.id.btn_basla);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         profile=findViewById(R.id.profile);
         profile.setOnClickListener(new View.OnClickListener() {
@@ -84,25 +91,12 @@ public class StartActivity extends AppCompatActivity {
                 if (ActivityCompat.checkSelfPermission(StartActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     getLocation();
                     LocationCompleted = true;
-                    final MorphingButton.Params circle = MorphingButton.Params.create()
-                            .duration(500)
-                            .cornerRadius(R.dimen.mb_height_56)// 56 dp
-                            .width((int) getResources().getDimension(R.dimen.mb_height_56)) // 56 dp
-                            .height((int) getResources().getDimension(R.dimen.mb_height_56)) // 56 dp
-                            .color(getResources().getColor(R.color.color6)) // normal state color
-                            .colorPressed(getResources().getColor(R.color.backgroundBlue)) // pressed state color
-                            .icon(R.drawable.ic_done); // icon
-                    startButton.morph(circle);
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
 
                             Intent intent=new Intent(StartActivity.this,MapsActivity.class);
                             startActivity(intent);
-                            finish();
-                        }
-                    }, 1500);
+
+
+
                 } else {
                     ActivityCompat.requestPermissions(StartActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
                 }

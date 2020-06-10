@@ -43,7 +43,7 @@
         android:textSize="45dp"
          />
 
-    <com.dd.morphingbutton.MorphingButton
+    <Button
         android:id="@+id/btn_basla"
         android:layout_width="match_parent"
         android:layout_height="150dp"

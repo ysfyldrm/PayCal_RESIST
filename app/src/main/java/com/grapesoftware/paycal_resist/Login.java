@@ -35,6 +35,11 @@ public class Login extends AppCompatActivity {
     SharedPreferences.Editor editor;
 
     @Override
+    public void onBackPressed() {
+        recreate();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);

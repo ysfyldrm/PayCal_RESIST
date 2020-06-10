@@ -23,7 +23,8 @@ public class UserProfile extends AppCompatActivity {
     int _COUNTER;
     DatabaseReference reference;
     Button logout,back_btn;
-
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +68,8 @@ public class UserProfile extends AppCompatActivity {
     private void showAllUserData() {
 
 
-        SharedPreferences preferences=getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
-        SharedPreferences.Editor editor=preferences.edit();
+        preferences=getSharedPreferences("session",getApplicationContext().MODE_PRIVATE);
+        editor=preferences.edit();
         _NAME=preferences.getString("name","");
         _USERNAME=preferences.getString("username","");
         _EMAIL=preferences.getString("email","");
@@ -93,6 +94,13 @@ public class UserProfile extends AppCompatActivity {
     public void update(View view){
         if(isNameChanged()||isPasswordChanged()||isMailChanged()|isPhoneChanged()){
             Toast.makeText(this,"Data has been updated",Toast.LENGTH_LONG).show();
+            editor.putString("name",fullName.getEditText().getText().toString());
+            editor.putString("email",email.getEditText().getText().toString());
+            editor.putString("phoneNo",phoneNo.getEditText().getText().toString());
+            editor.putString("password",password.getEditText().getText().toString());
+            editor.commit();
+
+
         }
         else{
             Toast.makeText(this,"Data is same and can not be updated",Toast.LENGTH_LONG).show();

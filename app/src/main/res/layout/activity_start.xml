@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg1"
     tools:context=".StartActivity"
+    android:background="@drawable/bg1"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,25 +37,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/resiststart"
         android:fontFamily="@font/bold"
+        android:background="@drawable/resiststart"
         android:textColor="@color/colorTransparentWhite"
         android:textSize="45dp"
          />
 
-    <Button
+    <com.dd.morphingbutton.MorphingButton
         android:id="@+id/btn_basla"
         android:layout_width="match_parent"
-        android:layout_height="125dp"
+        android:layout_height="150dp"
         android:layout_below="@+id/resistPayCal_txt"
-        android:layout_centerHorizontal="true"
         android:layout_margin="100dp"
-        android:layout_marginTop="15dp"
         android:background="@drawable/start_button"
         android:fontFamily="@font/bungee"
         android:text="START"
-        android:textColor="@color/colorTransparentWhite"
+        android:layout_centerHorizontal="true"
         android:textSize="30dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/cardview_light_background"
         />
 
 </RelativeLayout>

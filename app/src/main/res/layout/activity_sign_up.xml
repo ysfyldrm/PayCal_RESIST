@@ -15,7 +15,8 @@
         android:layout_height="150dp"
         android:src="@drawable/resiststart"
         android:transitionName="logo_image"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,7 +34,7 @@
         android:fontFamily="@font/bold"
         android:text="SignUp to start your new journey"
         android:textColor="@color/colorTransparentWhite"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,21 +48,22 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Full Name"
             android:backgroundTint="@color/colorTransparentWhite"
+            android:hint="Full Name"
             android:textColorHint="@color/colorTransparentWhite"
             app:boxStrokeColor="@color/colorTransparentWhite">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorTransparentWhite"
                 android:inputType="text"
+                android:maxLines="1"
                 android:shadowColor="@color/colorTransparentWhite"
                 android:textColor="@color/colorTransparentWhite"
-                android:backgroundTint="@color/colorTransparentWhite"
                 android:textColorHighlight="@color/colorTransparentWhite"
                 android:textColorHint="@color/colorTransparentWhite"
-                android:textColorLink="@color/colorTransparentWhite"/>
+                android:textColorLink="@color/colorTransparentWhite" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -73,22 +75,15 @@
             android:layout_height="wrap_content"
             android:hint="Username"
             android:textColor="@color/colorTransparentWhite"
-            android:transitionName="username_tran"
-            android:backgroundTint="@color/colorTransparentWhite"
             android:textColorHint="@color/colorTransparentWhite"
-            app:boxStrokeColor="@color/colorTransparentWhite"
-            >
+            android:transitionName="username_tran">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:shadowColor="@color/colorTransparentWhite"
-                android:textColor="@color/colorTransparentWhite"
                 android:backgroundTint="@color/colorTransparentWhite"
-                android:textColorHighlight="@color/colorTransparentWhite"
-                android:textColorHint="@color/colorTransparentWhite"
-                android:textColorLink="@color/colorTransparentWhite"
+                android:inputType="text"
+                android:maxLines="1"
 
                 />
 
@@ -106,13 +101,14 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorTransparentWhite"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/colorTransparentWhite"
-                android:backgroundTint="@color/colorTransparentWhite"
                 android:textColorHighlight="@color/colorTransparentWhite"
-                android:textColorLink="@color/colorTransparentWhite"/>
+                android:textColorLink="@color/colorTransparentWhite" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/reg_phoneNo"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -125,13 +121,15 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:textColor="@color/colorTransparentWhite"
                 android:backgroundTint="@color/colorTransparentWhite"
+                android:inputType="number"
+                android:maxLines="1"
+                android:textColor="@color/colorTransparentWhite"
                 android:textColorHighlight="@color/colorTransparentWhite"
-                android:textColorLink="@color/colorTransparentWhite"/>
+                android:textColorLink="@color/colorTransparentWhite" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/reg_password"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -142,17 +140,17 @@
             android:textColorHint="@color/colorTransparentWhite"
             android:transitionName="password_tran"
             app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/colorTransparentWhite"
-            >
+            app:passwordToggleTint="@color/colorTransparentWhite">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:textColor="@color/colorTransparentWhite"
                 android:backgroundTint="@color/colorTransparentWhite"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:textColor="@color/colorTransparentWhite"
                 android:textColorHighlight="@color/colorTransparentWhite"
-                android:textColorLink="@color/colorTransparentWhite"/>
+                android:textColorLink="@color/colorTransparentWhite" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -174,11 +172,10 @@
         android:id="@+id/reg_login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/bungee"
         android:background="#00000000"
+        android:fontFamily="@font/bungee"
         android:text="Already have an account? Log In"
         android:textColor="@color/colorTransparentWhite"
-        android:transitionName="login_signup_tran"
-        />
+        android:transitionName="login_signup_tran" />
 
 </LinearLayout>

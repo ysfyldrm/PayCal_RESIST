@@ -87,6 +87,7 @@ public class VerifyPhoneNo extends AppCompatActivity {
         _PASSWORD=preferences.getString("password","");
         _COUNTER=preferences.getInt("counter",0);
 
+        verificationCodeEnteredByTheUser.setEnabled(false);
 
         rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("users");
@@ -95,6 +96,9 @@ public class VerifyPhoneNo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 sendVerificationCodeToUser(phoneNoEnteredByTheUser.getText().toString());
+                phoneNoEnteredByTheUser.setEnabled(false);
+                verificationCodeEnteredByTheUser.setEnabled(true);
+                lock_btn.setVisibility(View.GONE);
             }
         });
 
@@ -109,6 +113,7 @@ public class VerifyPhoneNo extends AppCompatActivity {
                 }
                 progressBar.setVisibility(View.VISIBLE);
                 verifyCode(code);
+                finish();
             }
         });
 

@@ -84,7 +84,9 @@
                 android:backgroundTint="@color/colorTransparentWhite"
                 android:inputType="text"
                 android:maxLines="1"
-
+                android:textColor="@color/colorTransparentWhite"
+                android:textColorHighlight="@color/colorTransparentWhite"
+                android:textColorLink="@color/colorTransparentWhite"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>

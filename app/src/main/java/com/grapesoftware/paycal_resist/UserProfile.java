@@ -22,7 +22,7 @@ public class UserProfile extends AppCompatActivity {
     String _USERNAME,_NAME,_EMAIL,_PHONENO,_PASSWORD;
     int _COUNTER;
     DatabaseReference reference;
-    Button logout;
+    Button logout,back_btn;
 
 
     @Override
@@ -40,6 +40,14 @@ public class UserProfile extends AppCompatActivity {
         usernameLabel=findViewById(R.id.username_field);
         counterLabel=findViewById(R.id.counter_label);
         logout=findViewById(R.id.logout);
+        back_btn=findViewById(R.id.backBtn);
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

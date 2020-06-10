@@ -560,7 +560,7 @@ public class ChartsActivity extends AppCompatActivity {
                 Double dpvpower = ParseDouble(pvpower);
                 int ipvpower = (int) Math.round(dpvpower);
                 pvpower = Integer.toString(ipvpower);
-                Toast.makeText(getApplicationContext(), pvpower, Toast.LENGTH_LONG).show();
+
                 SpannableString ss = new SpannableString(pvnum + "   Solar Power : " + pvpower + " Kw");
                 ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
                 ss.setSpan(fcsTitleBlue, pvnum.length() + 1, pvnum.length() + 16, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -601,7 +601,6 @@ public class ChartsActivity extends AppCompatActivity {
                 Double dpvpower = ParseDouble(pvpower);
                 int ipvpower = (int) Math.round(dpvpower);
                 pvpower = Integer.toString(ipvpower);
-                Toast.makeText(getApplicationContext(), pvpower, Toast.LENGTH_LONG).show();
                 SpannableString cc = new SpannableString(pvnum + "   Solar Power : " + pvpower + " Kw");
                 ss.setSpan(fcsTitleBlue, pvnum.length() + 1, pvnum.length() + 16, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 output8.setText(cc);
@@ -715,7 +714,7 @@ public class ChartsActivity extends AppCompatActivity {
                 Double dpvpower = ParseDouble(pvpower);
                 int ipvpower = (int) Math.round(dpvpower);
                 pvpower = Integer.toString(ipvpower);
-                Toast.makeText(getApplicationContext(), pvpower, Toast.LENGTH_LONG).show();
+
                 SpannableString ss = new SpannableString(pvnum + "   Solar Power : " + pvpower + " Kw");
                 ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
                 ss.setSpan(fcsTitleBlue, pvnum.length() + 1, pvnum.length() + 16, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -753,7 +752,7 @@ public class ChartsActivity extends AppCompatActivity {
                 Double dpvpower = ParseDouble(pvpower);
                 int ipvpower = (int) Math.round(dpvpower);
                 pvpower = Integer.toString(ipvpower);
-                Toast.makeText(getApplicationContext(), pvpower, Toast.LENGTH_LONG).show();
+
                 SpannableString ss = new SpannableString(pvnum + "   Solar Power : " + pvpower + " Kw");
                 ForegroundColorSpan fcsTitleBlue = new ForegroundColorSpan(getResources().getColor(R.color.backgroundBlue));
                 ss.setSpan(fcsTitleBlue, pvnum.length() + 1, pvnum.length() + 16, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

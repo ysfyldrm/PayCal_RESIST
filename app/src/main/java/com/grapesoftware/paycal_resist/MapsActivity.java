@@ -178,8 +178,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 editor.putString("Longitude", longitude);
                 editor.putString("Country", country);
                 editor.putString("Adress", adress);
+
                 editor.commit();
-                Toast.makeText(getApplicationContext(), "Latitude=" + latLng.latitude + "Longitude" + latLng.longitude, Toast.LENGTH_SHORT).show();
+
+                Log.i("LOCATION","Latitude=" + latLng.latitude + "Longitude" + latLng.longitude);
 
 
                 marker = mMap.addMarker(options);
